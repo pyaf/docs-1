@@ -497,7 +497,7 @@ Now we connect our nodes into a working graph. Since our nodes handle their own 
 
 To enable [human-in-the-loop](/oss/langgraph/add-human-in-the-loop) with `interrupt()`, we need to compile with a [checkpointer](/oss/langgraph/persistence) to save state between runs:
 
-<Accordion title="Graph compilation code" icon="diagram-project">
+<Accordion title="Graph compilation code" icon="diagram-project" defaultOpen={true}>
 ```python
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.pregel import RetryPolicy
