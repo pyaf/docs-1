@@ -1214,6 +1214,7 @@
                       "oss/javascript/langgraph/install",
                       "oss/javascript/langgraph/quickstart",
                       "oss/javascript/langgraph/local-server",
+                      "oss/javascript/langgraph/thinking-in-langgraph",
                       "oss/javascript/langgraph/workflows-agents"
                     ]
                   },
