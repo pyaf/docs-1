@@ -130,7 +130,6 @@ For instructions that depend on context (user profile, preferences, session data
 from dataclasses import dataclass
 from langchain.agents import create_agent
 from langchain.agents.middleware import dynamic_prompt, ModelRequest
-from langgraph.config import get_store
 
 @dataclass
 class Context:
@@ -142,7 +141,7 @@ def personalized_prompt(request: ModelRequest) -> str:
     user_id = request.runtime.context.user_id
 
     # Look up user preferences from long-term memory
-    store = get_store()
+    store = request.runtime.store
     user_prefs = store.get(("users",), user_id)
 
     # Access session state
@@ -324,7 +323,7 @@ def search_documents(
     user_id = runtime.context.user_id
 
     # Access long-term memory for user preferences
-    store = get_store()
+    store = runtime.store
     search_prefs = store.get(("preferences", user_id), "search")
 
     # Access session state
