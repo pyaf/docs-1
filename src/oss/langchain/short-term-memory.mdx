@@ -197,56 +197,41 @@ Most LLMs have a maximum supported context window (denominated in tokens).
 One way to decide when to truncate messages is to count the tokens in the message history and truncate whenever it approaches that limit. If you're using LangChain, you can use the trim messages utility and specify the number of tokens to keep from the list, as well as the `strategy` (e.g., keep the last `maxTokens`) to use for handling the boundary.
 
 :::python
-To trim message history in an agent, use the `@before_model` middleware decorator with the [`trim_messages`](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.utils.trim_messages.html) function:
+To trim message history in an agent, use the `@before_model` middleware decorator:
 
 ```python
-from langchain_core.messages.utils import trim_messages, count_tokens_approximately
-from langchain.messages import BaseMessage
+from langchain.messages import RemoveMessage
+from langgraph.graph.message import REMOVE_ALL_MESSAGES
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain.agents import create_agent, AgentState
 from langchain.agents.middleware import before_model
 from langgraph.runtime import Runtime
-from langchain_core.runnables import RunnableConfig
+from typing import Any
 
 @before_model
-def trim_message_history(state: AgentState, runtime: Runtime) -> dict[str, list[BaseMessage]] | None:
-    """Trim messages before every model call to stay within context limits."""
-    trimmed_messages = trim_messages(
-        state["messages"],
-        strategy="last",
-        token_counter=count_tokens_approximately,
-        max_tokens=384,
-        start_on="human",
-        end_on=("human", "tool"),
-    )
-    # Return None if no trimming needed
-    if len(trimmed_messages) == len(state["messages"]):
-        return None
-    return {"messages": trimmed_messages}
+def trim_messages(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+    """Keep only the last few messages to fit context window."""
+    messages = state["messages"]
 
+    if len(messages) <= 3:
+        return None  # No changes needed
 
-checkpointer = InMemorySaver()
+    first_msg = messages[0]
+    recent_messages = messages[-3:] if len(messages) % 2 == 0 else messages[-4:]
+    new_messages = [first_msg] + recent_messages
+
+    return {
+        "messages": [
+            RemoveMessage(id=REMOVE_ALL_MESSAGES),
+            *new_messages
+        ]
+    }
+
 agent = create_agent(
-    "openai:gpt-5-nano",
-    tools=[],
-    middleware=[trim_message_history],
-    checkpointer=checkpointer,
+    model,
+    tools=tools,
+    middleware=[trim_messages]
 )
-
-config: RunnableConfig = {"configurable": {"thread_id": "1"}}
-
-agent.invoke({"messages": "hi, my name is bob"}, config)
-agent.invoke({"messages": "write a short poem about cats"}, config)
-agent.invoke({"messages": "now do the same but for dogs"}, config)
-final_response = agent.invoke({"messages": "what's my name?"}, config)
-
-final_response["messages"][-1].pretty_print()
-"""
-================================== Ai Message ==================================
-
-Your name is Bob. You told me that earlier.
-If you'd like me to call you a nickname or use a different name, just say the word.
-"""
 ```
 :::
 
@@ -551,11 +536,11 @@ console.log(finalResponse.messages.at(-1)?.content);
 See [summarizationMiddleware](/oss/langchain/middleware#summarization) for more configuration options.
 :::
 
-## Access
+## Access memory
 
 You can access and modify the short-term memory (state) of an agent in several ways:
 
-### In tools
+### Tools
 
 #### Read short-term memory in a tool
 
@@ -759,7 +744,7 @@ await agent.invoke(
 ```
 :::
 
-### In middleware (dynamic prompts)
+### Prompt
 
 Access short term memory (state) in middleware to create dynamic prompts based on conversation history or custom state fields.
 
@@ -904,48 +889,43 @@ for (const message of result.messages) {
 ```
 :::
 
-### In middleware (message processing)
+### Before model
 
-Access short term memory (state) in middleware to process messages before or after model calls.
+Access short term memory (state) in `@before_model` middleware to process messages before model calls.
 
 :::python
 ```python
-from langchain_core.messages.utils import trim_messages, count_tokens_approximately
-from langchain.messages import BaseMessage, RemoveMessage
+from langchain.messages import RemoveMessage
+from langgraph.graph.message import REMOVE_ALL_MESSAGES
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain.agents import create_agent, AgentState
-from langchain.agents.middleware import before_model, after_model
+from langchain.agents.middleware import before_model
 from langgraph.runtime import Runtime
+from typing import Any
 
 @before_model
-def trim_message_history(state: AgentState, runtime: Runtime) -> dict | None:
-    """Trim messages before model call."""
-    trimmed_messages = trim_messages(
-        state["messages"],
-        strategy="last",
-        token_counter=count_tokens_approximately,
-        max_tokens=384,
-        start_on="human",
-        end_on=("human", "tool"),
-    )
-    if len(trimmed_messages) == len(state["messages"]):
-        return None
-    return {"messages": trimmed_messages}
+def trim_messages(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+    """Keep only the last few messages to fit context window."""
+    messages = state["messages"]
 
-@after_model
-def validate_response(state: AgentState, runtime: Runtime) -> dict | None:
-    """Remove messages containing sensitive words."""
-    STOP_WORDS = ["password", "secret"]
-    last_message = state["messages"][-1]
-    if any(word in last_message.content for word in STOP_WORDS):
-        return {"messages": [RemoveMessage(id=last_message.id)]}
-    return None
+    if len(messages) <= 3:
+        return None  # No changes needed
+
+    first_msg = messages[0]
+    recent_messages = messages[-3:] if len(messages) % 2 == 0 else messages[-4:]
+    new_messages = [first_msg] + recent_messages
+
+    return {
+        "messages": [
+            RemoveMessage(id=REMOVE_ALL_MESSAGES),
+            *new_messages
+        ]
+    }
 
 agent = create_agent(
-    model="openai:gpt-5-nano",
-    tools=[],
-    middleware=[trim_message_history, validate_response],
-    checkpointer=InMemorySaver(),
+    model,
+    tools=tools,
+    middleware=[trim_messages]
 )
 ```
 :::
@@ -968,6 +948,48 @@ const trimMessageHistory = createMiddleware({
   },
 });
 
+const agent = createAgent({
+    model: "openai:gpt-5-nano",
+    tools: [],
+    middleware: [trimMessageHistory],
+});
+```
+:::
+
+### After model
+
+Access short term memory (state) in `@after_model` middleware to process messages after model calls.
+
+:::python
+```python
+from langchain.messages import RemoveMessage
+from langgraph.checkpoint.memory import InMemorySaver
+from langchain.agents import create_agent, AgentState
+from langchain.agents.middleware import after_model
+from langgraph.runtime import Runtime
+
+@after_model
+def validate_response(state: AgentState, runtime: Runtime) -> dict | None:
+    """Remove messages containing sensitive words."""
+    STOP_WORDS = ["password", "secret"]
+    last_message = state["messages"][-1]
+    if any(word in last_message.content for word in STOP_WORDS):
+        return {"messages": [RemoveMessage(id=last_message.id)]}
+    return None
+
+agent = create_agent(
+    model="openai:gpt-5-nano",
+    tools=[],
+    middleware=[validate_response],
+    checkpointer=InMemorySaver(),
+)
+```
+:::
+:::js
+```typescript
+import { RemoveMessage } from "@langchain/core/messages";
+import { createAgent, createMiddleware, type AgentState } from "langchain";
+
 const validateResponse = createMiddleware({
   name: "ValidateResponse",
   afterModel: (state) => {
@@ -984,7 +1006,7 @@ const validateResponse = createMiddleware({
 const agent = createAgent({
     model: "openai:gpt-5-nano",
     tools: [],
-    middleware: [trimMessageHistory, validateResponse],
+    middleware: [validateResponse],
 });
 ```
 :::
