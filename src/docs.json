@@ -558,7 +558,8 @@
                       "langgraph-platform/deploy-hybrid",
                       "langgraph-platform/deploy-self-hosted-full-platform",
                       "langgraph-platform/deploy-standalone-server",
-                      "langgraph-platform/use-remote-graph"
+                      "langgraph-platform/use-remote-graph",
+                      "langgraph-platform/cicd-pipeline-example"
                     ]
                   },
                   {
@@ -1614,7 +1615,8 @@
                       "langgraph-platform/deploy-hybrid",
                       "langgraph-platform/deploy-self-hosted-full-platform",
                       "langgraph-platform/deploy-standalone-server",
-                      "langgraph-platform/use-remote-graph"
+                      "langgraph-platform/use-remote-graph",
+                      "langgraph-platform/cicd-pipeline-example"
                     ]
                   },
                   {
