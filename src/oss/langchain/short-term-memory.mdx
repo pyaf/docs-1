@@ -232,6 +232,21 @@ agent = create_agent(
     tools=tools,
     middleware=[trim_messages]
 )
+
+config: RunnableConfig = {"configurable": {"thread_id": "1"}}
+
+agent.invoke({"messages": "hi, my name is bob"}, config)
+agent.invoke({"messages": "write a short poem about cats"}, config)
+agent.invoke({"messages": "now do the same but for dogs"}, config)
+final_response = agent.invoke({"messages": "what's my name?"}, config)
+
+final_response["messages"][-1].pretty_print()
+"""
+================================== Ai Message ==================================
+
+Your name is Bob. You told me that earlier.
+If you'd like me to call you a nickname or use a different name, just say the word.
+"""
 ```
 :::
 
@@ -927,6 +942,21 @@ agent = create_agent(
     tools=tools,
     middleware=[trim_messages]
 )
+
+config: RunnableConfig = {"configurable": {"thread_id": "1"}}
+
+agent.invoke({"messages": "hi, my name is bob"}, config)
+agent.invoke({"messages": "write a short poem about cats"}, config)
+agent.invoke({"messages": "now do the same but for dogs"}, config)
+final_response = agent.invoke({"messages": "what's my name?"}, config)
+
+final_response["messages"][-1].pretty_print()
+"""
+================================== Ai Message ==================================
+
+Your name is Bob. You told me that earlier.
+If you'd like me to call you a nickname or use a different name, just say the word.
+"""
 ```
 :::
 :::js
