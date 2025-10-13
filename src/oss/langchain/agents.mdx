@@ -62,6 +62,8 @@ Learn more about the [graph API](/oss/langgraph/graph-api).
 
 ## Core components
 
+Agents are built from three core components: models, tools, and system prompts. For advanced control over agent behavior, you can use [middleware](/oss/langchain/middleware) to customize how your agent processes information, manages state, and responds to users.
+
 ### Model
 
 The [model](/oss/langchain/models) is the reasoning engine of your agent. It can be specified in multiple ways, supporting both static and dynamic model selection.
@@ -204,7 +206,7 @@ const agent = createAgent({
 :::
 
 <Tip>
-For model configuration details, see [Models](/oss/langchain/models).
+For model configuration details, see [Models](/oss/langchain/models). For dynamic model selection patterns, see [Dynamic model in middleware](/oss/langchain/middleware#dynamic-model).
 </Tip>
 
 ### Tools
@@ -679,7 +681,7 @@ To learn more about memory, see [Memory](/oss/concepts/memory). For information 
 
 ### Before model hook
 
-Pre-model hook is middleware that processes state before the model is called. Use cases include message trimming, summarization, and context injection.
+Pre-model hook is middleware that processes state before the model is called. Use cases include message trimming, summarization, and context injection. For comprehensive middleware documentation, see [Middleware](/oss/langchain/middleware).
 
 ```mermaid
 %%{
@@ -789,7 +791,7 @@ const agent = createAgent({
 
 ### After model hook
 
-After model hook is middleware that processes the model's response before tool execution. Use cases include validation, guardrails, or other post-processing.
+After model hook is middleware that processes the model's response before tool execution. Use cases include validation, guardrails, or other post-processing. For comprehensive middleware documentation, see [Middleware](/oss/langchain/middleware).
 
 ```mermaid
 %%{
