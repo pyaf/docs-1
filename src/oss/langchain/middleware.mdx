@@ -864,11 +864,11 @@ const agent = createAgent({
 
 Build custom middleware by implementing hooks that run at specific points in the agent execution flow.
 
+:::python
+
 You can create middleware in two ways:
 1. **Decorator-based** - Quick and simple for single-hook middleware
 2. **Class-based** - More powerful for complex middleware with multiple hooks
-
-:::python
 
 ## Decorator-based middleware
 
@@ -945,15 +945,12 @@ agent = create_agent(
 <CardGroup cols={2}>
   <Card title="Use decorators when" icon="check">
     - You need a single hook
-    - Logic is straightforward
-    - No custom state schema needed
-    - Quick prototyping
+    - No complex configuration
   </Card>
   <Card title="Use classes when" icon="code">
     - Multiple hooks needed
-    - Custom state/context schema
     - Complex configuration
-    - Reusable across projects
+    - Reusable across projects (config on init)
   </Card>
 </CardGroup>
 
