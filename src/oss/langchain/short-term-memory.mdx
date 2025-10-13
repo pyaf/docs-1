@@ -908,6 +908,33 @@ for (const message of result.messages) {
 
 Access short term memory (state) in `@before_model` middleware to process messages before model calls.
 
+
+```mermaid
+%%{
+    init: {
+        "fontFamily": "monospace",
+        "flowchart": {
+        "curve": "basis"
+        },
+        "themeVariables": {"edgeLabelBackground": "transparent"}
+    }
+}%%
+graph TD
+    S(["\_\_start\_\_"])
+    PRE(before_model)
+    MODEL(model)
+    TOOLS(tools)
+    END(["\_\_end\_\_"])
+    S --> PRE
+    PRE --> MODEL
+    MODEL -.-> TOOLS
+    MODEL -.-> END
+    TOOLS --> PRE
+    classDef blueHighlight fill:#0a1c25,stroke:#0a455f,color:#bae6fd;
+    class S blueHighlight;
+    class END blueHighlight;
+```
+
 :::python
 ```python
 from langchain.messages import RemoveMessage
@@ -989,6 +1016,33 @@ const agent = createAgent({
 ### After model
 
 Access short term memory (state) in `@after_model` middleware to process messages after model calls.
+
+```mermaid
+%%{
+    init: {
+        "fontFamily": "monospace",
+        "flowchart": {
+        "curve": "basis"
+        },
+        "themeVariables": {"edgeLabelBackground": "transparent"}
+    }
+}%%
+graph TD
+    S(["\_\_start\_\_"])
+    MODEL(model)
+    POST(after_model)
+    TOOLS(tools)
+    END(["\_\_end\_\_"])
+    S --> MODEL
+    MODEL --> POST
+    POST -.-> END
+    POST -.-> TOOLS
+    TOOLS --> MODEL
+    classDef blueHighlight fill:#0a1c25,stroke:#0a455f,color:#bae6fd;
+    class S blueHighlight;
+    class END blueHighlight;
+    class POST greenHighlight;
+```
 
 :::python
 ```python
