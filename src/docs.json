@@ -135,7 +135,8 @@
             "icon": "house",
             "description": "LangChain docs home",
             "pages": [
-              "index"
+              "index",
+              "langchain-academy"
             ]
           },
           {
@@ -1156,7 +1157,8 @@
             "icon": "house",
             "description": "LangChain docs home",
             "pages": [
-              "index"
+              "index",
+              "langchain-academy"
             ]
           },
           {
