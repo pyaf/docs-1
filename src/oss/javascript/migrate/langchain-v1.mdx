@@ -410,9 +410,9 @@ import { createAgent, createMiddleware } from "langchain";
 
 const errorHandling = createMiddleware({
   name: "ToolErrors",
-  wrapToolCall: (request, handler) => {
+  wrapToolCall: async (request, handler) => {
     try {
-      return handler(request);
+      return await handler(request);
     } catch (err) {
       return `Error executing ${request.toolName}: ${String(err)}`;
     }
@@ -659,9 +659,8 @@ The v1 package includes:
 |--------|------------------|-------|
 | Agents | `createAgent`, `AgentState` | Core agent creation functionality |
 | Messages | Message types, content blocks, `trimMessages` | Re-exported from `@langchain/core` |
-| Tools | `tool`, `BaseTool`, injection helpers | Re-exported from `@langchain/core` |
+| Tools | `tool`, tool classes | Re-exported from `@langchain/core` |
 | Chat models | `initChatModel`, `BaseChatModel` | Unified model initialization |
-| Embeddings | `Embeddings`, `initEmbeddings` | Embedding models |
 
 ### `@langchain/classic`
 

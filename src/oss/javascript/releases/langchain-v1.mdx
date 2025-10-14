@@ -62,6 +62,17 @@ const result = await agent.invoke({
 console.log(result.content);
 ```
 
+Under the hood, `createAgent` is built on the basic agent loop -- calling a model, letting it choose tools to execute, and then finishing when it calls no more tools:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img
+    src="/oss/images/core_agent_loop.png"
+    alt="Core agent loop diagram"
+    height="300"
+    className="rounded-lg"
+  />
+</div>
+
 For more information, see [Agents](/oss/langchain/agents).
 
 ### Middleware
@@ -72,7 +83,7 @@ Great agents require [context engineering](/oss/langchain/context-engineering): 
 
 #### Prebuilt middleware
 
-LangChain provides a few prebuilt middlewares for common patterns, including:
+LangChain provides a few [prebuilt middlewares](/oss/python/langchain/middleware#built-in-middleware) for common patterns, including:
 
 - `summarizationMiddleware`: Condense conversation history when it gets too long
 - `humanInTheLoopMiddleware`: Require approval for sensitive tool calls
@@ -102,7 +113,7 @@ const agent = createAgent({
         },
       },
     }),
-  ],
+  ] as const,
 });
 ```
 
@@ -246,17 +257,6 @@ LangChain v1 streamlines the `langchain` package namespace to focus on essential
 
 Most of these are re-exported from `@langchain/core` for convenience, which gives you a focused API surface for building agents.
 
-### Exports
-
-The v1 package includes:
-
-| Module | What's available | Notes |
-|--------|------------------|-------|
-| `langchain/agents` | `create_agent`, `AgentState` | Core agent creation functionality |
-| `langchain/messages` | Message types, content blocks, `trim_messages` | Re-exported from `@langchain/core` |
-| `langchain/tools` | `tool`, `BaseTool`, injection helpers | Re-exported from `@langchain/core` |
-| `langchain/chat_models` | `init_chat_model`, `BaseChatModel` | Unified model initialization |
-| `langchain/embeddings` | `Embeddings`, `init_embeddings` | Embedding models |
 
 ### `@langchain/classic`
 
