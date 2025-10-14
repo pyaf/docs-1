@@ -461,24 +461,14 @@
                   {
                     "group": "Reference",
                     "pages": [
-                      {
-                        "group": "SDKs",
-                        "pages": [
-                          "langsmith/smith-python-sdk",
-                          "langsmith/smith-js-ts-sdk",
-                          "langsmith/langgraph-python-sdk",
-                          "langsmith/langgraph-js-ts-sdk"
-                        ]
-                      },
-                      {
-                        "group": "APIs",
-                        "pages": [
-                          "langsmith/smith-api-ref",
-                          "langsmith/server-api-ref",
-                          "langsmith/api-ref-control-plane",
-                          "langsmith/remote-graph"
-                        ]
-                      },
+                      "langsmith/smith-python-sdk",
+                      "langsmith/smith-js-ts-sdk",
+                      "langsmith/langgraph-python-sdk",
+                      "langsmith/langgraph-js-ts-sdk",
+                      "langsmith/smith-api-ref",
+                      "langsmith/server-api-ref",
+                      "langsmith/api-ref-control-plane",
+                      "langsmith/remote-graph",
                       "langsmith/cli",
                       "langsmith/env-var"
                     ]
@@ -1389,24 +1379,14 @@
                   {
                     "group": "Reference",
                     "pages": [
-                      {
-                        "group": "SDKs",
-                        "pages": [
-                          "langsmith/smith-python-sdk",
-                          "langsmith/smith-js-ts-sdk",
-                          "langsmith/langgraph-python-sdk",
-                          "langsmith/langgraph-js-ts-sdk"
-                        ]
-                      },
-                      {
-                        "group": "APIs",
-                        "pages": [
-                          "langsmith/smith-api-ref",
-                          "langsmith/server-api-ref",
-                          "langsmith/api-ref-control-plane",
-                          "langsmith/remote-graph"
-                        ]
-                      },
+                      "langsmith/smith-python-sdk",
+                      "langsmith/smith-js-ts-sdk",
+                      "langsmith/langgraph-python-sdk",
+                      "langsmith/langgraph-js-ts-sdk",
+                      "langsmith/smith-api-ref",
+                      "langsmith/server-api-ref",
+                      "langsmith/api-ref-control-plane",
+                      "langsmith/remote-graph",
                       "langsmith/cli",
                       "langsmith/env-var"
                     ]
