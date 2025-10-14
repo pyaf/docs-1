@@ -2019,6 +2019,10 @@
     "destination": "/langsmith/hosting"
   },
   {
+    "source": "/langgraph-platform/langgraph-studio",
+    "destination": "/langsmith/studio"
+  },
+  {
     "source": "/langgraph-platform/:path*",
     "destination": "/langsmith/:path*"
   }
