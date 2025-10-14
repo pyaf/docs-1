@@ -12,14 +12,14 @@ LangSmith supports different self-hosted configurations depending on your scale,
 
 Self-hosting allows you to run all components entirely within your own cloud environment. You can choose between the following self-hosting models:
 
-1. [**LangSmith**](#langsmith-platform): Deploy an instance of the LangSmith application that includes observability, tracing, and evaluations in the UI and API. Best for teams who want self-hosted monitoring and evaluation without deploying agents.
-1. **[LangSmith with agent deployment](#full-platform)**: Deploy a _graph_ (workflow or agentic) to LangGraph Server via the control plane. The control plane and data plane form the full LangSmith, providing UI and API management for running and monitoring agents. This includes observability, evaluation, and deployment management.
+1. [**LangSmith**](#langsmith): Deploy an instance of the LangSmith application that includes observability, tracing, and evaluations in the UI and API. Best for teams who want self-hosted monitoring and evaluation without deploying agents.
+1. **[LangSmith with deployment](#langsmith-with-deployment)**: Deploy a _graph_ to LangGraph Server via the control plane. The control plane and data plane form the full LangSmith platform, providing UI and API management for running and monitoring agents. This includes observability, evaluation, and deployment management.
 1. **[Standalone server](#standalone-server)**: Deploy a LangGraph Server directly without the control plane UI. Ideal for lightweight setups running one or a few agents as independent services, with full control over scaling and integration.
 
 Model | Includes | Best for | Methods
 ------------------|------------------|----------|--------------------
 **LangSmith** | <ul><li>LangSmith app (UI + API)</li><li>Backend services (queue, playground, ACE)</li><li>Datastores: PostgreSQL, Redis, ClickHouse, optional blob storage</li></ul> | <ul><li>Teams who need self-hosted observability, tracing, and evaluation</li><li>Running the LangSmith app without deploying agents/graphs</li></ul> | <ul><li>Docker Compose (dev/test)</li><li>Kubernetes + Helm (production)</li></ul>
-**LangSmith with agent deployment** | <ul><li>Everything from LangSmith</li><li>Control plane (deployments UI, revision management, Studio)</li><li>Data plane (LangGraph Server pods)</li><li>Kubernetes operator for orchestration</li></ul> | <ul><li>Enterprise teams needing a private LangChain Cloud</li><li>Centralized UI/API for managing multiple agents/graphs</li><li>Integrated observability and orchestration</li></ul> | <ul><li>Kubernetes with Helm (required)</li><li>Runs on EKS, GKE, AKS, or self-managed clusters</li></ul>
+**LangSmith with deployment** | <ul><li>Everything from LangSmith</li><li>Control plane (deployments UI, revision management, Studio)</li><li>Data plane (LangGraph Server pods)</li><li>Kubernetes operator for orchestration</li></ul> | <ul><li>Enterprise teams needing a private LangChain Cloud</li><li>Centralized UI/API for managing multiple agents/graphs</li><li>Integrated observability and orchestration</li></ul> | <ul><li>Kubernetes with Helm (required)</li><li>Runs on EKS, GKE, AKS, or self-managed clusters</li></ul>
 **Standalone server** | <ul><li>LangGraph Server container(s)</li><li>Requires PostgreSQL + Redis (shared or dedicated)</li><li>Optional LangSmith integration for tracing</li></ul> | <ul><li>Lightweight deployments of one or a few agents</li><li>Integrating LangGraph Servers as microservices</li><li>Teams preferring to manage scaling & CI/CD themselves</li></ul> | <ul><li>Docker / Docker Compose (dev/test)</li><li>Kubernetes + Helm (production)</li><li>Any container runtime or VM (ECS, EC2, ACI, etc.)</li></ul>
 
 <Note>
@@ -86,9 +86,9 @@ LangSmith will bundle all storage services by default. You can configure it to u
 | <a id="redis"></a> **Redis** | [Redis](https://github.com/redis/redis) is a powerful in-memory key-value database that persists on disk. By holding data in memory, Redis offers high performance for operations like caching.<br/><br/>LangSmith uses Redis to back queuing and caching operations. |
 | <a id="blob-storage"></a> **Blob storage** | LangSmith supports several blob storage providers, including [AWS S3](https://aws.amazon.com/s3/), [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), and [Google Cloud Storage](https://cloud.google.com/storage).<br/><br/>LangSmith uses blob storage to store large files, such as trace artifacts, feedback attachments, and other large data objects. Blob storage is optional, but highly recommended for production deployments. |
 
-## LangSmith with agent deployment
+## LangSmith with deployment
 
-**LangSmith with agent deployment** builds on top of the [LangSmith](#langsmith-platform) option. Enabling deployment is ideal for enterprise teams who want a centralized, UI-driven platform to deploy and manage multiple agents and graphs, with all infrastructure, data, and orchestration fully under their control.
+**LangSmith with deployment** builds on top of the [LangSmith](#langsmith-platform) option. Enabling deployment is ideal for enterprise teams who want a centralized, UI-driven platform to deploy and manage multiple agents and graphs, with all infrastructure, data, and orchestration fully under their control.
 
 You must already have a self-hosted LangSmith instance installed in your cloud. Once you have a LangSmith instance, you can enable deployments, which provides the control plane and data plane for running and managing graphs (workflow and agentic).
 
@@ -108,11 +108,21 @@ You run both the control plane and the data plane entirely within your own infra
 
 ### Architecture
 
-![Self-Hosted Full Platform Architecture](/langsmith/images/self-hosted-full-platform-architecture.png)
+<img
+    className="block dark:hidden"
+    src="/langsmith/images/full-platform-with-deployment-light.png"
+    alt="Light mode overview"
+/>
+
+<img
+    className="hidden dark:block"
+    src="/langsmith/images/full-platform-with-deployment-dark.png"
+    alt="Dark mode overview"
+/>
 
 ### Supported compute platforms
 
-- **Kubernetes**: LangSmith with agent deployment supports running control plane and data plane infrastructure on any Kubernetes cluster.
+- **Kubernetes**: LangSmith with deployment supports running control plane and data plane infrastructure on any Kubernetes cluster.
 
 <Tip>
 If you would like to enable this on your LangSmith instance, please follow the [Self-Hosted Full Platform deployment guide](/langsmith/deploy-self-hosted-full-platform).
@@ -142,7 +152,18 @@ Do not run standalone servers in serverless environments. Scale-to-zero may caus
 
 ### Architecture
 
-![Standalone Container](/langsmith/images/langgraph-platform-deployment-architecture.png)
+<img
+    className="block dark:hidden"
+    src="/langsmith/images/standalone-server-light.png"
+    alt="Light mode overview"
+/>
+
+<img
+    className="hidden dark:block"
+    src="/langsmith/images/standalone-server-dark.png"
+    alt="Dark mode overview"
+/>
+
 
 ### Supported compute platforms
 
