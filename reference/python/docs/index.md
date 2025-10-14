@@ -15,5 +15,5 @@ Welcome to the [LangChain](https://langchain.com) Python reference documentation
 !!! info "Looking for legacy docs?"
     Legacy docs and API references are available for:
 
-    - [LangChain](https://python.langchain.com/).
-    - [LangGraph](https://langchain-ai.github.io/langgraph/).
+    - [LangChain](https://python.langchain.com/)
+    - [LangGraph](https://langchain-ai.github.io/langgraph/)
