@@ -24,7 +24,7 @@ The first example uses a local file which will be sent to Azure AI Document Inte
 
 With the initialized document analysis client, we can proceed to create an instance of the DocumentIntelligenceLoader:
 
-```python
+```python wrap
 from langchain_community.document_loaders import AzureAIDocumentIntelligenceLoader
 
 file_path = "<filepath>"
@@ -47,7 +47,7 @@ documents
 
 The input file can also be a public URL path. E.g., [raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/rest-api/layout.png](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/rest-api/layout.png).
 
-```python
+```python wrap
 url_path = "<url>"
 loader = AzureAIDocumentIntelligenceLoader(
     api_endpoint=endpoint, api_key=key, url_path=url_path, api_model="prebuilt-layout"
@@ -64,7 +64,7 @@ documents
 
 You can also specify `mode="page"` to load document by pages.
 
-```python
+```python wrap
 from langchain_community.document_loaders import AzureAIDocumentIntelligenceLoader
 
 file_path = "<filepath>"
@@ -93,7 +93,7 @@ for document in documents:
 
 You can also specify `analysis_feature=["ocrHighResolution"]` to enable add-on capabilities. For more information, see: [aka.ms/azsdk/python/documentintelligence/analysisfeature](https://aka.ms/azsdk/python/documentintelligence/analysisfeature).
 
-```python
+```python wrap
 from langchain_community.document_loaders import AzureAIDocumentIntelligenceLoader
 
 file_path = "<filepath>"

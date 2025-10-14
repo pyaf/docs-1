@@ -14,7 +14,7 @@ Uploading an experiment requires specifying the relevant high-level information 
 
 You may use the following schema to upload experiments to the `/datasets/upload-experiment` endpoint:
 
-```json
+```json wrap
 {
   "experiment_name": "string (required)",
   "experiment_description": "string (optional)",
@@ -116,7 +116,7 @@ You may not upload experiments to a dataset that was not created via this endpoi
 
 Below is an example of a simple call to the `/datasets/upload-experiment`. This is a basic example that just uses the most important fields as an illustration.
 
-```python
+```python wrap
 import os
 import requests
 

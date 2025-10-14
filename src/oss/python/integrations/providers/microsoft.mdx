@@ -582,11 +582,11 @@ tool = BingSearchResults(api_wrapper=api_wrapper)
 We need to install several python packages.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install azure-ai-formrecognizer azure-cognitiveservices-speech azure-ai-vision-imageanalysis
 ```
 
-```bash uv
+```bash uv wrap
 uv add azure-ai-formrecognizer azure-cognitiveservices-speech azure-ai-vision-imageanalysis
 ```
 </CodeGroup>
@@ -612,11 +612,11 @@ The `azure_ai_services` toolkit includes the following tools:
 We need to install several python packages.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install azure-ai-formrecognizer azure-cognitiveservices-speech azure-ai-vision-imageanalysis
 ```
 
-```bash uv
+```bash uv wrap
 uv add azure-ai-formrecognizer azure-cognitiveservices-speech azure-ai-vision-imageanalysis
 ```
 </CodeGroup>
@@ -776,7 +776,7 @@ uv add gremlinpython
 
 See a [usage example](/oss/integrations/graphs/azure_cosmosdb_gremlin).
 
-```python
+```python wrap
 from langchain_community.graphs import GremlinGraph
 from langchain_community.graphs.graph_document import GraphDocument, Node, Relationship
 ```
@@ -806,12 +806,12 @@ from langchain_community.utilities import BingSearchAPIWrapper
 First, you need to install several python packages and download a `SpaCy` model.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install langchain-experimental openai presidio-analyzer presidio-anonymizer spacy Faker
 python -m spacy download en_core_web_lg
 ```
 
-```bash uv
+```bash uv wrap
 uv add langchain-experimental openai presidio-analyzer presidio-anonymizer spacy Faker
 python -m spacy download en_core_web_lg
 ```
@@ -819,6 +819,6 @@ python -m spacy download en_core_web_lg
 
 See [usage examples](https://python.langchain.com/v0.1/docs/guides/productionization/safety/presidio_data_anonymization).
 
-```python
+```python wrap
 from langchain_experimental.data_anonymizer import PresidioAnonymizer, PresidioReversibleAnonymizer
 ```

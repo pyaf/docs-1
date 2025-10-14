@@ -24,7 +24,7 @@ Main principles and benefits:
 
 Here is a simple example of a code written with **LangChain Decorators ✨**
 
-``` python
+``` python wrap
 @llm_prompt
 def write_me_short_post(topic:str, platform:str="twitter", audience:str = "developers")->str:
     """
@@ -69,7 +69,7 @@ Here is how it works:
 
 1. Using **Global settings**:
 
-``` python
+``` python wrap
 # define global settings for all prompty (if not set - chatGPT is the current default)
 from langchain_decorators import GlobalSettings
 
@@ -112,7 +112,7 @@ def creative_writer(book_title:str)->str:
 
 To pass any of these, just declare them in the function (or use kwargs to pass anything)
 
-```python
+```python wrap
 
 @llm_prompt()
 async def write_me_short_post(topic:str, platform:str="twitter", memory:SimpleMemory = None):
@@ -138,7 +138,7 @@ This way we just mark which prompt should be streamed, not needing to tinker wit
 
 The streaming will happen only if we call it in streaming context ... there we can define a simple function to handle the stream
 
-``` python
+``` python wrap
 # this code example is complete and should run as it is
 
 from langchain_decorators import StreamingContext, llm_prompt
@@ -180,7 +180,7 @@ By default the prompt is the whole function docs, unless you mark your prompt
 
 We can specify what part of our docs is the prompt definition, by specifying a code block with `<prompt>` language tag
 
-``` python
+``` python wrap
 @llm_prompt
 def write_me_short_post(topic:str, platform:str="twitter", audience:str = "developers"):
     """
@@ -191,7 +191,7 @@ def write_me_short_post(topic:str, platform:str="twitter", audience:str = "devel
     Write me a short header for my post about {topic} for {platform} platform.
     It should be for {audience} audience.
     (Max 15 words)
-    ```
+    ``` wrap
     Now only to code block above will be used as a prompt, and the rest of the docstring will be used as a description for developers.
     (It has also a nice benefit that IDE (like VS code) will display the prompt properly (not trying to parse it as markdown, and thus not showing new lines properly))
     """
@@ -216,7 +216,7 @@ def simulate_conversation(human_input:str, agent_role:str="a pirate"):
     for example:
 
     ... do not reply with anything else.. just with code - respecting your role.
-    ```
+    ``` wrap
     # human message
     (we are using the real role that are enforced by the LLM - GPT supports system, assistant, user)
     ``` <prompt:user>
@@ -238,7 +238,7 @@ def simulate_conversation(human_input:str, agent_role:str="a pirate"):
     ```
     ```<prompt:user>
     {human_input}
-    ```
+    ``` wrap
 
     Now only to code block above will be used as a prompt, and the rest of the docstring will be used as a description for developers.
     (It has also a nice benefit that IDE (like VS code) will display the prompt properly (not trying to parse it as markdown, and thus not showing new lines properly))
@@ -257,7 +257,7 @@ the roles here are model native roles (assistant, user, system for chatGPT)
 
 the syntax for this is as follows:
 
-``` python
+``` python wrap
 @llm_prompt
 def prompt_with_optional_partials():
     """
@@ -276,7 +276,7 @@ def prompt_with_optional_partials():
 - llm_prompt decorator natively tries to detect the best output parser based on the output type. (if not set, it returns the raw string)
 - list, dict and pydantic outputs are also supported natively (automatically)
 
-``` python
+``` python wrap
 # this code example is complete and should run as it is
 
 from langchain_decorators import llm_prompt
@@ -294,7 +294,7 @@ write_name_suggestions(company_business="sells cookies", count=5)
 for dict / pydantic you need to specify the formatting instructions...
 this can be tedious, that's why you can let the output parser gegnerate you the instructions based on the model (pydantic)
 
-``` python
+``` python wrap
 from langchain_decorators import llm_prompt
 from pydantic import BaseModel, Field
 
@@ -321,7 +321,7 @@ print("company employees: ",company.employees)
 ```
 # Binding the prompt to an object
 
-``` python
+``` python wrap
 from pydantic import BaseModel
 from langchain_decorators import llm_prompt
 
@@ -349,7 +349,7 @@ class AssistantPersonality(BaseModel):
         ```
         ```<prompt:user>
         Introduce your self (in less than 20 words)
-        ```
+        ``` wrap
         """
 
 

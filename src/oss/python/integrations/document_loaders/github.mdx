@@ -8,7 +8,7 @@ This notebooks shows how you can load issues and pull requests (PRs) for a given
 
 To access the GitHub API, you need a personal access token - you can set up yours here: [github.com/settings/tokens?type=beta](https://github.com/settings/tokens?type=beta). You can either set this token as the environment variable `GITHUB_PERSONAL_ACCESS_TOKEN` and it will be automatically pulled in, or you can pass it in directly at initialization as the `access_token` named parameter.
 
-```python
+```python wrap
 # If you haven't set your access token as an environment variable, pass it in here.
 from getpass import getpass
 
@@ -21,7 +21,7 @@ ACCESS_TOKEN = getpass()
 from langchain_community.document_loaders import GitHubIssuesLoader
 ```
 
-```python
+```python wrap
 loader = GitHubIssuesLoader(
     repo="langchain-ai/langchain",
     access_token=ACCESS_TOKEN,  # delete/comment out this argument if you've set the access token as an env var.
@@ -59,7 +59,7 @@ print(docs[0].metadata)
 
 By default, the GitHub API returns considers pull requests to also be issues. To only get 'pure' issues (i.e., no pull requests), use `include_prs=False`
 
-```python
+```python wrap
 loader = GitHubIssuesLoader(
     repo="langchain-ai/langchain",
     access_token=ACCESS_TOKEN,  # delete/comment out this argument if you've set the access token as an env var.
@@ -97,7 +97,7 @@ documents = loader.load()
 
 example output of one of document:
 
-```json
+```json wrap
 document.metadata:
     {
       "path": "README.md",

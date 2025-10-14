@@ -63,7 +63,7 @@ Now we can instantiate our model object and generate chat completions:
 local_model = "local/path/to/Hermes-2-Pro-Llama-3-8B-Q8_0.gguf"
 ```
 
-```python
+```python wrap
 import multiprocessing
 
 from langchain_community.chat_models import ChatLlamaCpp
@@ -84,7 +84,7 @@ llm = ChatLlamaCpp(
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",
@@ -101,7 +101,7 @@ ai_msg
 print(ai_msg.content)
 ```
 
-```output
+```output wrap
 J'aime programmer. (In France, "programming" is often used in its original sense of scheduling or organizing events.)
 
 If you meant computer-programming:
@@ -132,7 +132,7 @@ However, it cannot automatically trigger a function/tool, we need to force it by
 
 `{"type": "function", "function": {"name": <<tool_name>>}}.`
 
-```python
+```python wrap
 from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 
@@ -164,13 +164,13 @@ ai_msg = llm_with_tools.invoke(
 ai_msg.tool_calls
 ```
 
-```output
+```output wrap
 [{'name': 'get_current_weather',
   'args': {'location': 'Ho Chi Minh City', 'unit': 'celsius'},
   'id': 'call__0_get_current_weather_cmpl-394d9943-0a1f-425b-8139-d2826c1431f2'}]
 ```
 
-```python
+```python wrap
 class MagicFunctionInput(BaseModel):
         magic_function_input: int = Field(description="The input value for magic function")
 

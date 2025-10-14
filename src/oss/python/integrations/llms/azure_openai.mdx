@@ -16,7 +16,7 @@ The Azure OpenAI API is compatible with OpenAI's API.  The `openai` Python packa
 
 You can configure the `openai` package to use Azure OpenAI using environment variables.  The following is for `bash`:
 
-```bash
+```bash wrap
 # The API version you want to use: set this to `2023-12-01-preview` for the released version.
 export OPENAI_API_VERSION=2023-12-01-preview
 # The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource.
@@ -49,7 +49,7 @@ Add a role an Azure role assignment `Cognitive Services OpenAI User` scoped to y
 
 To use AAD in Python with LangChain, install the `azure-identity` package. Then, set `OPENAI_API_TYPE` to `azure_ad`. Next, use the `DefaultAzureCredential` class to get a token from AAD by calling `get_token` as shown below. Finally, set the `OPENAI_API_KEY` environment variable to the token value.
 
-```python
+```python wrap
 import os
 from azure.identity import DefaultAzureCredential
 
@@ -64,7 +64,7 @@ os.environ["OPENAI_API_KEY"] = credential.get_token("https://cognitiveservices.a
 
 The `DefaultAzureCredential` class is an easy way to get started with AAD authentication. You can also customize the credential chain if necessary. In the example shown below, we first try Managed Identity, then fall back to the Azure CLI. This is useful if you are running your code in Azure, but want to develop locally.
 
-```python
+```python wrap
 from azure.identity import ChainedTokenCredential, ManagedIdentityCredential, AzureCliCredential
 
 credential = ChainedTokenCredential(
@@ -134,7 +134,7 @@ We can also print the LLM and see its custom print.
 print(llm)
 ```
 
-```output
+```output wrap
 AzureOpenAI
 Params: {'deployment_name': 'gpt-35-turbo-instruct-0914', 'model_name': 'gpt-3.5-turbo-instruct', 'temperature': 0.7, 'top_p': 1, 'frequency_penalty': 0, 'presence_penalty': 0, 'n': 1, 'logit_bias': {}, 'max_tokens': 256}
 ```

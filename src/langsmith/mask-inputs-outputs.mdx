@@ -20,7 +20,7 @@ For the example below, we will simply return an empty object for both `hide_inpu
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith import Client
 from langsmith.wrappers import wrap_openai
@@ -50,7 +50,7 @@ openai_client.chat.completions.create(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { Client } from "langsmith";
 import { wrapOpenAI } from "langsmith/wrappers";
@@ -102,7 +102,7 @@ However, if inputs or outputs are to be sent to client, the `anonymizer` method 
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith.anonymizer import create_anonymizer
 from langsmith import Client, traceable
 import re
@@ -127,7 +127,7 @@ def main(inputs: dict) -> dict:
     ...
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { createAnonymizer } from "langsmith/anonymizer"
 import { traceable } from "langsmith/traceable"
 import { Client } from "langsmith"
@@ -162,7 +162,7 @@ Older versions of LangSmith SDKs can use the `hide_inputs` and `hide_outputs` pa
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import re
 from langsmith import Client, traceable
 
@@ -204,7 +204,7 @@ def parent(inputs: dict) -> dict:
 parent(inputs)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 import { traceable } from "langsmith/traceable";
 
@@ -269,7 +269,7 @@ These parameters accept functions that allow you to transform the inputs and out
 
 Here's an example of how to use `process_inputs` and `process_outputs`:
 
-```python
+```python wrap
 from langsmith import traceable
 
 def process_inputs(inputs: dict) -> dict:
@@ -323,7 +323,7 @@ The implementation below is not exhaustive and may miss some formats or edge cas
 
 You can use regex to mask inputs and outputs before they are sent to LangSmith. The implementation below masks email addresses, phone numbers, full names, credit card numbers, and SSNs.
 
-```python
+```python wrap
 import re
 import openai
 from langsmith import Client
@@ -448,7 +448,7 @@ uv add openai
 ```
 </CodeGroup>
 
-```python
+```python wrap
 import openai
 from langsmith import Client
 from langsmith.wrappers import wrap_openai
@@ -556,7 +556,7 @@ uv add openai
 
 You will need to set up credentials in AWS and authenticate using the AWS CLI. Follow the instructions [here](https://docs.aws.amazon.com/comprehend/latest/dg/setting-up.html).
 
-```python
+```python wrap
 import openai
 import boto3
 from langsmith import Client

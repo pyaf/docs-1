@@ -1,4 +1,4 @@
-```typescript
+```typescript wrap
 import { z } from "zod";
 import { ChatOpenAI } from "@langchain/openai";
 import { OutputFixingParser } from "langchain/output_parsers";
@@ -30,7 +30,7 @@ export const run = async () => {
         "answer": "foo",
         "sources": "foo.com"
       }
-      ```. Error: [
+      ```. Error: [ wrap
       {
         "code": "invalid_type",
         "expected": "array",

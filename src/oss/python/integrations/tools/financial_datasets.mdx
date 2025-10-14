@@ -34,7 +34,7 @@ This toolkit lives in the `langchain-community` package.
 
 Now we can instantiate our toolkit:
 
-```python
+```python wrap
 from langchain_community.agent_toolkits.financial_datasets.toolkit import (
     FinancialDatasetsToolkit,
 )
@@ -58,7 +58,7 @@ tools = toolkit.get_tools()
 
 Let's equip our agent with the FinancialDatasetsToolkit and ask financial questions.
 
-```python
+```python wrap
 system_prompt = """
 You are an advanced financial analysis AI assistant equipped with specialized tools
 to access and analyze financial data. Your primary function is to help users with
@@ -104,7 +104,7 @@ model = ChatOpenAI(model="gpt-4o")
 
 Define a user query.
 
-```python
+```python wrap
 query = "What was AAPL's revenue in 2023? What about it's total debt in Q1 2024?"
 ```
 

@@ -72,7 +72,7 @@ store = MoorchehVectorStore(
 
 ## Adding Documents
 
-```python
+```python wrap
 document_1 = Document(
     page_content="Brewed a fresh cup of Ethiopian coffee and paired it with a warm croissant.",
     metadata={"source": "blog"},
@@ -151,7 +151,7 @@ store.delete(ids=["chunk_id_here"])
 
 Once your namespace has been created and you have uploaded documents into it, you can ask queries about the documents directly through the vector store. Set the query and LLM you would like to answer your query. For more information on supported LLMs, please visit our [Github page](https://github.com/moorcheh-ai/moorcheh-python-sdk).
 
-```python
+```python wrap
 query = "Give me a brief summary of the provided documents"
 answer = store.generative_answer(query, ai_model = "anthropic.claude-3-7-sonnet-20250219-v1:0")
 print(answer)

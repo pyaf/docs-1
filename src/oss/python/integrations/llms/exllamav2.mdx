@@ -24,7 +24,7 @@ For this notebook, the requirements are :
 
 If you want to install the same exllamav2 version :
 
-```shell
+```shell wrap
 pip install https://github.com/turboderp/exllamav2/releases/download/v0.0.12/exllamav2-0.0.12+cu121-cp311-cp311-linux_x86_64.whl
 ```
 
@@ -56,7 +56,7 @@ from langchain_core.prompts import PromptTemplate
 from libs.langchain.langchain.chains.llm import LLMChain
 ```
 
-```python
+```python wrap
 # function to download the gptq model
 def download_GPTQ_model(model_name: str, models_dir: str = "./models/") -> str:
     """Download the model from hugging face repository.
@@ -83,7 +83,7 @@ def download_GPTQ_model(model_name: str, models_dir: str = "./models/") -> str:
     return model_path
 ```
 
-```python
+```python wrap
 from exllamav2.generator import (
     ExLlamaV2Sampler,
 )
@@ -121,7 +121,7 @@ output = llm_chain.invoke({"question": question})
 print(output)
 ```
 
-```output
+```output wrap
 TheBloke/Mistral-7B-Instruct-v0.2-GPTQ already exists in the models directory
 {'temperature': 0.85, 'top_k': 50, 'top_p': 0.8, 'token_repetition_penalty': 1.05}
 Loading model: ./models/TheBloke_Mistral-7B-Instruct-v0.2-GPTQ
@@ -144,7 +144,7 @@ gc.collect()
 !nvidia-smi
 ```
 
-```output
+```output wrap
 Tue Feb 20 19:43:53 2024
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 550.40.06              Driver Version: 551.23         CUDA Version: 12.4     |

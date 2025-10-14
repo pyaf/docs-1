@@ -30,7 +30,7 @@ tool = SceneXplainTool()
 
 The tool can be used in any LangChain agent as follows:
 
-```python
+```python wrap
 from langchain.agents import initialize_agent
 from langchain.memory import ConversationBufferMemory
 from langchain_openai import OpenAI
@@ -50,7 +50,7 @@ output = agent.run(
 print(output)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Thought: Do I need to use a tool? Yes

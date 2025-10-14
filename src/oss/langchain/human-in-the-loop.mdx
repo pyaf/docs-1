@@ -39,7 +39,7 @@ To use HITL, add the middleware to the agent’s `middleware` list when creating
 You configure it with a mapping of tool actions to the response types that are allowed for each action. The middleware will interrupt execution when a tool call matches an action in the mapping.
 
 :::python
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import HumanInTheLoopMiddleware # [!code highlight]
 from langgraph.checkpoint.memory import InMemorySaver # [!code highlight]
@@ -69,7 +69,7 @@ agent = create_agent(
 :::
 
 :::js
-```ts
+```ts wrap
 import { createAgent } from "langchain";
 import { MemorySaver } from "@langchain/langgraph"; // [!code highlight]
 import { humanInTheLoopMiddleware } from "langchain/middleware"; // [!code highlight]
@@ -119,7 +119,7 @@ When you invoke the agent, it runs until it either completes or an interrupt is 
 
 
 :::python
-```python
+```python wrap
 from langgraph.types import Command
 
 # Human-in-the-loop leverages LangGraph's persistence layer.
@@ -164,7 +164,7 @@ agent.invoke(
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { HumanMessage } from "@langchain/core/messages";
 import { Command } from "@langchain/langgraph";
 
@@ -306,7 +306,7 @@ await agent.invoke(
     Use `respond` to reject the tool call and provide feedback instead of execution.
 
     :::python
-    ```python
+    ```python wrap
     agent.invoke(
         Command(
             # Responses are provided as a list, one per action under review.

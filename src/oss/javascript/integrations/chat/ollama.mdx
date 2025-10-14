@@ -45,7 +45,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain ChatOllama integration lives in the `@langchain/ollama` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -72,7 +72,7 @@ const llm = new ChatOllama({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     [
         "system",
@@ -83,7 +83,7 @@ const aiMsg = await llm.invoke([
 aiMsg
 ```
 
-```output
+```output wrap
 AIMessage {
   "content": "Je adore le programmation.\n\n(Note: \"programmation\" is the feminine form of the noun in French, but if you want to use the masculine form, it would be \"le programme\" instead.)",
   "additional_kwargs": {},
@@ -113,7 +113,7 @@ AIMessage {
 console.log(aiMsg.content)
 ```
 
-```output
+```output wrap
 Je adore le programmation.
 
 (Note: "programmation" is the feminine form of the noun in French, but if you want to use the masculine form, it would be "le programme" instead.)
@@ -123,7 +123,7 @@ Je adore le programmation.
 
 Ollama now offers support for native tool calling [for a subset of their available models](https://ollama.com/search?c=tools). The example below demonstrates how you can invoke a tool from an Ollama model.
 
-```typescript
+```typescript wrap
 import { tool } from "@langchain/core/tools";
 import { ChatOllama } from "@langchain/ollama";
 import { z } from "zod";
@@ -190,7 +190,7 @@ AIMessage {
 
 For [models that support tool calling](https://ollama.com/search?c=tools), you can also call `.withStructuredOutput()` to get a structured output from the tool.
 
-```typescript
+```typescript wrap
 import { ChatOllama } from "@langchain/ollama";
 import { z } from "zod";
 
@@ -223,7 +223,7 @@ console.log(resultFromWSO);
 
 Ollama also supports a JSON mode for all chat models that coerces model outputs to only return JSON. Here's an example of how this can be useful for extraction:
 
-```typescript
+```typescript wrap
 import { ChatOllama } from "@langchain/ollama";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
@@ -251,7 +251,7 @@ const resultFromJsonMode = await chainForJsonMode.invoke({
 console.log(resultFromJsonMode);
 ```
 
-```output
+```output wrap
 AIMessage {
   "content": "{\n\"original\": \"I love programming\",\n\"translated\": \"Ich liebe Programmierung\"\n}",
   "additional_kwargs": {},
@@ -309,7 +309,7 @@ const multiModalRes = await llmForMultiModal.invoke([
 console.log(multiModalRes);
 ```
 
-```output
+```output wrap
 AIMessage {
   "content": " The image shows a hot dog in a bun, which appears to be a footlong. It has been cooked or grilled to the point where it's browned and possibly has some blackened edges, indicating it might be slightly overcooked. Accompanying the hot dog is a bun that looks toasted as well. There are visible char marks on both the hot dog and the bun, suggesting they have been cooked directly over a source of heat, such as a grill or broiler. The background is white, which puts the focus entirely on the hot dog and its bun. ",
   "additional_kwargs": {},

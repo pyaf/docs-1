@@ -28,7 +28,7 @@ To use HNSWLib vector stores, you'll need to install the `@langchain/community` 
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -37,7 +37,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 </Npm2Yarn>
 ```
 
-```{=mdx}
+```{=mdx} wrap
 <Warning>
 ****On Windows**, you might need to install [Visual Studio](https://visualstudio.microsoft.com/downloads/) first in order to properly build the `hnswlib-node` package.**
 
@@ -117,7 +117,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const filter = (doc) => doc.metadata.source === "https://example.com";
 
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, filter);
@@ -127,7 +127,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -136,7 +136,7 @@ The filter is optional, and must be a predicate function that takes a document a
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -144,7 +144,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.835] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=0.852] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```

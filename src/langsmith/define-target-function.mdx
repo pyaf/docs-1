@@ -115,7 +115,7 @@ const target = async(inputs) => {
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import traceable
 
 # Optionally decorate with '@traceable' to trace all invocations of this function.
@@ -142,7 +142,7 @@ def target(inputs: dict) -> dict:
   return {"result": result}
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable } from "langsmith/traceable";
 
 // Optionally wrap in 'traceable' to trace all invocations of this function.

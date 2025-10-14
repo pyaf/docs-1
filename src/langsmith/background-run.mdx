@@ -95,13 +95,13 @@ Now let's kick off a run:
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     input = {"messages": [{"role": "user", "content": "what's the weather in sf"}]}
     run = await client.runs.create(thread["thread_id"], assistant_id, input=input)
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     let input = {"messages": [{"role": "user", "content": "what's the weather in sf"}]};
     let run = await client.runs.create(thread["thread_id"], assistantID, { input });
     ```
@@ -281,7 +281,7 @@ Perfect! The run succeeded as we would expect. We can double check that the run 
 
 Output:
 
-```
+``` wrap
 {
 "values": {
 "messages": [
@@ -442,12 +442,12 @@ We can also just print the content of the last AIMessage:
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     console.log(finalResult['values']['messages'][finalResult['values']['messages'].length-1]['content'][0]['text']);
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     curl --request GET \
         --url <DEPLOYMENT_URL>/threads/<THREAD_ID>/state | jq -r '.values.messages[-1].content.[0].text'
     ```
@@ -456,6 +456,6 @@ We can also just print the content of the last AIMessage:
 
 Output:
 
-```
+``` wrap
 The search results provide the current weather conditions in San Francisco. According to the data, as of 2:00 PM on August 30, 2024, the temperature in San Francisco is 70°F (21.1°C) with partly cloudy skies. The wind is blowing from the west-northwest at around 12 mph (19 km/h). The humidity is 59% and visibility is 9 miles (16 km). Overall, it looks like a nice late summer day in San Francisco with comfortable temperatures and partly sunny conditions.
 ```

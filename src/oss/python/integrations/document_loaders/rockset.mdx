@@ -28,7 +28,7 @@ This notebook demonstrates how to use Rockset as a document loader in langchain.
 
 The Rockset integration with LangChain allows you to load documents from Rockset collections with SQL queries. In order to do this you must construct a `RocksetLoader` object. Here is an example snippet that initializes a `RocksetLoader`.
 
-```python
+```python wrap
 from langchain_community.document_loaders import RocksetLoader
 from rockset import Regions, RocksetClient, models
 
@@ -62,7 +62,7 @@ loader.load()
 
 Here is an example response of `loader.load()`:
 
-```python
+```python wrap
 [
     Document(
         page_content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a libero porta, dictum ipsum eget, hendrerit neque. Morbi blandit, ex ut suscipit viverra, enim velit tincidunt tellus, a tempor velit nunc et ex. Proin hendrerit odio nec convallis lobortis. Aenean in purus dolor. Vestibulum orci orci, laoreet eget magna in, commodo euismod justo.",
@@ -83,7 +83,7 @@ Here is an example response of `loader.load()`:
 
 You can choose to use multiple columns as content:
 
-```python
+```python wrap
 from langchain_community.document_loaders import RocksetLoader
 from rockset import Regions, RocksetClient, models
 
@@ -105,7 +105,7 @@ You can define you own function to join content columns by setting the `content_
 
 For example, if you wanted to join sentence1 and sentence2 with a space instead of a new line, you could set `content_columns_joiner` like so:
 
-```python
+```python wrap
 RocksetLoader(
     RocksetClient(Regions.usw2a1, "<api key>"),
     models.QueryRequestSql(query="SELECT * FROM langchain_demo LIMIT 1 WHERE id=38"),
@@ -124,7 +124,7 @@ This is the first sentence. This is the second sentence.
 
 Oftentimes you want to include the column name in the `page_content`. You can do that like this:
 
-```python
+```python wrap
 RocksetLoader(
     RocksetClient(Regions.usw2a1, "<api key>"),
     models.QueryRequestSql(query="SELECT * FROM langchain_demo LIMIT 1 WHERE id=38"),

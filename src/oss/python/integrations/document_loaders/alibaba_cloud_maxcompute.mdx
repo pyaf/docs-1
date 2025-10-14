@@ -10,7 +10,7 @@ The `MaxComputeLoader` lets you execute a MaxCompute SQL query and loads the res
 %pip install -qU  pyodps
 ```
 
-```output
+```output wrap
 Collecting pyodps
   Downloading pyodps-0.11.4.post0-cp39-cp39-macosx_10_9_universal2.whl (2.0 MB)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 1.7 MB/s eta 0:00:0000:0100:010m
@@ -65,7 +65,7 @@ data = loader.load()
 print(data)
 ```
 
-```output
+```output wrap
 [Document(page_content='id: 1\ncontent: content1\nmeta_info: meta_info1', metadata={}), Document(page_content='id: 2\ncontent: content2\nmeta_info: meta_info2', metadata={}), Document(page_content='id: 3\ncontent: content3\nmeta_info: meta_info3', metadata={})]
 ```
 

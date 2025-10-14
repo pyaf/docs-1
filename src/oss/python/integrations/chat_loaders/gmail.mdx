@@ -12,11 +12,11 @@ To use:
 
 - Install the Google Client Library: Run the following command to install the Google Client Library:
 
-```python
+```python wrap
 %pip install -qU  google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 ```
 
-```python
+```python wrap
 import os.path
 
 from google.auth.transport.requests import Request
@@ -75,7 +75,7 @@ from langchain_community.chat_loaders.utils import (
 )
 ```
 
-```python
+```python wrap
 # This makes messages sent by hchase@langchain.com the AI Messages
 # This means you will train an LLM to predict as if it's responding as hchase
 training_data = list(

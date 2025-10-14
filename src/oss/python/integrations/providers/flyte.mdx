@@ -53,7 +53,7 @@ Each Flyte task must be associated with an image, which can either be shared acr
 To streamline the process of supplying the required dependencies for each Flyte task, you can initialize an [`ImageSpec`](https://docs.flyte.org/en/latest/user_guide/customizing_dependencies/imagespec.html) object.
 This approach automatically triggers a Docker build, alleviating the need for users to manually create a Docker image.
 
-```python
+```python wrap
 custom_image = ImageSpec(
     name="langchain-flyte",
     packages=[
@@ -90,7 +90,7 @@ def langchain_llm() -> str:
 
 ### Chain
 
-```python
+```python wrap
 @task(disable_deck=False, container_image=custom_image)
 def langchain_chain() -> list[dict[str, str]]:
     template = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
@@ -115,7 +115,7 @@ Playwright: This is a synopsis for the above play:"""
 
 ### Agent
 
-```python
+```python wrap
 @task(disable_deck=False, container_image=custom_image)
 def langchain_agent() -> str:
     llm = OpenAI(

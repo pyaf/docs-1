@@ -35,7 +35,7 @@ helm search repo langchain/langsmith --versions
 
 You should see an output similar to this:
 
-```bash
+```bash wrap
 langchain/langsmith     0.10.14         0.10.32         Helm chart to deploy the langsmith application ...
 langchain/langsmith     0.10.13         0.10.32         Helm chart to deploy the langsmith application ...
 langchain/langsmith     0.10.12         0.10.32         Helm chart to deploy the langsmith application ...
@@ -46,7 +46,7 @@ langchain/langsmith     0.10.9          0.10.29         Helm chart to deploy the
 
 Choose the version you want to upgrade to (generally the latest version is recommended) and note the version number.
 
-```bash
+```bash wrap
 helm upgrade <release-name> langchain/langsmith --version <version> --values <path-to-values-file> --wait --debug
 ```
 
@@ -77,7 +77,7 @@ langsmith-queue-d58cb64f7-87d68          1/1     Running     0          15h
 
    Output should look something like:
 
-```bash
+```bash wrap
 NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
 kubernetes                   ClusterIP      172.20.0.1       <none>          443/TCP                      27d
 langsmith-backend            ClusterIP      172.20.22.34     <none>          1984/TCP                     21d
@@ -91,7 +91,7 @@ langsmith-redis              ClusterIP      172.20.229.98    <none>          637
 
 2. Curl the external ip of the `langsmith-frontend` service:
 
-   ```bash
+   ```bash wrap
    curl <external ip>/api/info
    {"version":"0.5.7","license_expiration_time":"2033-05-20T20:08:06","batch_ingest_config":{"scale_up_qsize_trigger":1000,"scale_up_nthreads_limit":16,"scale_down_nempty_trigger":4,"size_limit":100,"size_limit_bytes":20971520}}
    ```
@@ -124,7 +124,7 @@ docker-compose up -d
 
 If everything ran successfully, you should see all the LangSmith containers running and healthy.
 
-```bash
+```bash wrap
 CONTAINER ID   IMAGE                                  COMMAND                  CREATED        STATUS                        PORTS                                                      NAMES
 e1c8f01a4ffc   langchain/langsmith-frontend:0.5.7     "/entrypoint.sh ngin…"   10 hours ago   Up 40 seconds                 0.0.0.0:80->80/tcp, 8080/tcp                               cli-langchain-frontend-1
 39e1394846b9   langchain/langsmith-backend:0.5.7      "/bin/sh -c 'exec uv…"   10 hours ago   Up 40 seconds                 0.0.0.0:1984->1984/tcp                                     cli-langchain-backend-1
@@ -140,7 +140,7 @@ eecf75ca672b   postgres:14.7                          "docker-entrypoint.s…"  
 
 1. Curl the exposed port of the `cli-langchain-frontend-1` container:
 
-   ```bash
+   ```bash wrap
    curl localhost:80/info
    {"version":"0.5.7","license_expiration_time":"2033-05-20T20:08:06","batch_ingest_config":{"scale_up_qsize_trigger":1000,"scale_up_nthreads_limit":16,"scale_down_nempty_trigger":4,"size_limit":100,"size_limit_bytes":20971520}}
    ```

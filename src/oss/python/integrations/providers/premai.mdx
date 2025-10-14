@@ -115,7 +115,7 @@ print(json.dumps(response.response_metadata, indent=4))
 
 This is how an output looks like.
 
-```bash
+```bash wrap
 Dense retrieval models typically include:
 
 1. **BERT-based Models**: Such as DPR (Dense Passage Retrieval) which uses BERT for encoding queries and passages.
@@ -154,7 +154,7 @@ for chunk in chat.stream("hello how are you"):
 
 Similar to above, if you want to override the system-prompt and the generation parameters, you need to add the following:
 
-```python
+```python wrap
 import sys
 
 for chunk in chat.stream(
@@ -369,7 +369,7 @@ Since tool calling happens into two phases, where:
 
 2. in our second call, we will parse those set of tools decided by LLM and run them (in our case it will be the functions we defined, with the LLM's extracted arguments) and pass this result to the LLM
 
-```python
+```python wrap
 from langchain_core.messages import ToolMessage
 
 for tool_call in ai_msg.tool_calls:

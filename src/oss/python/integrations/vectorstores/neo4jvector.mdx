@@ -53,7 +53,7 @@ docs = text_splitter.split_documents(documents)
 embeddings = OpenAIEmbeddings()
 ```
 
-```python
+```python wrap
 # Neo4jVector requires the Neo4j database credentials
 
 url = "bolt://localhost:7687"
@@ -68,7 +68,7 @@ password = "password"
 
 ## Similarity Search with Cosine Distance (Default)
 
-```python
+```python wrap
 # The Neo4jVector Module will connect to Neo4j and create a vector index if needed.
 
 db = Neo4jVector.from_documents(
@@ -89,7 +89,7 @@ for doc, score in docs_with_score:
     print("-" * 80)
 ```
 
-```output
+```output wrap
 --------------------------------------------------------------------------------
 Score:  0.9076391458511353
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
@@ -135,7 +135,7 @@ store = Neo4jVector.from_existing_index(
 
 We can also initialize a vectorstore from existing graph using the `from_existing_graph` method. This method pulls relevant text information from the database, and calculates and stores the text embeddings back to the database.
 
-```python
+```python wrap
 # First we create sample data in graph
 store.query(
     "CREATE (p:Person {name: 'Tomaz', location:'Slovenia', hobby:'Bicycle', age: 33})"
@@ -165,7 +165,7 @@ result = existing_graph.similarity_search("Slovenia", k=1)
 result[0]
 ```
 
-```output
+```output wrap
 Document(page_content='\nname: Tomaz\nlocation: Slovenia', metadata={'age': 33, 'hobby': 'Bicycle'})
 ```
 
@@ -229,7 +229,7 @@ existing_graph.similarity_search(
 )
 ```
 
-```output
+```output wrap
 [Document(page_content='\nname: Tomaz\nlocation: Slovenia', metadata={'age': 33, 'hobby': 'Bicycle'})]
 ```
 
@@ -254,7 +254,7 @@ existing_graph.similarity_search(
 )
 ```
 
-```output
+```output wrap
 [Document(page_content='\nname: Tomaz\nlocation: Slovenia', metadata={'age': 33, 'hobby': 'Bicycle'})]
 ```
 
@@ -267,7 +267,7 @@ existing_graph.similarity_search(
 )
 ```
 
-```output
+```output wrap
 [Document(page_content='\nname: Tomaz\nlocation: Slovenia', metadata={'age': 33, 'hobby': 'Bicycle'})]
 ```
 
@@ -351,14 +351,14 @@ retrieval_example = Neo4jVector.from_existing_index(
 retrieval_example.similarity_search("Foo", k=1)
 ```
 
-```output
+```output wrap
 [Document(page_content='name: Tomaz\nage: 33\nhobby: Bicycle\n', metadata={'foo': 'bar'})]
 ```
 
 You can also pass Cypher parameters to the retrieval query.
 Parameters can be used for additional filtering, traversals, etc...
 
-```python
+```python wrap
 retrieval_query = """
 RETURN node {.*, embedding:Null, extra: $extra} AS text, score, {foo:"bar"} AS metadata
 """
@@ -373,7 +373,7 @@ retrieval_example = Neo4jVector.from_existing_index(
 retrieval_example.similarity_search("Foo", k=1, params={"extra": "ParamInfo"})
 ```
 
-```output
+```output wrap
 [Document(page_content='location: Slovenia\nextra: ParamInfo\nname: Tomaz\nage: 33\nhobby: Bicycle\nembedding: None\n', metadata={'foo': 'bar'})]
 ```
 
@@ -381,7 +381,7 @@ retrieval_example.similarity_search("Foo", k=1, params={"extra": "ParamInfo"})
 
 Neo4j integrates both vector and keyword indexes, which allows you to use a hybrid search approach
 
-```python
+```python wrap
 # The Neo4jVector Module will connect to Neo4j and create a vector and keyword indices if needed.
 hybrid_db = Neo4jVector.from_documents(
     docs,
@@ -419,7 +419,7 @@ retriever = store.as_retriever()
 retriever.invoke(query)[0]
 ```
 
-```output
+```output wrap
 Document(page_content='Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. \n\nTonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. \n\nOne of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. \n\nAnd I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.', metadata={'source': '../../how_to/state_of_the_union.txt'})
 ```
 
@@ -445,7 +445,7 @@ chain.invoke(
 )
 ```
 
-```output
+```output wrap
 {'answer': 'The president honored Justice Stephen Breyer for his service to the country and mentioned his retirement from the United States Supreme Court.\n',
  'sources': '../../how_to/state_of_the_union.txt'}
 ```

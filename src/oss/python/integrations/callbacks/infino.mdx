@@ -40,7 +40,7 @@ from langchain_openai import OpenAI
 
 ## Start Infino server, initialize the Infino client
 
-```python
+```python wrap
 # Start server using the Infino docker image.
 !docker run --rm --detach --name infino-example -p 3000:3000 infinohq/infino:latest
 
@@ -83,7 +83,7 @@ questions = data.split("\n")
 
 ## Example 1: LangChain OpenAI Q&A; Publish metrics and logs to Infino
 
-```python
+```python wrap
 # Set your key here.
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 
@@ -107,7 +107,7 @@ for question in questions:
     print(llm_result)
 ```
 
-```output
+```output wrap
 In what country is Normandy located?
 generations=[[Generation(text='\n\nNormandy is located in France.', generation_info={'finish_reason': 'stop', 'logprobs': None})]] llm_output={'token_usage': {'total_tokens': 16, 'prompt_tokens': 7, 'completion_tokens': 9}, 'model_name': 'text-davinci-003'} run=[RunInfo(run_id=UUID('67a516e3-d48a-4e83-92ba-a139079bd3b1'))]
 When were the Normans in Normandy?
@@ -162,7 +162,7 @@ def plot(data, title):
     plt.show()
 ```
 
-```python
+```python wrap
 response = client.search_ts("__name__", "latency", 0, int(time.time()))
 plot(response.text, "Latency")
 
@@ -194,7 +194,7 @@ response = client.search_log("king charles III", 0, int(time.time()))
 print("Results for", query, ":", response.text)
 ```
 
-```output
+```output wrap
 Results for normandy : [{"time":1696947743,"fields":{"prompt_response":"\n\nThe Normans, a people from northern France, gave their name to Normandy in the 1000s and 1100s. The Normans were descendants of Vikings who had settled in the region in the late 800s."},"text":"\n\nThe Normans, a people from northern France, gave their name to Normandy in the 1000s and 1100s. The Normans were descendants of Vikings who had settled in the region in the late 800s."},{"time":1696947740,"fields":{"prompt":"Who gave their name to Normandy in the 1000's and 1100's"},"text":"Who gave their name to Normandy in the 1000's and 1100's"},{"time":1696947733,"fields":{"prompt_response":"\n\nThe Normans first settled in Normandy in the late 9th century."},"text":"\n\nThe Normans first settled in Normandy in the late 9th century."},{"time":1696947732,"fields":{"prompt_response":"\n\nNormandy is located in France."},"text":"\n\nNormandy is located in France."},{"time":1696947731,"fields":{"prompt":"In what country is Normandy located?"},"text":"In what country is Normandy located?"}]
 ===
 Results for king charles III : [{"time":1696947745,"fields":{"prompt_response":"\n\nKing Charles III swore fealty to King Philip II of Spain."},"text":"\n\nKing Charles III swore fealty to King Philip II of Spain."},{"time":1696947744,"fields":{"prompt":"Who did King Charles III swear fealty to?"},"text":"Who did King Charles III swear fealty to?"}]
@@ -202,7 +202,7 @@ Results for king charles III : [{"time":1696947745,"fields":{"prompt_response":"
 
 # Example 2: Summarize a piece of text using ChatOpenAI
 
-```python
+```python wrap
 # Set your key here.
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 
@@ -233,7 +233,7 @@ for url in urls:
 
 ## Create Metric Charts
 
-```python
+```python wrap
 response = client.search_ts("__name__", "latency", 0, int(time.time()))
 plot(response.text, "Latency")
 

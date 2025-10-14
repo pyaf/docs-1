@@ -35,7 +35,7 @@ search = RedditSearchRun(
 
 You can then set your queries for example, what subreddit you want to query, how many posts you want to be returned, how you would like the result to be sorted etc.
 
-```python
+```python wrap
 from langchain_community.tools.reddit_search.tool import RedditSearchSchema
 
 search_params = RedditSearchSchema(
@@ -90,7 +90,7 @@ Reddit search functionality is also provided as a multi-input tool. In this exam
 
 To run the example, add your reddit API access information and also get an OpenAI key from the [OpenAI API](https://help.openai.com/en/articles/4936850-where-do-i-find-my-api-key).
 
-```python
+```python wrap
 # Adapted code from /docs/modules/agents/how_to/sharedmemory_for_tools
 
 from langchain.agents import AgentExecutor, StructuredChatAgent

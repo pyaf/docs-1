@@ -22,7 +22,7 @@ To run this notebook, you will need to do the following:
 
 After confirmed access to database in the runtime environment of this notebook, filling the following values and run the cell before running example scripts.
 
-```python
+```python wrap
 # @markdown Please specify an instance id, a database, and a table for demo purpose.
 INSTANCE_ID = "test_instance"  # @param {type:"string"}
 DATABASE_ID = "test_database"  # @param {type:"string"}
@@ -39,7 +39,7 @@ The integration lives in its own `langchain-google-spanner` package, so we need 
 
 **Colab only**: Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -57,7 +57,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -162,7 +162,7 @@ print("Documents after delete:", loader.load())
 
 The client created by default is the default client. To pass in `credentials` and `project` explicitly, a custom client can be passed to the constructor.
 
-```python
+```python wrap
 from google.cloud import spanner
 from google.oauth2 import service_account
 

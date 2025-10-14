@@ -35,7 +35,7 @@ By default all card fields are included for the full text page_content and metad
 %pip install -qU  py-trello beautifulsoup4 lxml
 ```
 
-```python
+```python wrap
 # If you have already set the API key and token using environment variables,
 # you can skip this cell and comment out the `api_key` and `token` named arguments
 # in the initialization steps below.
@@ -66,7 +66,7 @@ print(documents[0].page_content)
 print(documents[0].metadata)
 ```
 
-```output
+```output wrap
 Review Tech partner pages
 Comments:
 {'title': 'Review Tech partner pages', 'id': '6475357890dc8d17f73f2dcc', 'url': 'https://trello.com/c/b0OTZwkZ/1-review-tech-partner-pages', 'labels': ['Demand Marketing'], 'list': 'Done', 'closed': False, 'due_date': ''}
@@ -87,7 +87,7 @@ print(documents[0].page_content)
 print(documents[0].metadata)
 ```
 
-```output
+```output wrap
 Review Tech partner pages
 Comments:
 {'title': 'Review Tech partner pages', 'id': '6475357890dc8d17f73f2dcc', 'url': 'https://trello.com/c/b0OTZwkZ/1-review-tech-partner-pages', 'list': 'Done'}

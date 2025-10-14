@@ -29,7 +29,7 @@ For logic not requiring API calls, you can use an in-memory stub for mocking res
 
 LangChain provides [`GenericFakeChatModel`](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.fake_chat_models.GenericFakeChatModel.html) for mocking text responses. It accepts an iterator of responses (AIMessages or strings) and returns one per invocation. It supports both regular and streaming usage.
 
-```python
+```python wrap
 from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 
 model = GenericFakeChatModel(messages=iter([
@@ -52,7 +52,7 @@ model.invoke("hello, again!")
 
 To enable persistence during testing, you can use the `InMemorySaver` checkpointer. This allows you to simulate multiple turns to test state-dependent behavior:
 
-```python
+```python wrap
 from langgraph.checkpoint.memory import InMemorySaver
 
 agent = create_agent(
@@ -124,7 +124,7 @@ AgentEvals offers the `createTrajectoryMatchEvaluator` function to match your ag
 The `strict` mode ensures trajectories contain identical messages in the same order with the same tool calls, though it allows for differences in message content. This is useful when you need to enforce a specific sequence of operations, such as requiring a policy lookup before authorizing an action.
 
 :::python
-```python highlight={13-15}
+```python highlight={13-15} wrap
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
@@ -239,7 +239,7 @@ async function testWeatherToolCalledStrict() {
 The `unordered` mode allows the same tool calls in any order, which is helpful when you want to verify that specific information was retrieved but don't care about the sequence. For example, an agent might need to check both weather and events for a city, but the order doesn't matter.
 
 :::python
-```python highlight={18-20}
+```python highlight={18-20} wrap
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
@@ -291,7 +291,7 @@ def test_multiple_tools_any_order():
 :::
 
 :::js
-```ts highlight={34-36}
+```ts highlight={34-36} wrap
 import { createAgent } from "langchain"
 import { tool } from "@langchain/core/tools";
 import { HumanMessage, AIMessage, ToolMessage } from "@langchain/core/messages";
@@ -375,7 +375,7 @@ async function testMultipleToolsAnyOrder() {
 The `superset` and `subset` modes match partial trajectories. The `superset` mode verifies that the agent called at least the tools in the reference trajectory, allowing additional tool calls. The `subset` mode ensures the agent did not call any tools beyond those in the reference.
 
 :::python
-```python highlight={18-20}
+```python highlight={18-20} wrap
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
@@ -521,7 +521,7 @@ You can also use an LLM to evaluate the agent's execution path with the `createT
 
 <Accordion title="Without reference trajectory">
 :::python
-```python highlight={13-16}
+```python highlight={13-16} wrap
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
@@ -556,7 +556,7 @@ def test_trajectory_quality():
 ```
 :::
 :::js
-```ts highlight={23-26}
+```ts highlight={23-26} wrap
 import { createAgent } from "langchain"
 import { tool } from "@langchain/core/tools";
 import { HumanMessage, AIMessage, ToolMessage } from "@langchain/core/messages";
@@ -649,7 +649,7 @@ All `agentevals` evaluators support Python asyncio. For evaluators that use fact
 
 <Accordion title="Async judge and evaluator example">
 
-```python
+```python wrap
 from agentevals.trajectory.llm import create_async_trajectory_llm_as_judge, TRAJECTORY_ACCURACY_PROMPT
 from agentevals.trajectory.match import create_async_trajectory_match_evaluator
 
@@ -691,7 +691,7 @@ LangSmith offers two main approaches for running evaluations: [pytest](/langsmit
 
 <Accordion title="Using pytest integration">
 
-```python
+```python wrap
 import pytest
 from langsmith import testing as t
 from agentevals.trajectory.llm import create_trajectory_llm_as_judge, TRAJECTORY_ACCURACY_PROMPT
@@ -741,7 +741,7 @@ Results will be automatically logged to LangSmith.
 
 Alternatively, you can create a dataset in LangSmith and use the `evaluate` function:
 
-```python
+```python wrap
 from langsmith import Client
 from agentevals.trajectory.llm import create_trajectory_llm_as_judge, TRAJECTORY_ACCURACY_PROMPT
 
@@ -778,7 +778,7 @@ LangSmith offers two main approaches for running evaluations: [Vitest/Jest](/lan
 
 <Accordion title="Using vitest/jest integration">
 
-```ts
+```ts wrap
 import * as ls from "langsmith/vitest";
 // import * as ls from "langsmith/jest";
 
@@ -845,7 +845,7 @@ jest test_trajectory.eval.ts
 
 Alternatively, you can create a dataset in LangSmith and use the `evaluate` function:
 
-```ts
+```ts wrap
 import { evaluate } from "langsmith/evaluation";
 import { createTrajectoryLLMAsJudge, TRAJECTORY_ACCURACY_PROMPT } from "agentevals";
 

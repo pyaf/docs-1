@@ -2,7 +2,7 @@
 title: MongoDB Atlas
 ---
 
-```{=mdx}
+```{=mdx} wrap
 <Tip>
 **Compatibility**
 
@@ -71,7 +71,7 @@ This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/op
 
 Install the following packages:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -107,7 +107,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 Once you've set up your cluster as shown above, you can initialize your vector store as follows:
 
-```typescript
+```typescript wrap
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { MongoClient } from "mongodb";
@@ -184,7 +184,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2);
 
 for (const doc of similaritySearchResults) {
@@ -192,7 +192,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"_id":"1","source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"_id":"3","source":"https://example.com"}]
 ```
@@ -224,7 +224,7 @@ Then, in your code you can use [MQL Query Operators](https://www.mongodb.com/doc
 
 The below example illustrates this:
 
-```typescript
+```typescript wrap
 const filter = {
   preFilter: {
     source: {
@@ -240,7 +240,7 @@ for (const doc of filteredResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"_id":"1","source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"_id":"3","source":"https://example.com"}]
 ```
@@ -249,7 +249,7 @@ for (const doc of filteredResults) {
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -257,7 +257,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.374] The powerhouse of the cell is the mitochondria [{"_id":"1","source":"https://example.com"}]
 * [SIM=0.370] Mitochondria are made out of lipids [{"_id":"3","source":"https://example.com"}]
 ```

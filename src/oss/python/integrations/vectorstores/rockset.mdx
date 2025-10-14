@@ -16,7 +16,7 @@ You'll need to install `langchain-community` with `pip install -qU langchain-com
 
    (We used OpenAI `text-embedding-ada-002` for this examples, where #length_of_vector_embedding = 1536)
 
-```
+``` wrap
 SELECT _input.* EXCEPT(_meta),
 VECTOR_ENFORCE(_input.description_embedding, #length_of_vector_embedding, 'float') as description_embedding
 FROM _input
@@ -88,7 +88,7 @@ ids = docsearch.add_texts(
 
 ### 4. Search for Similar Documents
 
-```python
+```python wrap
 query = "What did the president say about Ketanji Brown Jackson"
 output = docsearch.similarity_search_with_relevance_scores(
     query, 4, Rockset.DistanceFunction.COSINE_SIM
@@ -107,7 +107,7 @@ for d, dist in output:
 
 ### 5. Search for Similar Documents with Filtering
 
-```python
+```python wrap
 output = docsearch.similarity_search_with_relevance_scores(
     query,
     4,

@@ -83,7 +83,7 @@ For other platforms, [download the latest MCP Toolbox binary for your operating 
 
 Create a `tools.yaml` file. This file defines the data sources MCP Toolbox can connect to and the tools it can expose to your agent. For production use, always use environment variables for secrets.
 
-```yaml
+```yaml wrap
 sources:
   my-pg-source:
     kind: postgres
@@ -152,7 +152,7 @@ with ToolboxClient("http://127.0.0.1:5000") as client:
     print(results)
 ```
 
-```output
+```output wrap
 [{"id":1,"location":"Basel","name":"Hilton Basel","price_tier":"Luxury"},{"id":3,"location":"Basel","name":"Hyatt Regency Basel","price_tier":"Upper Upscale"}]
 ```
 
@@ -168,7 +168,7 @@ With the packages installed, we can define our agent. We will use `ChatVertexAI`
 
 **Note:** Ensure your MCP Toolbox server is running in a separate terminal before executing the code below.
 
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain_google_vertexai import ChatVertexAI
 from langgraph.checkpoint.memory import MemorySaver

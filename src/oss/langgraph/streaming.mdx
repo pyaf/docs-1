@@ -60,7 +60,7 @@ for await (const chunk of await graph.stream(inputs, {
 
 <Accordion title="Extended example: streaming updates">
   :::python
-  ```python {highlight={24,26}}
+  ```python {highlight={24,26}} wrap
   from typing import TypedDict
   from langgraph.graph import StateGraph, START, END
 
@@ -96,7 +96,7 @@ for await (const chunk of await graph.stream(inputs, {
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START, END } from "@langchain/langgraph";
   import * as z from "zod";
 
@@ -408,7 +408,7 @@ for await (const chunk of await graph.stream(
   :::
 
   :::python
-  ```
+  ``` wrap
   ((), {'node_1': {'foo': 'hi! foo'}})
   (('node_2:dfddc4ba-c3c5-6887-5012-a243b5b377c2',), {'subgraph_node_1': {'bar': 'bar'}})
   (('node_2:dfddc4ba-c3c5-6887-5012-a243b5b377c2',), {'subgraph_node_2': {'foo': 'hi! foobar'}})
@@ -417,7 +417,7 @@ for await (const chunk of await graph.stream(
   :::
 
   :::js
-  ```
+  ``` wrap
   [[], {'node1': {'foo': 'hi! foo'}}]
   [['node2:dfddc4ba-c3c5-6887-5012-a243b5b377c2'], {'subgraphNode1': {'bar': 'bar'}}]
   [['node2:dfddc4ba-c3c5-6887-5012-a243b5b377c2'], {'subgraphNode2': {'foo': 'hi! foobar'}}]
@@ -472,7 +472,7 @@ The streamed output from [`messages` mode](#supported-stream-modes) is a tuple `
 When using Python < 3.11 with async code, you must explicitly pass `RunnableConfig` to `ainvoke()` to enable proper streaming. See [Async with Python < 3.11](#async) for details or upgrade to Python 3.11+.
 </Warning>
 
-```python {highlight={17,33}}
+```python {highlight={17,33}} wrap
 from dataclasses import dataclass
 
 from langchain.chat_models import init_chat_model
@@ -524,7 +524,7 @@ The streamed output from [`messages` mode](#supported-stream-modes) is a tuple `
 
 > If your LLM is not available as a LangChain integration, you can stream its outputs using `custom` mode instead. See [use with any LLM](#use-with-any-llm) for details.
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { StateGraph, START } from "@langchain/langgraph";
 import * as z from "zod";
@@ -569,7 +569,7 @@ for await (const [messageChunk, metadata] of await graph.stream(
 You can associate `tags` with LLM invocations to filter the streamed tokens by LLM invocation.
 
 :::python
-```python {highlight={10}}
+```python {highlight={10}} wrap
 from langchain.chat_models import init_chat_model
 
 # llm_1 is tagged with "joke"
@@ -593,7 +593,7 @@ async for msg, metadata in graph.astream(
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 // llm1 is tagged with "joke"
@@ -626,7 +626,7 @@ for await (const [msg, metadata] of await graph.stream(
 
 <Accordion title="Extended example: filtering by tags">
   :::python
-  ```python {highlight={42}}
+  ```python {highlight={42}} wrap
   from typing import TypedDict
 
   from langchain.chat_models import init_chat_model
@@ -682,7 +682,7 @@ for await (const [msg, metadata] of await graph.stream(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { ChatOpenAI } from "@langchain/openai";
   import { StateGraph, START } from "@langchain/langgraph";
   import * as z from "zod";
@@ -747,7 +747,7 @@ for await (const [msg, metadata] of await graph.stream(
 To stream tokens only from specific nodes, use `stream_mode="messages"` and filter the outputs by the `langgraph_node` field in the streamed metadata:
 
 :::python
-```python {highlight={3,5}}
+```python {highlight={3,5}} wrap
 # The "messages" stream mode returns a tuple of (message_chunk, metadata)
 # where message_chunk is the token streamed by the LLM and metadata is a dictionary
 # with information about the graph node where the LLM was called and other information
@@ -763,7 +763,7 @@ for msg, metadata in graph.stream(
 :::
 
 :::js
-```typescript
+```typescript wrap
 // The "messages" stream mode returns a tuple of [messageChunk, metadata]
 // where messageChunk is the token streamed by the LLM and metadata is a dictionary
 // with information about the graph node where the LLM was called and other information
@@ -782,7 +782,7 @@ for await (const [msg, metadata] of await graph.stream(
 
 <Accordion title="Extended example: streaming LLM tokens from specific nodes">
   :::python
-  ```python {highlight={40,44}}
+  ```python {highlight={40,44}} wrap
   from typing import TypedDict
   from langgraph.graph import START, StateGraph
   from langchain_openai import ChatOpenAI
@@ -837,7 +837,7 @@ for await (const [msg, metadata] of await graph.stream(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { ChatOpenAI } from "@langchain/openai";
   import { StateGraph, START } from "@langchain/langgraph";
   import * as z from "zod";
@@ -970,7 +970,7 @@ To send **custom user-defined data** from inside a LangGraph node or tool, follo
 
 <Tabs>
     <Tab title="node">
-    ```typescript
+    ```typescript wrap
     import { StateGraph, START, LangGraphRunnableConfig } from "@langchain/langgraph";
     import * as z from "zod";
 
@@ -997,7 +997,7 @@ To send **custom user-defined data** from inside a LangGraph node or tool, follo
     ```
     </Tab>
     <Tab title="tool">
-    ```typescript
+    ```typescript wrap
     import { tool } from "@langchain/core/tools";
     import { LangGraphRunnableConfig } from "@langchain/langgraph";
     import * as z from "zod";
@@ -1109,7 +1109,7 @@ for await (const chunk of await graph.stream(
 
 <Accordion title="Extended example: streaming arbitrary chat model">
   :::python
-  ```python
+  ```python wrap
   import operator
   import json
 
@@ -1228,7 +1228,7 @@ for await (const chunk of await graph.stream(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START, MessagesZodMeta, LangGraphRunnableConfig } from "@langchain/langgraph";
   import { BaseMessage } from "@langchain/core/messages";
   import { registry } from "@langchain/langgraph/zod";
@@ -1447,7 +1447,7 @@ This limits LangGraph ability to automatically propagate context, and affects La
 </Accordion>
 
 <Accordion title="Extended example: async custom streaming with stream writer">
-  ```python {highlight={8,21}}
+  ```python {highlight={8,21}} wrap
   from typing import TypedDict
   from langgraph.types import StreamWriter
 

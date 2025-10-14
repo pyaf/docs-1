@@ -41,14 +41,14 @@ from langchain_community.utilities.zapier import ZapierNLAWrapper
 from langchain_openai import OpenAI
 ```
 
-```python
+```python wrap
 ## step 0. expose gmail 'find email' and slack 'send channel message' actions
 
 # first go here, log in, expose (enable) the two actions: https://nla.zapier.com/demo/start -- for this example, can leave all fields "Have AI guess"
 # in an oauth scenario, you'd get your own <provider> id (instead of 'demo') which you route your users through first
 ```
 
-```python
+```python wrap
 llm = OpenAI(temperature=0)
 zapier = ZapierNLAWrapper()
 toolkit = ZapierToolkit.from_zapier_nla_wrapper(zapier)
@@ -57,13 +57,13 @@ agent = initialize_agent(
 )
 ```
 
-```python
+```python wrap
 agent.run(
     "Summarize the last email I received regarding Silicon Valley Bank. Send the summary to the #test-zapier channel in slack."
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to find the email and summarize it.
 Action: Gmail: Find Email
@@ -79,7 +79,7 @@ Final Answer: I have sent a summary of the last email from Silicon Valley Bank t
 > Finished chain.
 ```
 
-```output
+```output wrap
 'I have sent a summary of the last email from Silicon Valley Bank to the #test-zapier channel in Slack.'
 ```
 
@@ -95,7 +95,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import OpenAI
 ```
 
-```python
+```python wrap
 ## step 0. expose gmail 'find email' and slack 'send direct message' actions
 
 # first go here, log in, expose (enable) the two actions: https://nla.zapier.com/demo/start -- for this example, can leave all fields "Have AI guess"
@@ -104,7 +104,7 @@ from langchain_openai import OpenAI
 actions = ZapierNLAWrapper().list()
 ```
 
-```python
+```python wrap
 ## step 1. gmail find email
 
 GMAIL_SEARCH_INSTRUCTIONS = "Grab the latest email from Silicon Valley Bank"
@@ -130,7 +130,7 @@ gmail_chain = TransformChain(
 )
 ```
 
-```python
+```python wrap
 ## step 2. generate draft reply
 
 template = """You are an assisstant who drafts replies to an incoming email. Output draft reply in plain text (not JSON).
@@ -144,7 +144,7 @@ prompt_template = PromptTemplate(input_variables=["email_data"], template=templa
 reply_chain = LLMChain(llm=OpenAI(temperature=0.7), prompt=prompt_template)
 ```
 
-```python
+```python wrap
 ## step 3. send draft reply via a slack direct message
 
 SLACK_HANDLE = "@Ankush Gola"
@@ -185,7 +185,7 @@ overall_chain = SimpleSequentialChain(
 overall_chain.run(GMAIL_SEARCH_INSTRUCTIONS)
 ```
 
-```output
+```output wrap
 > Entering new SimpleSequentialChain chain...
 {"from__name": "Silicon Valley Bridge Bank, N.A.", "from__email": "sreply@svb.com", "body_plain": "Dear Clients, After chaotic, tumultuous & stressful days, we have clarity on path for SVB, FDIC is fully insuring all deposits & have an ask for clients & partners as we rebuild. Tim Mayopoulos <https://eml.svb.com/NjEwLUtBSy0yNjYAAAGKgoxUeBCLAyF_NxON97X4rKEaNBLG", "reply_to__email": "sreply@svb.com", "subject": "Meet the new CEO Tim Mayopoulos", "date": "Tue, 14 Mar 2023 23:42:29 -0500 (CDT)", "message_url": "https://mail.google.com/mail/u/0/#inbox/186e393b13cfdf0a", "attachment_count": "0", "to__emails": "ankush@langchain.dev", "message_id": "186e393b13cfdf0a", "labels": "IMPORTANT, CATEGORY_UPDATES, INBOX"}
 
@@ -200,7 +200,7 @@ Best regards,
 > Finished chain.
 ```
 
-```output
+```output wrap
 '{"message__text": "Dear Silicon Valley Bridge Bank, \\n\\nThank you for your email and the update regarding your new CEO Tim Mayopoulos. We appreciate your dedication to keeping your clients and partners informed and we look forward to continuing our relationship with you. \\n\\nBest regards, \\n[Your Name]", "message__permalink": "https://langchain.slack.com/archives/D04TKF5BBHU/p1678859968241629", "channel": "D04TKF5BBHU", "message__bot_profile__name": "Zapier", "message__team": "T04F8K3FZB5", "message__bot_id": "B04TRV4R74K", "message__bot_profile__deleted": "false", "message__bot_profile__app_id": "A024R9PQM", "ts_time": "2023-03-15T05:59:28Z", "message__blocks[]block_id": "p7i", "message__blocks[]elements[]elements[]type": "[[\'text\']]", "message__blocks[]elements[]type": "[\'rich_text_section\']"}'
 ```
 
@@ -210,7 +210,7 @@ The below snippet shows how to initialize the wrapper with a procured OAuth acce
 
 The developer is tasked with handling the OAuth handshaking to procure and refresh the access token.
 
-```python
+```python wrap
 llm = OpenAI(temperature=0)
 zapier = ZapierNLAWrapper(zapier_nla_oauth_access_token="<fill in access token here>")
 toolkit = ZapierToolkit.from_zapier_nla_wrapper(zapier)

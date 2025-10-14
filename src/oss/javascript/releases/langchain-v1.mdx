@@ -163,7 +163,7 @@ new AIMessage("Hello, world").contentBlocks
 <Accordion title="Prebuilt Callbacks removed from `langchain`" icon="phone-slash">
     The `./callbacks` entrypoint is gone. Prefer LCEL observability (runnables), agent/tool messages, or provider-native hooks instead.
 
-    ```diff
+    ```diff wrap
     - import { ... } from "langchain/callbacks";
     // Replace with runnable config / tracing via LangSmith (optional) or agent nodes.
     ```
@@ -172,7 +172,7 @@ new AIMessage("Hello, world").contentBlocks
 <Accordion title="Agents imports removed from `langchain`" icon="robot">
     All `./agents` imports have been removed from the `langchain` package. There is no direct replacement - use `createAgent` instead for building agents.
 
-    ```diff
+    ```diff wrap
     - import { AgentExecutor, createOpenAIFunctionsAgent } from "langchain/agents";
     + import { createAgent } from "langchain";
 
@@ -225,7 +225,7 @@ Set `engines.node` to `>=20` and update CI runners:
 ```
 
 **Remove unsupported imports:**
-```diff
+```diff wrap
 - import { ... } from "langchain/runnables/remote";  // No longer exported
 - import { ... } from "langchain/smith";             // Use separate langsmith package
 - import { ... } from "langchain/callbacks";         // Use LCEL observability instead

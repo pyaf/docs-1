@@ -61,7 +61,7 @@ response = chat.invoke([human_message])
 print(response.content)
 ```
 
-```output
+```output wrap
 I am an AI language model created by OpenAI, designed to assist with answering questions and providing information based on the context provided. How can I help you today?
 ```
 
@@ -74,22 +74,22 @@ human_message = HumanMessage(content="Who are you?")
 chat.invoke([system_message, human_message])
 ```
 
-```output
+```output wrap
 AIMessage(content="I'm your friendly assistant! How can I help you today?", response_metadata={'document_chunks': [{'repository_id': 1985, 'document_id': 1306, 'chunk_id': 173899, 'document_name': '[D] Difference between sparse and dense informati…', 'similarity_score': 0.3209080100059509, 'content': "with the difference or anywhere\nwhere I can read about it?\n\n\n      17                  9\n\n\n      u/ScotiabankCanada        •  Promoted\n\n\n                       Accelerate your study permit process\n                       with Scotiabank's Student GIC\n                       Program. We're here to help you tur…\n\n\n                       startright.scotiabank.com         Learn More\n\n\n                            Add a Comment\n\n\nSort by:   Best\n\n\n      DinosParkour      • 1y ago\n\n\n     Dense Retrieval (DR) m"}]}, id='run-510bbd0e-3f8f-4095-9b1f-c2d29fd89719-0')
 ```
 
 You can provide system prompt here like this:
 
-```python
+```python wrap
 chat.invoke([system_message, human_message], temperature=0.7, max_tokens=10, top_p=0.95)
 ```
 
-```output
+```output wrap
 /home/anindya/prem/langchain/libs/community/langchain_community/chat_models/premai.py:355: UserWarning: WARNING: Parameter top_p is not supported in kwargs.
   warnings.warn(f"WARNING: Parameter {key} is not supported in kwargs.")
 ```
 
-```output
+```output wrap
 AIMessage(content="Hello! I'm your friendly assistant. How can I", response_metadata={'document_chunks': [{'repository_id': 1985, 'document_id': 1306, 'chunk_id': 173899, 'document_name': '[D] Difference between sparse and dense informati…', 'similarity_score': 0.3209080100059509, 'content': "with the difference or anywhere\nwhere I can read about it?\n\n\n      17                  9\n\n\n      u/ScotiabankCanada        •  Promoted\n\n\n                       Accelerate your study permit process\n                       with Scotiabank's Student GIC\n                       Program. We're here to help you tur…\n\n\n                       startright.scotiabank.com         Learn More\n\n\n                            Add a Comment\n\n\nSort by:   Best\n\n\n      DinosParkour      • 1y ago\n\n\n     Dense Retrieval (DR) m"}]}, id='run-c4b06b98-4161-4cca-8495-fd2fc98fa8f8-0')
 ```
 
@@ -124,7 +124,7 @@ print(response.content)
 print(json.dumps(response.response_metadata, indent=4))
 ```
 
-```output
+```output wrap
 Dense retrieval models typically include:
 
 1. **BERT-based Models**: Such as DPR (Dense Passage Retrieval) which uses BERT for encoding queries and passages.
@@ -194,13 +194,13 @@ for chunk in chat.stream("hello how are you"):
     sys.stdout.flush()
 ```
 
-```output
+```output wrap
 It looks like your message got cut off. If you need information about Dense Retrieval (DR) or any other topic, please provide more details or clarify your question.
 ```
 
 Similar to above, if you want to override the system-prompt and the generation parameters, you need to add the following:
 
-```python
+```python wrap
 import sys
 
 # For some experimental reasons if you want to override the system prompt then you
@@ -316,7 +316,7 @@ Since tool calling happens into two phases, where:
 
 2. in our second call, we will parse those set of tools decided by LLM and run them (in our case it will be the functions we defined, with the LLM's extracted arguments) and pass this result to the LLM
 
-```python
+```python wrap
 from langchain_core.messages import ToolMessage
 
 for tool_call in ai_msg.tool_calls:

@@ -29,7 +29,7 @@ Setting the project name dynamically using one of the below methods overrides th
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith import traceable
 from langsmith.run_trees import RunTree
@@ -93,7 +93,7 @@ rt.end(outputs=chat_completion)
 rt.post()
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { traceable } from "langsmith/traceable";
 import { wrapOpenAI } from "langsmith/wrappers";

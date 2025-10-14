@@ -32,7 +32,7 @@ nua = NucliaUnderstandingAPI(enable_ml=True)
 
 The Nuclia document transformer must be called in async mode, so you need to use the `atransform_documents` method:
 
-```python
+```python wrap
 import asyncio
 
 from langchain_community.document_transformers.nuclia_text_transform import (

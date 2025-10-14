@@ -159,7 +159,7 @@ You can create an LLM Context using the Kinetica Workbench UI or you can manuall
 
 Here we create a context from the SQL syntax referencing the table we created.
 
-```python
+```python wrap
 from gpudb import GPUdbSamplesClause, GPUdbSqlContext, GPUdbTableClause
 
 table_ctx = GPUdbTableClause(table=table_name, comment="Contains user profiles.")
@@ -258,7 +258,7 @@ select count(1) as num_users
 
 The last element of this chain is `KineticaSqlOutputParser` that will execute the SQL and return a dataframe. This is optional and if we left it out then only SQL would be returned.
 
-```python
+```python wrap
 from langchain_community.chat_models.kinetica import (
     KineticaSqlOutputParser,
     KineticaSqlResponse,
@@ -271,7 +271,7 @@ chain = prompt_template | kinetica_llm | KineticaSqlOutputParser(kdbc=kinetica_l
 
 The chain we created will take a question as input and return a `KineticaSqlResponse` containing the generated SQL and data. The question must be relevant to the to LLM context we used to create the prompt.
 
-```python
+```python wrap
 # Here you must ask a question relevant to the LLM context provided in the prompt template.
 response: KineticaSqlResponse = chain.invoke(
     {"input": "What are the female users ordered by username?"}

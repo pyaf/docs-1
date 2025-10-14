@@ -123,7 +123,7 @@ vectorstore = InMemoryVectorStore.from_documents(
 retriever = vectorstore.as_retriever(k=6)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { BrowserbaseLoader } from "@langchain/community/document_loaders/web/browserbase";
@@ -164,7 +164,7 @@ We can now define the generative pipeline.
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain_openai import ChatOpenAI
 from langsmith import traceable
 
@@ -192,7 +192,7 @@ Documents:
     return {"answer": ai_msg.content, "documents": docs}
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { traceable } from "langsmith/traceable";
 
@@ -239,7 +239,7 @@ Now that we've got our application, let's build a dataset to evaluate it. Our da
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import Client
 
 client = Client()
@@ -269,7 +269,7 @@ client.create_examples(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 
 const client = new Client();
@@ -339,7 +339,7 @@ One way to think about different types of RAG evaluators is as a tuple of what i
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from typing_extensions import Annotated, TypedDict
 
 # Grade output schema
@@ -380,7 +380,7 @@ STUDENT ANSWER: {outputs['answer']}"""
     return grade["correct"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import type { EvaluationResult } from "langsmith/evaluation";
 import { z } from "zod";
 
@@ -438,7 +438,7 @@ The flow is similar to above, but we simply look at the `inputs` and `outputs` w
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # Grade output schema
 class RelevanceGrade(TypedDict):
     explanation: Annotated[str, ..., "Explain your reasoning for the score"]
@@ -473,7 +473,7 @@ def relevance(inputs: dict, outputs: dict) -> bool:
     return grade["relevant"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import type { EvaluationResult } from "langsmith/evaluation";
 import { z } from "zod";
 
@@ -528,7 +528,7 @@ Another useful way to evaluate responses without needing reference answers is to
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # Grade output schema
 class GroundedGrade(TypedDict):
     explanation: Annotated[str, ..., "Explain your reasoning for the score"]
@@ -563,7 +563,7 @@ def groundedness(inputs: dict, outputs: dict) -> bool:
     return grade["grounded"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import type { EvaluationResult } from "langsmith/evaluation";
 import { z } from "zod";
 
@@ -616,7 +616,7 @@ async function grounded({
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # Grade output schema
 class RetrievalRelevanceGrade(TypedDict):
     explanation: Annotated[str, ..., "Explain your reasoning for the score"]
@@ -655,7 +655,7 @@ def retrieval_relevance(inputs: dict, outputs: dict) -> bool:
     return grade["relevant"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import type { EvaluationResult } from "langsmith/evaluation";
 import { z } from "zod";
 
@@ -752,7 +752,7 @@ You can see an example of what these results look like here: [LangSmith link](ht
 <Accordion title="Here's a consolidated script with all the above code:">
     <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
@@ -997,7 +997,7 @@ experiment_results = client.evaluate(
 # experiment_results.to_pandas()
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAIEmbeddings, ChatOpenAI } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { BrowserbaseLoader } from "@langchain/community/document_loaders/web/browserbase";

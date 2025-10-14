@@ -11,13 +11,13 @@ This notebook shows how to use agents to interact with a `Pandas DataFrame`. It 
 pip install -U langchain_openai
 pip install -U langchain
 
-```python
+```python wrap
 from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
 ```
 
-```python
+```python wrap
 import pandas as pd
 from langchain_openai import OpenAI
 
@@ -127,7 +127,7 @@ df1 = df.copy()
 df1["Age"] = df1["Age"].fillna(df1["Age"].mean())
 ```
 
-```python
+```python wrap
 agent = create_pandas_dataframe_agent(OpenAI(temperature=0), [df, df1], verbose=True)
 agent.invoke("how many rows in the age column are different?")
 ```

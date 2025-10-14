@@ -247,7 +247,7 @@ enabling you to quickly build applications using the same flexible and friendly 
 
 InMemoryVectorStore class provides a vectorstore to connect with Amazon MemoryDB.
 
-```python
+```python wrap
 from langchain_aws.vectorstores.inmemorydb import InMemoryVectorStore
 
 vds = InMemoryVectorStore.from_documents(
@@ -340,7 +340,7 @@ uv add boto3
 
 See a [usage example](/oss/integrations/tools/awslambda).
 
-```python
+```python wrap
 from langchain_community.chat_message_histories import DynamoDBChatMessageHistory
 ```
 
@@ -387,7 +387,7 @@ from langchain_aws.chains import create_neptune_sparql_qa_chain
 
 ### Bedrock token usage
 
-```python
+```python wrap
 from langchain_community.callbacks.bedrock_anthropic_callback import BedrockAnthropicTokenUsageCallbackHandler
 ```
 
@@ -440,6 +440,6 @@ uv add boto3 nltk
 
 See a [usage example](https://python.langchain.com/v0.1/docs/guides/productionization/safety/amazon_comprehend_chain/).
 
-```python
+```python wrap
 from langchain_experimental.comprehend_moderation import AmazonComprehendModerationChain
 ```

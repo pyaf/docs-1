@@ -41,7 +41,7 @@ pnpm add @langchain/openai @langchain/langgraph
 
 <CodeGroup>
 
-```bash Python
+```bash Python wrap
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
 # This example uses OpenAI, but you can use any LLM provider of choice
@@ -50,7 +50,7 @@ export OPENAI_API_KEY=<your-openai-api-key>
 export LANGSMITH_WORKSPACE_ID=<your-workspace-id>
 ```
 
-```bash TypeScript
+```bash TypeScript wrap
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
 # This example uses OpenAI, but you can use any LLM provider of choice
@@ -132,7 +132,7 @@ final_state = app.invoke(
 final_state["messages"][-1].content
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { HumanMessage, AIMessage } from "@langchain/core/messages";
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
@@ -279,7 +279,7 @@ Once you've set up your environment, [wrap or decorate the custom functions/SDKs
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import json
 import openai
 import operator
@@ -373,7 +373,7 @@ final_state = app.invoke(
 final_state["messages"][-1]["content"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 **Note:** The below example requires `langsmith>=0.1.39` and `@langchain/langgraph>=0.0.31`
 
 import OpenAI from "openai";

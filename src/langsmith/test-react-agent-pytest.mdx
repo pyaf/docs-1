@@ -15,11 +15,11 @@ First, install the packages required for making the agent:
 
 <CodeGroup>
 
-```bash Python
+```bash Python wrap
 pip install -U langgraph langchain[openai] langchain-community e2b-code-interpreter
 ```
 
-```bash TypeScript
+```bash TypeScript wrap
 yarn add @langchain/openai @langchain/community @langchain/langgraph @langchain/core @e2b/code-interpreter @polygon.io/client-js openai zod
 ```
 
@@ -71,7 +71,7 @@ First we are going to define the tools we are going to use in our agent. There a
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain_community.tools import TavilySearchResults
 from e2b_code_interpreter import Sandbox
 from langchain_community.tools.polygon.aggregates import PolygonAggregates
@@ -114,7 +114,7 @@ def ticker_tool(query: TickerToolInput) -> str:
   return polygon_aggregate.invoke(query)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { Sandbox } from "@e2b/code-interpreter";
 import { tool } from "@langchain/core/tools";
@@ -183,7 +183,7 @@ Now that we have defined all of our tools, we can use [`create_agent`](https://l
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from typing_extensions import Annotated, TypedDict
 from langchain.agents import create_agent
 
@@ -200,7 +200,7 @@ agent = create_agent(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { z } from "zod";
 import { ChatOpenAI } from "@langchain/openai";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
@@ -233,7 +233,7 @@ We need to first set up a test file and add the imports needed at the top of the
 
 <CodeGroup>
 
-```python Pytest
+```python Pytest wrap
 Create a `tests/test_agent.py` file.
 
 from app import agent, polygon_aggregates, search_tool # import from wherever your agent is defined
@@ -298,7 +298,7 @@ def test_no_tools_on_offtopic_query(query: str) -> None:
   assert actual == expected
 ```
 
-```typescript Vitest
+```typescript Vitest wrap
 ls.test.each([
   { inputs: { query: "Hello!" }, expected: { numMessages: 2 } },
   { inputs: { query: "How are you doing?" }, expected: { numMessages: 2 } },
@@ -314,7 +314,7 @@ ls.test.each([
 );
 ```
 
-```typescript Jest
+```typescript Jest wrap
 ls.test.each([
   { inputs: { query: "Hello!" }, expected: { numMessages: 2 } },
   { inputs: { query: "How are you doing?" }, expected: { numMessages: 2 } },
@@ -361,7 +361,7 @@ def test_searches_for_correct_ticker() -> None:
   assert actual == expected
 ```
 
-```typescript Vitest
+```typescript Vitest wrap
 ls.test(
   "should search for correct ticker",
   {
@@ -387,7 +387,7 @@ ls.test(
 );
 ```
 
-```typescript Jest
+```typescript Jest wrap
 ls.test(
   "should search for correct ticker",
   {
@@ -453,7 +453,7 @@ def test_executes_code_when_needed() -> None:
   assert abs(result["structured_response"]["numeric_answer"] - expected) <= 0.01
 ```
 
-```typescript Vitest
+```typescript Vitest wrap
 ls.test(
   "should execute code when needed",
   {
@@ -484,7 +484,7 @@ ls.test(
 );
 ```
 
-```typescript Jest
+```typescript Jest wrap
 ls.test(
   "should execute code when needed",
   {
@@ -522,7 +522,7 @@ We are going to ensure that the agent's answer is grounded in the search results
 
 <CodeGroup>
 
-```python Pytest
+```python Pytest wrap
 from typing_extensions import Annotated, TypedDict
 from langchain.chat_models import init_chat_model
 
@@ -578,7 +578,7 @@ def test_grounded_in_source_info() -> None:
   assert grade['score']
 ```
 
-```typescript Vitest
+```typescript Vitest wrap
 // THIS CODE GOES OUTSIDE THE TEST - IT IS JUST A HELPER FUNCTION
 const judgeLLM = new ChatOpenAI({ model: "gpt-4o" });
 const groundedEvaluator = async (params: {
@@ -620,7 +620,7 @@ ls.test(
 );
 ```
 
-```typescript Jest
+```typescript Jest wrap
 // THIS CODE GOES OUTSIDE THE TEST - IT IS JUST A HELPER FUNCTION
 const judgeLLM = new ChatOpenAI({ model: "gpt-4o" });
 const groundedEvaluator = async (params: {
@@ -731,7 +731,7 @@ Remember to also add the config files for [Vitest](#config-files-for-vitestjest)
 <Accordion title="Agent code">
     <CodeGroup>
 
-  ```python Python
+  ```python Python wrap
   from e2b_code_interpreter import Sandbox
   from langchain_community.tools import PolygonAggregates, TavilySearchResults
   from langchain_community.utilities.polygon import PolygonAPIWrapper
@@ -771,7 +771,7 @@ Remember to also add the config files for [Vitest](#config-files-for-vitestjest)
   )
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript wrap
   import { ChatOpenAI } from "@langchain/openai";
   import { createReactAgent } from "@langchain/langgraph/prebuilt";
   import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
@@ -855,7 +855,7 @@ Remember to also add the config files for [Vitest](#config-files-for-vitestjest)
 <Accordion title="Test code">
     <CodeGroup>
 
-  ```python Pytest
+  ```python Pytest wrap
   # from app import agent, polygon_aggregates, search_tool # import from wherever your agent is defined
   import pytest
   from langchain.chat_models import init_chat_model
@@ -986,7 +986,7 @@ Remember to also add the config files for [Vitest](#config-files-for-vitestjest)
     assert grade["score"]
   ```
 
-  ```typescript Vitest
+  ```typescript Vitest wrap
   import { expect } from "vitest";
   import * as ls from "langsmith/vitest";
   import agent from "../agent";
@@ -1094,7 +1094,7 @@ Remember to also add the config files for [Vitest](#config-files-for-vitestjest)
   });
   ```
 
-  ```typescript Jest
+  ```typescript Jest wrap
   import { expect } from "@jest/globals";
   import * as ls from "langsmith/jest";
   import agent from "../agent";

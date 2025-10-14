@@ -75,7 +75,7 @@ print(graph.invoke(Command(resume="Edited text"), config=config)) # (7)!
 :::
 
 :::js
-```typescript {highlight={1,5,31}}
+```typescript {highlight={1,5,31}} wrap
 import { interrupt, Command } from "@langchain/langgraph";
 
 const graph = graphBuilder
@@ -121,7 +121,7 @@ console.log(await graph.invoke(new Command({ resume: "Edited text" }), config));
 
 <Accordion title="Extended example: using `interrupt`">
   :::python
-  ```python {highlight={7,15,47}}
+  ```python {highlight={7,15,47}} wrap
   from typing import TypedDict
   import uuid
   from langgraph.checkpoint.memory import InMemorySaver
@@ -182,7 +182,7 @@ console.log(await graph.invoke(new Command({ resume: "Edited text" }), config));
   :::
 
   :::js
-  ```typescript {highlight={12,43}}
+  ```typescript {highlight={12,43}} wrap
   import * as z from "zod";
   import { v4 as uuidv4 } from "uuid";
   import { MemorySaver, StateGraph, START, interrupt, Command } from "@langchain/langgraph";
@@ -287,7 +287,7 @@ For example, the following graph has two nodes run in parallel that require huma
 :::python
 Once your graph has been interrupted and is stalled, you can resume all the interrupts at once with `Command.resume`, passing a dictionary mapping of interrupt ids to resume values.
 
-```python
+```python wrap
 from typing import TypedDict
 import uuid
 from langchain_core.runnables import RunnableConfig
@@ -371,7 +371,7 @@ Below we show different design patterns that can be implemented using `interrupt
 Pause the graph before a critical step, such as an API call, to review and approve the action. If the action is rejected, you can prevent the graph from executing the step, and potentially take an alternative action.
 
 :::python
-```python
+```python wrap
 from typing import Literal
 from langgraph.types import interrupt, Command
 
@@ -433,7 +433,7 @@ await graph.invoke(new Command({ resume: true }), threadConfig);
 
 <Accordion title="Extended example: approve or reject with interrupt">
   :::python
-  ```python
+  ```python wrap
   from typing import Literal, TypedDict
   import uuid
 
@@ -603,7 +603,7 @@ await graph.invoke(new Command({ resume: true }), threadConfig);
 ![A human can review and edit the state of the graph. This is useful for correcting mistakes or updating the state with additional information](/oss/images/edit-graph-state-simple.png)
 
 :::python
-```python
+```python wrap
 from langgraph.types import interrupt
 
 def human_editing(state: State):
@@ -674,7 +674,7 @@ await graph.invoke(
 
 <Accordion title="Extended example: edit state with interrupt">
   :::python
-  ```python
+  ```python wrap
   from typing import TypedDict
   import uuid
 
@@ -751,7 +751,7 @@ await graph.invoke(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import * as z from "zod";
   import { v4 as uuidv4 } from "uuid";
   import {
@@ -843,7 +843,7 @@ To add a human approval step to a tool:
 2. Resume with a `Command` to continue based on human input.
 
 :::python
-```python {highlight={8,20,25}}
+```python {highlight={8,20,25}} wrap
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.types import interrupt
 from langchain.agents import create_agent
@@ -928,7 +928,7 @@ const agent = createAgent({
 Run the agent with the `stream()` method, passing the `config` object to specify the thread ID. This allows the agent to resume the same conversation on future invocations.
 
 :::python
-```python {highlight={3,9}}
+```python {highlight={3,9}} wrap
 config = {
    "configurable": {
       "thread_id": "1"
@@ -969,7 +969,7 @@ for await (const chunk of stream) {
 Resume the agent with a `Command` to continue based on human input.
 
 :::python
-```python {highlight={4}}
+```python {highlight={4}} wrap
 from langgraph.types import Command
 
 for chunk in agent.stream(
@@ -985,7 +985,7 @@ for chunk in agent.stream(
 :::
 
 :::js
-```typescript {highlight={4}}
+```typescript {highlight={4}} wrap
 import { Command } from "@langchain/langgraph";
 
 const resumeStream = await agent.stream(
@@ -1008,7 +1008,7 @@ for await (const chunk of resumeStream) {
 You can create a wrapper to add interrupts to _any_ tool. The example below provides a reference implementation compatible with [Agent Inbox UI](https://github.com/langchain-ai/agent-inbox) and [Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui).
 
 :::python
-```python title="Wrapper that adds human-in-the-loop to any tool" {highlight={37}}
+```python title="Wrapper that adds human-in-the-loop to any tool" {highlight={37}} wrap
 from typing import Callable
 from langchain_core.tools import BaseTool, tool as create_tool
 from langchain_core.runnables import RunnableConfig
@@ -1147,7 +1147,7 @@ function addHumanInTheLoop(
 You can use the wrapper to add `interrupt()` to any tool without having to add it _inside_ the tool:
 
 :::python
-```python {highlight={4,14,16,24}}
+```python {highlight={4,14,16,24}} wrap
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain.agents import create_agent
 
@@ -1233,7 +1233,7 @@ for await (const chunk of stream) {
 Resume the agent with a `Command` to continue based on human input.
 
 :::python
-```python {highlight={4}}
+```python {highlight={4}} wrap
 from langgraph.types import Command
 
 for chunk in agent.stream(
@@ -1247,7 +1247,7 @@ for chunk in agent.stream(
 :::
 
 :::js
-```typescript {highlight={4}}
+```typescript {highlight={4}} wrap
 import { Command } from "@langchain/langgraph";
 
 const resumeStream = await agent.stream(
@@ -1325,7 +1325,7 @@ graphBuilder.addNode("humanNode", (state) => {
 
 <Accordion title="Extended example: validating user input">
   :::python
-  ```python
+  ```python wrap
   from typing import TypedDict
   import uuid
 
@@ -1394,7 +1394,7 @@ graphBuilder.addNode("humanNode", (state) => {
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import * as z from "zod";
   import { v4 as uuidv4 } from "uuid";
   import {
@@ -1754,7 +1754,7 @@ async function nodeInParentGraph(state: z.infer<typeof StateAnnotation>) {
   It counts the number of times each node is entered and prints the count.
 
   :::python
-  ```python
+  ```python wrap
   import uuid
   from typing import TypedDict
 
@@ -1852,7 +1852,7 @@ async function nodeInParentGraph(state: z.infer<typeof StateAnnotation>) {
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { v4 as uuidv4 } from "uuid";
   import {
     StateGraph,
@@ -1938,7 +1938,7 @@ async function nodeInParentGraph(state: z.infer<typeof StateAnnotation>) {
 
   This will print out
 
-  ```
+  ``` wrap
   Entered 'parentNode' a total of 1 times
   Entered 'nodeInSubgraph' a total of 1 times
   Entered humanNode in sub-graph a total of 1 times
@@ -1962,7 +1962,7 @@ To avoid issues, refrain from dynamically changing the node's structure between 
 
 :::python
 <Accordion title="Extended example: incorrect code that introduces non-determinism">
-  ```python
+  ```python wrap
   import uuid
   from typing import TypedDict
 

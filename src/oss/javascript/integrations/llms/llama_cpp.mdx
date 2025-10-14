@@ -72,7 +72,7 @@ Having done this, we can start converting and quantizing the Llama3 model ready 
 First, we need to locate the path with the following script `convert_llama_weights_to_hf.py`. Copy and paste this script into your current working directory. Note that using the script may need you to pip install extra dependencies, do so as needed.
 Then, we need to convert the model, prior to the conversion let's create directories to store our Hugging Face conversion and our final model.
 
-```
+``` wrap
 mkdir models/8B
 mkdir models/8B-GGUF
 python3 convert_llama_weights_to_hf.py --model_size 8B --input_dir <dir-to-your-model> --output_dir models/8B --llama_version 3
@@ -80,12 +80,12 @@ python3 convert_hf_to_gguf.py --outtype f16 --outfile models/8B-GGUF/gguf-llama3
 ```
 This should create a converted Hugging Face model and the final GGUF model in the directories we have created. Note that this is just a converted model so it is also around 16Gb in size, in the next step we will quantize it down to around 4Gb.
 
-```
+``` wrap
 ./build/bin/llama-quantize ./models/8B-GGUF/gguf-llama3-f16.bin ./models/8B-GGUF/gguf-llama3-Q4_0.bin Q4_0
 ```
 Running this should result in a new model being created in the `models\8B-GGUF` directory, this one called `gguf-llama3-Q4_0.bin`, this is the model we can use with langchain. You can validate this model is working by testing it using the `llama.cpp` tools.
 
-```
+``` wrap
 ./build/bin/llama-cli -m ./models/8B-GGUF/gguf-llama3-Q4_0.bin -cnv -p "You are a helpful assistant"
 ```
 

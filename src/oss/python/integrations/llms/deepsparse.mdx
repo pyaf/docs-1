@@ -12,7 +12,7 @@ It is broken into two parts: installation and setup, and then examples of DeepSp
 
 There exists a DeepSparse LLM wrapper, that provides a unified interface for all models:
 
-```python
+```python wrap
 from langchain_community.llms import DeepSparse
 
 llm = DeepSparse(
@@ -24,7 +24,7 @@ print(llm.invoke("def fib():"))
 
 Additional parameters can be passed using the `config` parameter:
 
-```python
+```python wrap
 config = {"max_generated_tokens": 256}
 
 llm = DeepSparse(

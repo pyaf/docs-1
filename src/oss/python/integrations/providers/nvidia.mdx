@@ -35,7 +35,7 @@ pip install -qU langchain-nvidia-ai-endpoints
 
 4. Copy and save the generated key as NVIDIA_API_KEY. From there, you should have access to the endpoints.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -61,7 +61,7 @@ When ready to deploy, you can self-host models with NVIDIA NIM—which is includ
 
 [Learn more about NIMs](https://developer.nvidia.com/blog/nvidia-nim-offers-optimized-inference-microservices-for-deploying-ai-models-at-scale/)
 
-```python
+```python wrap
 from langchain_nvidia_ai_endpoints import ChatNVIDIA, NVIDIAEmbeddings, NVIDIARerank
 
 # connect to a chat NIM running at localhost:8000, specifying a model

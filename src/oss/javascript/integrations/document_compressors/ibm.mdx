@@ -105,7 +105,7 @@ If you want to get automated tracing from individual queries, you can also set y
 
 This document compressor lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -163,7 +163,7 @@ const result = await vectorStoreRetriever.invoke(query);
 console.log(result);
 ```
 
-```output
+```output wrap
 [
   Document {
     pageContent: 'And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.',
@@ -231,7 +231,7 @@ const compressedWithResults = await reranker.compressDocuments(result, query);
 console.log(compressedWithResults);
 ```
 
-```output
+```output wrap
 [
   Document {
     pageContent: 'And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.',

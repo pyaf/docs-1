@@ -78,7 +78,7 @@ print("relevance score - ", docs[0][1])
 print("text- ", docs[0][0].page_content[:1000])
 ```
 
-```output
+```output wrap
 relevance score -  0.7066475030191711
 text-  They were responding to a 9-1-1 call when a man shot and killed them with a stolen gun.
 
@@ -103,13 +103,13 @@ That’s why the Justice Department required body cameras, banned chokeholds, an
 That’s why the American Rescue
 ```
 
-```python
+```python wrap
 docs = docsearch.similarity_search_with_score(query="Headaches", query_type="hybrid")
 print("distance - ", docs[0][1])
 print("text- ", docs[0][0].page_content[:1000])
 ```
 
-```output
+```output wrap
 distance -  0.30000001192092896
 text-  My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.
 
@@ -144,13 +144,13 @@ Stationed near Baghdad, just ya
 print("reranker : ", docsearch._reranker)
 ```
 
-```output
+```output wrap
 reranker :  <lancedb.rerankers.linear_combination.LinearCombinationReranker object at 0x107ef1130>
 ```
 
 Additionaly, to explore the table you can load it into a df or save it in a csv file:
 
-```python
+```python wrap
 tbl = docsearch.get_table()
 print("tbl:", tbl)
 pd_df = tbl.to_pandas()
@@ -160,7 +160,7 @@ pd_df = tbl.to_pandas()
 vector_store = LanceDB(connection=tbl, embedding=embeddings)
 ```
 
-```python
+```python wrap
 docs = docsearch.similarity_search(
     query=query, filter={"metadata.source": "../../how_to/state_of_the_union.txt"}
 )
@@ -174,7 +174,7 @@ docs = docsearch.similarity_search(query=query, filter="text LIKE '%Officer Rive
 print(docs[0].page_content)
 ```
 
-```output
+```output wrap
 metadata : {'source': '../../how_to/state_of_the_union.txt'}
 
 SQL filtering :
@@ -258,7 +258,7 @@ We’re putting in place dedicated immigration judges so families fleeing persec
 from langchain_experimental.open_clip import OpenCLIPEmbeddings
 ```
 
-```python
+```python wrap
 import os
 
 import requests
@@ -322,7 +322,7 @@ img_embed = vec_store._embedding.embed_query("bird")
 vec_store.similarity_search_by_vector(img_embed)[0]
 ```
 
-```output
+```output wrap
 Document(page_content='bird', metadata={'id': 'f7adde5d-a4a3-402b-9e73-088b230722c3'})
 ```
 

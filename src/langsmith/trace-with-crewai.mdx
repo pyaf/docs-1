@@ -11,11 +11,11 @@ Install the required packages using your preferred package manager:
 
 <CodeGroup>
 
-```bash pip
+```bash pip wrap
 pip install langsmith crewai openinference-instrumentation-crewai openinference-instrumentation-openai
 ```
 
-```bash uv
+```bash uv wrap
 uv add langsmith crewai openinference-instrumentation-crewai openinference-instrumentation-openai
 ```
 
@@ -68,7 +68,7 @@ Once configured, your CrewAI application will automatically send traces to LangS
 
 This example includes a minimal app that defines agents and tasks, creates a crew, and runs it to produce traced activity.
 
-```python
+```python wrap
 from crewai import Agent, Task, Crew
 from langsmith.integrations.otel import OtelSpanProcessor
 from opentelemetry import trace
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 
 You can add custom metadata to your traces by setting span attributes in your CrewAI application:
 
-```python
+```python wrap
 from opentelemetry import trace
 
 # Get the current tracer

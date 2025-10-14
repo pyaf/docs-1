@@ -28,7 +28,7 @@ If you want to provide all the file tooling to your agent, it's easy to do so wi
 It's recommended to always pass in a root directory, since without one, it's easy for the LLM to pollute the working directory, and without one, there isn't any validation against
 straightforward prompt injection.
 
-```python
+```python wrap
 toolkit = FileManagementToolkit(
     root_dir=str(working_directory.name)
 )  # If you don't provide a root_dir, operations will default to the current working directory

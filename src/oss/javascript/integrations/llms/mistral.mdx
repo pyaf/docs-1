@@ -2,7 +2,7 @@
 title: MistralAI
 ---
 
-```{=mdx}
+```{=mdx} wrap
 
 <Tip>
 **Want to run Mistral's models locally? Check out our [Ollama integration](/oss/integrations/chat/ollama).**
@@ -52,7 +52,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain MistralAI integration lives in the `@langchain/mistralai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -87,7 +87,7 @@ const completion = await llm.invoke(inputText)
 completion
 ```
 
-```output
+```output wrap
  has developed Mistral 7B, a large language model (LLM) that is open-source and available for commercial use. Mistral 7B is a 7 billion parameter model that is trained on a diverse and high-quality dataset, and it has been fine-tuned to perform well on a variety of tasks, including text generation, question answering, and code interpretation.
 
 MistralAI has made Mistral 7B available under a permissive license, allowing anyone to use the model for commercial purposes without having to pay any fees. This has made Mistral 7B a popular choice for businesses and organizations that want to leverage the power of large language models without incurring high costs.
@@ -103,7 +103,7 @@ Overall, Mistral 7B is a powerful and versatile large language model that is ope
 
 Mistral AI supports custom hooks for three events: beforeRequest, requestError, and reponse. Examples of the function signature for each hook type can be seen below:
 
-```typescript
+```typescript wrap
 const beforeRequestHook = (req: Request): Request | void | Promise<Request | void> => {
     // Code to run before a request is processed by Mistral
 };

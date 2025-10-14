@@ -63,7 +63,7 @@ PASSWORD="your-database-password"
 
 To instantiate a PostgresVectorStore, you'll first need to create a database connection through the PostgresEngine, then initialize the vector store table and finally call the `.initialize()` method to instantiate the vector store.
 
-```python
+```python wrap
 import {
   Column,
   PostgresEngine,
@@ -186,7 +186,7 @@ for (const doc of results) {
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```python
+```python wrap
 const filter = `"source" = "https://example.com"`;
 const resultsWithScores = await vectorStore.similaritySearchWithScore(
   "biology",
@@ -206,7 +206,7 @@ for (const [doc, score] of resultsWithScores) {
 
 The Maximal marginal relevance optimizes for similarity to the query and diversity among selected documents.
 
-```python
+```python wrap
 const options = {
   k: 4,
   filter: `"source" = 'https://example.com'`,

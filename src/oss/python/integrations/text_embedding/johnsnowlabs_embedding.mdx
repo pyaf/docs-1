@@ -13,7 +13,7 @@ title: John Snow Labs
 %pip install -qU  johnsnowlabs
 ```
 
-```python
+```python wrap
 # If you have a enterprise license, you can run this to install enterprise features
 # from johnsnowlabs import nlp
 # nlp.install()
@@ -27,7 +27,7 @@ from langchain_community.embeddings.johnsnowlabs import JohnSnowLabsEmbeddings
 
 Initialize Johnsnowlabs Embeddings and Spark Session
 
-```python
+```python wrap
 embedder = JohnSnowLabsEmbeddings("en.embed_sentence.biobert.clinical_base_cased")
 ```
 

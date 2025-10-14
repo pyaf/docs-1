@@ -39,7 +39,7 @@ The `content_formatter` parameter is a handler class for transforming the reques
 
 ### Example: LlaMa 2 completions with real-time endpoints
 
-```python
+```python wrap
 from langchain_community.llms.azureml_endpoint import (
     AzureMLEndpointApiType,
     CustomOpenAIContentFormatter,
@@ -66,7 +66,7 @@ response
 
 ### Example: Chat completions with pay-as-you-go deployments (model as a service)
 
-```python
+```python wrap
 from langchain_community.llms.azureml_endpoint import (
     AzureMLEndpointApiType,
     CustomOpenAIContentFormatter,
@@ -88,7 +88,7 @@ response
 
 Below is an example using a summarization model from Hugging Face.
 
-```python
+```python wrap
 import json
 import os
 from typing import Dict

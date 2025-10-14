@@ -87,7 +87,7 @@ This error occurs when the ClickHouse database is in an inconsistent state with 
 
 1. Force migration to an earlier version, where version = dirty version - 1.
 
-```bash
+```bash wrap
 kubectl exec -it deployments/langsmith-backend -- bash -c 'migrate -source "file://clickhouse/migrations" -database "clickhouse://$CLICKHOUSE_HOST:$CLICKHOUSE_NATIVE_PORT?username=$CLICKHOUSE_USER&password=$CLICKHOUSE_PASSWORD&database=$CLICKHOUSE_DB&x-multi-statement=true&x-migrations-table-engine=MergeTree&secure=$CLICKHOUSE_TLS" force <version>'
 ```
 
@@ -97,7 +97,7 @@ kubectl exec -it deployments/langsmith-backend -- bash -c 'migrate -source "file
 
 1. Force migration to an earlier version, where version = dirty version - 1.
 
-```bash
+```bash wrap
 docker compose exec langchain-backend migrate -source "file://clickhouse/migrations" -database "clickhouse://$CLICKHOUSE_HOST:$CLICKHOUSE_NATIVE_PORT?username=$CLICKHOUSE_USER&password=$CLICKHOUSE_PASSWORD&database=$CLICKHOUSE_DB&x-multi-statement=true&x-migrations-table-engine=MergeTree&secure=$CLICKHOUSE_TLS" force <version>
 ```
 

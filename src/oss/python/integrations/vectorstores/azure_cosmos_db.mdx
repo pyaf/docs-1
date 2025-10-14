@@ -29,7 +29,7 @@ DB_NAME, COLLECTION_NAME = NAMESPACE.split(".")
 
 We want to use `AzureOpenAIEmbeddings` so we need to set up our Azure OpenAI API Key alongside other environment variables.
 
-```python
+```python wrap
 # Set up the OpenAI Environment Variables
 
 os.environ["AZURE_OPENAI_API_KEY"] = "YOUR_AZURE_OPENAI_API_KEY"
@@ -75,11 +75,11 @@ openai_embeddings: AzureOpenAIEmbeddings = AzureOpenAIEmbeddings(
 docs[0]
 ```
 
-```output
+```output wrap
 Document(metadata={'source': '../../how_to/state_of_the_union.txt'}, page_content='Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.  \n\nLast year COVID-19 kept us apart. This year we are finally together again. \n\nTonight, we meet as Democrats Republicans and Independents. But most importantly as Americans. \n\nWith a duty to one another to the American people to the Constitution. \n\nAnd with an unwavering resolve that freedom will always triumph over tyranny. \n\nSix days ago, Russia’s Vladimir Putin sought to shake the foundations of the free world thinking he could make it bend to his menacing ways. But he badly miscalculated. \n\nHe thought he could roll into Ukraine and the world would roll over. Instead he met a wall of strength he never imagined. \n\nHe met the Ukrainian people. \n\nFrom President Zelenskyy to every Ukrainian, their fearlessness, their courage, their determination, inspires the world.')
 ```
 
-```python
+```python wrap
 from pymongo import MongoClient
 
 # INDEX_NAME = "izzy-test-index-2"
@@ -150,11 +150,11 @@ vectorstore.create_index(
 """
 ```
 
-```output
+```output wrap
 '\n# DiskANN vectorstore\nmaxDegree = 40\ndimensions = 1536\nsimilarity_algorithm = CosmosDBSimilarityType.COS\nkind = CosmosDBVectorSearchType.VECTOR_DISKANN\nlBuild = 20\n\nvectorstore.create_index(\n            dimensions=dimensions,\n            similarity=similarity_algorithm,\n            kind=kind ,\n            max_degree=maxDegree,\n            l_build=lBuild,\n        )\n\n# -----------------------------------------------------------\n\n# HNSW vectorstore\ndimensions = 1536\nsimilarity_algorithm = CosmosDBSimilarityType.COS\nkind = CosmosDBVectorSearchType.VECTOR_HNSW\nm = 16\nef_construction = 64\n\nvectorstore.create_index(\n            dimensions=dimensions,\n            similarity=similarity_algorithm,\n            kind=kind ,\n            m=m,\n            ef_construction=ef_construction,\n        )\n'
 ```
 
-```python
+```python wrap
 # perform a similarity search between the embedding of the query and the embeddings of the documents
 query = "What did the president say about Ketanji Brown Jackson"
 docs = vectorstore.similarity_search(query)
@@ -164,7 +164,7 @@ docs = vectorstore.similarity_search(query)
 print(docs[0].page_content)
 ```
 
-```output
+```output wrap
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
 
 Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.
@@ -188,7 +188,7 @@ docs = vectorstore.similarity_search(query)
 print(docs[0].page_content)
 ```
 
-```output
+```output wrap
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
 
 Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.
@@ -210,7 +210,7 @@ docs = vectorstore.similarity_search(query)
 print(docs[0].page_content)
 ```
 
-```output
+```output wrap
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
 
 Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.
@@ -254,7 +254,7 @@ len(docs)
 4
 ```
 
-```python
+```python wrap
 docs = vectorstore.similarity_search(
     query,
     pre_filter={"metadata.source": {"$ne": "../../how_to/state_of_the_union.txt"}},

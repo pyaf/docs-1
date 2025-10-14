@@ -11,7 +11,7 @@ Tongyi Qwen is a large-scale language model developed by Alibaba's Damo Academy.
 %pip install -qU  langchain-community dashscope
 ```
 
-```python
+```python wrap
 # Get a new token: https://help.aliyun.com/document_detail/611472.html?spm=a2c4g.2399481.0.0
 from getpass import getpass
 
@@ -32,11 +32,11 @@ os.environ["DASHSCOPE_API_KEY"] = DASHSCOPE_API_KEY
 from langchain_community.llms import Tongyi
 ```
 
-```python
+```python wrap
 Tongyi().invoke("What NFL team won the Super Bowl in the year Justin Bieber was born?")
 ```
 
-```output
+```output wrap
 'Justin Bieber was born on March 1, 1994. The Super Bowl that took place in the same year was Super Bowl XXVIII, which was played on January 30, 1994. The winner of that Super Bowl was the Dallas Cowboys, who defeated the Buffalo Bills with a score of 30-13.'
 ```
 
@@ -62,12 +62,12 @@ prompt = PromptTemplate.from_template(template)
 chain = prompt | llm
 ```
 
-```python
+```python wrap
 question = "What NFL team won the Super Bowl in the year Justin Bieber was born?"
 
 chain.invoke({"question": question})
 ```
 
-```output
+```output wrap
 'Justin Bieber was born on March 1, 1994. The Super Bowl that took place in the same calendar year was Super Bowl XXVIII, which was played on January 30, 1994. The winner of Super Bowl XXVIII was the Dallas Cowboys, who defeated the Buffalo Bills with a score of 30-13.'
 ```

@@ -37,7 +37,7 @@ pnpm add @langchain/openai @langchain/core
 
 <CodeGroup>
 
-```bash Python
+```bash Python wrap
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
 # This example uses OpenAI, but you can use any LLM provider of choice
@@ -46,7 +46,7 @@ export OPENAI_API_KEY=<your-openai-api-key>
 export LANGSMITH_WORKSPACE_ID=<your-workspace-id>
 ```
 
-```bash TypeScript
+```bash TypeScript wrap
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
 # This example uses OpenAI, but you can use any LLM provider of choice
@@ -75,7 +75,7 @@ No extra code is needed to log a trace to LangSmith. Just run your LangChain cod
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -95,7 +95,7 @@ context = "During this morning's meeting, we solved all world conflict."
 chain.invoke({"question": question, "context": context})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -133,7 +133,7 @@ In JS/TS, you can pass a `LangChainTracer` ([reference docs](https://api.js.lang
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # You can opt-in to specific invocations..
 import langsmith as ls
 
@@ -184,7 +184,7 @@ This largely builds off of the [previous section](#trace-selectively) and allows
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # You can set the project name using the project_name parameter.
 import langsmith as ls
 
@@ -218,7 +218,7 @@ When you attach metadata or tags to a runnable (either through the `RunnableConf
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -239,7 +239,7 @@ chain = (prompt | chat_model | output_parser).with_config({"tags": ["config-tag"
 chain.invoke({"input": "What is the meaning of life?"}, {"tags": ["invoke-tag"], "metadata": {"invoke-key": "invoke-value"}})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -268,7 +268,7 @@ You can customize the name of a given run when invoking or streaming your LangCh
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # When tracing within LangChain, run names default to the class name of the traced object (e.g., 'ChatOpenAI').
 configured_chain = chain.with_config({"run_name": "MyCustomChain"})
 configured_chain.invoke({"input": "What is the meaning of life?"})
@@ -277,7 +277,7 @@ configured_chain.invoke({"input": "What is the meaning of life?"})
 chain.invoke({"input": "What is the meaning of life?"}, {"run_name": "MyCustomChain"})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // When tracing within LangChain, run names default to the class name of the traced object (e.g., 'ChatOpenAI').
 const configuredChain = chain.withConfig({ runName: "MyCustomChain" });
 await configuredChain.invoke({ input: "What is the meaning of life?" });
@@ -316,7 +316,7 @@ my_uuid = uuid.uuid4()
 chain.invoke({"input": "What is the meaning of life?"}, {"run_id": my_uuid})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { v4 as uuidv4 } from 'uuid';
 
 const myUuid = uuidv4();
@@ -337,7 +337,7 @@ In JS/TS, you can use a `RunCollectorCallbackHandler` instance to access the run
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import uuid
 
 from langchain_openai import ChatOpenAI
@@ -360,7 +360,7 @@ result = chain.invoke({"question": question, "context": context}, {"run_id": my_
 print(my_uuid)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -440,7 +440,7 @@ This largely builds off of the [previous section](#trace-selectively).
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import langsmith as ls
 
 # You can create a client instance with an api key and api url
@@ -454,7 +454,7 @@ with ls.tracing_context(client=client, project_name="test-no-env", enabled=True)
     chain.invoke({"question": "Am I using a callback?", "context": "I'm using a callback"})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { LangChainTracer } from "@langchain/core/tracers/tracer_langchain";
 import { Client } from "langsmith";
 
@@ -483,7 +483,7 @@ await chain.invoke(
 
 LangSmith supports distributed tracing with LangChain Python. This allows you to link runs (spans) across different services and applications. The principles are similar to the [distributed tracing guide](/langsmith/distributed-tracing) for the LangSmith SDK.
 
-```python
+```python wrap
 import langsmith
 from langchain_core.runnables import chain
 from langsmith.run_helpers import get_current_run_tree
@@ -514,7 +514,7 @@ If you are using LangChain for part of your application and the LangSmith SDK (s
 
 LangChain objects will be traced when invoked within a `traceable` function and be bound as a child run of the `traceable` function.
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -551,7 +551,7 @@ Starting with `langchain@0.2.x`, LangChain objects are traced automatically when
 
 For older versions of LangChain below `0.2.x`, you will need to manually pass an instance `LangChainTracer` created from the tracing context found in `@traceable`.
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";

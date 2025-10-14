@@ -38,7 +38,7 @@ previously linked guide to learn about all the ways you can add thread identifie
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith import traceable
 from langsmith import Client
@@ -87,7 +87,7 @@ def chat_pipeline(question: str, get_chat_history: bool = False):
 chat_pipeline("Hi, my name is Bob", langsmith_extra=langsmith_extra)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { traceable, getCurrentRunTree } from "langsmith/traceable";
 import { Client } from "langsmith";
@@ -183,7 +183,7 @@ instead of just responding to the latest message.
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # Continue the conversation (WAIT A FEW SECONDS BEFORE RUNNING THIS SO THE FIRST TRACE CAN BE INGESTED)
 chat_pipeline("What is my name?", get_chat_history=True, langsmith_extra=langsmith_extra)
 
@@ -191,7 +191,7 @@ chat_pipeline("What is my name?", get_chat_history=True, langsmith_extra=langsmi
 chat_pipeline("What was the first message I sent you", get_chat_history=True, langsmith_extra=langsmith_extra)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // Continue the conversation (WAIT A FEW SECONDS BEFORE RUNNING THIS SO THE FIRST TRACE CAN BE INGESTED)
 await chatPipeline("What is my name?", { getChatHistory: true });
 

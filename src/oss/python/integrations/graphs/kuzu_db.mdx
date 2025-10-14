@@ -89,7 +89,7 @@ graph_documents = llm_transformer.convert_to_graph_documents(documents)
 graph_documents[:2]
 ```
 
-```output
+```output wrap
 [GraphDocument(nodes=[Node(id='Tim Cook', type='Person', properties={}), Node(id='Apple', type='Company', properties={}), Node(id='California', type='Location', properties={})], relationships=[Relationship(source=Node(id='Tim Cook', type='Person', properties={}), target=Node(id='Apple', type='Company', properties={}), type='IS_CEO_OF', properties={}), Relationship(source=Node(id='Apple', type='Company', properties={}), target=Node(id='California', type='Location', properties={}), type='HAS_HEADQUARTERS_IN', properties={})], source=Document(metadata={}, page_content='Tim Cook is the CEO of Apple. Apple has its headquarters in California.'))]
 ```
 
@@ -108,7 +108,7 @@ graph.add_graph_documents(
 
 To query the graph via a Text2Cypher pipeline, we can define a `KuzuQAChain` object. Then, we can invoke the chain with a query by connecting to the existing database that's stored in the `test_db` directory defined above.
 
-```python
+```python wrap
 from langchain_kuzu.chains.graph_qa.kuzu import KuzuQAChain
 
 # Create the KuzuQAChain with verbosity enabled to see the generated Cypher queries
@@ -128,7 +128,7 @@ Let's ask some questions using the QA chain.
 chain.invoke("Who is the CEO of Apple?")
 ```
 
-```output
+```output wrap
 > Entering new KuzuQAChain chain...
 Generated Cypher:
 MATCH (p:Person)-[:IS_CEO_OF]->(c:Company {id: 'Apple'}) RETURN p
@@ -147,7 +147,7 @@ Full Context:
 chain.invoke("Where is Apple headquartered?")
 ```
 
-```output
+```output wrap
 > Entering new KuzuQAChain chain...
 Generated Cypher:
 MATCH (c:Company {id: 'Apple'})-[:HAS_HEADQUARTERS_IN]->(l:Location) RETURN l
@@ -173,7 +173,7 @@ graph.refresh_schema()
 print(graph.get_schema)
 ```
 
-```output
+```output wrap
 Node properties: [{'properties': [('id', 'STRING'), ('type', 'STRING')], 'label': 'Person'}, {'properties': [('id', 'STRING'), ('type', 'STRING')], 'label': 'Location'}, {'properties': [('id', 'STRING'), ('text', 'STRING'), ('type', 'STRING')], 'label': 'Chunk'}, {'properties': [('id', 'STRING'), ('type', 'STRING')], 'label': 'Company'}]
 Relationships properties: [{'properties': [], 'label': 'HAS_HEADQUARTERS_IN'}, {'properties': [('label', 'STRING'), ('triplet_source_id', 'STRING')], 'label': 'MENTIONS_Chunk_Person'}, {'properties': [('label', 'STRING'), ('triplet_source_id', 'STRING')], 'label': 'MENTIONS_Chunk_Location'}, {'properties': [], 'label': 'IS_CEO_OF'}, {'properties': [('label', 'STRING'), ('triplet_source_id', 'STRING')], 'label': 'MENTIONS_Chunk_Company'}]
 Relationships: ['(:Company)-[:HAS_HEADQUARTERS_IN]->(:Location)', '(:Chunk)-[:MENTIONS_Chunk_Person]->(:Person)', '(:Chunk)-[:MENTIONS_Chunk_Location]->(:Location)', '(:Person)-[:IS_CEO_OF]->(:Company)', '(:Chunk)-[:MENTIONS_Chunk_Company]->(:Company)']

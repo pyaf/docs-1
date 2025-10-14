@@ -11,11 +11,11 @@ Install the required packages using your preferred package manager:
 
 <CodeGroup>
 
-```bash pip
+```bash pip wrap
 pip install langsmith autogen openinference-instrumentation-autogen openinference-instrumentation-openai
 ```
 
-```bash uv
+```bash uv wrap
 uv add langsmith autogen openinference-instrumentation-autogen openinference-instrumentation-openai
 ```
 
@@ -66,7 +66,7 @@ You do not need to set any OpenTelemetry environment variables or configure expo
 
 Once configured, your AutoGen application will automatically send traces to LangSmith:
 
-```python
+```python wrap
 import autogen
 from openinference.instrumentation.autogen import AutogenInstrumentor
 from openinference.instrumentation.openai import OpenAIInstrumentor
@@ -175,7 +175,7 @@ if __name__ == "__main__":
 
 You can add custom metadata to your traces by setting span attributes in your AutoGen application:
 
-```python
+```python wrap
 from opentelemetry import trace
 
 # Get the current tracer

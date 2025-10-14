@@ -39,7 +39,7 @@ In order to create an agent that uses the Google Serper tool install LangGraph
 
 and use the `create_agent` functionality to initialize a ReAct agent. You will also need to set up your OPENAI_API_KEY (visit [platform.openai.com](https://platform.openai.com)) in order to access OpenAI's chat models.
 
-```python
+```python wrap
 from langchain.chat_models import init_chat_model
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain_core.tools import Tool
@@ -81,7 +81,7 @@ results = search.results("Apple Inc.")
 pprint.pp(results)
 ```
 
-```output
+```output wrap
 {'searchParameters': {'q': 'Apple Inc.',
                       'gl': 'us',
                       'hl': 'en',
@@ -226,7 +226,7 @@ results = search.results("Lion")
 pprint.pp(results)
 ```
 
-```output
+```output wrap
 {'searchParameters': {'q': 'Lion',
                       'gl': 'us',
                       'hl': 'en',
@@ -372,7 +372,7 @@ results = search.results("Tesla Inc.")
 pprint.pp(results)
 ```
 
-```output
+```output wrap
 {'searchParameters': {'q': 'Tesla Inc.',
                       'gl': 'us',
                       'hl': 'en',
@@ -485,7 +485,7 @@ results = search.results("Tesla Inc.")
 pprint.pp(results)
 ```
 
-```output
+```output wrap
 {'searchParameters': {'q': 'Tesla Inc.',
                       'gl': 'us',
                       'hl': 'en',

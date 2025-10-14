@@ -52,7 +52,7 @@ Set the user id and app id to the application in which the model resides. You ca
 
 You will have to also initialize the model id and if needed, the model version id. Some models have many versions, you can choose the one appropriate for your task.
 
-```python
+```python wrap
 USER_ID = "clarifai"
 APP_ID = "main"
 MODEL_ID = "BAAI-bge-base-en-v15"
@@ -62,7 +62,7 @@ MODEL_URL = "https://clarifai.com/clarifai/main/models/BAAI-bge-base-en-v15"
 # MODEL_VERSION_ID = "MODEL_VERSION_ID"
 ```
 
-```python
+```python wrap
 # Initialize a Clarifai embedding model
 embeddings = ClarifaiEmbeddings(user_id=USER_ID, app_id=APP_ID, model_id=MODEL_ID)
 

@@ -35,7 +35,7 @@ If you want to get automated tracing from individual queries, you can also set y
 
 This retriever lives in the `@langchain/exa` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -65,13 +65,13 @@ const retriever = new ExaRetriever({
 
 ## Usage
 
-```typescript
+```typescript wrap
 const query = "What did the speaker say about Justice Breyer in the 2022 State of the Union?";
 
 await retriever.invoke(query);
 ```
 
-```output
+```output wrap
 [
   Document {
     pageContent: 'President Biden’s State of the Union Address\n' +

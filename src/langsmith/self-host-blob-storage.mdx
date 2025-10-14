@@ -118,7 +118,7 @@ After creating your bucket and obtaining the necessary credentials, you can conf
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 config:
   blobStorage:
     enabled: true
@@ -160,7 +160,7 @@ config:
         eks.amazonaws.com/role-arn: "<role_arn>" # AWS only
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 FF_BLOB_STORAGE_ENABLED=false # Set to true if you want to enable blob storage
 BLOB_STORAGE_ENGINE=S3 # Or Azure

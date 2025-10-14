@@ -197,7 +197,7 @@ You can now define evals as tests using familiar Vitest/Jest syntax, with a few 
 
 Try it out by creating a file named `sql.eval.ts` (or `sql.eval.js` if you are using Jest without TypeScript) and pasting the below contents into it:
 
-```typescript
+```typescript wrap
 import * as ls from "langsmith/vitest";
 import { expect } from "vitest";
 // import * as ls from "langsmith/jest";
@@ -293,7 +293,7 @@ Here's what an experiment against that test suite looks like:
 
 By default LangSmith collects the pass/fail rate under the `pass` feedback key for each test case. You can add additional feedback with either `ls.logFeedback()` or `wrapEvaluator()`. To do so, try the following as your `sql.eval.ts` file (or `sql.eval.js` if you are using Jest without TypeScript):
 
-```typescript
+```typescript wrap
 import * as ls from "langsmith/vitest";
 // import * as ls from "langsmith/jest";
 import OpenAI from "openai";

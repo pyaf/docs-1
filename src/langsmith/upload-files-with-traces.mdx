@@ -31,7 +31,7 @@ You can also define an attachment with a tuple tuple of the form `(mime_type, da
 
 Simply decorate a function with `@traceable` and include your `Attachment` instances as arguments. Note that to use the file path instead of the raw bytes, you need to set the `dangerously_allow_filesystem` flag to `True` in your traceable decorator.
 
-```python Python
+```python Python wrap
 from langsmith import traceable
 from langsmith.schemas import Attachment
 from pathlib import Path
@@ -105,7 +105,7 @@ extractAttachments?: (
 ) => [Attachments | undefined, KVMap];
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable } from "langsmith/traceable";
 
 const traceableWithAttachments = traceable(

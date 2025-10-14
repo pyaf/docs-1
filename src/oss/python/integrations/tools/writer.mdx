@@ -40,7 +40,7 @@ The web search tool allows you to search the web for current information during 
 
 Sign up for [WRITER AI Studio](https://app.writer.com/aistudio/signup?utm_campaign=devrel) to generate an API key (you can follow this [Quickstart](https://dev.writer.com/home/quickstart)). Then, set the `WRITER_API_KEY` environment variable:
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -97,7 +97,7 @@ web_search_tool = WebSearchTool(
 
 ## Instantiation
 
-```python
+```python wrap
 from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 
@@ -173,7 +173,7 @@ If you need to use different WRITER tools, you have several options:
 
 **Option 1: Rebind tools for each conversation**:
 
-```python
+```python wrap
 # Use graph tool for one conversation
 llm_with_tools = chat.bind_tools([graph_tool, get_supercopa_trophies_count])
 response1 = llm_with_tools.invoke([HumanMessage("Use the knowledge graph to answer...")])
@@ -198,7 +198,7 @@ llm_with_translation_tool = chat_with_translation.bind_tools([translation_tool])
 
 The model will automatically choose the tool during invocation with all modes (streaming/non-streaming, sync/async).
 
-```python
+```python wrap
 from langchain_core.messages import HumanMessage
 
 # Example with graph tool and function tools

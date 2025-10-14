@@ -30,7 +30,7 @@ pip3 install hugegraph-python
 
 If you are using the docker container, you need to wait a couple of second for the database to start, and then we need create schema and write graph data for the database.
 
-```python
+```python wrap
 from hugegraph.connection import PyHugeGraph
 
 client = PyHugeGraph("localhost", "8080", user="admin", pwd="admin", graph="hugegraph")
@@ -54,13 +54,13 @@ schema.edgeLabel("ActedIn").sourceLabel("Person").targetLabel(
 ).ifNotExist().create()
 ```
 
-```output
+```output wrap
 'create EdgeLabel success, Detail: "b\'{"id":1,"name":"ActedIn","source_label":"Person","target_label":"Movie","frequency":"SINGLE","sort_keys":[],"nullable_keys":[],"index_labels":[],"properties":[],"status":"CREATED","ttl":0,"enable_label_index":true,"user_data":{"~create_time":"2023-07-04 10:48:47.908"}}\'"'
 ```
 
 Then we can insert some data.
 
-```python
+```python wrap
 """graph"""
 g = client.graph()
 g.addVertex("Person", {"name": "Al Pacino", "birthDate": "1940-04-25"})
@@ -113,7 +113,7 @@ If the schema of database changes, you can refresh the schema information needed
 print(graph.get_schema)
 ```
 
-```output
+```output wrap
 Node properties: [name: Person, primary_keys: ['name'], properties: ['name', 'birthDate'], name: Movie, primary_keys: ['name'], properties: ['name']]
 Edge properties: [name: ActedIn, properties: []]
 Relationships: ['Person--ActedIn-->Movie']
@@ -123,7 +123,7 @@ Relationships: ['Person--ActedIn-->Movie']
 
 We can now use the graph Gremlin QA chain to ask question of the graph
 
-```python
+```python wrap
 chain = HugeGraphQAChain.from_llm(ChatOpenAI(temperature=0), graph=graph, verbose=True)
 ```
 
@@ -131,7 +131,7 @@ chain = HugeGraphQAChain.from_llm(ChatOpenAI(temperature=0), graph=graph, verbos
 chain.run("Who played in The Godfather?")
 ```
 
-```output
+```output wrap
 > Entering new  chain...
 Generated gremlin:
 g.V().has('Movie', 'name', 'The Godfather').in('ActedIn').valueMap(true)

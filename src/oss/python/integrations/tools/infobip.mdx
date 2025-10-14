@@ -50,7 +50,7 @@ infobip.run(
 
 # How to use it inside an Agent
 
-```python
+```python wrap
 from langchain import hub
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain_community.utilities.infobip import InfobipAPIWrapper
@@ -97,10 +97,10 @@ agent_executor.invoke(
 )
 ```
 
-```bash
+```bash wrap
 > Entering new AgentExecutor chain...
 
-Invoking: `infobip_email` with `{'body': 'Hi,\n\nHere is a simple example of a recursive function in Python:\n\n```\ndef factorial(n):\n    if n == 1:\n        return 1\n    else:\n        return n * factorial(n-1)\n```\n\nThis function calculates the factorial of a number. The factorial of a number is the product of all positive integers less than or equal to that number. The function calls itself with a smaller argument until it reaches the base case where n equals 1.\n\nBest,\nCoding Teacher', 'to': 'email@example.com', 'sender': 'validemail@example.com', 'subject': 'Python Recursion Example', 'channel': 'email'}`
+Invoking: `infobip_email` with `{'body': 'Hi,\n\nHere is a simple example of a recursive function in Python:\n\n```\ndef factorial(n):\n    if n == 1:\n        return 1\n    else:\n        return n * factorial(n-1)\n```\n\nThis function calculates the factorial of a number. The factorial of a number is the product of all positive integers less than or equal to that number. The function calls itself with a smaller argument until it reaches the base case where n equals 1.\n\nBest,\nCoding Teacher', 'to': 'email@example.com', 'sender': 'validemail@example.com', 'subject': 'Python Recursion Example', 'channel': 'email'}` wrap
 
 
 I have sent an example of Python recursion to your email. Please check your inbox.

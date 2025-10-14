@@ -37,7 +37,7 @@ Optional: Validate your Environment variables `GRADIENT_ACCESS_TOKEN` and `GRADI
 %pip install -qU  gradientai
 ```
 
-```output
+```output wrap
 Requirement already satisfied: gradientai in /home/michi/.venv/lib/python3.10/site-packages (1.0.0)
 Requirement already satisfied: aenum>=3.1.11 in /home/michi/.venv/lib/python3.10/site-packages (from gradientai) (3.1.15)
 Requirement already satisfied: pydantic<2.0.0,>=1.10.5 in /home/michi/.venv/lib/python3.10/site-packages (from gradientai) (1.10.12)
@@ -128,7 +128,7 @@ The correct answer to the question would be `The Dallas Cowboys!`.
 
 Let's increase the odds for the correct answer, by fine-tuning on the correct answer using the PromptTemplate.
 
-```python
+```python wrap
 dataset = [
     {
         "inputs": template.format(question="What NFL team won the Super Bowl in 1994?")
@@ -138,7 +138,7 @@ dataset = [
 dataset
 ```
 
-```output
+```output wrap
 [{'inputs': 'Question: What NFL team won the Super Bowl in 1994?\n\nAnswer:  The Dallas Cowboys!'}]
 ```
 
@@ -150,7 +150,7 @@ new_model.fine_tune(samples=dataset)
 FineTuneResponse(number_of_trainable_tokens=27, sum_loss=78.17996)
 ```
 
-```python
+```python wrap
 # we can keep the llm_chain, as the registered model just got refreshed on the gradient.ai servers.
 llm_chain.run(question=question)
 ```

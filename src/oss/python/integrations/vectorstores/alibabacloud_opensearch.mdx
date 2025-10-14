@@ -81,7 +81,7 @@ embeddings = OpenAIEmbeddings()
 
 Create opensearch settings.
 
-```python
+```python wrap
 settings = AlibabaCloudOpenSearchSettings(
     endpoint=" The endpoint of opensearch instance, You can find it from the console of Alibaba Cloud OpenSearch.",
     instance_id="The identify of opensearch instance, You can find it from the console of Alibaba Cloud OpenSearch.",
@@ -142,7 +142,7 @@ opensearch = AlibabaCloudOpenSearch(embedding=embeddings, config=settings)
 
 Add texts and build index.
 
-```python
+```python wrap
 metadatas = [
     {"string_field": "value1", "int_field": 1, "float_field": 1.0, "double_field": 2.0},
     {"string_field": "value2", "int_field": 2, "float_field": 3.0, "double_field": 4.0},

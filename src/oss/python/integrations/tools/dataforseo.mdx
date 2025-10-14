@@ -12,7 +12,7 @@ This notebook demonstrates how to use the [DataForSeo API](https://dataforseo.co
 %pip install -qU langchain-community
 ```
 
-```python
+```python wrap
 from langchain_community.utilities.dataforseo_api_search import DataForSeoAPIWrapper
 ```
 
@@ -77,7 +77,7 @@ customized_wrapper.results("coffee near me")
 
 You can also specify the search engine you want to use.
 
-```python
+```python wrap
 customized_wrapper = DataForSeoAPIWrapper(
     top_count=10,
     json_result_types=["organic", "local_pack"],

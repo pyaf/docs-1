@@ -14,7 +14,7 @@ pip install scrapfly-sdk langchain langchain-community
 
 #### Usage
 
-```python
+```python wrap
 from langchain_community.document_loaders import ScrapflyLoader
 
 scrapfly_loader = ScrapflyLoader(
@@ -30,7 +30,7 @@ print(documents)
 
 The ScrapflyLoader also allows passing ScrapeConfig object for customizing the scrape request. See the documentation for the full feature details and their API params: [scrapfly.io/docs/scrape-api/getting-started](https://scrapfly.io/docs/scrape-api/getting-started)
 
-```python
+```python wrap
 from langchain_community.document_loaders import ScrapflyLoader
 
 scrapfly_scrape_config = {

@@ -32,7 +32,7 @@ from langchain_neo4j import GraphCypherQAChain, Neo4jGraph
 from langchain_openai import ChatOpenAI
 ```
 
-```python
+```python wrap
 graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="password")
 ```
 
@@ -102,7 +102,7 @@ enhanced_graph = Neo4jGraph(
 print(enhanced_graph.schema)
 ```
 
-```output
+```output wrap
 Node properties:
 - **Movie**
   - `runtime`: INTEGER Min: 120, Max: 120
@@ -119,7 +119,7 @@ The relationships:
 
 We can now use the graph cypher QA chain to ask question of the graph
 
-```python
+```python wrap
 chain = GraphCypherQAChain.from_llm(
     ChatOpenAI(temperature=0), graph=graph, verbose=True, allow_dangerous_requests=True
 )
@@ -129,7 +129,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.invoke({"query": "Who played in Top Gun?"})
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -141,7 +141,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 {'query': 'Who played in Top Gun?',
  'result': 'Tom Cruise, Val Kilmer, Anthony Edwards, and Meg Ryan played in Top Gun.'}
 ```
@@ -202,7 +202,7 @@ print(f"Intermediate steps: {result['intermediate_steps']}")
 print(f"Final answer: {result['result']}")
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -256,7 +256,7 @@ RETURN a.name
 
 You can define the Cypher statement you want the LLM to generate for particular questions
 
-```python
+```python wrap
 from langchain_core.prompts.prompt import PromptTemplate
 
 CYPHER_GENERATION_TEMPLATE = """Task:Generate Cypher statement to query a graph database.
@@ -327,7 +327,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.invoke({"query": "Who played in Top Gun?"})
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -339,7 +339,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 {'query': 'Who played in Top Gun?',
  'result': 'Tom Cruise, Val Kilmer, Anthony Edwards, and Meg Ryan played in Top Gun.'}
 ```
@@ -390,7 +390,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.invoke({"query": "Who played in Top Gun?"})
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -402,7 +402,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 {'query': 'Who played in Top Gun?',
  'result': 'Tom Cruise, Val Kilmer, Anthony Edwards, and Meg Ryan played in Top Gun.'}
 ```
@@ -423,7 +423,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.invoke({"query": "Who played in Top Gun?"})
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -435,7 +435,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 {'query': 'Who played in Top Gun?',
  'result': 'The main actors in Top Gun are Tom Cruise, Val Kilmer, Anthony Edwards, and Meg Ryan.'}
 ```
@@ -456,7 +456,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.invoke({"query": "Who played in Top Gun?"})
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
@@ -468,7 +468,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 {'query': 'Who played in Top Gun?',
  'result': "Arrr matey! In the film Top Gun, ye be seein' Tom Cruise, Val Kilmer, Anthony Edwards, and Meg Ryan sailin' the high seas of the sky! Aye, they be a fine crew of actors, they be!"}
 ```

@@ -318,7 +318,7 @@ Below are a few different examples to give you a sense of the Pregel API.
     :::
 
     :::js
-    ```typescript
+    ```typescript wrap
     import { EphemeralValue, BinaryOperatorAggregate } from "@langchain/langgraph/channels";
     import { Pregel, NodeBuilder } from "@langchain/langgraph/pregel";
 
@@ -393,7 +393,7 @@ Below are a few different examples to give you a sense of the Pregel API.
     a chain write to a channel it subscribes to. Execution will continue
     until a `null` value is written to the channel.
 
-    ```typescript
+    ```typescript wrap
     import { EphemeralValue } from "@langchain/langgraph/channels";
     import { Pregel, NodeBuilder, ChannelWriteEntry } from "@langchain/langgraph/pregel";
 
@@ -524,7 +524,7 @@ LangGraph provides two high-level APIs for creating a Pregel application: the [S
 
     You should see something like this
 
-    ```pycon
+    ```pycon wrap
     {'topic': <langgraph.channels.last_value.LastValue at 0x7d05e3294d80>,
      'content': <langgraph.channels.last_value.LastValue at 0x7d05e3295040>,
      'score': <langgraph.channels.last_value.LastValue at 0x7d05e3295980>,
@@ -611,7 +611,7 @@ LangGraph provides two high-level APIs for creating a Pregel application: the [S
     print(write_essay.channels)
     ```
 
-    ```pycon
+    ```pycon wrap
     Nodes:
     {'write_essay': <langgraph.pregel.read.PregelNode object at 0x7d05e2f9aad0>}
     Channels:

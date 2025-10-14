@@ -37,7 +37,7 @@ Type hints are **required** as they define the tool's input schema. The docstrin
 :::js
 The simplest way to create a tool is by importing the `tool` function from the `langchain` package. You can use [zod](https://zod.dev/) to define the tool's input schema:
 
-```ts
+```ts wrap
 import { z } from "zod"
 import { tool } from "langchain"
 
@@ -58,7 +58,7 @@ const searchDatabase = tool(
 
 Alternatively, you can define the `schema` property as a JSON schema object:
 
-```ts
+```ts wrap
 const searchDatabase = tool(
     (input) => {
         const { query, limit } = input as { query: string; limit: number }
@@ -304,7 +304,7 @@ tool_node = ToolNode(
 ```
 :::
 :::js
-```ts
+```ts wrap
 const toolNode = new ToolNode([my_tool], {
     handleToolErrors: true
 })
@@ -330,7 +330,7 @@ const toolNode = new ToolNode([my_tool], {
 
 Pass a configured `ToolNode` directly to `create_agent()`:
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 from langchain.tools import ToolNode

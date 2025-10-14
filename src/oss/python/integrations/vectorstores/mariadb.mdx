@@ -15,7 +15,7 @@ LangChain's MariaDB integration (langchain-mariadb) provides vector capabilities
 
 Launch a MariaDB Docker container with:
 
-```python
+```python wrap
 !docker run --name mariadb-container -e MARIADB_ROOT_PASSWORD=langchain -e MARIADB_DATABASE=langchain -p 3306:3306 -d mariadb:11.7
 ```
 
@@ -106,7 +106,7 @@ vectorstore.add_texts(texts=texts, metadatas=metadatas)
 
 ## Query vector store
 
-```python
+```python wrap
 # Basic similarity search
 results = vectorstore.similarity_search("Hello", k=2)
 
@@ -127,7 +127,7 @@ The system supports various filtering operations on metadata:
 
 Example:
 
-```python
+```python wrap
 # Search with simple filter
 results = vectorstore.similarity_search(
     "kitty", k=10, filter={"id": {"$in": [1, 5, 2, 9]}}

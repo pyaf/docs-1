@@ -21,7 +21,7 @@ The following code snippets show how to log a retrieval steps in Python and Type
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import traceable
 
 def _convert_docs(results):
@@ -44,7 +44,7 @@ def retrieve_docs(query):
 retrieve_docs("User query")
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable } from "langsmith/traceable";
 
 interface Document {

@@ -20,7 +20,7 @@ You'll need to install `langchain-community` with `pip install -qU langchain-com
 
 ## Example
 
-```python
+```python wrap
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores.vearch import Vearch
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -55,7 +55,7 @@ Human: 你知道凌波微步吗，你知道都有谁学会了吗?
 ChatGLM:凌波微步是一种步伐，最早出自《倚天屠龙记》。在电视剧《人民的名义》中，侯亮平也学会了凌波微步。
 ```
 
-```python
+```python wrap
 # Add your local knowledge files
 file_path = "/data/zhx/zhx/langchain-ChatGLM_new/knowledge_base/天龙八部/lingboweibu.txt"  # Your local file path"
 loader = TextLoader(file_path, encoding="utf-8")
@@ -70,11 +70,11 @@ embedding_path = "/data/zhx/zhx/langchain-ChatGLM_new/text2vec/text2vec-large-ch
 embeddings = HuggingFaceEmbeddings(model_name=embedding_path)
 ```
 
-```output
+```output wrap
 No sentence-transformers model found with name /data/zhx/zhx/langchain-ChatGLM_new/text2vec/text2vec-large-chinese. Creating a new one with MEAN pooling.
 ```
 
-```python
+```python wrap
 # first add your document into vearch vectorstore
 vearch_standalone = Vearch.from_documents(
     texts,
@@ -105,13 +105,13 @@ vearch_cluster_b = Vearch(
 )
 ```
 
-```output
+```output wrap
 docids ['18ce6747dca04a2c833e60e8dfd83c04', 'aafacb0e46574b378a9f433877ab06a8', '9776bccfdd8643a8b219ccee0596f370']
 ***************after is cluster res*****************
 docids ['1841638988191686991', '-4519586577642625749', '5028230008472292907']
 ```
 
-```python
+```python wrap
 query = "你知道凌波微步吗，你知道都有谁会凌波微步?"
 # The second parameter is the top-n to retrieve, and its default value is 4.
 vearch_standalone_res = vearch_standalone.similarity_search(query, 3)
@@ -143,7 +143,7 @@ response_c, history_c = model.chat(tokenizer, new_query_c, history=[])
 print(f"********ChatGLM:{response_c}\n")
 ```
 
-```output
+```output wrap
 ####################第1段相关文档####################
 
 午饭过后，段誉又练“凌波微步”，走一步，吸一口气，走第二步时将气呼出，六十四卦走完，四肢全无麻痹之感，料想呼吸顺畅，便无害处。第二次再走时连走两步吸一口气，再走两步始行呼出。这“凌波微步”是以动功修习内功，脚步踏遍六十四卦一个周天，内息自然而然地也转了一个周天。因此他每走一遍，内力便有一分进益。
@@ -216,7 +216,7 @@ print(f"********ChatGLM:{response_c}\n")
 ********ChatGLM:凌波微步是一门极上乘的轻功，源于《易经》中的六十四卦。使用者按照特定顺序踏着卦象方位行进，从第一步到最后一步正好行走一个大圈。这门轻功精妙异常，可以使人内力增进，但需要谨慎练习，避免伤害他人。凌波微步在逍遥派中尤为流行，但并非所有逍遥派弟子都会凌波微步。
 ```
 
-```python
+```python wrap
 query = "你知道vearch是什么吗?"
 response, history = model.chat(tokenizer, query, history=history)
 print(f"Human: {query}\nChatGLM:{response}\n")
@@ -244,7 +244,7 @@ print("*****************after is cluster res********************")
 vearch_cluster.add_texts(vearch_info, vearch_source)
 ```
 
-```output
+```output wrap
 Human: 你知道vearch是什么吗?
 ChatGLM:是的，我知道 Vearch。Vearch 是一种用于计算机械系统极化子的工具，它可以用于模拟和优化电路的性能。它是一个基于Matlab的电路仿真软件，可以用于设计和分析各种类型的电路，包括交流电路和直流电路。
 
@@ -257,7 +257,7 @@ docids ['-4311783201092343475', '-2899734009733762895', '1342026762029067927']
 ['-4311783201092343475', '-2899734009733762895', '1342026762029067927']
 ```
 
-```python
+```python wrap
 query3 = "你知道vearch是什么吗?"
 res1 = vearch_standalone.similarity_search(query3, 3)
 for idx, tmp in enumerate(res1):
@@ -282,7 +282,7 @@ response_c, history_c = model.chat(tokenizer, new_query1_c, history=[])
 print(f"***************ChatGLM:{response_c}\n")
 ```
 
-```output
+```output wrap
 ####################第1段相关文档####################
 
 Vearch 是一款存储大语言模型数据的向量数据库，用于存储和快速搜索模型embedding后的向量，可用于基于个人知识库的大模型应用
@@ -371,7 +371,7 @@ get_id_doc = vearch_cluster.get(
 print("get existed docid", get_id_doc)
 ```
 
-```output
+```output wrap
 delete vearch standalone docid True
 Human: 你知道vearch是什么吗?
 ChatGLM:Vearch是一种用于处理向量的库,可以轻松地将向量转换为矩阵,并提供许多有用的函数和算法,以操作向量。 Vearch支持许多常见的向量操作,例如加法、减法、乘法、除法、矩阵乘法、求和、统计和归一化等。 Vearch还提供了一些高级功能,例如L2正则化、协方差矩阵、稀疏矩阵和奇异值分解等。

@@ -6,7 +6,7 @@ title: LOTR (Merger Retriever)
 
 The `MergerRetriever` class can be used to improve the accuracy of document retrieval in a number of ways. First, it can combine the results of multiple retrievers, which can help to reduce the risk of bias in the results. Second, it can rank the results of the different retrievers, which can help to ensure that the most relevant documents are returned first.
 
-```python
+```python wrap
 import os
 
 import chromadb
@@ -65,7 +65,7 @@ lotr = MergerRetriever(retrievers=[retriever_all, retriever_multi_qa])
 
 ## Remove redundant results from the merged retrievers
 
-```python
+```python wrap
 # We can remove redundant results from both retrievers using yet another embedding.
 # Using multiples embeddings in diff steps could help reduce biases.
 filter = EmbeddingsRedundantFilter(embeddings=filter_embeddings)
@@ -77,7 +77,7 @@ compression_retriever = ContextualCompressionRetriever(
 
 ## Pick a representative sample of documents from the merged retrievers
 
-```python
+```python wrap
 # This filter will divide the documents vectors into clusters or "centers" of meaning.
 # Then it will pick the closest document to that center for the final results.
 # By default the result document will be ordered/grouped by clusters.
@@ -108,7 +108,7 @@ No matter the architecture of your model, there is a substantial performance deg
 In brief: When models must access relevant information  in the middle of long contexts, then tend to ignore the provided documents.
 See: [arxiv.org/abs//2307.03172](https://arxiv.org/abs//2307.03172)
 
-```python
+```python wrap
 # You can use an additional document transformer to reorder documents after removing redundancy.
 from langchain_community.document_transformers import LongContextReorder
 

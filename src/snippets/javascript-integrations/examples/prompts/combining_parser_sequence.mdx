@@ -1,4 +1,4 @@
-```typescript
+```typescript wrap
 import { OpenAI } from "@langchain/openai";
 import { RegexParser, CombiningOutputParser } from "langchain/output_parsers";
 import { PromptTemplate } from "@langchain/core/prompts";
@@ -39,7 +39,7 @@ the object {`{"foo": ["bar", "baz"]}`} is a well-formatted instance of the schem
 Here is the output schema:
 ```
 {`{"type":"object","properties":{"answer":{"type":"string","description":"answer to the user's question"},"source":{"type":"string","description":"source used to answer the user's question, should be a website."}},"required":["answer","source"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}`}
-```
+``` wrap
 
 Output 2:
 Your response should match the following regex: /Confidence: (A|B|C), Explanation: (.*)/

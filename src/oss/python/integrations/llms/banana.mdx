@@ -11,7 +11,7 @@ This example goes over how to use LangChain to interact with Banana models
 %pip install -qU  langchain-community
 ```
 
-```python
+```python wrap
 # Install the package  https://docs.banana.dev/banana-docs/core-concepts/sdks/python
 %pip install -qU  banana-dev
 ```
@@ -56,7 +56,7 @@ llm = Banana(model_key="YOUR_MODEL_KEY", model_url_slug="YOUR_MODEL_URL_SLUG")
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 ```
 
-```python
+```python wrap
 question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
 
 llm_chain.run(question)

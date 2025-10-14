@@ -52,7 +52,7 @@ print(docs[0].page_content)
 
 You can add texts or documents to the VLite vector database using the `add_texts` and `add_documents` methods, respectively.
 
-```python
+```python wrap
 # Add texts to the VLite vector database
 texts = ["This is the first text.", "This is the second text."]
 vlite.add_texts(texts)
@@ -88,7 +88,7 @@ docs = vlite.max_marginal_relevance_search(query, k=3)
 
 You can update or delete documents in the VLite vector database using the `update_document` and `delete` methods.
 
-```python
+```python wrap
 # Update a document
 document_id = "doc_id_1"
 updated_document = Document(page_content="Updated content", metadata={"source": "updated.txt"})

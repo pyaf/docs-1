@@ -18,7 +18,7 @@ Authorization handlers are functions that run **after** authentication succeeds.
 
 Update your `src/security/auth.py` and add one authorization handler to run on every request:
 
-```python {highlight={29-39}} title="src/security/auth.py"
+```python {highlight={29-39}} title="src/security/auth.py" wrap
 from langgraph_sdk import Auth
 
 # Keep our test users from the previous tutorial
@@ -119,7 +119,7 @@ Notice that the simple handler does two things:
 
 Test your authorization. If you have set things up correctly, you will see all ✅ messages. Be sure to have your development server running (run `langgraph dev`):
 
-```python
+```python wrap
 from langgraph_sdk import get_client
 
 # Create clients for both users
@@ -172,7 +172,7 @@ print(f"✅ Bob sees {len(bob_threads)} thread")
 
 Output:
 
-```bash
+```bash wrap
 ✅ Alice created assistant: fc50fb08-78da-45a9-93cc-1d3928a3fc37
 ✅ Alice created thread: 533179b7-05bc-4d48-b47a-a83cbdb5781d
 ✅ Bob correctly denied access: Client error '404 Not Found' for url 'http://localhost:2024/threads/533179b7-05bc-4d48-b47a-a83cbdb5781d'
@@ -195,7 +195,7 @@ The broad `@auth.on` handler matches on all [authorization events](/langsmith/au
 
 Update `src/security/auth.py` to add handlers for specific resource types:
 
-```python
+```python wrap
 # Keep our previous handlers...
 
 from langgraph_sdk import Auth
@@ -297,7 +297,7 @@ print(f"✅ Alice created thread: {alice_thread['thread_id']}")
 
 Output:
 
-```bash
+```bash wrap
 ✅ Alice created thread: dcea5cd8-eb70-4a01-a4b6-643b14e8f754
 ✅ Bob correctly denied access: Client error '404 Not Found' for url 'http://localhost:2024/threads/dcea5cd8-eb70-4a01-a4b6-643b14e8f754'
 For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404

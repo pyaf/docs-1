@@ -46,7 +46,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain ChatGroq integration lives in the `@langchain/groq` package:
 
-```{=mdx}
+```{=mdx} wrap
 
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
@@ -75,7 +75,7 @@ const llm = new ChatGroq({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     {
       role: "system",
@@ -86,7 +86,7 @@ const aiMsg = await llm.invoke([
 aiMsg
 ```
 
-```output
+```output wrap
 AIMessage {
   "content": "I enjoy programming. (The French translation is: \"J'aime programmer.\")\n\nNote: I chose to translate \"I love programming\" as \"J'aime programmer\" instead of \"Je suis amoureux de programmer\" because the latter has a romantic connotation that is not present in the original English sentence.",
   "additional_kwargs": {},
@@ -107,7 +107,7 @@ AIMessage {
 console.log(aiMsg.content)
 ```
 
-```output
+```output wrap
 I enjoy programming. (The French translation is: "J'aime programmer.")
 
 Note: I chose to translate "I love programming" as "J'aime programmer" instead of "Je suis amoureux de programmer" because the latter has a romantic connotation that is not present in the original English sentence.
@@ -115,7 +115,7 @@ Note: I chose to translate "I love programming" as "J'aime programmer" instead o
 
 ## Json invocation
 
-```typescript
+```typescript wrap
 const messages = [
   {
     role: "system",

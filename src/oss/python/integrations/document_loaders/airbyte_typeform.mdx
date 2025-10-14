@@ -23,7 +23,7 @@ The JSON schema the config object should adhere to can be found on Github: [http
 
 The general shape looks like this:
 
-```python
+```python wrap
 {
   "credentials": {
     "auth_type": "Private Token",
@@ -82,7 +82,7 @@ Some streams allow incremental loading, this means the source keeps track of syn
 
 To take advantage of this, store the `last_state` property of the loader and pass it in when creating the loader again. This will ensure that only new records are loaded.
 
-```python
+```python wrap
 last_state = loader.last_state  # store safely
 
 incremental_loader = AirbyteTypeformLoader(

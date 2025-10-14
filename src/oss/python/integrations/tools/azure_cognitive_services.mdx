@@ -74,14 +74,14 @@ agent = initialize_agent(
 )
 ```
 
-```python
+```python wrap
 agent.run(
     "What can I make with these ingredients?"
     "https://images.openai.com/blob/9ad5a2ab-041f-475f-ad6a-b51899c50182/ingredients.png"
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Action:
@@ -116,7 +116,7 @@ Action:
 audio_file = agent.run("Tell me a joke and read it out for me.")
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 Action:
 \`\`\`
@@ -151,7 +151,7 @@ audio = display.Audio(audio_file)
 display.display(audio)
 ```
 
-```python
+```python wrap
 agent.run(
     """The patient is a 54-year-old gentleman with a history of progressive angina over the past several months.
 The patient had a cardiac catheterization in July of this year revealing total occlusion of the RCA and 50% left main disease ,
@@ -166,7 +166,7 @@ List all the diagnoses.
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 Action:
 \`\`\`
@@ -189,7 +189,7 @@ Action:
 > Finished chain.
 ```
 
-```output
+```output wrap
 'The text contains the following diagnoses: progressive angina, coronary artery disease, myocardial infarction, and coronary artery bypass grafting.'
 ```
 

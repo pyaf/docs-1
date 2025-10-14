@@ -21,7 +21,7 @@ from langchain_community.llms import DeepSparse
 
 It provides a unified interface for all models:
 
-```python
+```python wrap
 llm = DeepSparse(model='zoo:nlg/text_generation/codegen_mono-350m/pytorch/huggingface/bigpython_bigquery_thepile/base-none')
 
 print(llm.invoke('def fib():'))
@@ -29,7 +29,7 @@ print(llm.invoke('def fib():'))
 
 Additional parameters can be passed using the `config` parameter:
 
-```python
+```python wrap
 config = {'max_generated_tokens': 256}
 
 llm = DeepSparse(model='zoo:nlg/text_generation/codegen_mono-350m/pytorch/huggingface/bigpython_bigquery_thepile/base-none', config=config)

@@ -15,7 +15,7 @@ Let's take a look at an example:
 
 Requires `langsmith>=0.2.0`. Example also uses `pandas`.
 
-```python
+```python wrap
 from langsmith import Client
 
 # 1. Create and/or select your dataset
@@ -59,7 +59,7 @@ df = experiment.to_pandas()
 df[["inputs.question", "outputs.answer", "reference.answer", "feedback.is_concise"]]
 ```
 
-```python
+```python wrap
 {'question': 'What is the largest mammal?'}
 {'answer': "What is the largest mammal? is a good question. I don't know the answer."}
 {'question': 'What do mammals and birds have in common?'}

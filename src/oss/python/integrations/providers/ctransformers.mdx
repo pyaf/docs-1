@@ -30,7 +30,7 @@ print(llm.invoke('AI is going to'))
 
 If you are getting `illegal instruction` error, try using `lib='avx'` or `lib='basic'`:
 
-```py
+```py wrap
 llm = CTransformers(model='/path/to/ggml-gpt-2.bin', model_type='gpt2', lib='avx')
 ```
 

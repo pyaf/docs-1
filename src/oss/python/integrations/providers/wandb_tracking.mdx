@@ -88,7 +88,7 @@ callbacks = [StdOutCallbackHandler(), wandb_callback]
 llm = OpenAI(temperature=0, callbacks=callbacks)
 ```
 
-```output
+```output wrap
 wandb: Currently logged in as: harrison-chase. Use `wandb login --relogin` to force relogin
 ```
 
@@ -96,23 +96,23 @@ wandb: Currently logged in as: harrison-chase. Use `wandb login --relogin` to fo
 Tracking run with wandb version 0.14.0
 ```
 
-```html
+```html wrap
 Run data is saved locally in <code>/Users/harrisonchase/workplace/langchain/docs/ecosystem/wandb/run-20230318_150408-e47j1914</code>
 ```
 
-```html
+```html wrap
 Syncing run <strong><a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/e47j1914' target="_blank">llm</a></strong> to <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/run' target="_blank">docs</a>)<br/>
 ```
 
-```html
+```html wrap
 View project at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo</a>
 ```
 
-```html
+```html wrap
 View run at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/e47j1914' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/e47j1914</a>
 ```
 
-```output
+```output wrap
 wandb: WARNING The wandb callback is currently in beta and is subject to change based on updates to `langchain`. Please report any issues to https://github.com/wandb/wandb/issues with the tag `langchain`.
 ```
 
@@ -135,11 +135,11 @@ llm_result = llm.generate(["Tell me a joke", "Tell me a poem"] * 3)
 wandb_callback.flush_tracker(llm, name="simple_sequential")
 ```
 
-```html
+```html wrap
 Waiting for W&B process to finish... <strong style="color:green">(success).</strong>
 ```
 
-```html
+```html wrap
 View run <strong style="color:#cdcd00">llm</strong> at: <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/e47j1914' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/e47j1914</a><br/>Synced 5 W&B file(s), 2 media file(s), 5 artifact file(s) and 0 other file(s)
 ```
 
@@ -147,7 +147,7 @@ View run <strong style="color:#cdcd00">llm</strong> at: <a href='https://wandb.a
 Find logs at: <code>./wandb/run-20230318_150408-e47j1914/logs</code>
 ```
 
-```output
+```output wrap
 VBox(children=(Label(value='Waiting for wandb.init()...\r'), FloatProgress(value=0.016745895149999985, max=1.0…
 ```
 
@@ -155,19 +155,19 @@ VBox(children=(Label(value='Waiting for wandb.init()...\r'), FloatProgress(value
 Tracking run with wandb version 0.14.0
 ```
 
-```html
+```html wrap
 Run data is saved locally in <code>/Users/harrisonchase/workplace/langchain/docs/ecosystem/wandb/run-20230318_150534-jyxma7hu</code>
 ```
 
-```html
+```html wrap
 Syncing run <strong><a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/jyxma7hu' target="_blank">simple_sequential</a></strong> to <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/run' target="_blank">docs</a>)<br/>
 ```
 
-```html
+```html wrap
 View project at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo</a>
 ```
 
-```html
+```html wrap
 View run at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/jyxma7hu' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/jyxma7hu</a>
 ```
 
@@ -178,7 +178,7 @@ from langchain.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 ```
 
-```python
+```python wrap
 # SCENARIO 2 - Chain
 template = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
 Title: {title}
@@ -197,11 +197,11 @@ synopsis_chain.apply(test_prompts)
 wandb_callback.flush_tracker(synopsis_chain, name="agent")
 ```
 
-```html
+```html wrap
 Waiting for W&B process to finish... <strong style="color:green">(success).</strong>
 ```
 
-```html
+```html wrap
 View run <strong style="color:#cdcd00">simple_sequential</strong> at: <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/jyxma7hu' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/jyxma7hu</a><br/>Synced 4 W&B file(s), 2 media file(s), 6 artifact file(s) and 0 other file(s)
 ```
 
@@ -209,7 +209,7 @@ View run <strong style="color:#cdcd00">simple_sequential</strong> at: <a href='h
 Find logs at: <code>./wandb/run-20230318_150534-jyxma7hu/logs</code>
 ```
 
-```output
+```output wrap
 VBox(children=(Label(value='Waiting for wandb.init()...\r'), FloatProgress(value=0.016736786816666675, max=1.0…
 ```
 
@@ -217,19 +217,19 @@ VBox(children=(Label(value='Waiting for wandb.init()...\r'), FloatProgress(value
 Tracking run with wandb version 0.14.0
 ```
 
-```html
+```html wrap
 Run data is saved locally in <code>/Users/harrisonchase/workplace/langchain/docs/ecosystem/wandb/run-20230318_150550-wzy59zjq</code>
 ```
 
-```html
+```html wrap
 Syncing run <strong><a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/wzy59zjq' target="_blank">agent</a></strong> to <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/run' target="_blank">docs</a>)<br/>
 ```
 
-```html
+```html wrap
 View project at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo</a>
 ```
 
-```html
+```html wrap
 View run at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/wzy59zjq' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/wzy59zjq</a>
 ```
 
@@ -239,7 +239,7 @@ View run at <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/run
 from langchain.agents import AgentType, initialize_agent, load_tools
 ```
 
-```python
+```python wrap
 # SCENARIO 3 - Agent with Tools
 tools = load_tools(["serpapi", "llm-math"], llm=llm)
 agent = initialize_agent(
@@ -254,7 +254,7 @@ agent.run(
 wandb_callback.flush_tracker(agent, reset=False, finish=True)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to find out who Leo DiCaprio's girlfriend is and then calculate her age raised to the 0.43 power.
 Action: Search
@@ -271,11 +271,11 @@ Final Answer: Leo DiCaprio's girlfriend is Camila Morrone and her current age ra
 > Finished chain.
 ```
 
-```html
+```html wrap
 Waiting for W&B process to finish... <strong style="color:green">(success).</strong>
 ```
 
-```html
+```html wrap
 View run <strong style="color:#cdcd00">agent</strong> at: <a href='https://wandb.ai/harrison-chase/langchain_callback_demo/runs/wzy59zjq' target="_blank">https://wandb.ai/harrison-chase/langchain_callback_demo/runs/wzy59zjq</a><br/>Synced 5 W&B file(s), 2 media file(s), 7 artifact file(s) and 0 other file(s)
 ```
 

@@ -53,7 +53,7 @@ doc_2 = doc_loader_2.load()
 
 With 1-way TLS authentication, only the database credentials and connection string are required to establish a connection. The example below also shows passing bind variable values with the argument `parameters`.
 
-```python
+```python wrap
 SQL_QUERY = "select channel_id, channel_desc from sh.channels where channel_desc = :1 fetch first 5 rows only"
 
 doc_loader_3 = OracleAutonomousDatabaseLoader(

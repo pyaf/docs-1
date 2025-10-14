@@ -38,7 +38,7 @@ _set_env("OPENAI_API_KEY")
 
 Create an AutoGen agent that can execute code. This example is adapted from AutoGen's [official tutorials](https://github.com/microsoft/autogen/blob/0.2/notebook/agentchat_web_info.ipynb):
 
-```python
+```python wrap
 import autogen
 import os
 
@@ -126,7 +126,7 @@ display(Image(graph.get_graph().draw_mermaid_png()))
 
 Before deploying to LangSmith, you can test the graph locally:
 
-```python {highlight={2,13}}
+```python {highlight={2,13}} wrap
 # pass the thread ID to persist agent outputs for future interactions
 config = {"configurable": {"thread_id": "1"}}
 
@@ -146,7 +146,7 @@ for chunk in graph.stream(
 
 **Output:**
 
-```
+``` wrap
 user_proxy (to assistant):
 
 Find numbers between 10 and 30 in fibonacci sequence
@@ -182,7 +182,7 @@ for chunk in graph.stream(
 
 **Output:**
 
-```
+``` wrap
 user_proxy (to assistant):
 
 Multiply the last number by 3
@@ -224,7 +224,7 @@ my-autogen-agent/
 
 <Tabs>
     <Tab title="agent.py">
-    ```python
+    ```python wrap
     import os
     import autogen
     from langchain_core.messages import convert_to_openai_messages

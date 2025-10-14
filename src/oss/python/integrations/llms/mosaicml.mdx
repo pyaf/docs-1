@@ -32,7 +32,7 @@ template = """Question: {question}"""
 prompt = PromptTemplate.from_template(template)
 ```
 
-```python
+```python wrap
 llm = MosaicML(inject_instruction_format=True, model_kwargs={"max_new_tokens": 128})
 ```
 
@@ -40,7 +40,7 @@ llm = MosaicML(inject_instruction_format=True, model_kwargs={"max_new_tokens": 1
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 ```
 
-```python
+```python wrap
 question = "What is one good reason why you should train a large language model on domain specific data?"
 
 llm_chain.run(question)

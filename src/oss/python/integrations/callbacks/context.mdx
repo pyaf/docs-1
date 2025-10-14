@@ -28,7 +28,7 @@ To use the `ContextCallbackHandler`, import the handler from LangChain and insta
 
 Ensure you have installed the `context-python` package before using the handler.
 
-```python
+```python wrap
 from langchain_community.callbacks.context_callback import ContextCallbackHandler
 ```
 
@@ -46,7 +46,7 @@ context_callback = ContextCallbackHandler(token)
 
 The Context callback handler can be used to directly record transcripts between users and AI assistants.
 
-```python
+```python wrap
 import os
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -76,7 +76,7 @@ __Note:__ Ensure that you pass the same context object to the chat model and the
 
 Wrong:
 >
-> ```python
+> ```python wrap
 > chat = ChatOpenAI(temperature=0.9, callbacks=[ContextCallbackHandler(token)])
 > chain = LLMChain(llm=chat, prompt=chat_prompt_template, callbacks=[ContextCallbackHandler(token)])
 > ```

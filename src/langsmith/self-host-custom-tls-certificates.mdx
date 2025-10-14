@@ -42,7 +42,7 @@ Once you have set these environment variables, enter the LangSmith Playground **
 ...
 ```
 2. Create a Kubernetes secret with a key containing the contents of this file.
-```bash
+```bash wrap
 kubectl create secret generic <SECRET_NAME> --from-file=<SECRET_KEY>=<CA_BUNDLE_FILE_PATH> -n <NAMESPACE>
 ```
 3. If using custom CA for TLS with your databases and other external services, provide the following values to your LangSmith helm chart:

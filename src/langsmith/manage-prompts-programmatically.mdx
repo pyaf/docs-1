@@ -16,7 +16,7 @@ In Python, you can directly use the LangSmith SDK (*recommended, full functional
 In TypeScript, you must use the LangChain npm package for pulling prompts (it also allows pushing). For all other functionality, use the LangSmith package.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install -U langsmith # version >= 0.1.99
 pip install -U langchain langsmith # langsmith version >= 0.1.99 and langchain >= 0.2.13
 ```
@@ -26,7 +26,7 @@ uv add langsmith  # version >= 0.1.99
 uv add langchain langsmith # langsmith version >= 0.1.99 and langchain >= 0.2.13
 ```
 
-```bash TypeScript
+```bash TypeScript wrap
 yarn add langsmith langchain // langsmith version >= 0.1.99 and langchain version >= 0.2.14
 ```
 </CodeGroup>
@@ -194,7 +194,7 @@ chain = prompts.pull("joke-generator-with-model", include_model=True)
 chain.invoke({"topic": "cats"})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import * as hub from "langchain/hub";
 import { Runnable } from "@langchain/core/runnables";
 
@@ -312,7 +312,7 @@ const openAIResponse = await openAIClient.chat.completions.create({
 pip install -U langchain_anthropic
 ```
 
-```bash TypeScript
+```bash TypeScript wrap
 yarn add @langchain/anthropic @langchain/core // @langchain/anthropic version >= 0.3.3
 ```
 
@@ -382,7 +382,7 @@ client.like_prompt("efriis/my-first-prompt")
 client.unlike_prompt("efriis/my-first-prompt")
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // List all prompts in my workspace
 import Client from "langsmith";
 

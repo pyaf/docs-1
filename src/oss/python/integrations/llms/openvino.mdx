@@ -8,7 +8,7 @@ OpenVINO models can be run locally through the `HuggingFacePipeline` [class](htt
 
 To use, you should have the `optimum-intel` with OpenVINO Accelerator python [package installed](https://github.com/huggingface/optimum-intel?tab=readme-ov-file#installation).
 
-```python
+```python wrap
 %pip install -U-strategy eager "optimum[openvino,nncf]" langchain-huggingface --quiet
 ```
 
@@ -90,7 +90,7 @@ It is possible to [export your model](https://github.com/huggingface/optimum-int
 
 It is recommended to apply 8 or 4-bit weight quantization to reduce inference latency and model footprint using `--weight-format`:
 
-```python
+```python wrap
 !optimum-cli export openvino --model gpt2  --weight-format int8 ov_model_dir # for 8-bit quantization
 
 !optimum-cli export openvino --model gpt2  --weight-format int4 ov_model_dir # for 4-bit quantization
@@ -128,7 +128,7 @@ ov_config = {
 
 You can use `stream` method to get a streaming of LLM output,
 
-```python
+```python wrap
 generation_config = {"skip_prompt": True, "pipeline_kwargs": {"max_new_tokens": 100}}
 chain = prompt | ov_llm.bind(**generation_config)
 

@@ -94,7 +94,7 @@ Start the LangGraph API server locally:
 
 Sample output:
 
-```
+``` wrap
 >    Ready!
 >
 >    - API: [http://localhost:2024](http://localhost:2024/)
@@ -176,7 +176,7 @@ For production use, deploy LangGraph Server with access to a persistent storage 
       npm install @langchain/langgraph-sdk
       ```
     2. Send a message to the assistant (threadless run):
-      ```js
+      ```js wrap
       const { Client } = await import("@langchain/langgraph-sdk");
 
       // only set the apiUrl if you changed the default port when calling langgraph dev

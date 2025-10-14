@@ -19,7 +19,7 @@ process.env.LANGSMITH_API_KEY="your-api-key"
 
 This toolkit lives in the `langchain` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -47,7 +47,7 @@ const llm = new ChatOpenAI({
 })
 ```
 
-```typescript
+```typescript wrap
 import { VectorStoreToolkit, VectorStoreInfo } from "langchain/agents/toolkits"
 import { OpenAIEmbeddings } from "@langchain/openai"
 import { MemoryVectorStore } from "langchain/vectorstores/memory"
@@ -85,7 +85,7 @@ console.log(tools.map((tool) => ({
 })))
 ```
 
-```output
+```output wrap
 [
   {
     name: 'state_of_union_address',
@@ -112,7 +112,7 @@ import { createAgent } from "langchain"
 const agentExecutor = createAgent({ llm, tools });
 ```
 
-```typescript
+```typescript wrap
 const exampleQuery = "What did biden say about Ketanji Brown Jackson is the state of the union address?"
 
 const events = await agentExecutor.stream(
@@ -130,7 +130,7 @@ for await (const event of events) {
 }
 ```
 
-```output
+```output wrap
 [
   {
     name: 'state_of_union_address',

@@ -2,7 +2,7 @@
 title: Ascend
 ---
 
-```python
+```python wrap
 from langchain_community.embeddings import AscendEmbeddings
 
 model = AscendEmbeddings(
@@ -26,7 +26,7 @@ doc_embs = model.embed_documents(
 print(doc_embs)
 ```
 
-```output
+```output wrap
 We strongly recommend passing in an `attention_mask` since your input_ids may be padded. See https://huggingface.co/docs/transformers/troubleshooting#incorrect-output-when-padding-tokens-arent-masked.
 ```
 ```output

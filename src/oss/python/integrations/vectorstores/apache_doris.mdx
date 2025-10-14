@@ -72,7 +72,7 @@ print("# docs  = %d, # splits = %d" % (len(documents), len(split_docs)))
 
 ### Use Apache Doris as vectordb
 
-```python
+```python wrap
 def gen_apache_doris(update_vectordb, embeddings, settings):
     if update_vectordb:
         docsearch = ApacheDoris.from_documents(split_docs, embeddings, config=settings)

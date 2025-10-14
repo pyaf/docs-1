@@ -99,7 +99,7 @@ response = llm.invoke([HumanMessage(content="Hello, Seekr!")])
 print(response.content)
 ```
 
-```output
+```output wrap
 Hello there! I'm Seekr, nice to meet you! What brings you here today? Do you have a question, or are you looking for some help with something? I'm all ears (or rather, all text)!
 ```
 
@@ -113,7 +113,7 @@ result = chain.invoke({"text": "Good morning"})
 print(result)
 ```
 
-```output
+```output wrap
 content='The translation of "Good morning" in French is:\n\n"Bonne journée"' additional_kwargs={} response_metadata={}
 ```
 
@@ -148,7 +148,7 @@ Peaceful evening sky
 
 ## Error Handling & Debugging
 
-```python
+```python wrap
 # Define a minimal mock SeekrFlow client
 class MockSeekrClient:
     """Mock SeekrFlow API client that mimics the real API structure."""

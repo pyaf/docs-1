@@ -50,7 +50,7 @@ The Hybrid deployment option requires an [Enterprise](/langsmith/plans) plan.
     - `LangGraphPlatform CRD`: A CRD for LangGraph Platform deployments. This contains the spec for managing an instance of a LangGraph Platform deployment.
     - `langgraph-platform-operator`: This operator handles changes to your LangGraph Platform CRDs.
 4. Configure your `langgraph-dataplane-values.yaml` file.
-    ```bash
+    ```bash wrap
       config:
         langsmithApiKey: "" # API Key of your Workspace
         langsmithWorkspaceId: "" # Workspace ID
@@ -76,13 +76,13 @@ The Hybrid deployment option requires an [Enterprise](/langsmith/plans) plan.
     - `operator.enabled`: There can only be 1 instance of the `langgraph-platform-operator` deployed in a Kubernetes namespace. Set this to `false` if there is already an instance of `langgraph-platform-operator` deployed in the current Kubernetes namespace.
     - `operator.createCRDs`: Set this value to `false` if the Kubernetes cluster already has the `LangGraphPlatform CRD` installed. During installation, an error will occur if the CRD is already installed. This situation may occur if multiple listeners are deployed on the same Kubernetes cluster.
 5. Deploy `langgraph-dataplane` Helm chart.
-    ```bash
+    ```bash wrap
       helm repo add langchain https://github.com/langchain-ai/helm
       helm repo update
       helm upgrade -i langgraph-dataplane langchain/langgraph-dataplane --values langgraph-dataplane-values.yaml --wait --debug
     ```
 6. If successful, you will see three services start up in your namespace.
-    ```bash
+    ```bash wrap
       NAME                                            READY   STATUS              RESTARTS   AGE
       langgraph-dataplane-listener-6dd4749445-zjmr4   0/1     ContainerCreating   0          26s
       langgraph-dataplane-operator-6b88879f9b-t76gk   1/1     Running             0          26s

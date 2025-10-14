@@ -29,7 +29,7 @@ embeddings = PineconeEmbeddings(model="multilingual-e5-large")
 
 From here we can create embeddings either sync or async, let's start with sync! We embed a single text as a query embedding (ie what we search with in RAG) using `embed_query`:
 
-```python
+```python wrap
 docs = [
     "Apple is a popular fruit known for its sweetness and crisp texture.",
     "The tech company Apple is known for its innovative products like the iPhone.",

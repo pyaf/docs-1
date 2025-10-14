@@ -45,7 +45,7 @@ Here are some key differences:
 Below we demonstrate a simple application that writes an essay and [interrupts](/oss/langgraph/add-human-in-the-loop) to request human review.
 
 :::python
-```python
+```python wrap
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.func import entrypoint, task
 from langgraph.types import interrupt
@@ -78,7 +78,7 @@ def workflow(topic: str) -> dict:
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { MemorySaver, entrypoint, task, interrupt } from "@langchain/langgraph";
 
 const writeEssay = task("writeEssay", async (topic: string) => {
@@ -116,7 +116,7 @@ const workflow = entrypoint(
   When the workflow is resumed, it executes from the very start, but because the result of the `writeEssay` task was already saved, the task result will be loaded from the checkpoint instead of being recomputed.
 
   :::python
-  ```python
+  ```python wrap
   import time
   import uuid
   from langgraph.func import entrypoint, task
@@ -171,7 +171,7 @@ const workflow = entrypoint(
 
   An essay has been written and is ready for review. Once the review is provided, we can resume the workflow:
 
-  ```python
+  ```python wrap
   from langgraph.types import Command
 
   # Get review from a user (e.g., via a UI)
@@ -190,7 +190,7 @@ const workflow = entrypoint(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { v4 as uuidv4 } from "uuid";
   import { MemorySaver, entrypoint, task, interrupt } from "@langchain/langgraph";
 
@@ -234,7 +234,7 @@ const workflow = entrypoint(
   }
   ```
 
-  ```console
+  ```console wrap
   { writeEssay: 'An essay about topic: cat' }
   {
     __interrupt__: [{
@@ -248,7 +248,7 @@ const workflow = entrypoint(
 
   An essay has been written and is ready for review. Once the review is provided, we can resume the workflow:
 
-  ```typescript
+  ```typescript wrap
   import { Command } from "@langchain/langgraph";
 
   // Get review from a user (e.g., via a UI)
@@ -362,7 +362,7 @@ Declare the parameters with the appropriate name and type annotation.
 </Warning>
 
 <Accordion title="Requesting Injectable Parameters">
-  ```python
+  ```python wrap
   from langchain_core.runnables import RunnableConfig
   from langgraph.func import entrypoint
   from langgraph.store.base import BaseStore
@@ -516,7 +516,7 @@ Resuming an execution after an @[interrupt][interrupt] can be done by passing a 
     ```
     </Tab>
     <Tab title="Async Stream">
-    ```python
+    ```python wrap
     from langgraph.types import Command
 
     config = {
@@ -699,7 +699,7 @@ This allows accessing the state from the previous invocation using the `getPrevi
 
 By default, the `getPreviousState` function returns the return value of the previous invocation.
 
-```typescript
+```typescript wrap
 import { entrypoint, getPreviousState } from "@langchain/langgraph";
 
 const myWorkflow = entrypoint(
@@ -728,7 +728,7 @@ await myWorkflow.invoke(2, config); // 3 (previous was 1 from the previous invoc
 
 The first value is the return value of the entrypoint, and the second value is the value that will be saved in the checkpoint. The type annotation is `entrypoint.final[return_type, save_type]`.
 
-```python
+```python wrap
 @entrypoint(checkpointer=checkpointer)
 def my_workflow(number: int, *, previous: Any = None) -> entrypoint.final[int, int]:
     previous = previous or 0
@@ -753,7 +753,7 @@ my_workflow.invoke(1, config)  # 6 (previous was 3 * 2 from the previous invocat
 
 The first value is the return value of the entrypoint, and the second value is the value that will be saved in the checkpoint.
 
-```typescript
+```typescript wrap
 import { entrypoint, getPreviousState } from "@langchain/langgraph";
 
 const myWorkflow = entrypoint(

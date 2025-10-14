@@ -31,7 +31,7 @@ Get started by installing and/or importing the required packages
 # %pip install langchain-tableau --upgrade
 ```
 
-```output
+```output wrap
 Requirement already satisfied: regex>=2022.1.18 in /Users/joe.constantino/.pyenv/versions/3.12.2/lib/python3.12/site-packages (from tiktoken<1,>=0.7->langchain-openai->langchain-tableau) (2024.11.6)
 Requirement already satisfied: httpcore==1.* in /Users/joe.constantino/.pyenv/versions/3.12.2/lib/python3.12/site-packages (from httpx>=0.25.2->langgraph-sdk<0.2.0,>=0.1.42->langgraph->langchain-tableau) (1.0.7)
 Requirement already satisfied: h11<0.15,>=0.13 in /Users/joe.constantino/.pyenv/versions/3.12.2/lib/python3.12/site-packages (from httpcore==1.*->httpx>=0.25.2->langgraph-sdk<0.2.0,>=0.1.42->langgraph->langchain-tableau) (0.14.0)
@@ -46,7 +46,7 @@ You can declare your environment variables explicitly, as shown in several cases
 For the Data Source that you choose to query, make sure you've updated the VizqlDataApiAccess permission in Tableau to allow the VDS API to access that Data Source via REST. More info [here](https://help.tableau.com/current/server/en-us/permissions_capabilities.htm#data-sources
 ).
 
-```python
+```python wrap
 # langchain package imports
 from langchain_openai import ChatOpenAI
 
@@ -62,7 +62,7 @@ You can declare your environment variables explicitly, as shown in several cases
 For the Data Source that you choose, make sure you've updated the VizqlDataApiAccess permission in Tableau to allow the VDS API to access that Data Source via REST. More info [here](https://help.tableau.com/current/server/en-us/permissions_capabilities.htm#data-sources
 ).
 
-```python
+```python wrap
 import os
 
 from dotenv import load_dotenv
@@ -105,7 +105,7 @@ This initializer function:
 4. Executes a POST request to VDS.
 5. Formats and returns the results in a structured response.
 
-```python
+```python wrap
 # Initialize simple_datasource_qa for querying Tableau Datasources through VDS
 analyze_datasource = initialize_simple_datasource_qa(
     domain=tableau_server,
@@ -128,7 +128,7 @@ tools = [analyze_datasource]
 
 First, we'll initlialize the LLM of our choice. Then, we define an agent using a langgraph agent constructor class and invoke it with a query related to the target data source.
 
-```python
+```python wrap
 from IPython.display import Markdown, display
 
 model = ChatOpenAI(model="gpt-4o", temperature=0)

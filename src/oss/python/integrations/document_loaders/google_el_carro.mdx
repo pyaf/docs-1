@@ -57,7 +57,7 @@ Use the user password you created for your PDB.
 
 Example Ouput:
 
-```
+``` wrap
 kubectl get -w instances.oracle.db.anthosapis.com -n db
 NAME   DB ENGINE   VERSION   EDITION      ENDPOINT      URL                DB NAMES   BACKUP ID   READYSTATUS   READYREASON        DBREADYSTATUS   DBREADYREASON
 
@@ -145,7 +145,7 @@ for doc in docs:
 Other than loading documents from a table, we can also choose to load documents
 from a view generated from a SQL query. For example:
 
-```python
+```python wrap
 from langchain_google_el_carro import ElCarroLoader
 
 loader = ElCarroLoader(
@@ -188,7 +188,7 @@ print("Documents after delete:", loader.load())
 First we prepare an example table with non-default schema, and populate it with
 some arbitrary data.
 
-```python
+```python wrap
 import sqlalchemy
 
 create_table_query = f"""CREATE TABLE {TABLE_NAME} (

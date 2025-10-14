@@ -135,7 +135,7 @@ In Python, you can use the `trace` context manager to log traces to LangSmith. T
 
 The context manager integrates seamlessly with the `traceable` decorator and `wrap_openai` wrapper, so you can use them together in the same application.
 
-```python
+```python wrap
 import openai
 import langsmith as ls
 from langsmith.wrappers import wrap_openai
@@ -172,7 +172,7 @@ This method is not recommended, as it's easier to make mistakes in propagating t
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith.run_trees import RunTree
 
@@ -215,7 +215,7 @@ pipeline.end(outputs={"answer": chat_completion.choices[0].message.content})
 pipeline.patch()
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { RunTree } from "langsmith";
 
@@ -266,7 +266,7 @@ You can extend the utilities above to conveniently trace any code. Below are som
 
 Trace any public method in a class:
 
-```python
+```python wrap
 from typing import Any, Callable, Type, TypeVar
 
 T = TypeVar("T")

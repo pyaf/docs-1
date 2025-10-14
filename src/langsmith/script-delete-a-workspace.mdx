@@ -66,13 +66,13 @@ Ensure you have the following tools/items ready.
 
 Run the following command to run the workspace removal script:
 
-```bash
+```bash wrap
 sh delete_workspace.sh <postgres_url> <clickhouse_url> --workspace_id <workspace_id>
 ```
 
 For example, if you are using the bundled version with port-forwarding, the command would look like:
 
-```bash
+```bash wrap
 sh delete_workspace.sh "postgres://postgres:postgres@localhost:5432/postgres" "clickhouse://default:password@localhost:8123/default" --workspace_id 4ec70ec7-0808-416a-b836-7100aeec934b
 ```
 

@@ -20,7 +20,7 @@ Then, either install an existing connector from the [Airbyte Github repository](
 
 For example, to install the Github connector, run
 
-```python
+```python wrap
 %pip install -qU  "source_github@git+https://github.com/airbytehq/airbyte.git@master#subdirectory=airbyte-integrations/connectors/source-github"
 ```
 
@@ -33,7 +33,7 @@ Now you can create an `AirbyteCDKLoader` based on the imported source. It takes 
 * [https://github.com/airbytehq/airbyte/blob/master/airbyte-integrations/connectors/source-github/source_github/spec.json](https://github.com/airbytehq/airbyte/blob/master/airbyte-integrations/connectors/source-github/source_github/spec.json).
 * [https://docs.airbyte.com/integrations/sources/github/](https://docs.airbyte.com/integrations/sources/github/)
 
-```python
+```python wrap
 from langchain_community.document_loaders.airbyte import AirbyteCDKLoader
 from source_github.source import SourceGithub  # plug in your own source here
 
@@ -90,7 +90,7 @@ Some streams allow incremental loading, this means the source keeps track of syn
 
 To take advantage of this, store the `last_state` property of the loader and pass it in when creating the loader again. This will ensure that only new records are loaded.
 
-```python
+```python wrap
 last_state = issues_loader.last_state  # store safely
 
 incremental_issue_loader = AirbyteCDKLoader(

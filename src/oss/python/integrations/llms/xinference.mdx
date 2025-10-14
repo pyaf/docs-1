@@ -37,7 +37,7 @@ Model uid: 7167b2b0-2a04-11ee-83f0-d29396a3f064
 
 A model UID is returned for you to use. Now you can use Xinference with LangChain:
 
-```python
+```python wrap
 from langchain_community.llms import Xinference
 
 llm = Xinference(
@@ -50,7 +50,7 @@ llm(
 )
 ```
 
-```output
+```output wrap
 ' You can visit the Eiffel Tower, Notre-Dame Cathedral, the Louvre Museum, and many other historical sites in Paris, the capital of France.'
 ```
 
@@ -70,7 +70,7 @@ generated = llm_chain.run(country="France")
 print(generated)
 ```
 
-```output
+```output wrap
 A: You can visit many places in Paris, such as the Eiffel Tower, the Louvre Museum, Notre-Dame Cathedral, the Champs-Elysées, Montmartre, Sacré-Cœur, and the Palace of Versailles.
 ```
 

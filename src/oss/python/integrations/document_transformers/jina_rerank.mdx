@@ -4,7 +4,7 @@ title: Jina Reranker
 
 This notebook shows how to use Jina Reranker for document compression and retrieval.
 
-```python
+```python wrap
 %pip install -qU langchain langchain-openai langchain-community langchain-text-splitters langchainhub
 
 %pip install -qU  faiss
@@ -14,7 +14,7 @@ This notebook shows how to use Jina Reranker for document compression and retrie
 %pip install -qU  faiss_cpu
 ```
 
-```python
+```python wrap
 # Helper function for printing docs
 
 
@@ -40,7 +40,7 @@ os.environ["OPENAI_API_KEY"] = getpass.getpass()
 os.environ["JINA_API_KEY"] = getpass.getpass()
 ```
 
-```python
+```python wrap
 from langchain_community.document_loaders import TextLoader
 from langchain_community.embeddings import JinaEmbeddings
 from langchain_community.vectorstores import FAISS

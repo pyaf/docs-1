@@ -174,7 +174,7 @@ If you're using Anthropic, use the [Anthropic wrapper](/langsmith/annotate-code#
 
     <CodeGroup>
 
-    ```python Python
+    ```python Python wrap
     # dataset.py
     from langsmith import Client
 
@@ -275,7 +275,7 @@ Add the following to an `eval` file:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # eval.py
 from langsmith import Client, wrappers
 from openai import OpenAI
@@ -296,7 +296,7 @@ def target(inputs: dict) -> dict:
     return {"answer": response.choices[0].message.content.strip()}
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // eval.ts
 import { evaluate } from "langsmith/evaluation";
 import { wrapOpenAI } from "langsmith/wrappers/openai";
@@ -340,7 +340,7 @@ Add the following highlighted code to your `eval` file:
 
 <CodeGroup>
 
-```python Python highlight={3,4,21-31}
+```python Python highlight={3,4,21-31} wrap
 from langsmith import Client, wrappers
 from openai import OpenAI
 from openevals.llm import create_llm_as_judge
@@ -374,7 +374,7 @@ def correctness_evaluator(inputs: dict, outputs: dict, reference_outputs: dict):
     )
 ```
 
-```typescript TypeScript highlight={4,20-37}
+```typescript TypeScript highlight={4,20-37} wrap
 import { evaluate } from "langsmith/evaluation";
 import { wrapOpenAI } from "langsmith/wrappers/openai";
 import OpenAI from "openai";
@@ -430,7 +430,7 @@ To run the evaluation experiment, you'll call `evaluate(...)`, which:
 
     <CodeGroup>
 
-    ```python Python highlight={33-49}
+    ```python Python highlight={33-49} wrap
     from langsmith import Client, wrappers
     from openai import OpenAI
     from openevals.llm import create_llm_as_judge
@@ -482,7 +482,7 @@ To run the evaluation experiment, you'll call `evaluate(...)`, which:
         main()
     ```
 
-    ```typescript TypeScript highlight={39-57}
+    ```typescript TypeScript highlight={39-57} wrap
     import { evaluate } from "langsmith/evaluation";
     import { wrapOpenAI } from "langsmith/wrappers/openai";   // helper to wrap OpenAI client
     import OpenAI from "openai";                              // model provider
@@ -560,7 +560,7 @@ To run the evaluation experiment, you'll call `evaluate(...)`, which:
 
 1. You'll receive a link to view the evaluation results and metadata for the experiment results:
 
-    ```
+    ``` wrap
     View the evaluation results for experiment: 'first-eval-in-langsmith-00000000' at: https://smith.langchain.com/o/6551f9c4-2685-4a08-86b9-1b29643deb3d/datasets/e5fde557-c274-4e49-b39d-000000000000/compare?selectedSessions=70b11778-6a28-4cdb-be81-000000000000
 
     <ExperimentResults first-eval-in-langsmith-00000000>

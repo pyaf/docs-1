@@ -552,7 +552,7 @@ The LangGraph CLI requires a JSON configuration file that follows this [schema](
 
     This generates a Dockerfile that looks similar to:
 
-    ```dockerfile
+    ```dockerfile wrap
     FROM langchain/langgraph-api:3.11
 
     ADD ./pipconf.txt /pipconfig.txt
@@ -601,7 +601,7 @@ The LangGraph CLI requires a JSON configuration file that follows this [schema](
 
     This generates a Dockerfile that looks similar to:
 
-    ```dockerfile
+    ```dockerfile wrap
     FROM langchain/langgraphjs-api:20
 
     ADD . /deps/agent

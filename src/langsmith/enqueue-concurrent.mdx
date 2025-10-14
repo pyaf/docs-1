@@ -93,7 +93,7 @@ Now let's start two runs, with the second interrupting the first one with a mult
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     first_run = await client.runs.create(
         thread["thread_id"],
         assistant_id,
@@ -108,7 +108,7 @@ Now let's start two runs, with the second interrupting the first one with a mult
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     const firstRun = await client.runs.create(
       thread["thread_id"],
       assistantId,
@@ -124,7 +124,7 @@ Now let's start two runs, with the second interrupting the first one with a mult
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     curl --request POST \
     --url <DEPLOY<ENT_URL>>/threads/<THREAD_ID>/runs \
     --header 'Content-Type: application/json' \
@@ -171,7 +171,7 @@ Verify that the thread has data from both runs:
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     source pretty_print.sh && curl --request GET \
     --url <DEPLOYMENT_URL>/threads/<THREAD_ID>/runs/<RUN_ID>/join && \
     curl --request GET --url <DEPLOYMENT_URL>/threads/<THREAD_ID>/state | \
@@ -186,7 +186,7 @@ Verify that the thread has data from both runs:
 
 Output:
 
-```
+``` wrap
 ================================ Human Message =================================
 
 what's the weather in sf?

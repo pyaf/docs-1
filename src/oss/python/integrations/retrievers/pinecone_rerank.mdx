@@ -53,7 +53,7 @@ for doc in reranked_docs:
     print(f"Score: {score:.4f} | Content: {doc.page_content}")
 ```
 
-```output
+```output wrap
 /Users/jakit/customers/aurelio/langchain-pinecone/libs/pinecone/.venv/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 ```
@@ -69,7 +69,7 @@ Score: 0.0042 | Content: Berlin is the capital of Germany.
 
 Specify `top_n` to limit the number of returned documents.
 
-```python
+```python wrap
 # Return only top-1 result
 reranker_top1 = PineconeRerank(model="bge-reranker-v2-m3", top_n=1)
 top1_docs = reranker_top1.compress_documents(documents, query)
@@ -87,7 +87,7 @@ Score: 0.9998 | Content: Paris is the capital of France.
 
 If your documents are dictionaries or have custom fields, use `rank_fields` to specify the field to rank on.
 
-```python
+```python wrap
 # Sample dictionary documents with 'text' field
 docs_dict = [
     {
@@ -120,7 +120,7 @@ ID: doc2 | Score: 0.0000
 
 We can rerank based on title field
 
-```python
+```python wrap
 economic_docs = reranker_text.rerank(docs_dict, "Economic forecast.")
 
 # Show IDs and scores

@@ -67,7 +67,7 @@ To populate the database, first make sure it's empty. The most efficient way to 
 
 The data we'll add to the database is about video games of different genres available on various platforms and related to publishers.
 
-```python
+```python wrap
 # Drop graph
 graph.query("STORAGE MODE IN_MEMORY_ANALYTICAL")
 graph.query("DROP GRAPH")
@@ -162,7 +162,7 @@ response = chain.invoke("Which platforms is Baldur's Gate 3 available on?")
 print(response["result"])
 ```
 
-```output
+```output wrap
 MATCH (:Game{name: "Baldur's Gate 3"})-[:AVAILABLE_ON]->(platform:Platform)
 RETURN platform.name
 Baldur's Gate 3 is available on PlayStation 5, Mac OS, Windows, and Xbox Series X/S.
@@ -173,7 +173,7 @@ response = chain.invoke("Is Baldur's Gate 3 available on Windows?")
 print(response["result"])
 ```
 
-```output
+```output wrap
 MATCH (:Game{name: "Baldur's Gate 3"})-[:AVAILABLE_ON]->(:Platform{name: "Windows"})
 RETURN "Yes"
 Yes, Baldur's Gate 3 is available on Windows.
@@ -226,7 +226,7 @@ print(f"Intermediate steps: {response['intermediate_steps']}")
 print(f"Final response: {response['result']}")
 ```
 
-```output
+```output wrap
 MATCH (:Game {name: "Baldur's Gate 3"})-[:HAS_GENRE]->(:Genre {name: "Adventure"})
 RETURN "Yes"
 Intermediate steps: [{'query': 'MATCH (:Game {name: "Baldur\'s Gate 3"})-[:HAS_GENRE]->(:Genre {name: "Adventure"})\nRETURN "Yes"'}, {'context': [{'"Yes"': 'Yes'}]}]
@@ -287,7 +287,7 @@ The generated Cypher query looks fine, but we didn't receive any information in 
 
 To address this, we can adjust the initial Cypher prompt of the QA chain. This involves adding guidance to the LLM on how users can refer to specific platforms, such as PS5 in our case. We achieve this using the LangChain PromptTemplate, creating a modified initial prompt. This modified prompt is then supplied as an argument to our refined `MemgraphQAChain` instance.
 
-```python
+```python wrap
 MEMGRAPH_GENERATION_TEMPLATE = """Your task is to directly translate natural language inquiry into precise and executable Cypher query for Memgraph database.
 You will utilize a provided database schema to understand the structure, nodes and relationships within the Memgraph database.
 Instructions:
@@ -331,7 +331,7 @@ response = chain.invoke("Is Baldur's Gate 3 available on PS5?")
 print(response["result"])
 ```
 
-```output
+```output wrap
 MATCH (:Game{name: "Baldur's Gate 3"})-[:AVAILABLE_ON]->(:Platform{name: "PlayStation 5"})
 RETURN "Yes"
 Yes, Baldur's Gate 3 is available on PS5.
@@ -361,7 +361,7 @@ from langchain_experimental.graph_transformers import LLMGraphTransformer
 
 Below is an example text about Charles Darwin ([source](https://en.wikipedia.org/wiki/Charles_Darwin)) from which knowledge graph will be constructed.
 
-```python
+```python wrap
 text = """
     Charles Robert Darwin was an English naturalist, geologist, and biologist,
     widely known for his contributions to evolutionary biology. His proposition that
@@ -391,7 +391,7 @@ Under the hood, LLM extracts important entities from the text and returns them a
 print(graph_documents)
 ```
 
-```output
+```output wrap
 [GraphDocument(nodes=[Node(id='Charles Robert Darwin', type='Person', properties={}), Node(id='English', type='Nationality', properties={}), Node(id='Naturalist', type='Profession', properties={}), Node(id='Geologist', type='Profession', properties={}), Node(id='Biologist', type='Profession', properties={}), Node(id='Evolutionary Biology', type='Field', properties={}), Node(id='Common Ancestor', type='Concept', properties={}), Node(id='Scientific Concept', type='Concept', properties={}), Node(id='Alfred Russel Wallace', type='Person', properties={}), Node(id='Natural Selection', type='Concept', properties={}), Node(id='Selective Breeding', type='Concept', properties={}), Node(id='Westminster Abbey', type='Location', properties={})], relationships=[Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='English', type='Nationality', properties={}), type='NATIONALITY', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Naturalist', type='Profession', properties={}), type='PROFESSION', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Geologist', type='Profession', properties={}), type='PROFESSION', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Biologist', type='Profession', properties={}), type='PROFESSION', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Evolutionary Biology', type='Field', properties={}), type='CONTRIBUTION', properties={}), Relationship(source=Node(id='Common Ancestor', type='Concept', properties={}), target=Node(id='Scientific Concept', type='Concept', properties={}), type='BASIS', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Alfred Russel Wallace', type='Person', properties={}), type='COLLABORATION', properties={}), Relationship(source=Node(id='Natural Selection', type='Concept', properties={}), target=Node(id='Selective Breeding', type='Concept', properties={}), type='COMPARISON', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Westminster Abbey', type='Location', properties={}), type='BURIAL', properties={})], source=Document(metadata={}, page_content='\n    Charles Robert Darwin was an English naturalist, geologist, and biologist,\n    widely known for his contributions to evolutionary biology. His proposition that\n    all species of life have descended from a common ancestor is now generally\n    accepted and considered a fundamental scientific concept. In a joint\n    publication with Alfred Russel Wallace, he introduced his scientific theory that\n    this branching pattern of evolution resulted from a process he called natural\n    selection, in which the struggle for existence has a similar effect to the\n    artificial selection involved in selective breeding. Darwin has been\n    described as one of the most influential figures in human history and was\n    honoured by burial in Westminster Abbey.\n'))]
 ```
 
@@ -431,7 +431,7 @@ print(f"Nodes:{graph_documents_filtered[0].nodes}")
 print(f"Relationships:{graph_documents_filtered[0].relationships}")
 ```
 
-```output
+```output wrap
 Nodes:[Node(id='Charles Robert Darwin', type='Person', properties={}), Node(id='English', type='Nationality', properties={}), Node(id='Evolutionary Biology', type='Concept', properties={}), Node(id='Natural Selection', type='Concept', properties={}), Node(id='Alfred Russel Wallace', type='Person', properties={})]
 Relationships:[Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='English', type='Nationality', properties={}), type='NATIONALITY', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Evolutionary Biology', type='Concept', properties={}), type='INVOLVED_IN', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Natural Selection', type='Concept', properties={}), type='INVOLVED_IN', properties={}), Relationship(source=Node(id='Charles Robert Darwin', type='Person', properties={}), target=Node(id='Alfred Russel Wallace', type='Person', properties={}), type='COLLABORATES_WITH', properties={})]
 ```

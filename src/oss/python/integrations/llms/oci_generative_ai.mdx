@@ -17,7 +17,7 @@ Ensure that the oci sdk and the langchain-community package are installed
 
 ## Usage
 
-```python
+```python wrap
 from langchain_community.llms.oci_generative_ai import OCIGenAI
 
 llm = OCIGenAI(
@@ -33,7 +33,7 @@ print(response)
 
 #### Chaining with prompt templates
 
-```python
+```python wrap
 from langchain_core.prompts import PromptTemplate
 
 llm = OCIGenAI(
@@ -52,7 +52,7 @@ print(response)
 
 #### Streaming
 
-```python
+```python wrap
 llm = OCIGenAI(
     model_id="cohere.command",
     service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
@@ -70,7 +70,7 @@ The authentication methods supported for LlamaIndex are equivalent to those used
 
 API key is the default authentication method used in the examples above. The following example demonstrates how to use a different authentication method (session token)
 
-```python
+```python wrap
 llm = OCIGenAI(
     model_id="cohere.command",
     service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
@@ -87,7 +87,7 @@ To access models hosted in a dedicated AI cluster __[create an endpoint](https:/
 
 When accessing models hosted in a dedicated AI cluster you will need to initialize the OCIGenAI interface with two extra required params ("provider" and "context_size").
 
-```python
+```python wrap
 llm = OCIGenAI(
     model_id="ocid1.generativeaiendpoint.oc1.us-chicago-1....",
     service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",

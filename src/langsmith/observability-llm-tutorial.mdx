@@ -7,7 +7,7 @@ In this tutorial, we'll build a simple RAG application using the OpenAI SDK. We'
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openai import OpenAI
 openai_client = OpenAI()
 
@@ -107,7 +107,7 @@ The first thing you might want to trace is all your OpenAI calls. After all, thi
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openai import OpenAI
 from langsmith.wrappers import wrap_openai
 openai_client = wrap_openai(OpenAI())
@@ -184,7 +184,7 @@ Great - we've traced the LLM call. But it's often very informative to trace more
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openai import OpenAI
 from langsmith import traceable
 from langsmith.wrappers import wrap_openai
@@ -295,7 +295,7 @@ It is also a good idea to start logging metadata. This allows you to start keep 
 
 For this example, we will log the LLM used. Oftentimes you may be experimenting with different LLMs, so having that information as metadata can be useful for filtering. In order to do that, we can add it as such:
 
-```python
+```python wrap
 from openai import OpenAI
 from langsmith import traceable
 from langsmith.wrappers import wrap_openai

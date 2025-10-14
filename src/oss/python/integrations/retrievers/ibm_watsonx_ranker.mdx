@@ -35,7 +35,7 @@ os.environ["WATSONX_APIKEY"] = watsonx_api_key
 
 Additionally you are able to pass additional secrets as an environment variable.
 
-```python
+```python wrap
 import os
 
 os.environ["WATSONX_URL"] = "your service instance url"
@@ -67,7 +67,7 @@ For experiment purpose please also install `faiss` or `faiss-cpu` package:
 
 Helper function for printing docs
 
-```python
+```python wrap
 def pretty_print_docs(docs):
     print(
         f"\n{'-' * 100}\n".join(
@@ -103,7 +103,7 @@ wx_embeddings = WatsonxEmbeddings(
 )
 ```
 
-```python
+```python wrap
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -120,7 +120,7 @@ docs = retriever.invoke(query)
 pretty_print_docs(docs[:5])  # Printing the first 5 documents
 ```
 
-```output
+```output wrap
 Document 1:
 
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
@@ -179,7 +179,7 @@ wx_rerank = WatsonxRerank(
 )
 ```
 
-```python
+```python wrap
 from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
 
 compression_retriever = ContextualCompressionRetriever(
@@ -192,7 +192,7 @@ compressed_docs = compression_retriever.invoke(
 pretty_print_docs(compressed_docs[:5])  # Printing the first 5 compressed documents
 ```
 
-```output
+```output wrap
 Document 1:
 
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
@@ -250,7 +250,7 @@ wx_chat = ChatWatsonx(
 )
 ```
 
-```python
+```python wrap
 from langchain.chains import RetrievalQA
 
 chain = RetrievalQA.from_chain_type(llm=wx_chat, retriever=compression_retriever)
@@ -260,7 +260,7 @@ chain = RetrievalQA.from_chain_type(llm=wx_chat, retriever=compression_retriever
 chain.invoke(query)
 ```
 
-```output
+```output wrap
 {'query': 'What did the president say about Ketanji Brown Jackson',
  'result': 'The President said that he had nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to serve on the United States Supreme Court, and described her as "one of our nation\'s top legal minds" who will continue Justice Breyer\'s legacy of excellence.'}
 ```

@@ -50,7 +50,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain FireCrawlLoader integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -70,7 +70,7 @@ The `formats` (`scrapeOptions.formats` for `crawl` mode) parameter allows select
 
 Now we can instantiate our model object and load documents:
 
-```typescript
+```typescript wrap
 import "@mendable/firecrawl-js";
 import { FireCrawlLoader } from "@langchain/community/document_loaders/web/firecrawl"
 
@@ -92,7 +92,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 Document {
   pageContent: "Introducing [Smart Crawl!](https://www.firecrawl.dev/smart-crawl)\n" +
     " Join the waitlist to turn any web"... 18721 more characters,

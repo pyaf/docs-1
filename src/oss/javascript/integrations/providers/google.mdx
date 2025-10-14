@@ -26,7 +26,7 @@ Configure your API key.
 ```
 export GOOGLE_API_KEY=your-api-key
 ```
-```typescript
+```typescript wrap
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
 const model = new ChatGoogleGenerativeAI({
@@ -83,7 +83,7 @@ npm install @langchain/google-vertexai @langchain/core
 ```
 Then, you'll need to add your service account credentials, either directly as a `GOOGLE_VERTEX_AI_WEB_CREDENTIALS` environment variable:
 
-```
+``` wrap
 GOOGLE_VERTEX_AI_WEB_CREDENTIALS={"type":"service_account","project_id":"YOUR_PROJECT-12345",...}
 ```
 or as a file path:
@@ -91,7 +91,7 @@ or as a file path:
 ```
 GOOGLE_VERTEX_AI_WEB_CREDENTIALS_FILE=/path/to/your/credentials.json
 ```
-```typescript
+```typescript wrap
 import { ChatVertexAI } from "@langchain/google-vertexai";
 // Or, if using the web entrypoint:
 // import { ChatVertexAI } from "@langchain/google-vertexai-web";
@@ -163,7 +163,7 @@ Configure your API key.
 ```
 export GOOGLE_API_KEY=your-api-key
 ```
-```typescript
+```typescript wrap
 import { ChatGoogle } from "@langchain/google-gauth";
 
 const model = new ChatGoogle({
@@ -199,7 +199,7 @@ PaLM models are no longer supported.
 > low latency vector database. These vector databases are commonly
 > referred to as vector similarity-matching or an approximate nearest neighbor (ANN) service.
 
-```typescript
+```typescript wrap
 import { MatchingEngine } from "@langchain/community/vectorstores/googlevertexai";
 ```
 
@@ -266,7 +266,7 @@ const vectorStore = await PostgresVectorStore.initialize(
 
 There exists a `GoogleCustomSearch` utility which wraps this API. To import this utility:
 
-```typescript
+```typescript wrap
 import { GoogleCustomSearch } from "@langchain/community/tools/google_custom_search";
 ```
 

@@ -162,7 +162,7 @@ graph LR
 ```
 
 :::python
-```python
+```python wrap
 import requests
 from langchain_core.tools import tool
 from langchain.chat_models import init_chat_model
@@ -211,7 +211,7 @@ const agent = createAgent({
 This example implements an **Agentic RAG system** to assist users in querying LangGraph documentation. The agent begins by loading [llms.txt](https://llmstxt.org/), which lists available documentation URLs, and can then dynamically use a `fetch_documentation` tool to retrieve and process the relevant content based on the user’s question.
 
 :::python
-```python
+```python wrap
 import requests
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage
@@ -287,7 +287,7 @@ print(response['messages'][-1].content)
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { tool, createAgent, initChatModel, HumanMessage } from "langchain";
 import { z } from "zod";
 

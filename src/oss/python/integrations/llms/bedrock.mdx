@@ -22,7 +22,7 @@ You may be looking for [this page instead](/oss/integrations/chat/bedrock/).
 %pip install -qU langchain-aws
 ```
 
-```python
+```python wrap
 from langchain_aws import BedrockLLM
 
 llm = BedrockLLM(
@@ -32,7 +32,7 @@ llm = BedrockLLM(
 
 ### Custom models
 
-```python
+```python wrap
 custom_llm = BedrockLLM(
     credentials_profile_name="bedrock-admin",
     provider="cohere",
@@ -50,7 +50,7 @@ custom_llm.invoke(input="What is the recipe of mayonnaise?")
 **Note**: Guardrails for Amazon Bedrock is currently in preview and not generally available. Reach out through your usual AWS Support contacts if you’d like access to this feature.
 In this section, we are going to set up a Bedrock language model with specific guardrails that include tracing capabilities.
 
-```python
+```python wrap
 from typing import Any
 
 from langchain_core.callbacks import AsyncCallbackHandler

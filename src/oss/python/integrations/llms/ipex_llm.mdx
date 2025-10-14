@@ -33,7 +33,7 @@ After the prerequisites installation, you should have created a conda environmen
 
 Install IEPX-LLM for running LLMs locally on Intel GPU.
 
-```python
+```python wrap
 %pip install --pre --upgrade ipex-llm[xpu] --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/us/
 ```
 
@@ -70,7 +70,7 @@ os.environ["SYCL_CACHE_PERSISTENT"] = "1"
 
 ### Basic Usage
 
-```python
+```python wrap
 import warnings
 
 from langchain.chains import LLMChain
@@ -116,7 +116,7 @@ Alternatively, you might save the low-bit model to disk once and use `from_model
 
 To save the low-bit model, use `save_low_bit` as follows.
 
-```python
+```python wrap
 saved_lowbit_model_path = "./vicuna-7b-1.5-low-bit"  # path to save low-bit model
 llm.model.save_low_bit(saved_lowbit_model_path)
 del llm
@@ -125,7 +125,7 @@ del llm
 Load the model from saved lowbit model path as follows.
 > Note that the saved path for the low-bit model only includes the model itself but not the tokenizers. If you wish to have everything in one place, you will need to manually download or copy the tokenizer files from the original model's directory to the location where the low-bit model is saved.
 
-```python
+```python wrap
 llm_lowbit = IpexLLM.from_model_id_low_bit(
     model_id=saved_lowbit_model_path,
     tokenizer_id="lmsys/vicuna-7b-v1.5",
@@ -171,13 +171,13 @@ Install IEPX-LLM for running LLMs locally on Intel CPU:
 
 #### For Linux users
 
-```python
+```python wrap
 %pip install --pre --upgrade ipex-llm[all] --extra-index-url https://download.pytorch.org/whl/cpu
 ```
 
 ### Basic Usage
 
-```python
+```python wrap
 import warnings
 
 from langchain.chains import LLMChain
@@ -196,7 +196,7 @@ prompt = PromptTemplate(template=template, input_variables=["question"])
 
 Load the model locally using IpexLLM using `IpexLLM.from_model_id`. It will load the model directly in its Huggingface format and convert it automatically to low-bit format for inference.
 
-```python
+```python wrap
 llm = IpexLLM.from_model_id(
     model_id="lmsys/vicuna-7b-v1.5",
     model_kwargs={"temperature": 0, "max_length": 64, "trust_remote_code": True},
@@ -218,7 +218,7 @@ Alternatively, you might save the low-bit model to disk once and use `from_model
 
 To save the low-bit model, use `save_low_bit` as follows:
 
-```python
+```python wrap
 saved_lowbit_model_path = "./vicuna-7b-1.5-low-bit"  # path to save low-bit model
 llm.model.save_low_bit(saved_lowbit_model_path)
 del llm
@@ -228,7 +228,7 @@ Load the model from saved lowbit model path as follows.
 
 > Note that the saved path for the low-bit model only includes the model itself but not the tokenizers. If you wish to have everything in one place, you will need to manually download or copy the tokenizer files from the original model's directory to the location where the low-bit model is saved.
 
-```python
+```python wrap
 llm_lowbit = IpexLLM.from_model_id_low_bit(
     model_id=saved_lowbit_model_path,
     tokenizer_id="lmsys/vicuna-7b-v1.5",

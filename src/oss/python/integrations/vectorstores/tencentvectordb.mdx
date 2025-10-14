@@ -59,7 +59,7 @@ embeddings = None
 
 now we can create a TencentVectorDB instance, you must provide at least one of the `embeddings` or `t_vdb_embedding` parameters. if both are provided, the `embeddings` parameter will be used:
 
-```python
+```python wrap
 conn_params = ConnectionParams(
     url="http://10.0.X.X",
     key="eC4bLRy2va******************************",
@@ -78,7 +78,7 @@ docs = vector_db.similarity_search(query)
 docs[0].page_content
 ```
 
-```output
+```output wrap
 'Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. \n\nTonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. \n\nOne of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. \n\nAnd I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.'
 ```
 
@@ -101,7 +101,7 @@ Tencent VectorDB supports metadata and [filtering](https://cloud.tencent.com/doc
 
 now we will create a new TencentVectorDB collection with metadata and demonstrate how to filter the search results based on the metadata:
 
-```python
+```python wrap
 from langchain_community.vectorstores.tencentvectordb import (
     META_FIELD_TYPE_STRING,
     META_FIELD_TYPE_UINT64,
@@ -181,7 +181,7 @@ result = vector_db.similarity_search(query, expr='director="Christopher Nolan"')
 result
 ```
 
-```output
+```output wrap
 [Document(page_content='The Dark Knight is a 2008 superhero film directed by Christopher Nolan.', metadata={'year': 2008, 'rating': '9.0', 'genre': 'superhero', 'director': 'Christopher Nolan'}),
  Document(page_content='The Dark Knight is a 2008 superhero film directed by Christopher Nolan.', metadata={'year': 2008, 'rating': '9.0', 'genre': 'superhero', 'director': 'Christopher Nolan'}),
  Document(page_content='The Dark Knight is a 2008 superhero film directed by Christopher Nolan.', metadata={'year': 2008, 'rating': '9.0', 'genre': 'superhero', 'director': 'Christopher Nolan'}),

@@ -43,7 +43,7 @@ For example, if your dataset items are structured like this:
 
 The mapping function in the code below will convert them to LangChain `Document` format, so that you can use them further with any LLM model (e.g. for question answering).
 
-```python
+```python wrap
 loader = ApifyDatasetLoader(
     dataset_id="your-dataset-id",
     dataset_mapping_function=lambda dataset_item: Document(
@@ -98,7 +98,7 @@ print(result["answer"])
 print(result["sources"])
 ```
 
-```output
+```output wrap
  Apify is a platform for developing, running, and sharing serverless cloud programs. It enables users to create web scraping and automation tools and publish them on the Apify platform.
 
 https://docs.apify.com/platform/actors, https://docs.apify.com/platform/actors/running/actors-in-store, https://docs.apify.com/platform/security, https://docs.apify.com/platform/actors/examples

@@ -20,7 +20,7 @@ The location of `token.json` use the same directory (or use the parameter `token
 
 By default, If you use a `folder_id`, all the files inside this folder can be retrieved to `Document`, if the name match the query.
 
-```python
+```python wrap
 %pip install -qU  google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-community
 ```
 
@@ -94,7 +94,7 @@ tool.run("machine learning")
 tool.description
 ```
 
-```output
+```output wrap
 "A wrapper around Google Drive Search. Useful for when you need to find a document in google drive. The input should be formatted as a list of entities separated with a space. As an example, a list of keywords is 'hello word'."
 ```
 

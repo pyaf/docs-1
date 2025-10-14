@@ -24,7 +24,7 @@ Head [to this page](https://developers.cloudflare.com/workers-ai/) to sign up to
 
 The LangChain Cloudflare integration lives in the `@langchain/cloudflare` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -47,7 +47,7 @@ const CLOUDFLARE_ACCOUNT_ID = Deno.env.get("CLOUDFLARE_ACCOUNT_ID");
 const CLOUDFLARE_API_TOKEN = Deno.env.get("CLOUDFLARE_API_TOKEN");
 ```
 
-```typescript
+```typescript wrap
 import { CloudflareWorkersAI } from "@langchain/cloudflare";
 
 const llm = new CloudflareWorkersAI({
@@ -68,7 +68,7 @@ const completion = await llm.invoke(inputText);
 completion
 ```
 
-```output
+```output wrap
 "Cloudflare is not an AI company, but rather a content delivery network (CDN) and security company. T"... 876 more characters
 ```
 

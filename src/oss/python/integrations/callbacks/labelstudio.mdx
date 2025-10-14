@@ -14,7 +14,7 @@ In this guide, you will learn how to connect a LangChain pipeline to `Label Stud
 
 First install latest versions of Label Studio and Label Studio API client:
 
-```python
+```python wrap
 %pip install -qU langchain label-studio label-studio-sdk langchain-openai langchain-community
 ```
 
@@ -26,7 +26,7 @@ Open your LabelStudio instance in your browser, go to `Account & Settings > Acce
 
 Set environment variables with your LabelStudio URL, API key and OpenAI API key:
 
-```python
+```python wrap
 import os
 
 os.environ["LABEL_STUDIO_URL"] = "<YOUR-LABEL-STUDIO-URL>"  # e.g. http://localhost:8080
@@ -75,7 +75,7 @@ from langchain_community.callbacks.labelstudio_callback import (
 )
 ```
 
-```python
+```python wrap
 from langchain_openai import OpenAI
 
 llm = OpenAI(

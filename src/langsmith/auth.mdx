@@ -86,7 +86,7 @@ Authentication in LangGraph runs as middleware on every request. Your [`@auth.au
 2. Return [user info](https://langchain-ai.github.io/langgraph/cloud/reference/sdk/python_sdk_ref/#langgraph_sdk.auth.types.MinimalUserDict) containing the user's identity and user information if valid
 3. Raise an [HTTP exception](https://langchain-ai.github.io/langgraph/cloud/reference/sdk/python_sdk_ref/#langgraph_sdk.auth.exceptions.HTTPException) or AssertionError if invalid
 
-```python
+```python wrap
 from langgraph_sdk import Auth
 
 auth = Auth()
@@ -139,7 +139,7 @@ The returned user information is available:
 
 Custom authentication permits delegated access. The values you return in  `@auth.authenticate` are added to the run context, giving agents user-scoped credentials lets them access resources on the user’s behalf.
 
-```mermaid
+```mermaid wrap
 sequenceDiagram
   %% Actors
   participant ClientApp as Client
@@ -193,7 +193,7 @@ After authentication, LangGraph calls your [`@auth.on`](https://langchain-ai.git
 
 If you want to just implement simple user-scoped access control, you can use a single [`@auth.on`](https://langchain-ai.github.io/langgraph/cloud/reference/sdk/python_sdk_ref/#langgraph_sdk.auth.Auth.on) handler for all resources and actions. If you want to have different control depending on the resource and action, you can use [resource-specific handlers](#resource-specific-handlers). See the [Supported Resources](#supported-resources) section for a full list of the resources that support access control.
 
-```python
+```python wrap
 @auth.on
 async def add_owner(
     ctx: Auth.types.AuthContext,
@@ -248,7 +248,7 @@ When a request is made, the most specific handler that matches that resource and
 For a full list of supported resources and actions, see the [Supported Resources](#supported-resources) section below.
 </Tip>
 
-```python
+```python wrap
 # Generic / global handler catches calls that aren't handled by more specific handlers
 @auth.on
 async def reject_unhandled_requests(ctx: Auth.types.AuthContext, value: Any) -> False:
@@ -374,7 +374,7 @@ async def owner_only(ctx: Auth.types.AuthContext, value: dict):
 
 This pattern lets you control access based on **permissions**. It's useful if you want certain roles to have broader or more restricted access to resources.
 
-```python
+```python wrap
 # In your auth handler:
 @auth.authenticate
 async def authenticate(headers: dict) -> Auth.types.MinimalUserDict:

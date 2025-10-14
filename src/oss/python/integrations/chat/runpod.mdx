@@ -19,7 +19,7 @@ This guide covers how to use the LangChain `ChatRunPod` class to interact with c
 2. **Deploy a Chat Model Endpoint:** Follow the setup steps in the [RunPod Provider Guide](/oss/integrations/providers/runpod#setup) to deploy a compatible chat model endpoint on RunPod Serverless and get its Endpoint ID.
 3. **Set Environment Variables:** Make sure `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID` (or a specific `RUNPOD_CHAT_ENDPOINT_ID`) are set.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -70,7 +70,7 @@ chat = ChatRunPod(
 
 Use the standard LangChain `.invoke()` and `.ainvoke()` methods to call the model. Streaming is also supported via `.stream()` and `.astream()` (simulated by polling the RunPod `/stream` endpoint).
 
-```python
+```python wrap
 from langchain_core.messages import HumanMessage, SystemMessage
 
 messages = [
@@ -125,7 +125,7 @@ except Exception as e:
 
 The chat model integrates seamlessly with LangChain Expression Language (LCEL) chains.
 
-```python
+```python wrap
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 

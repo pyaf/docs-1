@@ -78,7 +78,7 @@ agent = create_agent(
     system_prompt="You are a helpful assistant"  # [!code highlight]
 )
 ```
-```python V0 (old)
+```python V0 (old) wrap
 from langchain_core.messages import SystemMessage
 from langgraph.prebuilt import create_react_agent
 
@@ -269,7 +269,7 @@ agent = create_react_agent(
 Custom state is now defined in middleware using the `state_schema` attribute:
 
 <CodeGroup>
-```python V1 (new)
+```python V1 (new) wrap
 from typing import Annotated
 from langchain_core.tools import tool
 from langchain.agents import create_agent  # [!code highlight]
@@ -403,7 +403,7 @@ This functionality has been ported to the middleware interface in V1.
 #### Dynamic model selection
 
 <CodeGroup>
-```python V1 (new)
+```python V1 (new) wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import (
     AgentMiddleware, ModelRequest, ModelRequestHandler

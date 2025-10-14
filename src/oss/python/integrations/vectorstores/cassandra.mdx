@@ -184,7 +184,7 @@ for res in results_filtered:
     print(f"* {res.page_content} [{res.metadata}]")
 ```
 
-```python
+```python wrap
 results = vstore.similarity_search_with_score("Our life is what we make of it", k=3)
 for res, score in results:
     print(f"* [SIM={score:3f}] {res.page_content} [{res.metadata}]")
@@ -222,7 +222,7 @@ The next cells will implement a simple RAG pipeline:
 - create a RAG chain with LCEL (LangChain Expression Language), with the vector store at its heart;
 - run the question-answering chain.
 
-```python
+```python wrap
 !curl -L \
     "https://github.com/awesome-astra/datasets/blob/main/demo-resources/what-is-philosophy/what-is-philosophy.pdf?raw=true" \
     -o "what-is-philosophy.pdf"
@@ -238,7 +238,7 @@ inserted_ids_from_pdf = vstore.add_documents(docs_from_pdf)
 print(f"Inserted {len(inserted_ids_from_pdf)} documents.")
 ```
 
-```python
+```python wrap
 retriever = vstore.as_retriever(search_kwargs={"k": 3})
 
 philo_template = """
@@ -266,7 +266,7 @@ chain = (
 )
 ```
 
-```python
+```python wrap
 chain.invoke("How does Russel elaborate on Peirce's idea of the security blanket?")
 ```
 

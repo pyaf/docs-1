@@ -185,7 +185,7 @@ Note that the `bar` channel values contain outputs from both nodes as we have a 
 :::python
 When interacting with the saved graph state, you **must** specify a [thread identifier](#threads). You can view the _latest_ state of the graph by calling `graph.get_state(config)`. This will return a `StateSnapshot` object that corresponds to the latest checkpoint associated with the thread ID provided in the config or a checkpoint associated with a checkpoint ID for the thread, if provided.
 
-```python
+```python wrap
 # get the latest state snapshot
 config = {"configurable": {"thread_id": "1"}}
 graph.get_state(config)
@@ -218,7 +218,7 @@ await graph.getState(config);
 :::python
 In our example, the output of `get_state` will look like this:
 
-```
+``` wrap
 StateSnapshot(
     values={'foo': 'b', 'bar': ['a', 'b']},
     next=(),
@@ -287,7 +287,7 @@ for await (const state of graph.getStateHistory(config)) {
 :::python
 In our example, the output of `get_state_history` will look like this:
 
-```
+``` wrap
 [
     StateSnapshot(
         values={'foo': 'b', 'bar': ['a', 'b']},
@@ -465,7 +465,7 @@ It's also possible to play-back a prior graph execution. If we `invoke` a graph 
 You must pass these when invoking the graph as part of the `configurable` portion of the config:
 
 :::python
-```python
+```python wrap
 config = {"configurable": {"thread_id": "1", "checkpoint_id": "0c62ca34-ac19-445d-bbb0-5b4984975b2a"}}
 graph.invoke(None, config=config)
 ```
@@ -716,7 +716,7 @@ The attributes it has are:
 Beyond simple retrieval, the store also supports semantic search, allowing you to find memories based on meaning rather than exact matches. To enable this, configure the store with an embedding model:
 
 :::python
-```python
+```python wrap
 from langchain.embeddings import init_embeddings
 
 store = InMemoryStore(
@@ -853,7 +853,7 @@ const graph = workflow.compile({ checkpointer, store: memoryStore });
 We invoke the graph with a `thread_id`, as before, and also with a `user_id`, which we'll use to namespace our memories to this particular user as we showed above.
 
 :::python
-```python
+```python wrap
 # Invoke the graph
 user_id = "1"
 config = {"configurable": {"thread_id": "1", "user_id": user_id}}
@@ -885,7 +885,7 @@ for await (const update of await graph.stream(
 :::python
 We can access the `in_memory_store` and the `user_id` in _any node_ by passing `store: BaseStore` and `config: RunnableConfig` as node arguments. Here's how we might use semantic search in a node to find relevant memories:
 
-```python
+```python wrap
 def update_memory(state: MessagesState, config: RunnableConfig, *, store: BaseStore):
 
     # Get the user id from the config
@@ -971,7 +971,7 @@ memories[memories.length - 1];
 We can access the memories and use them in our model call.
 
 :::python
-```python
+```python wrap
 def call_model(state: MessagesState, config: RunnableConfig, *, store: BaseStore):
     # Get the user id from the config
     user_id = config["configurable"]["user_id"]
@@ -1019,7 +1019,7 @@ const callModel = async (
 If we create a new thread, we can still access the same memories so long as the `user_id` is the same.
 
 :::python
-```python
+```python wrap
 # Invoke the graph
 config = {"configurable": {"thread_id": "2", "user_id": "1"}}
 

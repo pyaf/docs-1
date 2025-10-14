@@ -32,7 +32,7 @@ Once the database has been initialized, retrieve your [connection secrets](https
 
 You may optionally provide a **`keyspace`** (called "namespace" in the LangChain components), which you can manage from the `Data Explorer` tab of your database dashboard. If you wish, you can leave it empty in the prompt below and fall back to a default keyspace.
 
-```python
+```python wrap
 import getpass
 
 ASTRA_DB_API_ENDPOINT = input("ASTRA_DB_API_ENDPOINT = ").strip()
@@ -45,7 +45,7 @@ else:
     ASTRA_DB_KEYSPACE = None
 ```
 
-```output
+```output wrap
 ASTRA_DB_API_ENDPOINT =  https://01234567-89ab-cdef-0123-456789abcdef-us-east1.apps.astra.datastax.com
 ASTRA_DB_APPLICATION_TOKEN =  ········
 (optional) ASTRA_DB_KEYSPACE =
@@ -53,7 +53,7 @@ ASTRA_DB_APPLICATION_TOKEN =  ········
 
 If you want to get best in-class automated tracing of your model calls you can also set your [LangSmith](https://docs.smith.langchain.com/) API key by uncommenting below:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 # os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -177,7 +177,7 @@ Add documents to the vector store by using the `add_documents` method.
 
 _The "id" field can be supplied separately, in a matching `ids=[...]` parameter to `add_documents`, or even left out entirely to let the store generate IDs._
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 documents_to_insert = [
@@ -294,7 +294,7 @@ for res in results:
     print(f'* "{res.page_content}", metadata={res.metadata}')
 ```
 
-```output
+```output wrap
 * "Building an exciting new project with LangChain - come check it out!", metadata={'source': 'tweet'}
 * "LangGraph is the best framework for building stateful, agentic applications!", metadata={'source': 'tweet'}
 * "Thanks to her sophisticated language skills, the agent managed to extract strategic information all right.", metadata={'source': 'tweet'}
@@ -314,7 +314,7 @@ for res, score in results:
     print(f'* [SIM={score:.2f}] "{res.page_content}", metadata={res.metadata}')
 ```
 
-```output
+```output wrap
 * [SIM=0.71] "Building an exciting new project with LangChain - come check it out!", metadata={'source': 'tweet'}
 * [SIM=0.70] "LangGraph is the best framework for building stateful, agentic applications!", metadata={'source': 'tweet'}
 * [SIM=0.61] "Thanks to her sophisticated language skills, the agent managed to extract strategic information all right.", metadata={'source': 'tweet'}
@@ -339,7 +339,7 @@ for res in results:
     print(f'* "{res.page_content}", metadata={res.metadata}')
 ```
 
-```output
+```output wrap
 * "Building an exciting new project with LangChain - come check it out!", metadata={'source': 'tweet'}
 * "LangGraph is the best framework for building stateful, agentic applications!", metadata={'source': 'tweet'}
 * "ZYX, just another tool in the world, is actually my agent-based superhero", metadata={'source': 'tweet'}
@@ -367,7 +367,7 @@ retriever = vector_store.as_retriever(
 retriever.invoke("Stealing from the bank is a crime", filter={"source": "news"})
 ```
 
-```output
+```output wrap
 [Document(id='entry_04', metadata={'source': 'news'}, page_content='Robbers broke into the city bank and stole $1 million in cash.')]
 ```
 

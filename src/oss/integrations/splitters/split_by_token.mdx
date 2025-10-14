@@ -49,7 +49,7 @@ texts = text_splitter.split_text(state_of_the_union)
 ```python
 print(texts[0])
 ```
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.
 
 Last year COVID-19 kept us apart. This year we are finally together again.
@@ -128,7 +128,7 @@ const stateOfTheUnion = readFileSync("state_of_the_union.txt", "utf8");
 
 To split with a @[TokenTextSplitter] and then merge chunks with `tiktoken`, pass in an `encodingName` (e.g. cl100k_base) when initializing the @[TokenTextSplitter]. Note that splits from this method can be larger than the chunk size measured by the `tiktoken` tokenizer.
 
-```ts
+```ts wrap
 import { TokenTextSplitter } from "@langchain/textsplitters";
 
 // Example: use cl100k_base encoding
@@ -137,7 +137,7 @@ const splitter = new TokenTextSplitter({ encodingName: "cl100k_base", chunkSize:
 const texts = splitter.splitText(stateOfTheUnion);
 console.log(texts[0]);
 ```
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.
 
 Last year COVID-19 kept us apart. This year we are finally together again.
@@ -181,7 +181,7 @@ text_splitter = SpacyTextSplitter(chunk_size=1000)
 texts = text_splitter.split_text(state_of_the_union)
 print(texts[0])
 ```
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman.
 
 Members of Congress and the Cabinet.
@@ -241,7 +241,7 @@ To split text and constrain token counts according to the sentence-transformers 
 - `tokens_per_chunk`: desired token count per chunk.
 
 
-```python
+```python wrap
 from langchain_text_splitters import SentenceTransformersTokenTextSplitter
 
 splitter = SentenceTransformersTokenTextSplitter(chunk_overlap=0)
@@ -311,7 +311,7 @@ text_splitter = NLTKTextSplitter(chunk_size=1000)
 texts = text_splitter.split_text(state_of_the_union)
 print(texts[0])
 ```
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman.
 
 Members of Congress and the Cabinet.
@@ -366,7 +366,7 @@ While `Kkma` is renowned for its detailed analysis, it is important to note that
 ```
 
 
-```python
+```python wrap
 # This is a long Korean document that we want to split up into its component sentences.
 with open("./your_korean_doc.txt") as f:
     korean_document = f.read()
@@ -452,7 +452,7 @@ texts = text_splitter.split_text(state_of_the_union)
 ```python
 print(texts[0])
 ```
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.
 
 Last year COVID-19 kept us apart. This year we are finally together again.

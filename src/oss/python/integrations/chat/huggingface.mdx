@@ -28,7 +28,7 @@ To access Hugging Face models you'll need to create a Hugging Face account, get 
 
 Generate a [Hugging Face Access Token](https://huggingface.co/docs/hub/security-tokens) and store it as an environment variable: `HUGGINGFACEHUB_API_TOKEN`.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -65,7 +65,7 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = getpass.getpass(
 )
 ```
 
-```python
+```python wrap
 %pip install -qU  langchain-huggingface text-generation transformers google-search-results numexpr langchainhub sentencepiece jinja2 bitsandbytes accelerate
 ```
 
@@ -96,7 +96,7 @@ llm = HuggingFaceEndpoint(
 chat_model = ChatHuggingFace(llm=llm)
 ```
 
-```output
+```output wrap
 The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
 Token is valid (permission: fineGrained).
 Your token has been saved to /Users/isaachershenson/.cache/huggingface/token
@@ -222,7 +222,7 @@ chat_model = ChatHuggingFace(llm=llm)
 
 ## Invocation
 
-```python
+```python wrap
 from langchain_core.messages import (
     HumanMessage,
     SystemMessage,
@@ -242,7 +242,7 @@ ai_msg = chat_model.invoke(messages)
 print(ai_msg.content)
 ```
 
-```output
+```output wrap
 According to the popular phrase and hypothetical scenario, when an unstoppable force meets an immovable object, a paradoxical situation arises as both forces are seemingly contradictory. On one hand, an unstoppable force is an entity that cannot be stopped or prevented from moving forward, while on the other hand, an immovable object is something that cannot be moved or displaced from its position.
 
 In this scenario, it is un

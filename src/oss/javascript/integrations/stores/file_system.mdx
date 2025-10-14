@@ -22,7 +22,7 @@ The `LocalFileStore` is a wrapper around the `fs` module for storing data as key
 Each key value pair has its own file nested inside the directory passed to the `.fromPath` method.
 The file name is the key and inside contains the value of the key.
 
-```{=mdx}
+```{=mdx} wrap
 
 <Info>
 **The path passed to the `.fromPath` must be a directory, not a file.**
@@ -51,7 +51,7 @@ Make sure that the path you specify when initializing the store is free of other
 
 The LangChain `LocalFileStore` integration lives in the `langchain` package:
 
-```{=mdx}
+```{=mdx} wrap
 
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>

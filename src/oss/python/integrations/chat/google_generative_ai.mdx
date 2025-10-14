@@ -36,7 +36,7 @@ Head to [https://ai.google.dev/gemini-api/docs/api-key](https://ai.google.dev/ge
 
 Use the `ChatGoogleGenerativeAI` class to interact with Google's chat models. See the [API reference](https://python.langchain.com/api_reference/google_genai/chat_models/langchain_google_genai.chat_models.ChatGoogleGenerativeAI.html) for full details.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -46,7 +46,7 @@ if "GOOGLE_API_KEY" not in os.environ:
 
 To enable automated tracing of your model calls, set your [LangSmith](https://docs.smith.langchain.com/) API key:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 # os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -70,7 +70,7 @@ llm = ChatGoogleGenerativeAI(
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",
@@ -82,7 +82,7 @@ ai_msg = llm.invoke(messages)
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content="J'adore la programmation.", additional_kwargs={}, response_metadata={'prompt_feedback': {'block_reason': 0, 'safety_ratings': []}, 'finish_reason': 'STOP', 'model_name': 'gemini-2.5-flash', 'safety_ratings': []}, id='run-3b28d4b8-8a62-4e6c-ad4e-b53e6e825749-0', usage_metadata={'input_tokens': 20, 'output_tokens': 7, 'total_tokens': 27, 'input_token_details': {'cache_read': 0}})
 ```
 
@@ -102,7 +102,7 @@ Gemini models can accept multimodal inputs (text, images, audio, video) and, for
 
 Provide image inputs along with text using a `HumanMessage` with a list content format. Make sure to use a model that supports image input, such as `gemini-2.5-flash`.
 
-```python
+```python wrap
 import base64
 
 from langchain_core.messages import HumanMessage
@@ -146,7 +146,7 @@ Other supported `image_url` formats:
 
 Provide audio file inputs along with text.
 
-```python
+```python wrap
 import base64
 
 from langchain_core.messages import HumanMessage
@@ -177,7 +177,7 @@ print(f"Response for audio: {response.content}")
 
 Provide video file inputs along with text.
 
-```python
+```python wrap
 import base64
 
 from langchain_core.messages import HumanMessage
@@ -209,7 +209,7 @@ print(f"Response for video: {response.content}")
 
 Certain models (such as `gemini-2.0-flash-preview-image-generation`) can generate text and images inline. You need to specify the desired `response_modalities`. See more information on the [Gemini API docs](https://ai.google.dev/gemini-api/docs/image-generation) for details.
 
-```python
+```python wrap
 import base64
 
 from IPython.display import Image, display
@@ -246,7 +246,7 @@ display(Image(data=base64.b64decode(image_base64), width=300))
 
 You can equip the model with tools to call.
 
-```python
+```python wrap
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -278,11 +278,11 @@ tool_message = ToolMessage(
 llm_with_tools.invoke([ai_msg, tool_message])  # Example of passing tool result back
 ```
 
-```output
+```output wrap
 [{'name': 'get_weather', 'args': {'location': 'San Francisco'}, 'id': 'a6248087-74c5-4b7c-9250-f335e642927c', 'type': 'tool_call'}]
 ```
 
-```output
+```output wrap
 AIMessage(content="OK. It's sunny in San Francisco.", additional_kwargs={}, response_metadata={'prompt_feedback': {'block_reason': 0, 'safety_ratings': []}, 'finish_reason': 'STOP', 'model_name': 'gemini-2.5-flash-lite-latest', 'safety_ratings': []}, id='run-ac5bb52c-e244-4c72-9fbc-fb2a9cd7a72e-0', usage_metadata={'input_tokens': 29, 'output_tokens': 11, 'total_tokens': 40, 'input_token_details': {'cache_read': 0}})
 ```
 
@@ -290,7 +290,7 @@ AIMessage(content="OK. It's sunny in San Francisco.", additional_kwargs={}, resp
 
 Force the model to respond with a specific structure using Pydantic models.
 
-```python
+```python wrap
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -336,7 +336,7 @@ The `json_schema` method is **recommended for better reliability** as it constra
 
 Access token usage information from the response metadata.
 
-```python
+```python wrap
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite-latest")
@@ -348,7 +348,7 @@ print("\nUsage Metadata:")
 print(result.usage_metadata)
 ```
 
-```output
+```output wrap
 Prompt engineering is the art and science of crafting effective text prompts to elicit desired and accurate responses from large language models.
 
 Usage Metadata:
@@ -370,7 +370,7 @@ resp = llm.invoke(
 print(resp.content)
 ```
 
-```output
+```output wrap
 The next total solar eclipse visible in the United States will occur on August 23, 2044. However, the path of totality will only pass through Montana, North Dakota, and South Dakota.
 
 For a total solar eclipse that crosses a significant portion of the continental U.S., you'll have to wait until August 12, 2045. This eclipse will start in California and end in Florida.
@@ -401,7 +401,7 @@ Code execution result: 4
 
 2*2 is 4.
 ```
-```output
+```output wrap
 /Users/philschmid/projects/google-gemini/langchain/.venv/lib/python3.9/site-packages/langchain_google_genai/chat_models.py:580: UserWarning:
         ⚠️ Warning: Output may vary each run.
         - 'executable_code': Always present.
@@ -464,7 +464,7 @@ Async Batch Results: ['1 + 1 = 2', '2 + 2 = 4']
 
 Gemini models have default safety settings that can be overridden. If you are receiving lots of "Safety Warnings" from your models, you can try tweaking the `safety_settings` attribute of the model. For example, to turn off safety blocking for dangerous content, you can construct your LLM as follows:
 
-```python
+```python wrap
 from langchain_google_genai import (
     ChatGoogleGenerativeAI,
     HarmBlockThreshold,

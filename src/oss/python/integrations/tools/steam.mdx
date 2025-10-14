@@ -60,7 +60,7 @@ from langchain.agents import create_agent
 agent = create_agent("openai:gpt-4.1-mini", tools)
 ```
 
-```python
+```python wrap
 events = agent.stream(
     {"messages": [("user", "can you give the information about the game Terraria?")]},
     stream_mode="values",
@@ -69,7 +69,7 @@ for event in events:
     event["messages"][-1].pretty_print()
 ```
 
-```output
+```output wrap
 ================================ Human Message =================================
 
 can you give the information about the game Terraria?

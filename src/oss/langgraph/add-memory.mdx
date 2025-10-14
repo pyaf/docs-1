@@ -53,7 +53,7 @@ await graph.invoke(
 In production, use a checkpointer backed by a database:
 
 :::python
-```python {highlight={4,6}}
+```python {highlight={4,6}} wrap
 from langgraph.checkpoint.postgres import PostgresSaver
 
 DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable"
@@ -64,7 +64,7 @@ with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { PostgresSaver } from "@langchain/langgraph-checkpoint-postgres";
 
 const DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable";
@@ -87,7 +87,7 @@ const graph = builder.compile({ checkpointer });
 
     <Tabs>
         <Tab title="Sync">
-      ```python {highlight={3,8,19,23,29,36}}
+      ```python {highlight={3,8,19,23,29,36}} wrap
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
       from langgraph.checkpoint.postgres import PostgresSaver
@@ -130,7 +130,7 @@ const graph = builder.compile({ checkpointer });
 ```
         </Tab>
         <Tab title="Async">
-      ```python {highlight={3,8,19,23,29,36}}
+      ```python {highlight={3,8,19,23,29,36}} wrap
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
       from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
@@ -184,7 +184,7 @@ const graph = builder.compile({ checkpointer });
     You need to call `checkpointer.setup()` the first time you're using Postgres checkpointer
     </Tip>
 
-  ```typescript
+  ```typescript wrap
   import { ChatAnthropic } from "@langchain/anthropic";
   import { StateGraph, MessagesZodMeta, START } from "@langchain/langgraph";
   import { BaseMessage } from "@langchain/core/messages";
@@ -540,7 +540,7 @@ const graph = builder.compile({ store });
 In production, use a store backed by a database:
 
 :::python
-```python {highlight={4,6}}
+```python {highlight={4,6}} wrap
 from langgraph.store.postgres import PostgresStore
 
 DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable"
@@ -551,7 +551,7 @@ with PostgresStore.from_conn_string(DB_URI) as store:
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { PostgresStore } from "@langchain/langgraph-checkpoint-postgres";
 
 const DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable";
@@ -574,7 +574,7 @@ const graph = builder.compile({ store });
 
     <Tabs>
         <Tab title="Sync">
-      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}}
+      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}} wrap
       from langchain_core.runnables import RunnableConfig
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
@@ -654,7 +654,7 @@ const graph = builder.compile({ store });
 ```
         </Tab>
         <Tab title="Async">
-      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}}
+      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}} wrap
       from langchain_core.runnables import RunnableConfig
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
@@ -745,7 +745,7 @@ const graph = builder.compile({ store });
     You need to call `store.setup()` the first time you're using Postgres store
     </Tip>
 
-  ```typescript
+  ```typescript wrap
   import { ChatAnthropic } from "@langchain/anthropic";
   import { StateGraph, MessagesZodMeta, START, LangGraphRunnableConfig } from "@langchain/langgraph";
   import { PostgresSaver, PostgresStore } from "@langchain/langgraph-checkpoint-postgres";
@@ -845,7 +845,7 @@ const graph = builder.compile({ store });
 
     <Tabs>
         <Tab title="Sync">
-      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}}
+      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}} wrap
       from langchain_core.runnables import RunnableConfig
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
@@ -925,7 +925,7 @@ const graph = builder.compile({ store });
 ```
         </Tab>
         <Tab title="Async">
-      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}}
+      ```python {highlight={5,13,23,27,35,48,53,54,59,66,73}} wrap
       from langchain_core.runnables import RunnableConfig
       from langchain.chat_models import init_chat_model
       from langgraph.graph import StateGraph, MessagesState, START
@@ -1061,7 +1061,7 @@ const items = await store.search(["user_123", "memories"], {
 
 <Accordion title="Long-term memory with semantic search">
   :::python
-  ```python
+  ```python wrap
 
   from langchain.embeddings import init_embeddings
   from langchain.chat_models import init_chat_model
@@ -1113,7 +1113,7 @@ const items = await store.search(["user_123", "memories"], {
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { OpenAIEmbeddings, ChatOpenAI } from "@langchain/openai";
   import { StateGraph, START, MessagesZodMeta, InMemoryStore } from "@langchain/langgraph";
   import { BaseMessage } from "@langchain/core/messages";
@@ -1280,7 +1280,7 @@ const builder = new StateGraph(MessagesZodState)
   final_response["messages"][-1].pretty_print()
 ```
 
-  ```
+  ``` wrap
   ================================== Ai Message ==================================
 
   Your name is Bob, as you mentioned when you first introduced yourself.
@@ -1288,7 +1288,7 @@ const builder = new StateGraph(MessagesZodState)
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { trimMessages, BaseMessage } from "@langchain/core/messages";
   import { ChatAnthropic } from "@langchain/anthropic";
   import { StateGraph, START, MessagesZodMeta, MemorySaver } from "@langchain/langgraph";
@@ -1431,7 +1431,7 @@ When deleting messages, **make sure** that the resulting message history is vali
       print([(message.type, message.content) for message in event["messages"]])
 ```
 
-  ```
+  ``` wrap
   [('human', "hi! I'm bob")]
   [('human', "hi! I'm bob"), ('ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?')]
   [('human', "hi! I'm bob"), ('ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?'), ('human', "what's my name?")]
@@ -1441,7 +1441,7 @@ When deleting messages, **make sure** that the resulting message history is vali
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { RemoveMessage, BaseMessage } from "@langchain/core/messages";
   import { ChatAnthropic } from "@langchain/anthropic";
   import { StateGraph, START, MemorySaver, MessagesZodMeta } from "@langchain/langgraph";
@@ -1496,7 +1496,7 @@ When deleting messages, **make sure** that the resulting message history is vali
   }
   ```
 
-  ```
+  ``` wrap
   [['human', "hi! I'm bob"]]
   [['human', "hi! I'm bob"], ['ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?']]
   [['human', "hi! I'm bob"], ['ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?'], ['human', "what's my name?"]]
@@ -1672,7 +1672,7 @@ const summarizeConversation = async (state: z.infer<typeof State>) => {
 
   1. We're passing a private input state here to isolate the messages returned by the summarization node
 
-  ```
+  ``` wrap
   ================================== Ai Message ==================================
 
   From our conversation, I can see that you introduced yourself as Bob. That's the name you shared with me when we began talking.
@@ -1682,7 +1682,7 @@ const summarizeConversation = async (state: z.infer<typeof State>) => {
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { ChatAnthropic } from "@langchain/anthropic";
   import {
     SystemMessage,
@@ -1826,7 +1826,7 @@ You can view and delete the information stored by the checkpointer.
     graph.get_state(config)
 ```
 
-    ```
+    ``` wrap
     StateSnapshot(
         values={'messages': [HumanMessage(content="hi! I'm bob"), AIMessage(content='Hi Bob! How are you doing today?), HumanMessage(content="what's my name?"), AIMessage(content='Your name is Bob.')]}, next=(),
         config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1f029ca3-1f5b-6704-8004-820c16b69a5a'}},
@@ -1858,7 +1858,7 @@ You can view and delete the information stored by the checkpointer.
     checkpointer.get_tuple(config)
 ```
 
-    ```
+    ``` wrap
     CheckpointTuple(
         config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1f029ca3-1f5b-6704-8004-820c16b69a5a'}},
         checkpoint={
@@ -1896,7 +1896,7 @@ const config = {
 await graph.getState(config);
 ```
 
-```
+``` wrap
 {
   values: { messages: [HumanMessage(...), AIMessage(...), HumanMessage(...), AIMessage(...)] },
   next: [],
@@ -1931,7 +1931,7 @@ await graph.getState(config);
     list(graph.get_state_history(config))
 ```
 
-    ```
+    ``` wrap
     [
         StateSnapshot(
             values={'messages': [HumanMessage(content="hi! I'm bob"), AIMessage(content='Hi Bob! How are you doing today? Is there anything I can help you with?'), HumanMessage(content="what's my name?"), AIMessage(content='Your name is Bob.')]},
@@ -2006,7 +2006,7 @@ await graph.getState(config);
     list(checkpointer.list(config))
 ```
 
-    ```
+    ``` wrap
     [
         CheckpointTuple(
             config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1f029ca3-1f5b-6704-8004-820c16b69a5a'}},

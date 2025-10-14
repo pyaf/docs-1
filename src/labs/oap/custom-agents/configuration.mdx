@@ -21,7 +21,7 @@ By default, Open Agent Platform will show *all* fields listed in your configurab
 
 Inside this object is where you define the custom UI config for that specific field. The available options are:
 
-```typescript
+```typescript wrap
 export type ConfigurableFieldUIType =
   | "text"
   | "textarea"
@@ -189,7 +189,7 @@ const workflow = new StateGraph(MyStateSchema, GraphConfiguration)
 
 And in Python, this would look like:
 
-```python Python Configurable [expandable]
+```python Python Configurable [expandable] wrap
 from pydantic import BaseModel, Field
 
 class GraphConfigPydantic(BaseModel):
@@ -261,7 +261,7 @@ To allow an agent to be configurable with MCP tools in Open Agent Platform, you 
 
 Here's an example in TypeScript:
 
-```typescript TypeScript Configurable [expandable]
+```typescript TypeScript Configurable [expandable] wrap
 export const MCPConfig = z.object({
   /**
    * The MCP server URL.
@@ -348,7 +348,7 @@ Configuring RAG is similar to MCP tools. You need to set a specific `x_oap_confi
 
 Here's an example in TypeScript:
 
-```typescript TypeScript Configurable [expandable]
+```typescript TypeScript Configurable [expandable] wrap
 export const RAGConfig = z.object({
   /**
    * The LangConnect RAG server URL.
@@ -387,7 +387,7 @@ export const GraphConfiguration = z.object({
 
 And in Python:
 
-```python Python Configurable [expandable]
+```python Python Configurable [expandable] wrap
 class RagConfig(BaseModel):
     rag_url: str | None = None
     """The URL of the rag server"""

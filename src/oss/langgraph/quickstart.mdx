@@ -167,7 +167,7 @@ The model node is used to call the LLM and decide whether to call a tool or not.
 
 :::python
 
-```python
+```python wrap
 from langchain_core.messages import SystemMessage
 def llm_call(state: dict):
     """LLM decides whether to call a tool or not"""
@@ -190,7 +190,7 @@ def llm_call(state: dict):
 
 :::js
 
-```typescript
+```typescript wrap
 import { SystemMessage } from "@langchain/core/messages";
 async function llmCall(state: z.infer<typeof MessagesState>) {
   return {
@@ -212,7 +212,7 @@ The tool node is used to call the tools and return the results.
 
 :::python
 
-```python
+```python wrap
 from langchain_core.messages import ToolMessage
 
 def tool_node(state: dict):
@@ -256,7 +256,7 @@ The conditional edge function is used to route to the tool node or end based upo
 
 :::python
 
-```python
+```python wrap
 from typing import Literal
 from langgraph.graph import StateGraph, START, END
 
@@ -358,7 +358,7 @@ Congratulations! You've built your first agent using the LangGraph Graph API.
 <Accordion title="Full code example">
 :::python
 
-```python
+```python wrap
 # Step 1: Define tools and model
 
 from langchain_core.tools import tool
@@ -509,7 +509,7 @@ for m in messages["messages"]:
 
 :::js
 
-```typescript
+```typescript wrap
 // Step 1: define tools and model
 import { ChatAnthropic } from "@langchain/anthropic";
 import { tool } from "@langchain/core/tools";
@@ -766,7 +766,7 @@ The model node is used to call the LLM and decide whether to call a tool or not.
 
 :::python
 
-```python
+```python wrap
 @task
 def call_llm(messages: list[BaseMessage]):
     """LLM decides whether to call a tool or not"""
@@ -783,7 +783,7 @@ def call_llm(messages: list[BaseMessage]):
 
 :::js
 
-```typescript
+```typescript wrap
 import { task, entrypoint } from "@langchain/langgraph";
 import { SystemMessage } from "@langchain/core/messages";
 const callLlm = task({ name: "callLlm" }, async (messages: BaseMessage[]) => {
@@ -897,7 +897,7 @@ Congratulations! You've built your first agent using the LangGraph Functional AP
 <Accordion title="Full code example" icon="code">
 :::python
 
-```python
+```python wrap
 # Step 1: Define tools and model
 
 from langchain_core.tools import tool
@@ -1010,7 +1010,7 @@ for chunk in agent.stream(messages, stream_mode="updates"):
 
 :::js
 
-```typescript
+```typescript wrap
 // Step 1: define tools and model
 import { ChatAnthropic } from "@langchain/anthropic";
 import { tool } from "@langchain/core/tools";

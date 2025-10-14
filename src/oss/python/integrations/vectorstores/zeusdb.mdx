@@ -116,7 +116,7 @@ vector_store.add_documents(documents=documents, ids=["1", "2", "3"])
 
 ### 2.2 Update items in vector store
 
-```python
+```python wrap
 updated_document = Document(
     page_content="ZeusDB now supports advanced Product Quantization with 4x-256x compression",
     metadata={"source": "https://docs.zeusdb.com", "updated": True},
@@ -148,7 +148,7 @@ for doc in results:
 
 If you want to execute a similarity search and receive the corresponding scores:
 
-```python
+```python wrap
 results = vector_store.similarity_search_with_score(query="memory optimization", k=2)
 
 for doc, score in results:
@@ -173,7 +173,7 @@ retriever.invoke("vector database features")
 
 For large datasets, use Product Quantization to reduce memory usage:
 
-```python
+```python wrap
 # Create memory-optimized vector store
 quantization_config = {"type": "pq", "subvectors": 8, "bits": 8, "training_size": 10000}
 

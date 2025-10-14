@@ -43,7 +43,7 @@ Set up your test file like this:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import pytest
 from langsmith import testing as t
 from openevals.llm import create_llm_as_judge
@@ -76,7 +76,7 @@ def test_correctness():
     )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import * as ls from "langsmith/vitest";
 // import * as ls from "langsmith/jest";
 import { createLLMAsJudge, CORRECTNESS_PROMPT } from "openevals";

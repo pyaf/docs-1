@@ -52,7 +52,7 @@ We can chain together multiple calls to one or multiple models, which is the who
 
 For example, we can replace GPT with Mistral in this demo of terminal emulation.
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_core.prompts import PromptTemplate
@@ -96,7 +96,7 @@ output = chatgpt_chain.predict(human_input="cd ~")
 print(output)
 ```
 
-```python
+```python wrap
 output = chatgpt_chain.predict(
     human_input="""echo -e "x=lambda y:y*5+3;print('Result:' + str(x(6)))" > run.py && python3 run.py"""
 )

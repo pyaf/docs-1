@@ -17,7 +17,7 @@ The most common type of evaluation is an end-to-end one, where we want to evalua
 
 Lets construct a simple ReACT agent to start:
 
-```python
+```python wrap
 from typing import Annotated, Literal, TypedDict
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
@@ -209,7 +209,7 @@ If we need access to information about intermediate steps that isn't in state, w
 See more about what arguments you can pass to custom evaluators in this [how-to guide](/langsmith/code-evaluator).
 </Check>
 
-```python
+```python wrap
 from langsmith.schemas import Run, Example
 
 def right_tool_from_run(run: Run, example: Example) -> dict:
@@ -252,7 +252,7 @@ node_experiment_results = await aevaluate(
 
 <Accordion title="Click to see a consolidated code snippet">
 
-```python
+```python wrap
 from typing import Annotated, Literal, TypedDict
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool

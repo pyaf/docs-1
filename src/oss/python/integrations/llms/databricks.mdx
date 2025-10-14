@@ -47,7 +47,7 @@ if "DATABRICKS_TOKEN" not in os.environ:
 
 Alternatively, you can pass those parameters when initializing the `Databricks` class.
 
-```python
+```python wrap
 from langchain_community.llms import Databricks
 
 databricks = Databricks(
@@ -88,7 +88,7 @@ llm = Databricks(endpoint_name="YOUR_ENDPOINT_NAME")
 llm.invoke("How are you?")
 ```
 
-```output
+```output wrap
 'I am happy to hear that you are in good health and as always, you are appreciated.'
 ```
 

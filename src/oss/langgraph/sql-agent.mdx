@@ -59,7 +59,7 @@ You will be creating a [SQLite database](https://www.sqlitetutorial.net/sqlite-s
 
 For convenience, we have hosted the database (`Chinook.db`) on a public GCS bucket.
 
-```python
+```python wrap
 import requests, pathlib
 
 url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
@@ -87,7 +87,7 @@ print(f"Dialect: {db.dialect}")
 print(f"Available tables: {db.get_usable_table_names()}")
 print(f'Sample output: {db.run("SELECT * FROM Artist LIMIT 5;")}')
 ```
-```
+``` wrap
 Dialect: sqlite
 Available tables: ['Album', 'Artist', 'Customer', 'Employee', 'Genre', 'Invoice', 'InvoiceLine', 'MediaType', 'Playlist', 'PlaylistTrack', 'Track']
 Sample output: [(1, 'AC/DC'), (2, 'Accept'), (3, 'Aerosmith'), (4, 'Alanis Morissette'), (5, 'Alice In Chains')]
@@ -107,7 +107,7 @@ tools = toolkit.get_tools()
 for tool in tools:
     print(f"{tool.name}: {tool.description}\n")
 ```
-```
+``` wrap
 sql_db_query: Input to this tool is a detailed and correct SQL query, output is a result from the database. If the query is not correct, an error message will be returned. If an error is returned, rewrite the query, check the query, and try again. If you encounter an issue with Unknown column 'xxxx' in 'field list', use sql_db_schema to query the correct table fields.
 
 sql_db_schema: Input to this tool is a comma-separated list of tables, output is the schema and sample rows for those tables. Be sure that the tables actually exist by calling sql_db_list_tables first! Example Input: table1, table2, table3
@@ -128,7 +128,7 @@ We construct dedicated nodes for the following steps:
 
 Putting these steps in dedicated nodes lets us (1) force tool-calls when needed, and (2) customize the prompts associated with each step.
 
-```python
+```python wrap
 from typing import Literal
 
 from langchain.agents import ToolNode
@@ -273,7 +273,7 @@ builder.add_edge("run_query", "generate_query")
 agent = builder.compile()
 ```
 We visualize the application below:
-```python
+```python wrap
 from IPython.display import Image, display
 from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
 
@@ -295,7 +295,7 @@ for step in agent.stream(
 ):
     step["messages"][-1].pretty_print()
 ```
-```
+``` wrap
 ================================ Human Message =================================
 
 Which genre on average has the longest tracks?
@@ -381,7 +381,7 @@ It can be prudent to check the agent's SQL queries before they are executed for 
 Here we leverage LangGraph's [human-in-the-loop](/oss/langgraph/add-human-in-the-loop) features to pause the run before executing a SQL query and wait for human review. Using LangGraph's [persistence layer](/oss/langgraph/persistence), we can pause the run indefinitely (or at least as long as the persistence layer is alive).
 
 Let's wrap the `sql_db_query` tool in a node that receives human input. We can implement this using the [interrupt](/oss/langgraph/add-human-in-the-loop) function. Below, we allow for input to approve the tool call, edit its arguments, or provide user feedback.
-```python
+```python wrap
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 from langgraph.types import interrupt
@@ -473,7 +473,7 @@ for step in agent.stream(
     else:
         pass
 ```
-```
+``` wrap
 ...
 
 INTERRUPTED:
@@ -506,7 +506,7 @@ for step in agent.stream(
     else:
         pass
 ```
-```
+``` wrap
 ================================== Ai Message ==================================
 Tool Calls:
   sql_db_query (call_t4yXkD6shwdTPuelXEmY3sAY)

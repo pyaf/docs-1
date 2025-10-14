@@ -9,7 +9,7 @@ In order to log images, use `wrap_openai`/ `wrapOpenAI` in Python or TypeScript 
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openai import OpenAI
 from langsmith.wrappers import wrap_openai
 client = wrap_openai(OpenAI())
@@ -33,7 +33,7 @@ response = client.chat.completions.create(
 print(response.choices[0])
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { wrapOpenAI } from "langsmith/wrappers";
 // Wrap the OpenAI client to automatically log traces

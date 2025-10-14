@@ -30,7 +30,7 @@ Ensure you have Python 3.10 or higher installed. You will also need to install t
 
 2. **Start the TextEmbed server with your desired models:**
 
-    ```bash
+    ```bash wrap
     python -m textembed.server --models sentence-transformers/all-MiniLM-L12-v2 --workers 4 --api-key TextEmbed
     ```
 
@@ -82,7 +82,7 @@ scores = np.array(document_embeddings) @ np.array(query_embedding).T
 dict(zip(documents, scores))
 ```
 
-```output
+```output wrap
 {'Data science involves extracting insights from data.': 0.05121298956322118,
  'Artificial intelligence is transforming various industries.': -0.0060612142358469345,
  'Cloud computing provides scalable computing resources over the internet.': -0.04877402795301714,

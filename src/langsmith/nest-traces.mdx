@@ -52,7 +52,7 @@ LangChain and LangSmith SDK use [contextvars](https://docs.python.org/3/library/
 
    b) **Using LangSmith Directly** Pass the run tree directly:
 
-   ```python
+   ```python wrap
    import asyncio
    import langsmith as ls
 
@@ -78,7 +78,7 @@ LangChain and LangSmith SDK use [contextvars](https://docs.python.org/3/library/
 
    c) **Combining Decorated Code with LangGraph/LangChain** Use a combination of techniques for manual handoff:
 
-   ```python
+   ```python wrap
    import asyncio
    import langsmith as ls
    from langchain_core.runnables import RunnableConfig, RunnableLambda
@@ -148,7 +148,7 @@ Python's contextvars start empty within new threads. Here are two approaches to 
 
    Alternatively, you can manually pass the parent run tree to the inner function:
 
-   ```python
+   ```python wrap
    from langsmith import traceable, get_current_run_tree
    from concurrent.futures import ThreadPoolExecutor
 

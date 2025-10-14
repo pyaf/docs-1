@@ -30,7 +30,7 @@ embedding object to the constructor.
 
 Example: Run a single-node Elasticsearch instance with security disabled. This is not recommended for production use.
 
-```python
+```python wrap
 %docker run -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" -e "xpack.security.http.ssl.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.12.1
 ```
 
@@ -96,7 +96,7 @@ elastic_vector_search = ElasticsearchStore(
 
 If you want to get best in-class automated tracing of your model calls you can also set your [LangSmith](https://docs.smith.langchain.com/) API key by uncommenting below:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 # os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -117,7 +117,7 @@ vector_store = ElasticsearchStore(
 
 ### Add items to vector store
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_core.documents import Document
@@ -232,7 +232,7 @@ for res in results:
     print(f"* {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 * Building an exciting new project with LangChain - come check it out! [{'source': 'tweet'}]
 * LangGraph is the best framework for building stateful, agentic applications! [{'source': 'tweet'}]
 ```
@@ -251,7 +251,7 @@ for doc, score in results:
     print(f"* [SIM={score:3f}] {doc.page_content} [{doc.metadata}]")
 ```
 
-```output
+```output wrap
 * [SIM=0.765887] The weather forecast for tomorrow is cloudy and overcast, with a high of 62 degrees. [{'source': 'news'}]
 ```
 
@@ -259,14 +259,14 @@ for doc, score in results:
 
 You can also transform the vector store into a retriever for easier usage in your chains.
 
-```python
+```python wrap
 retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold", search_kwargs={"score_threshold": 0.2}
 )
 retriever.invoke("Stealing from the bank is a crime")
 ```
 
-```output
+```output wrap
 [Document(metadata={'source': 'news'}, page_content='Robbers broke into the city bank and stole $1 million in cash.'),
  Document(metadata={'source': 'news'}, page_content='The stock market is down 500 points today due to fears of a recession.'),
  Document(metadata={'source': 'website'}, page_content='Is the new iPhone worth the price? Read this review to find out.'),
@@ -387,7 +387,7 @@ To use this, specify the model_id in `DenseVectorStrategy` constructor via the `
 
 **NOTE**: This requires the model to be deployed and running in Elasticsearch ML node. See [notebook example](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/hugging-face/loading-model-from-hugging-face.ipynb) on how to deploy the model with `eland`.
 
-```python
+```python wrap
 DENSE_SELF_DEPLOYED_INDEX_NAME = "test-dense-self-deployed"
 
 # Note: This does not have an embedding function specified
@@ -462,7 +462,7 @@ This strategy uses Elasticsearch's sparse vector retrieval to retrieve the top-k
 
 To use this, specify `SparseVectorStrategy` (was called `SparseVectorRetrievalStrategy` prior to version 0.2.0) in the `ElasticsearchStore` constructor. You will need to provide a model ID.
 
-```python
+```python wrap
 from langchain_elasticsearch import SparseVectorStrategy
 
 # Note that this example doesn't have an embedding function. This is because we infer the tokens at index time and at query time within Elasticsearch.
@@ -584,7 +584,7 @@ print(results[0])
 
 With `doc_builder` parameter at search, you are able to adjust how a Document is being built using data retrieved from Elasticsearch. This is especially useful if you have indices which were not created using LangChain.
 
-```python
+```python wrap
 from typing import Dict
 
 from langchain_core.documents import Document
@@ -655,7 +655,7 @@ The new implementation is now one class called `ElasticsearchStore` which can be
 
 Old implementation:
 
-```python
+```python wrap
 from langchain_community.vectorstores.elastic_vector_search import ElasticKNNSearch
 
 db = ElasticKNNSearch(
@@ -687,7 +687,7 @@ db = ElasticsearchStore(
 
 Old implementation:
 
-```python
+```python wrap
 from langchain_community.vectorstores.elastic_vector_search import ElasticVectorSearch
 
 db = ElasticVectorSearch(
@@ -700,7 +700,7 @@ db = ElasticVectorSearch(
 
 New implementation:
 
-```python
+```python wrap
 from langchain_elasticsearch import ElasticsearchStore, DenseVectorScriptScoreStrategy
 
 db = ElasticsearchStore(

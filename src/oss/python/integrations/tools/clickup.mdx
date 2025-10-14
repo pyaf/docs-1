@@ -65,14 +65,14 @@ access_token = ClickupAPIWrapper.get_access_token(
 )
 ```
 
-```output
+```output wrap
 Error: {'err': 'Code already used', 'ECODE': 'OAUTH_014'}
 You already used this code once. Go back a step and generate a new code.
 Our best guess for the url to get a new code is:
 https://app.clickup.com/api?client_id=B5D61F8EVO04PR0JX0U73984LLS9GI6P&redirect_uri=https://google.com
 ```
 
-```python
+```python wrap
 # Init toolkit
 clickup_api_wrapper = ClickupAPIWrapper(access_token=access_token)
 toolkit = ClickupToolkit.from_clickup_api_wrapper(clickup_api_wrapper)
@@ -81,7 +81,7 @@ print(
 )
 ```
 
-```output
+```output wrap
 Found team_id: 9011010153.
 Most request require the team id, so we store it for you in the toolkit, we assume the first team in your list is the one you want.
 Note: If you know this is the wrong ID, you can pass it at initialization.
@@ -89,7 +89,7 @@ Note: If you know this is the wrong ID, you can pass it at initialization.
 
 ### Create Agent
 
-```python
+```python wrap
 llm = OpenAI(temperature=0, openai_api_key="")
 
 agent = initialize_agent(
@@ -120,7 +120,7 @@ print_and_run("Get all the spaces available to the team")
 print_and_run("Get all the folders for the team")
 ```
 
-```output
+```output wrap
 $ COMMAND
 Get all the teams that the user is authorized to access
 
@@ -185,7 +185,7 @@ task_id = "8685mb5fn"
 
 #### Basic attirbute getting and updating
 
-```python
+```python wrap
 # We can get a task to inspect it's contents
 print_and_run(f"Get task with id {task_id}")
 
@@ -206,7 +206,7 @@ print_and_run(
 )
 ```
 
-```output
+```output wrap
 $ COMMAND
 Get task with id 8685mb5fn
 
@@ -289,7 +289,7 @@ Final Answer: The description of task 8685mb5fn has been updated to 'An old, bor
 --------------------------------------------------------------------------------
 ```
 
-```output
+```output wrap
 "The description of task 8685mb5fn has been updated to 'An old, boring task description'."
 ```
 
@@ -297,7 +297,7 @@ Final Answer: The description of task 8685mb5fn has been updated to 'An old, bor
 print_and_run("Change the descrition task 8685mj6cd to 'Look ma no hands'")
 ```
 
-```output
+```output wrap
 $ COMMAND
 Change the descrition task 8685mj6cd to 'Look ma no hands'
 
@@ -335,7 +335,7 @@ print_and_run(f"What are the assignees of task id {task_id}?")
 print_and_run(f"Add user {user_id} from the assignees of task id {task_id}")
 ```
 
-```output
+```output wrap
 $ COMMAND
 What are the assignees of task id 8685mb5fn?
 
@@ -418,14 +418,14 @@ Final Answer: User 81928627 has been removed from the assignees of task id 8685m
 
 You can create tasks, lists and folders
 
-```python
+```python wrap
 time_str = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
 print_and_run(
     f"Create a task called 'Test Task - {time_str}' with description 'This is a Test'"
 )
 ```
 
-```output
+```output wrap
 $ COMMAND
 Create a task called 'Test Task - 18/09/2023-10:31:22' with description 'This is a Test'
 
@@ -444,7 +444,7 @@ Final Answer: A task called 'Test Task - 18/09/2023-10:31:22' with description '
 --------------------------------------------------------------------------------
 ```
 
-```output
+```output wrap
 "A task called 'Test Task - 18/09/2023-10:31:22' with description 'This is a Test' was successfully created."
 ```
 
@@ -453,7 +453,7 @@ time_str = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
 print_and_run(f"Create a list called Test List - {time_str}")
 ```
 
-```output
+```output wrap
 $ COMMAND
 Create a list called Test List - 18/09/2023-10:32:12
 
@@ -472,7 +472,7 @@ Final Answer: The list "Test List - 18/09/2023-10:32:12" has been created with i
 --------------------------------------------------------------------------------
 ```
 
-```output
+```output wrap
 'The list "Test List - 18/09/2023-10:32:12" has been created with id 901100774700.'
 ```
 
@@ -481,7 +481,7 @@ time_str = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
 print_and_run(f"Create a folder called 'Test Folder - {time_str}'")
 ```
 
-```output
+```output wrap
 $ COMMAND
 Create a folder called 'Test Folder - 18/09/2023-10:32:51'
 
@@ -504,14 +504,14 @@ Final Answer: The folder 'Test Folder - 18/09/2023-10:32:51' has been successful
 "The folder 'Test Folder - 18/09/2023-10:32:51' has been successfully created."
 ```
 
-```python
+```python wrap
 time_str = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
 print_and_run(
     f"Create a list called 'Test List - {time_str}' with content My test list with high priority and status red"
 )
 ```
 
-```output
+```output wrap
 $ COMMAND
 Create a list called 'Test List - 18/09/2023-10:34:01' with content My test list with high priority and status red
 
@@ -530,19 +530,19 @@ Final Answer: The list 'Test List - 18/09/2023-10:34:01' with content 'My test l
 --------------------------------------------------------------------------------
 ```
 
-```output
+```output wrap
 "The list 'Test List - 18/09/2023-10:34:01' with content 'My test list' with high priority and status red has been successfully created."
 ```
 
 ## Multi-Step Tasks
 
-```python
+```python wrap
 print_and_run(
     "Figure out what user ID Rodrigo is, create a task called 'Rod's task', assign it to Rodrigo"
 )
 ```
 
-```output
+```output wrap
 $ COMMAND
 Figure out what user ID Rodrigo is, create a task called 'Rod's task', assign it to Rodrigo
 
@@ -558,12 +558,12 @@ Thought: I now have the user ID of Rodrigo
 Action: Create Task
 Action Input: {"name": "Rod's task", "assignees": [81928627]}
 ```
-```output
+```output wrap
 /Users/rodrigolentini/repos/langchain-clickup/libs/langchain/langchain/utilities/clickup.py:145: UserWarning: Error encountered while trying to parse <class 'langchain_community.utilities.clickup.Task'>: 'NoneType' object is not subscriptable
  Falling back to returning input data.
   warnings.warn(f'Error encountered while trying to parse {dataclass}: {e}\n Falling back to returning input data.')
 ```
-```output
+```output wrap
 Observation: {'id': '8685mw6dz', 'custom_id': None, 'name': "Rod's task", 'text_content': '', 'description': '', 'status': {'id': 'p90110061901_VlN8IJtk', 'status': 'to do', 'color': '#87909e', 'orderindex': 0, 'type': 'open'}, 'orderindex': '24.00000000000000000000000000000000', 'date_created': '1695047740939', 'date_updated': '1695047740939', 'date_closed': None, 'date_done': None, 'archived': False, 'creator': {'id': 81928627, 'username': 'Rodrigo Ceballos Lentini', 'color': '#c51162', 'email': 'rlentini@clickup.com', 'profilePicture': None}, 'assignees': [{'id': 81928627, 'username': 'Rodrigo Ceballos Lentini', 'color': '#c51162', 'initials': 'RL', 'email': 'rlentini@clickup.com', 'profilePicture': None}], 'watchers': [{'id': 81928627, 'username': 'Rodrigo Ceballos Lentini', 'color': '#c51162', 'initials': 'RL', 'email': 'rlentini@clickup.com', 'profilePicture': None}], 'checklists': [], 'tags': [], 'parent': None, 'priority': None, 'due_date': None, 'start_date': None, 'points': None, 'time_estimate': None, 'time_spent': 0, 'custom_fields': [], 'dependencies': [], 'linked_tasks': [], 'team_id': '9011010153', 'url': 'https://app.clickup.com/t/8685mw6dz', 'sharing': {'public': False, 'public_share_expires_on': None, 'public_fields': ['assignees', 'priority', 'due_date', 'content', 'comments', 'attachments', 'customFields', 'subtasks', 'tags', 'checklists', 'coverimage'], 'token': None, 'seo_optimized': False}, 'permission_level': 'create', 'list': {'id': '901100754275', 'name': 'Test List', 'access': True}, 'project': {'id': '90110336890', 'name': 'Test Folder', 'hidden': False, 'access': True}, 'folder': {'id': '90110336890', 'name': 'Test Folder', 'hidden': False, 'access': True}, 'space': {'id': '90110061901'}}
 Thought: I now have the task created and assigned to Rodrigo
 Final Answer: Rodrigo's user ID is 81928627 and a task called 'Rod's task' has been created and assigned to him.
@@ -572,6 +572,6 @@ Final Answer: Rodrigo's user ID is 81928627 and a task called 'Rod's task' has b
 --------------------------------------------------------------------------------
 ```
 
-```output
+```output wrap
 "Rodrigo's user ID is 81928627 and a task called 'Rod's task' has been created and assigned to him."
 ```

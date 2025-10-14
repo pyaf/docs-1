@@ -51,7 +51,7 @@ mlflow.langchain.autolog()
 
 Here's a complete example showing MLflow tracing with LangChain:
 
-```python
+```python wrap
 import mlflow
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -91,7 +91,7 @@ To view the trace, run `mlflow ui` in your terminal and navigate to the Traces t
 
 MLflow also supports tracing LangGraph applications:
 
-```python
+```python wrap
 import mlflow
 from langchain_core.tools import tool
 from langchain.agents import create_agent

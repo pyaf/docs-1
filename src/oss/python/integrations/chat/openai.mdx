@@ -51,7 +51,7 @@ To access OpenAI models you'll need to install the `langchain-openai` integratio
 
 Head to [`platform.openai.com`](https://platform.openai.com/docs/api-reference/authentication) to sign up and generate an API key. Once you've done this set the `OPENAI_API_KEY` environment variable in your environment:
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -61,7 +61,7 @@ if not os.environ.get("OPENAI_API_KEY"):
 
 If you want to get automated tracing of your model calls you can also set your [LangSmith](/langsmith/home) API key:
 
-```python
+```python wrap
 os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -70,7 +70,7 @@ os.environ["LANGSMITH_TRACING"] = "true"
 
 Now we can instantiate our model object and generate responses:
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
@@ -92,7 +92,7 @@ See the @[`ChatOpenAI`][ChatOpenAI] API Reference for the full set of available 
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",
@@ -104,7 +104,7 @@ ai_msg = llm.invoke(messages)
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content="J'adore la programmation.", additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 5, 'prompt_tokens': 31, 'total_tokens': 36}, 'model_name': 'gpt-4o-2024-05-13', 'system_fingerprint': 'fp_3aa7262c27', 'finish_reason': 'stop', 'logprobs': None}, id='run-63219b22-03e3-4561-8cc4-78b7c7c3a3ca-0', usage_metadata={'input_tokens': 31, 'output_tokens': 5, 'total_tokens': 36})
 ```
 
@@ -148,7 +148,7 @@ With `ChatOpenAI.bind_tools`, we can easily pass in Pydantic classes, dict schem
 
 and passed in every model invocation.
 
-```python
+```python wrap
 from pydantic import BaseModel, Field
 
 
@@ -168,7 +168,7 @@ ai_msg = llm_with_tools.invoke(
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content='', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 17, 'prompt_tokens': 68, 'total_tokens': 85}, 'model_name': 'gpt-4o-2024-05-13', 'system_fingerprint': 'fp_3aa7262c27', 'finish_reason': 'tool_calls', 'logprobs': None}, id='run-1617c9b2-dda5-4120-996b-0333ed5992e2-0', tool_calls=[{'name': 'GetWeather', 'args': {'location': 'San Francisco, CA'}, 'id': 'call_o9udf3EVOWiV4Iupktpbpofk', 'type': 'tool_call'}], usage_metadata={'input_tokens': 68, 'output_tokens': 17, 'total_tokens': 85})
 ```
 
@@ -190,7 +190,7 @@ ai_msg = llm_with_tools.invoke(
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content='', additional_kwargs={'tool_calls': [{'id': 'call_jUqhd8wzAIzInTJl72Rla8ht', 'function': {'arguments': '{"location":"San Francisco, CA"}', 'name': 'GetWeather'}, 'type': 'function'}], 'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 17, 'prompt_tokens': 68, 'total_tokens': 85}, 'model_name': 'gpt-4o-2024-05-13', 'system_fingerprint': 'fp_3aa7262c27', 'finish_reason': 'tool_calls', 'logprobs': None}, id='run-5e3356a9-132d-4623-8e73-dd5a898cf4a6-0', tool_calls=[{'name': 'GetWeather', 'args': {'location': 'San Francisco, CA'}, 'id': 'call_jUqhd8wzAIzInTJl72Rla8ht', 'type': 'tool_call'}], usage_metadata={'input_tokens': 68, 'output_tokens': 17, 'total_tokens': 85})
 ```
 
@@ -280,7 +280,7 @@ for step in agent.stream(
     step["messages"][-1].pretty_print()
 ```
 
-```output
+```output wrap
 ================================ Human Message =================================
 
 Use the tool to calculate 3^3.
@@ -343,7 +343,7 @@ for step in agent.stream(
     step["messages"][-1].pretty_print()
 ```
 
-```output
+```output wrap
 ================================ Human Message =================================
 
 Use the tool to calculate 3^3.
@@ -406,7 +406,7 @@ Note that the response includes structured [content blocks](/oss/langchain/messa
 response.content_blocks
 ```
 
-```output
+```output wrap
 [{'type': 'server_tool_call',
   'name': 'web_search',
   'args': {'query': 'positive news stories today', 'type': 'search'},
@@ -525,7 +525,7 @@ As with [web search](#web-search), the response will include content blocks with
 ['server_tool_call', 'server_tool_result', 'text']
 ```
 
-```python
+```python wrap
 text_block = next(block for block in response.content_blocks if block["type"] == "text")
 
 text_block["annotations"][:2]
@@ -646,7 +646,7 @@ We next construct a ToolMessage with these properties:
 2. It has `{"type": "computer_call_output"}` in its `additional_kwargs`.
 3. Its content is either an `image_url` or an `input_image` output block (see [OpenAI docs](https://platform.openai.com/docs/guides/tools-computer-use#5-repeat) for formatting).
 
-```python
+```python wrap
 from langchain_core.messages import ToolMessage
 
 tool_call_id = next(
@@ -709,7 +709,7 @@ response_2 = llm_with_tools.invoke(
 response_2.text
 ```
 
-```output
+```output wrap
 'The VS Code window is closed, and the desktop is now visible. Let me know if you need any further assistance.'
 ```
 
@@ -967,7 +967,7 @@ for block in response.content_blocks:
         print(block["reasoning"])
 ```
 
-```output
+```output wrap
 **Calculating the power of three**
 
 The user is asking about 3 raised to the power of 3. That's a pretty simple calculation! I know that 3^3 equals 27, so I can say, "3 to the power of 3 equals 27." I might also include a quick explanation that it's 3 multiplied by itself three times: 3 × 3 × 3 = 27. So, the answer is definitely 27.
@@ -987,7 +987,7 @@ fine_tuned_model = ChatOpenAI(
 fine_tuned_model.invoke(messages)
 ```
 
-```output
+```output wrap
 AIMessage(content="J'adore la programmation.", additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 8, 'prompt_tokens': 31, 'total_tokens': 39}, 'model_name': 'ft:gpt-3.5-turbo-0613:langchain::7qTVM5AR', 'system_fingerprint': None, 'finish_reason': 'stop', 'logprobs': None}, id='run-0f39b30e-c56e-4f3b-af99-5c948c984146-0', usage_metadata={'input_tokens': 31, 'output_tokens': 8, 'total_tokens': 39})
 ```
 
@@ -1161,7 +1161,7 @@ print(response.content)
 print(response.response_metadata)
 ```
 
-```output
+```output wrap
 /// <summary>
 /// Represents a user with a first name, last name, and email.
 /// </summary>

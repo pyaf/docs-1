@@ -54,7 +54,7 @@ loader = OneDriveLoader(drive_id="YOUR DRIVE ID", auth_with_token=True)
 
 `OneDriveLoader` can load documents from a specific folder within your OneDrive. For instance, you want to load all documents that are stored at `Documents/clients` folder within your OneDrive.
 
-```python
+```python wrap
 from langchain_community.document_loaders.onedrive import OneDriveLoader
 
 loader = OneDriveLoader(drive_id="YOUR DRIVE ID", folder_path="Documents/clients", auth_with_token=True)
@@ -67,7 +67,7 @@ Another possibility is to provide a list of `object_id` for each document you wa
 
 For instance, to retrieve information about all objects that are stored at the root of the Documents folder, you need make a request to: `https://graph.microsoft.com/v1.0/drives/{YOUR DRIVE ID}/root/children`. Once you have the list of IDs that you are interested in, then you can instantiate the loader with the following parameters.
 
-```python
+```python wrap
 from langchain_community.document_loaders.onedrive import OneDriveLoader
 
 loader = OneDriveLoader(drive_id="YOUR DRIVE ID", object_ids=["ID_1", "ID_2"], auth_with_token=True)
@@ -78,7 +78,7 @@ documents = loader.load()
 
 By default `OneDriveLoader` loads file types defined in [`document_loaders/parsers/registry`](https://github.com/langchain-ai/langchain/blob/master/libs/community/langchain_community/document_loaders/parsers/registry.py#L10-L22) using the default parsers (see below).
 
-```python
+```python wrap
 def _get_default_parser() -> BaseBlobParser:
     """Get default mime-type based parser."""
     return MimeTypeBasedParser(
@@ -126,7 +126,7 @@ In case multiple file extensions map to the same MIME type, the last dictionary 
 apply.
 Example:
 
-```python
+```python wrap
 # 'jpg' and 'jpeg' both map to 'image/jpeg' MIME type. SecondParser() will be used
 # to parse all jpg/jpeg files.
 handlers = {

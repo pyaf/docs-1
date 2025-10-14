@@ -48,7 +48,7 @@ docs = text_splitter.split_documents(documents)
 embeddings = OpenAIEmbeddings()
 ```
 
-```python
+```python wrap
 from dingodb import DingoDB
 
 index_name = "langchain_demo"
@@ -90,7 +90,7 @@ print(docs[0].page_content)
 
 More text can embedded and upserted to an existing Dingo index using the `add_texts` function
 
-```python
+```python wrap
 vectorstore = Dingo(embeddings, "text", client=dingo_client, index_name=index_name)
 
 vectorstore.add_texts(["More text!"])

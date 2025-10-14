@@ -36,7 +36,7 @@ Passing a binding within a Cloudflare Worker is not yet supported.
 
 The LangChain ChatCloudflareWorkersAI integration lives in the `@langchain/cloudflare` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -59,7 +59,7 @@ const CLOUDFLARE_ACCOUNT_ID = Deno.env.get("CLOUDFLARE_ACCOUNT_ID");
 const CLOUDFLARE_API_TOKEN = Deno.env.get("CLOUDFLARE_API_TOKEN");
 ```
 
-```typescript
+```typescript wrap
 import { ChatCloudflareWorkersAI } from "@langchain/cloudflare";
 
 const llm = new ChatCloudflareWorkersAI({
@@ -73,7 +73,7 @@ const llm = new ChatCloudflareWorkersAI({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
   [
     "system",
@@ -84,7 +84,7 @@ const aiMsg = await llm.invoke([
 aiMsg
 ```
 
-```output
+```output wrap
 AIMessage {
   lc_serializable: true,
   lc_kwargs: {

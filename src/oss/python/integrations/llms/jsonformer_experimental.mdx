@@ -22,7 +22,7 @@ import logging
 logging.basicConfig(level=logging.ERROR)
 ```
 
-```python
+```python wrap
 import json
 import os
 
@@ -50,7 +50,7 @@ def ask_star_coder(query: str, temperature: float = 1.0, max_new_tokens: float =
     return json.loads(response.content.decode("utf-8"))
 ```
 
-```python
+```python wrap
 prompt = """You must respond using JSON format, with a single action and single action input.
 You may 'ask_star_coder' for help on coding problems.
 
@@ -135,7 +135,7 @@ results = json_former.predict(prompt, stop=["Observation:", "Human:"])
 print(results)
 ```
 
-```output
+```output wrap
 {"action": "ask_star_coder", "action_input": {"query": "What's the difference between an iterator and an iter", "temperature": 0.0, "max_new_tokens": 50.0}}
 ```
 

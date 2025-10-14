@@ -65,7 +65,7 @@ Make sure you're using the latest Xinference version for structured outputs.
 
 Now we can instantiate our model object and generate chat completions:
 
-```python
+```python wrap
 from langchain_xinference.chat_models import ChatXinference
 
 llm = ChatXinference(
@@ -80,7 +80,7 @@ llm.invoke(
 
 ## Invocation
 
-```python
+```python wrap
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_xinference.chat_models import ChatXinference
 

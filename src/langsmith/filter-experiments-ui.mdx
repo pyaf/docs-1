@@ -12,7 +12,7 @@ When you run an experiment in the SDK, you can attach metadata to make it easier
 
 In our example, we are going to attach metadata to our experiment around the model used, the model provider, and a known ID of the prompt:
 
-```python
+```python wrap
 models = {
     "openai-gpt-4o": ChatOpenAI(model="gpt-4o", temperature=0),
     "openai-gpt-4o-mini": ChatOpenAI(model="gpt-4o-mini", temperature=0),

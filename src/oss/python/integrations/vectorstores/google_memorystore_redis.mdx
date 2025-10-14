@@ -30,7 +30,7 @@ The integration lives in its own `langchain-google-memorystore-redis` package, s
 
 **Colab only:** Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -48,7 +48,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -74,7 +74,7 @@ auth.authenticate_user()
 
 ### Initialize a Vector Index
 
-```python
+```python wrap
 import redis
 from langchain_google_memorystore_redis import (
     DistanceStrategy,
@@ -119,7 +119,7 @@ After text preparation and embedding generation, the following methods insert th
 
 This approach combines embedding creation and insertion into a single step using the from_documents classmethod:
 
-```python
+```python wrap
 from langchain_community.embeddings.fake import FakeEmbeddings
 
 embeddings = FakeEmbeddings(size=128)
@@ -168,7 +168,7 @@ Range queries provide more control by specifying a desired similarity threshold 
 * Set Similarity Threshold: The distance_threshold parameter determines how close a match must be considered relevant.
 * Retrieve Results: The `similarity_search_with_score` method finds items from the vector store that fall within the specified similarity threshold.
 
-```python
+```python wrap
 rq_results = rvs.similarity_search_with_score(query=query, distance_threshold=0.8)
 pprint.pprint(rq_results)
 ```

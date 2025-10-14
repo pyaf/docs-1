@@ -62,7 +62,7 @@ The `flush_tracker` function is used to record LangChain assets on Aim. By defau
 
 <h3>Scenario 1</h3> In the first scenario, we will use OpenAI LLM.
 
-```python
+```python wrap
 # scenario 1 - LLM
 llm_result = llm.generate(["Tell me a joke", "Tell me a poem"] * 3)
 aim_callback.flush_tracker(
@@ -78,7 +78,7 @@ from langchain.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 ```
 
-```python
+```python wrap
 # scenario 2 - Chain
 template = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
 Title: {title}
@@ -105,7 +105,7 @@ aim_callback.flush_tracker(
 from langchain.agents import AgentType, initialize_agent, load_tools
 ```
 
-```python
+```python wrap
 # scenario 3 - Agent with Tools
 tools = load_tools(["serpapi", "llm-math"], llm=llm, callbacks=callbacks)
 agent = initialize_agent(
@@ -120,7 +120,7 @@ agent.run(
 aim_callback.flush_tracker(langchain_asset=agent, reset=False, finish=True)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to find out who Leo DiCaprio's girlfriend is and then calculate her age raised to the 0.43 power.
 Action: Search

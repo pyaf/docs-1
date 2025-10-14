@@ -58,7 +58,7 @@ Once you've got your dataset, there are a few different ways to upload them to L
 
 For this tutorial, we will create 5 datapoints to evaluate on. We will be evaluating a question-answering application. The input will be a question, and the output will be an answer. Since this is a question-answering application, we can define the expected answer. Let's show how to create and upload this dataset to LangSmith!
 
-```python
+```python wrap
 from langsmith import Client
 
 client = Client()
@@ -108,7 +108,7 @@ Let's go ahead and define these two metrics.
 
 For the first, we will use an LLM to **judge** whether the output is correct (with respect to the expected output). This **LLM-as-a-judge** is relatively common for cases that are too complex to measure with a simple function. We can define our own prompt and LLM to use for evaluation here:
 
-```python
+```python wrap
 import openai
 from langsmith import wrappers
 
@@ -147,7 +147,7 @@ def concision(outputs: dict, reference_outputs: dict) -> bool:
 
 Great! So now how do we run evaluations? Now that we have a dataset and evaluators, all that we need is our application! We will build a simple application that just has a system message with instructions on how to respond and then passes it to the LLM. We will build this using the OpenAI SDK directly:
 
-```python
+```python wrap
 default_instructions = "Respond to the users question in a short, concise manner (one short sentence)."
 
 def my_app(question: str, model: str = "gpt-4o-mini", instructions: str = default_instructions) -> str:
@@ -170,7 +170,7 @@ def ls_target(inputs: str) -> dict:
 
 Great! Now we're ready to run an evaluation. Let's do it!
 
-```python
+```python wrap
 experiment_results = client.evaluate(
     ls_target, # Your AI system
     data=dataset_name, # The data to predict and grade over
@@ -203,7 +203,7 @@ experiment_results = client.evaluate(
 
 And now let's use GPT-4 but also update the prompt to be a bit more strict in requiring the answer to be short.
 
-```python
+```python wrap
 instructions_v3 = "Respond to the users question in a short, concise manner (one short sentence). Do NOT use more than ten words."
 
 def ls_target_v3(inputs: str) -> dict:
@@ -246,7 +246,7 @@ If we want to see more information, we can also select the `Expand` button that 
 
 Now that we've run this in a one-off manner, we can set it to run in an automated fashion. We can do this pretty easily by just including it as a pytest file that we run in CI/CD. As part of this, we can either just log the results OR set up some criteria to determine if it passes or not. For example, if I wanted to ensure that we always got at least 80% of generated responses passing the `length` check, we could set that up with a test like:
 
-```python
+```python wrap
 def test_length_score() -> None:
     """Test that the length score is at least 80%."""
     experiment_results = evaluate(
@@ -282,7 +282,7 @@ Additionally, there are other ways to evaluate data besides in this "offline" ma
 ## Reference code
 
 <Accordion title="Click to see a consolidated code snippet">
-```python
+```python wrap
 import openai
 from langsmith import Client, wrappers
 

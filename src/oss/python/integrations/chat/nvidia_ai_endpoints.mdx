@@ -49,7 +49,7 @@ For more information on accessing the chat models through this api, check out th
 
 ### Credentials
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -60,7 +60,7 @@ if not os.getenv("NVIDIA_API_KEY"):
 
 To enable automated tracing of your model calls, set your [LangSmith](https://docs.smith.langchain.com/) API key:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_TRACING"] = "true"
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 ```
@@ -97,7 +97,7 @@ When ready to deploy, you can self-host models with NVIDIA NIM—which is includ
 
 [Learn more about NIMs](https://developer.nvidia.com/blog/nvidia-nim-offers-optimized-inference-microservices-for-deploying-ai-models-at-scale/)
 
-```python
+```python wrap
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 # connect to an embedding NIM running at localhost:8000, specifying a specific model
@@ -150,7 +150,7 @@ Some model types support unique prompting techniques and chat messages. We will 
 
 Models such as `meta/llama3-8b-instruct` and `mistralai/mixtral-8x22b-instruct-v0.1` are good all-around models that you can use for with any LangChain chat messages. Example below.
 
-```python
+```python wrap
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
@@ -168,7 +168,7 @@ for txt in chain.stream({"input": "What's your name?"}):
 
 These models accept the same arguments and input structure as regular chat models, but they tend to perform better on code-generation and structured code tasks. An example of this is `meta/codellama-70b`.
 
-```python
+```python wrap
 prompt = ChatPromptTemplate.from_messages(
     [
         (
@@ -190,7 +190,7 @@ NVIDIA also supports multimodal inputs, meaning you can provide both images and 
 
 Below is an example use:
 
-```python
+```python wrap
 import IPython
 import requests
 
@@ -277,7 +277,7 @@ Like any other integration, ChatNVIDIA is fine to support chat utilities like Ru
 %pip install -qU langchain
 ```
 
-```python
+```python wrap
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
@@ -344,7 +344,7 @@ tool_models
 
 With a tool capable model,
 
-```python
+```python wrap
 from langchain_core.tools import tool
 from pydantic import Field
 

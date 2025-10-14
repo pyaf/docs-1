@@ -8,7 +8,7 @@ See Databricks documentation ([AWS](https://docs.databricks.com/en/sql/language-
 
 In this example notebook, we create a simple Python function that executes arbitrary code and use it as a LangChain tool:
 
-```sql
+```sql wrap
 CREATE FUNCTION main.tools.python_exec (
   code STRING COMMENT 'Python code to execute. Remember to print the final result to stdout.'
 )
@@ -27,7 +27,7 @@ $$
 
 It runs in a secure and isolated environment within a Databricks SQL warehouse.
 
-```python
+```python wrap
 %pip install -qU databricks-sdk langchain-community databricks-langchain langgraph mlflow
 ```
 
@@ -41,7 +41,7 @@ from databricks_langchain import ChatDatabricks
 llm = ChatDatabricks(endpoint="databricks-meta-llama-3-70b-instruct")
 ```
 
-```python
+```python wrap
 from databricks_langchain.uc_ai import (
     DatabricksFunctionClient,
     UCFunctionToolkit,
@@ -70,7 +70,7 @@ os.environ["UC_TOOL_CLIENT_EXECUTION_TIMEOUT"] = "200"
 
 ## LangGraph agent example
 
-```python
+```python wrap
 from langchain.agents import create_agent
 
 agent = create_agent(
@@ -81,7 +81,7 @@ agent = create_agent(
 agent.invoke({"messages": [{"role": "user", "content": "36939 * 8922.4"}]})
 ```
 
-```output
+```output wrap
 {'messages': [HumanMessage(content='36939 * 8922.4', additional_kwargs={}, response_metadata={}, id='1a10b10b-8e37-48c7-97a1-cac5006228d5'),
   AIMessage(content='', additional_kwargs={'tool_calls': [{'id': 'call_a8f3986f-4b91-40a3-8d6d-39f431dab69b', 'type': 'function', 'function': {'name': 'main__tools__python_exec', 'arguments': '{"code": "print(36939 * 8922.4)"}'}}]}, response_metadata={'prompt_tokens': 771, 'completion_tokens': 29, 'total_tokens': 800}, id='run-865c3613-20ba-4e80-afc8-fde1cfb26e5a-0', tool_calls=[{'name': 'main__tools__python_exec', 'args': {'code': 'print(36939 * 8922.4)'}, 'id': 'call_a8f3986f-4b91-40a3-8d6d-39f431dab69b', 'type': 'tool_call'}]),
   ToolMessage(content='{"format": "SCALAR", "value": "329584533.59999996\\n", "truncated": false}', name='main__tools__python_exec', id='8b63d4c8-1a3d-46a5-a719-393b2ef36770', tool_call_id='call_a8f3986f-4b91-40a3-8d6d-39f431dab69b'),
@@ -90,7 +90,7 @@ agent.invoke({"messages": [{"role": "user", "content": "36939 * 8922.4"}]})
 
 ## LangChain agent example
 
-```python
+```python wrap
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -114,7 +114,7 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 agent_executor.invoke({"input": "36939 * 8922.4"})
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `main__tools__python_exec` with `{'code': 'print(36939 * 8922.4)'}`

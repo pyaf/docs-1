@@ -78,7 +78,7 @@ await agent.invoke(
 In production, use a checkpointer backed by a database:
 
 :::python
-```python {highlight={2,9}}
+```python {highlight={2,9}} wrap
 from langchain.agents import create_agent
 from langgraph.checkpoint.postgres import PostgresSaver
 
@@ -92,7 +92,7 @@ with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
 ```
 :::
 :::js
-```ts
+```ts wrap
 import { PostgresSaver } from "@langchain/langgraph-checkpoint-postgres";
 
 const DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable";
@@ -175,7 +175,7 @@ One way to decide when to truncate messages is to count the tokens in the messag
 :::python
 To trim message history in an agent, use @[`pre_model_hook`][create_agent] with the [`trim_messages`](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.utils.trim_messages.html) function:
 
-```python
+```python wrap
 from langchain_core.messages.utils import trim_messages, count_tokens_approximately
 from langchain_core.messages import BaseMessage
 from langgraph.checkpoint.memory import InMemorySaver
@@ -361,7 +361,7 @@ for event in agent.stream(
     print([(message.type, message.content) for message in event["messages"]])
 ```
 
-```
+``` wrap
 [('human', "hi! I'm bob")]
 [('human', "hi! I'm bob"), ('ai', 'Hi Bob! Nice to meet you. How can I help you today? I can answer questions, brainstorm ideas, draft text, explain things, or help with code.')]
 [('human', "hi! I'm bob"), ('ai', 'Hi Bob! Nice to meet you. How can I help you today? I can answer questions, brainstorm ideas, draft text, explain things, or help with code.'), ('human', "what's my name?")]
@@ -426,7 +426,7 @@ for await (const event of streamB) {
 }
 ```
 
-```
+``` wrap
 [['human', "hi! I'm bob"]]
 [['human', "hi! I'm bob"], ['ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?']]
 [['human', "hi! I'm bob"], ['ai', 'Hi Bob! How are you doing today? Is there anything I can help you with?'], ['human', "what's my name?"]]
@@ -448,7 +448,7 @@ To summarize message history in an agent, use @[`pre_model_hook`][create_agent] 
 
 {/* TODO: FIX THIS EXAMPLE, NOT ABLE TO RUN */}
 
-```python {highlight={22,30,31}}
+```python {highlight={22,30,31}} wrap
 from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
 from langchain.agents import create_agent, AgentState
@@ -715,7 +715,7 @@ await agent.invoke(
 Access short term memory (state) in a dynamic prompt function by injecting the agent's state into the prompt function signature.
 
 :::python
-```python
+```python wrap
 from langchain_core.messages import AnyMessage
 from langchain.agents import create_agent, AgentState
 from langgraph.runtime import get_runtime
@@ -772,7 +772,7 @@ Hi John Smith, the weather in San Francisco is always sunny!
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { z } from "zod";
 import { createAgent, tool, SystemMessage } from "langchain";
 
@@ -858,7 +858,7 @@ for (const message of result.messages) {
 Access short term memory (state) in a pre model hook by injecting the agent's state into the hook signature.
 
 :::python
-```python
+```python wrap
 from langchain_core.messages.utils import trim_messages, count_tokens_approximately
 from langchain_core.messages import BaseMessage
 from langgraph.checkpoint.memory import InMemorySaver
@@ -934,7 +934,7 @@ console.log(result.messages.at(-1)?.content);
 Access short term memory (state) in a post model hook by injecting the agent's state into the hook signature.
 
 :::python
-```python
+```python wrap
 from langchain.agents import create_agent, AgentState
 
 STOP_WORDS = ["password", "secret"]

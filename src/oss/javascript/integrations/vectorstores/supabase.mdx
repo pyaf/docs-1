@@ -22,7 +22,7 @@ To use Supabase vector stores, you'll need to set up a Supabase database and ins
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -100,7 +100,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 ## Instantiation
 
-```typescript
+```typescript wrap
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
@@ -172,7 +172,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const filter = { source: "https://example.com" };
 
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, filter);
@@ -182,14 +182,14 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -197,7 +197,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.165] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=0.148] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -206,7 +206,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 
 You can also use query builder-style filtering similar to how the [Supabase JavaScript library](https://supabase.com/docs/reference/javascript/using-filters) works instead of passing an object. Note that since most of the filter properties are in the metadata column, you need to use arrow operators (-> for integer or ->> for text) as defined in [Postgrest API documentation](https://postgrest.org/en/stable/references/api/tables_views.html#json-columns) and specify the data type of the property (e.g. the column should look something like `metadata->some_int_prop_name::int`).
 
-```typescript
+```typescript wrap
 import { SupabaseFilterRPCCall } from "@langchain/community/vectorstores/supabase";
 
 const funcFilter: SupabaseFilterRPCCall = (rpc) =>
@@ -219,7 +219,7 @@ for (const doc of funcFilterSearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```

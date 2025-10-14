@@ -173,7 +173,7 @@ def call_subagent1(query: str, state: Annotated[CustomState, InjectedState]):
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { createAgent, tool, AgentState, ToolMessage } from "langchain";
 import { Command } from "@langchain/langgraph";
 import { z } from "zod";
@@ -213,7 +213,7 @@ Two common strategies for shaping what the main agent receives back from a subag
   * This requires wrapping the result in a `Command` (or equivalent structure) so you can merge custom state with the subagent’s response.
 
 :::python
-```python
+```python wrap
 from typing import Annotated
 from langchain.agents import AgentState
 from langchain_core.tools import InjectedToolCallId

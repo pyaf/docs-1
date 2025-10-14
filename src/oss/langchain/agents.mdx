@@ -141,7 +141,7 @@ Dynamic models are selected at <Tooltip tip="The execution environment of your a
 
 To use a dynamic model, you need to provide a function that receives the graph state and runtime and returns an instance of `BaseChatModel` with the tools bound to it using `.bind_tools(tools)`, where `tools` is a subset of the `tools` parameter.
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent, AgentState
 from langgraph.runtime import Runtime
@@ -297,7 +297,7 @@ result = agent.invoke({"messages": [...]})
 
 If an error occurs within @[`ToolNode`][ToolNode], the agent will return a `ToolMessage` to the model with the custom error message:
 
-```python
+```python wrap
 # result["messages"]
 [
     ...
@@ -333,7 +333,7 @@ Agents follow the ReAct (*Reasoning* + *Acting*) pattern, alternating between br
 <Accordion title="Example of ReAct loop">
 Prompt: Identify the current most popular wireless headphones and verify availability.
 
-```
+``` wrap
 ================================ Human Message =================================
 
 Find the most popular wireless headphones right now and check if they're in stock
@@ -404,7 +404,7 @@ agent = create_agent(
     prompt="You are a helpful assistant. Be concise and accurate."
 )
 ```
-```python SystemMessage
+```python SystemMessage wrap
 from langchain.messages import SystemMessage
 
 agent = create_agent(
@@ -437,7 +437,7 @@ const agent = createAgent({
     prompt: "You are a helpful assistant. Be concise and accurate."
 });
 ```
-```ts SystemMessage
+```ts SystemMessage wrap
 import { SystemMessage } from "langchain";
 
 const agent = createAgent({

@@ -79,7 +79,7 @@ os.environ["GITLAB_BASE_BRANCH"] = "main"
 os.environ["OPENAI_API_KEY"] = ""
 ```
 
-```python
+```python wrap
 llm = OpenAI(temperature=0)
 gitlab = GitLabAPIWrapper()
 toolkit = GitLabToolkit.from_gitlab_api_wrapper(gitlab)
@@ -88,13 +88,13 @@ agent = initialize_agent(
 )
 ```
 
-```python
+```python wrap
 agent.run(
     "You have the software engineering capabilities of a Google Principle engineer. You are tasked with completing issues on a gitlab repository. Please look at the open issues and complete them by creating merge requests that solve the issues."
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to look at the open issues and figure out how to solve them.
 Action: Get Issues

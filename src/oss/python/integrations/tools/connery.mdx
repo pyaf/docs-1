@@ -54,7 +54,7 @@ In the example below, we create an agent that uses two Connery Actions to summar
 
 You can see a LangSmith trace of this example [here](https://smith.langchain.com/public/4af5385a-afe9-46f6-8a53-57fe2d63c5bc/r).
 
-```python
+```python wrap
 import os
 
 from langchain.agents import AgentType, initialize_agent
@@ -88,7 +88,7 @@ and send it to {recepient_email}. Include the link to the webpage into the body 
 print(result)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `CA72DFB0AB4DF6C830B43E14B0782F70` with `{'publicWebpageUrl': 'http://www.paulgraham.com/vb.html'}`
@@ -108,7 +108,7 @@ NOTE: Connery Action is a structured tool, so you can only use it in the agents 
 
 ## Tool
 
-```python
+```python wrap
 import os
 
 from langchain.agents import AgentType, initialize_agent
@@ -147,7 +147,7 @@ Run the action using the OpenAI Functions agent.
 
 You can see a LangSmith trace of this example [here](https://smith.langchain.com/public/a37d216f-c121-46da-a428-0e09dc19b1dc/r).
 
-```python
+```python wrap
 llm = ChatOpenAI(temperature=0)
 agent = initialize_agent(
     [send_email_action], llm, AgentType.OPENAI_FUNCTIONS, verbose=True
@@ -158,7 +158,7 @@ agent_run_result = agent.run(
 print(agent_run_result)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `CABC80BB79C15067CA983495324AE709` with `{'recipient': 'test@example.com', 'subject': 'Late for Meeting', 'body': 'Dear Team,\n\nI wanted to inform you that I will be late for the meeting today. I apologize for any inconvenience caused. Please proceed with the meeting without me and I will join as soon as I can.\n\nBest regards,\n[Your Name]'}`

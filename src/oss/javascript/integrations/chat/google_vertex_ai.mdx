@@ -43,7 +43,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/credentials.json"
 
 If running in a web environment, you should set the `GOOGLE_VERTEX_AI_WEB_CREDENTIALS` environment variable as a JSON stringified object, and install the `@langchain/google-vertexai-web` package:
 
-```bash
+```bash wrap
 GOOGLE_VERTEX_AI_WEB_CREDENTIALS={"type":"service_account","project_id":"YOUR_PROJECT-12345",...}
 ```
 
@@ -65,7 +65,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain `ChatVertexAI` integration lives in the `@langchain/google-vertexai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -102,7 +102,7 @@ const llm = new ChatVertexAI({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     [
         "system",
@@ -149,7 +149,7 @@ You can choose to either ground using Google Search or by using a custom data st
 
 Grounding example that uses Google Search:
 
-```typescript
+```typescript wrap
 import { ChatVertexAI } from "@langchain/google-vertexai"
 
 const searchRetrievalTool = {
@@ -172,7 +172,7 @@ const searchRetrievalResult = await searchRetrievalModel.invoke("Who won the 202
 console.log(searchRetrievalResult.content);
 ```
 
-```output
+```output wrap
 The Boston Celtics won the 2024 NBA Finals, defeating the Dallas Mavericks 4-1 in the series to claim their 18th NBA championship. This victory marked their first title since 2008 and established them as the team with the most NBA championships, surpassing the Los Angeles Lakers' 17 titles.
 ```
 
@@ -192,7 +192,7 @@ Then, use this data store in the example provided below:
 
 (Note that you have to use your own variables for `projectId` and `datastoreId`)
 
-```typescript
+```typescript wrap
 import { ChatVertexAI } from "@langchain/google-vertexai";
 
 const projectId = "YOUR_PROJECT_ID";

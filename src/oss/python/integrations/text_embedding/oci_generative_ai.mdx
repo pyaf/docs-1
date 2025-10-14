@@ -31,7 +31,7 @@ These follows the standard SDK authentication methods detailed __[here](https://
 
 ## Usage
 
-```python
+```python wrap
 from langchain_community.embeddings import OCIGenAIEmbeddings
 
 # use default authN method API-key
@@ -51,7 +51,7 @@ response = embeddings.embed_documents(documents)
 print(response)
 ```
 
-```python
+```python wrap
 # Use Session Token to authN
 embeddings = OCIGenAIEmbeddings(
     model_id="MY_EMBEDDING_MODEL",

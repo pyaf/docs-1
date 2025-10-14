@@ -44,7 +44,7 @@ export LANGSMITH_PROJECT=<your_project_name>
 
 In your Google ADK application, import and configure the LangSmith OpenTelemetry integration. This will automatically instrument Google ADK spans for OpenTelemetry.
 
-```python
+```python wrap
 from langsmith.integrations.otel import configure
 
 # Configure LangSmith tracing
@@ -74,7 +74,7 @@ Once configured, your Google ADK application will automatically send traces to L
 
 This example includes a minimal app that sets up an agent, session, and runner, then sends a message and streams events.
 
-```python
+```python wrap
 import asyncio
 from langsmith.integrations.otel import configure
 from google.adk import Runner
@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
 You can add custom metadata to your traces by setting span attributes in your ADK application:
 
-```python
+```python wrap
 from opentelemetry import trace
 
 # Get the current tracer

@@ -20,7 +20,7 @@ To use the `AzionVectorStore` vector store, you will need to install the `@langc
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -52,7 +52,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 ## Instantiation
 
-```typescript
+```typescript wrap
 import { AzionVectorStore } from "@langchain/community/vectorstores/azion_edgesql";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
@@ -126,7 +126,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const filter = [{ operator: "=", column: "language", value: "en" }]
 
 const hybridSearchResults = await vectorStore.azionHybridSearch("biology", {kfts:2, kvector:1,
@@ -138,14 +138,14 @@ for (const doc of hybridSearchResults) {
 }
 ```
 
-```output
+```output wrap
 Hybrid Search Results
 [{"pageContent":"The Australian dingo is a unique species that plays a key role in the ecosystem","metadata":{"searchtype":"fulltextsearch"},"id":"6"},-0.25748711028997995]
 [{"pageContent":"The powerhouse of the cell is the mitochondria","metadata":{"searchtype":"fulltextsearch"},"id":"16"},-0.31697985337654005]
 [{"pageContent":"Australia s indigenous people have inhabited the continent for over 65,000 years","metadata":{"searchtype":"similarity"},"id":"3"},0.14822345972061157]
 ```
 
-```typescript
+```typescript wrap
 const similaritySearchResults = await vectorStore.azionSimilaritySearch("australia", {kvector:3, filter:[{ operator: "=", column: "topic", value: "history" }]});
 
 console.log("Similarity Search Results")
@@ -154,7 +154,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 Similarity Search Results
 [{"pageContent":"Australia s indigenous people have inhabited the continent for over 65,000 years","metadata":{"searchtype":"similarity"},"id":"3"},0.4486490488052368]
 ```
@@ -172,7 +172,7 @@ const retriever = vectorStore.asRetriever({
 await retriever.invoke("biology");
 ```
 
-```output
+```output wrap
 [
   Document {
     pageContent: 'Australia s indigenous people have inhabited the continent for over 65,000 years',

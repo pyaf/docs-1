@@ -35,7 +35,7 @@ os.environ["OPENAI_API_KEY"] = "<ADD-KEY-HERE>"
 os.environ["SERPAPI_API_KEY"] = "<ADD-KEY-HERE>"
 ```
 
-```python
+```python wrap
 from langchain_community.callbacks.sagemaker_callback import SageMakerCallbackHandler
 ```
 
@@ -51,7 +51,7 @@ from sagemaker.session import Session
 
 ## LLM Prompt Tracking
 
-```python
+```python wrap
 # LLM Hyperparameters
 HPARAMS = {
     "temperature": 0.1,
@@ -76,7 +76,7 @@ PROMPT_TEMPLATE = "tell me a joke about {topic}"
 INPUT_VARIABLES = {"topic": "fish"}
 ```
 
-```python
+```python wrap
 with Run(
     experiment_name=EXPERIMENT_NAME, run_name=RUN_NAME, sagemaker_session=session
 ) as run:
@@ -101,7 +101,7 @@ with Run(
 
 ### Scenario 2 - Sequential Chain
 
-```python
+```python wrap
 RUN_NAME = "run-scenario-2"
 
 PROMPT_TEMPLATE_1 = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
@@ -116,7 +116,7 @@ INPUT_VARIABLES = {
 }
 ```
 
-```python
+```python wrap
 with Run(
     experiment_name=EXPERIMENT_NAME, run_name=RUN_NAME, sagemaker_session=session
 ) as run:
@@ -150,12 +150,12 @@ with Run(
 
 ### Scenario 3 - Agent with Tools
 
-```python
+```python wrap
 RUN_NAME = "run-scenario-3"
 PROMPT_TEMPLATE = "Who is the oldest person alive? And what is their current age raised to the power of 1.51?"
 ```
 
-```python
+```python wrap
 with Run(
     experiment_name=EXPERIMENT_NAME, run_name=RUN_NAME, sagemaker_session=session
 ) as run:

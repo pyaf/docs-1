@@ -3,7 +3,7 @@
 You may opt to trace specific invocations or parts of your application using LangSmith's `tracing_context` context manager:
 
 :::python
-```python
+```python wrap
 import langsmith as ls
 
 # This WILL be traced
@@ -16,7 +16,7 @@ agent.invoke({"messages": [{"role": "user", "content": "Send another email"}]})
 :::
 
 :::js
-```ts
+```ts wrap
 import { LangChainTracer } from "@langchain/core/tracers/tracer_langchain";
 
 // This WILL be traced
@@ -64,7 +64,7 @@ with ls.tracing_context(project_name="email-agent-test", enabled=True):
 :::
 
 :::js
-```ts
+```ts wrap
 import { LangChainTracer } from "@langchain/core/tracers/tracer_langchain";
 
 const tracer = new LangChainTracer({ projectName: "email-agent-test" });
@@ -99,7 +99,7 @@ response = agent.invoke(
 
 `tracing_context` also accepts tags and metadata for fine-grained control:
 
-```python
+```python wrap
 with ls.tracing_context(
     project_name="email-agent-test",
     enabled=True,
@@ -112,7 +112,7 @@ with ls.tracing_context(
 :::
 
 :::js
-```ts
+```ts wrap
 import { LangChainTracer } from "@langchain/core/tracers/tracer_langchain";
 
 const tracer = new LangChainTracer({ projectName: "email-agent-test" });

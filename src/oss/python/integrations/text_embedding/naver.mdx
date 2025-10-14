@@ -25,7 +25,7 @@ Before using embedding models provided by CLOVA Studio, you must go through the 
 
 Set the `CLOVASTUDIO_API_KEY` environment variable with your API key.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -49,7 +49,7 @@ Now we can instantiate our embeddings object and embed query or document:
 - There are several embedding models available in CLOVA Studio. Please refer [here](https://guide.ncloud-docs.com/docs/en/clovastudio-explorer03#임베딩API) for further details.
 - Note that you might need to normalize the embeddings depending on your specific use case.
 
-```python
+```python wrap
 from langchain_naver import ClovaXEmbeddings
 
 embeddings = ClovaXEmbeddings(
@@ -63,7 +63,7 @@ Embedding models are often used in retrieval-augmented generation (RAG) flows, b
 
 Below, see how to index and retrieve data using the `embeddings` object we initialized above. In this example, we will index and retrieve a sample document in the `InMemoryVectorStore`.
 
-```python
+```python wrap
 # Create a vector store with a sample text
 from langchain_core.vectorstores import InMemoryVectorStore
 
@@ -84,7 +84,7 @@ retrieved_documents = retriever.invoke("What is CLOVA Studio?")
 retrieved_documents[0].page_content
 ```
 
-```output
+```output wrap
 'CLOVA Studio is an AI development tool that allows you to customize your own HyperCLOVA X models.'
 ```
 
@@ -103,7 +103,7 @@ single_vector = embeddings.embed_query(text)
 print(str(single_vector)[:100])  # Show the first 100 characters of the vector
 ```
 
-```output
+```output wrap
 [-0.094717406, -0.4077411, -0.5513184, 1.6024436, -1.3235079, -1.0720996, -0.44471845, 1.3665184, 0.
 ```
 
@@ -111,14 +111,14 @@ print(str(single_vector)[:100])  # Show the first 100 characters of the vector
 
 You can embed multiple texts with `embed_documents`:
 
-```python
+```python wrap
 text2 = "LangChain is a framework for building context-aware reasoning applications"
 two_vectors = embeddings.embed_documents([text, text2])
 for vector in two_vectors:
     print(str(vector)[:100])  # Show the first 100 characters of the vector
 ```
 
-```output
+```output wrap
 [-0.094717406, -0.4077411, -0.5513184, 1.6024436, -1.3235079, -1.0720996, -0.44471845, 1.3665184, 0.
 [-0.25525448, -0.84877056, -0.6928286, 1.5867524, -1.2930486, -0.8166254, -0.17934391, 1.4236152, 0.
 ```

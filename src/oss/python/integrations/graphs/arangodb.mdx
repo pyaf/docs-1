@@ -341,7 +341,7 @@ AQL Result:
 chain.run("Are Arya Stark and Ned Stark related?")
 ```
 
-```output
+```output wrap
 > Entering new ArangoGraphQAChain chain...
 AQL Query (1):
 WITH Characters, ChildOf
@@ -355,7 +355,7 @@ AQL Result:
 > Finished chain.
 ```
 
-```output
+```output wrap
 'Yes, Arya Stark and Ned Stark are related. According to the information retrieved from the database, there is a relationship between them. Arya Stark is the child of Ned Stark.'
 ```
 
@@ -363,7 +363,7 @@ AQL Result:
 chain.run("Does Arya Stark have a dead parent?")
 ```
 
-```output
+```output wrap
 > Entering new ArangoGraphQAChain chain...
 AQL Query (1):
 WITH Characters, ChildOf
@@ -412,7 +412,7 @@ FOR e IN ChildOf
 """
 ```
 
-```python
+```python wrap
 chain.run("Is Ned Stark alive?")
 
 # chain("Is Ned Stark alive?") # Returns a dictionary with the AQL Query & AQL Result
@@ -437,7 +437,7 @@ AQL Result:
 chain.run("Is Bran Stark the child of Ned Stark?")
 ```
 
-```output
+```output wrap
 > Entering new ArangoGraphQAChain chain...
 AQL Query (1):
 FOR e IN ChildOf
@@ -450,6 +450,6 @@ AQL Result:
 > Finished chain.
 ```
 
-```output
+```output wrap
 'Yes, according to the information in the ArangoDB database, Bran Stark is indeed the child of Ned Stark.'
 ```

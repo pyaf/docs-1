@@ -10,7 +10,7 @@ Our inference server, [Titan Takeoff](https://docs.titanml.co/docs/intro) enable
 
 Here are some helpful examples to get started using Titan Takeoff Server. You need to make sure Takeoff Server has been started in the background before running these commands. For more information see [docs page for launching Takeoff](https://docs.titanml.co/docs/Docs/launching/).
 
-```python
+```python wrap
 import time
 
 # Note importing TitanTakeoffPro instead of TitanTakeoff will work as well both use same object under the hood
@@ -33,7 +33,7 @@ print(output)
 
 Specifying a port and other generation parameters
 
-```python
+```python wrap
 llm = TitanTakeoff(port=3000)
 # A comprehensive list of parameters can be found at https://docs.titanml.co/docs/next/apis/Takeoff%20inference_REST_API/generate#request
 output = llm.invoke(
@@ -56,7 +56,7 @@ print(output)
 
 Using generate for multiple inputs
 
-```python
+```python wrap
 llm = TitanTakeoff()
 rich_output = llm.generate(["What is Deep Learning?", "What is Machine Learning?"])
 print(rich_output.generations)
@@ -66,7 +66,7 @@ print(rich_output.generations)
 
 Streaming output
 
-```python
+```python wrap
 llm = TitanTakeoff(
     streaming=True, callback_manager=CallbackManager([StreamingStdOutCallbackHandler()])
 )
@@ -91,7 +91,7 @@ print(output)
 
 Starting readers using TitanTakeoff Python Wrapper. If you haven't created any readers with first launching Takeoff, or you want to add another you can do so when you initialize the TitanTakeoff object. Just pass a list of model configs you want to start as the `models` parameter.
 
-```python
+```python wrap
 # Model config for the llama model, where you can specify the following parameters:
 #   model_name (str): The name of the model to use
 #   device: (str): The device to use for inference, cuda or cpu

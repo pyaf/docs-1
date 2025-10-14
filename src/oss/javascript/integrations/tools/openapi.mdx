@@ -2,7 +2,7 @@
 title: OpenApi Toolkit
 ---
 
-```{=mdx}
+```{=mdx} wrap
 
 <Warning>
 **Disclaimer ⚠️**
@@ -45,7 +45,7 @@ process.env.LANGSMITH_API_KEY="your-api-key"
 
 This toolkit lives in the `langchain` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -72,7 +72,7 @@ const llm = new ChatOpenAI({
 })
 ```
 
-```typescript
+```typescript wrap
 import { OpenApiToolkit } from "langchain/agents/toolkits"
 import * as fs from "fs";
 import * as yaml from "js-yaml";
@@ -107,7 +107,7 @@ console.log(tools.map((tool) => ({
 })))
 ```
 
-```output
+```output wrap
 [
   {
     name: 'requests_get',
@@ -151,7 +151,7 @@ import { createAgent } from "langchain"
 const agentExecutor = createAgent({ llm, tools });
 ```
 
-```typescript
+```typescript wrap
 const exampleQuery = "Make a POST request to openai /chat/completions. The prompt should be 'tell me a joke.'. Ensure you use the model 'gpt-4o-mini'."
 
 const events = await agentExecutor.stream(
@@ -169,7 +169,7 @@ for await (const event of events) {
 }
 ```
 
-```output
+```output wrap
 [
   {
     name: 'requests_post',

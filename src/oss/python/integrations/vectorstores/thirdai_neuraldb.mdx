@@ -36,7 +36,7 @@ vectorstore = NeuralDBVectorStore.from_checkpoint(
 
 ## Inserting document sources
 
-```python
+```python wrap
 vectorstore.insert(
     # If you have PDF, DOCX, or CSV files, you can directly pass the paths to the documents
     sources=["/path/to/doc.pdf", "/path/to/doc.docx", "/path/to/doc.csv"],

@@ -111,7 +111,7 @@ npx @langchain/langgraph-cli dev
 
 Sample output:
 
-```
+``` wrap
 >    Ready!
 >
 >    - API: [http://localhost:2024](http://localhost:2024/)
@@ -127,7 +127,7 @@ The `langgraph dev` command starts LangGraph Server in an in-memory mode. This m
 
 [Studio](/langsmith/studio) is a specialized UI that you can connect to LangGraph API server to visualize, interact with, and debug your application locally. Test your graph in Studio by visiting the URL provided in the output of the `langgraph dev` command:
 
-```
+``` wrap
 >    - LangGraph Studio Web UI: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
 ```
 
@@ -232,7 +232,7 @@ For a LangGraph Server running on a custom host/port, update the baseURL paramet
       npm install @langchain/langgraph-sdk
       ```
     2. Send a message to the assistant (threadless run):
-      ```js
+      ```js wrap
       const { Client } = await import("@langchain/langgraph-sdk");
 
       // only set the apiUrl if you changed the default port when calling langgraph dev

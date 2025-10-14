@@ -91,7 +91,7 @@ You will be creating a [SQLite database](https://www.sqlitetutorial.net/sqlite-s
 For convenience, we have hosted the database (`Chinook.db`) on a public GCS bucket.
 
 :::python
-```python
+```python wrap
 import requests, pathlib
 
 url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
@@ -109,7 +109,7 @@ else:
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -140,7 +140,7 @@ print(f"Dialect: {db.dialect}")
 print(f"Available tables: {db.get_usable_table_names()}")
 print(f'Sample output: {db.run("SELECT * FROM Artist LIMIT 5;")}')
 ```
-```
+``` wrap
 Dialect: sqlite
 Available tables: ['Album', 'Artist', 'Customer', 'Employee', 'Genre', 'Invoice', 'InvoiceLine', 'MediaType', 'Playlist', 'PlaylistTrack', 'Track']
 Sample output: [(1, 'AC/DC'), (2, 'Accept'), (3, 'Aerosmith'), (4, 'Alanis Morissette'), (5, 'Alice In Chains')]
@@ -161,7 +161,7 @@ tools = toolkit.get_tools()
 for tool in tools:
     print(f"{tool.name}: {tool.description}\n")
 ```
-```
+``` wrap
 sql_db_query: Input to this tool is a detailed and correct SQL query, output is a result from the database. If the query is not correct, an error message will be returned. If an error is returned, rewrite the query, check the query, and try again. If you encounter an issue with Unknown column 'xxxx' in 'field list', use sql_db_schema to query the correct table fields.
 
 sql_db_schema: Input to this tool is a comma-separated list of tables, output is the schema and sample rows for those tables. Be sure that the tables actually exist by calling sql_db_list_tables first! Example Input: table1, table2, table3
@@ -256,7 +256,7 @@ for step in agent.stream(
     step["messages"][-1].pretty_print()
 ```
 
-```
+``` wrap
 ================================ Human Message =================================
 
 Which genre on average has the longest tracks?
@@ -374,7 +374,7 @@ In directory you will run in, you will need a `langgraph.json` file with the fol
 
 Create a file `sql_agent.py` and insert this:
 
-```python
+```python wrap
 #sql_agent.py for studio
 import pathlib
 
@@ -455,7 +455,7 @@ It can be prudent to check the agent's SQL queries before they are executed for 
 
 LangChain agents feature support for built-in [human-in-the-loop middleware](/oss/langchain/human-in-the-loop) to add oversight to agent tool calls. Let's configure the agent to pause for human review on calling the `sql_db_query` tool:
 
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import HumanInTheLoopMiddleware # [!code highlight]
 from langgraph.checkpoint.memory import InMemorySaver # [!code highlight]
@@ -497,7 +497,7 @@ for step in agent.stream(
     else:
         pass
 ```
-```
+``` wrap
 ...
 
 INTERRUPTED:
@@ -525,7 +525,7 @@ for step in agent.stream(
     else:
         pass
 ```
-```
+``` wrap
 ================================== Ai Message ==================================
 Tool Calls:
   sql_db_query (call_7oz86Epg7lYRqi9rQHbZPS1U)
@@ -548,7 +548,7 @@ Refer to the [human-in-the-loop guide](/oss/langchain/human-in-the-loop) for det
 
 Before running the command, do a check to check the LLM generated command in ` _safe_sql`:
 
-```typescript
+```typescript wrap
 
 const DENY_RE = /\b(INSERT|UPDATE|DELETE|ALTER|DROP|CREATE|REPLACE|TRUNCATE)\b/i;
 const HAS_LIMIT_TAIL_RE = /\blimit\b\s+\d+(\s*,\s*\d+)?\s*;?\s*$/i;
@@ -582,7 +582,7 @@ function sanitizeSqlQuery(q) {
 
 Then, use `run` from `SQLDatabase` to execute commands with an `execute_sql` tool:
 
-```typescript
+```typescript wrap
 import { tool } from "langchain"
 import { z } from "zod";
 
@@ -613,7 +613,7 @@ Use `createAgent` to build a [ReAct agent](https://arxiv.org/pdf/2210.03629) wit
 
 Initialize the agent with a descriptive system prompt to customize its behavior:
 
-```typescript
+```typescript wrap
 import { SystemMessage } from "langchain";
 
 const getSystemPrompt = async () => new SystemMessage(`You are a careful SQLite analyst.
@@ -699,7 +699,7 @@ In directory you will run in, you will need a `langgraph.json` file with the fol
 }
 ```
 
-```typescript
+```typescript wrap
 import fs from "node:fs/promises";
 import path from "node:path";
 import { SqlDatabase } from "langchain/sql_db";

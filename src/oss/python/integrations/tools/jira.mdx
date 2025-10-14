@@ -46,7 +46,7 @@ os.environ["JIRA_CLOUD"] = "True"
 
 For authentication with a Oauth2.0
 
-```python
+```python wrap
 os.environ["JIRA_OAUTH2"] = (
     '{"client_id": "123", "token": {"access_token": "abc", "token_type": "bearer"}}'
 )
@@ -69,7 +69,7 @@ Let's see what individual tools are in the Jira toolkit:
 [(tool.name, tool.description) for tool in toolkit.get_tools()]
 ```
 
-```output
+```output wrap
 [('JQL Query',
   '\n    This tool is a wrapper around atlassian-python-api\'s Jira jql API, useful when you need to search for Jira issues.\n    The input to this tool is a JQL query string, and will be passed into atlassian-python-api\'s Jira `jql` function,\n    For example, to find all the issues in project "Test" assigned to the me, you would pass in the following string:\n    project = Test AND assignee = currentUser()\n    or to find issues with summaries that contain the word "test", you would pass in the following string:\n    summary ~ \'test\'\n    '),
  ('Get Projects',
@@ -82,7 +82,7 @@ Let's see what individual tools are in the Jira toolkit:
   'This tool is a wrapper around atlassian-python-api\'s Confluence \natlassian-python-api API, useful when you need to create a Confluence page. The input to this tool is a dictionary \nspecifying the fields of the Confluence page, and will be passed into atlassian-python-api\'s Confluence `create_page` \nfunction. For example, to create a page in the DEMO space titled "This is the title" with body "This is the body. You can use \n<strong>HTML tags</strong>!", you would pass in the following dictionary: {{"space": "DEMO", "title":"This is the \ntitle","body":"This is the body. You can use <strong>HTML tags</strong>!"}} ')]
 ```
 
-```python
+```python wrap
 agent = initialize_agent(
     toolkit.get_tools(), llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
 )
@@ -92,7 +92,7 @@ agent = initialize_agent(
 agent.run("make a new issue in project PW to remind me to make more fried rice")
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to create an issue in project PW
 Action: Create Issue
@@ -104,6 +104,6 @@ Final Answer: A new issue has been created in project PW with the summary "Make 
 > Finished chain.
 ```
 
-```output
+```output wrap
 'A new issue has been created in project PW with the summary "Make more fried rice" and description "Reminder to make more fried rice".'
 ```

@@ -23,7 +23,7 @@ You can also connect using any other supported way to your cluster.
 
 For more information on connecting to the Couchbase cluster, please check the [Node SDK documentation](https://docs.couchbase.com/nodejs-sdk/current/hello-world/start-using-sdk.html#connect).
 
-```typescript
+```typescript wrap
 import { Cluster } from "couchbase";
 
 const connectionString = "couchbase://localhost"; // or couchbases://localhost if you are using TLS
@@ -170,7 +170,7 @@ After the data is indexed, we perform a simple query to find the top 4 chunks th
 query "What did president say about Ketanji Brown Jackson".
 At the end, it also shows how to get similarity score
 
-```ts
+```ts wrap
 import { OpenAIEmbeddings } from "@langchain/openai";
 import {
   CouchbaseVectorStoreArgs,

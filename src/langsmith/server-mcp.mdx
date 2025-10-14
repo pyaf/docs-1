@@ -87,7 +87,7 @@ Use an MCP-compliant client to connect to the LangGraph server. The following ex
         > **Note**
         > Replace `serverUrl` with your LangGraph server URL and configure authentication headers as needed.
 
-    ```js
+    ```js wrap
     import { Client } from "@modelcontextprotocol/sdk/client/index.js";
     import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
@@ -127,7 +127,7 @@ Use an MCP-compliant client to connect to the LangGraph server. The following ex
 
     Here is an example of how to connect to a remote MCP endpoint and use an agent as a tool:
 
-    ```python
+    ```python wrap
     # Create server parameters for stdio connection
     from mcp import ClientSession
     from mcp.client.streamable_http import streamablehttp_client
@@ -202,7 +202,7 @@ Instead, define **custom agents or workflows** that use explicitly typed input a
 
 For example, a workflow answering documentation questions might look like this:
 
-```python
+```python wrap
 from langgraph.graph import StateGraph, START, END
 from typing_extensions import TypedDict
 

@@ -146,7 +146,7 @@ console.log(response);
 A list of messages can be provided to a model to represent conversation history. Each message has a role that models use to indicate who sent the message in the conversation. See the [messages](/oss/langchain/messages) guide for more detail on roles, types, and content.
 
 :::python
-```python Conversation history
+```python Conversation history wrap
 from langchain.messages import HumanMessage, AIMessage, SystemMessage
 
 conversation = [
@@ -162,7 +162,7 @@ print(response)  # AIMessage("J'adore créer des applications.")
 :::
 
 :::js
-```typescript Conversation history
+```typescript Conversation history wrap
 import { HumanMessage, AIMessage, SystemMessage } from "langchain";
 
 const conversation = [
@@ -190,7 +190,7 @@ Calling @[`stream()`][BaseChatModel.stream] returns an <Tooltip tip="An object t
         print(chunk.text, end="|", flush=True)
     ```
 
-    ```python Stream tool calls, reasoning, and other content
+    ```python Stream tool calls, reasoning, and other content wrap
     for chunk in model.stream("What color is the sky?"):
         for block in chunk.content_blocks:
             if block["type"] == "reasoning" and (reasoning := block.get("reasoning")):
@@ -504,7 +504,7 @@ for tool_call in response.tool_calls:
 :::
 
 :::js
-```typescript Binding user tools highlight={17}
+```typescript Binding user tools highlight={17} wrap
 import { tool } from "langchain";
 import { z } from "zod";
 import { ChatOpenAI } from "@langchain/openai";
@@ -546,7 +546,7 @@ Below, we show some common ways you can use tool calling.
 
         LangChain includes [agent](/oss/langchain/agents) abstractions that handle this orchestration for you. Below, we illustrate a simple example:
 
-        ```python Tool execution loop
+        ```python Tool execution loop wrap
         # Bind (potentially multiple) tools to the model
         model_with_tools = model.bind_tools([get_weather])
 
@@ -577,7 +577,7 @@ Below, we show some common ways you can use tool calling.
                 model_with_tools = model.bind_tools([tool_1], tool_choice="any")
             ```
 
-            ```python Force use of specific tools
+            ```python Force use of specific tools wrap
                 model_with_tools = model.bind_tools([tool_1], tool_choice="tool_1")
             ```
         </CodeGroup>
@@ -585,7 +585,7 @@ Below, we show some common ways you can use tool calling.
     <Accordion title="Parallel tool calls" icon="layer-group">
         Many models support calling multiple tools in parallel when appropriate. This allows the model to gather information from different sources simultaneously.
 
-        ```python Parallel tool calls
+        ```python Parallel tool calls wrap
         model_with_tools = model.bind_tools([get_weather])
 
         response = model_with_tools.invoke(
@@ -669,7 +669,7 @@ Below, we show some common ways you can use tool calling.
     <Accordion title="Tool execution loop" icon="arrow-rotate-right">
         When a model returns tool calls, you need to execute the tools and pass the results back to the model. This creates a conversation loop where the model can use tool results to generate its final response.
 
-        ```typescript Tool execution loop
+        ```typescript Tool execution loop wrap
         //  Bind (potentially multiple) tools to the model
         const modelWithTools = model.bindTools([get_weather])
 
@@ -697,11 +697,11 @@ Below, we show some common ways you can use tool calling.
         By default, the model has the freedom to choose which bound tool to use based on the user's input. However, you might want to force choosing a tool, ensuring the model uses either a particular tool or *any* tool from a given list:
 
         <CodeGroup>
-            ```typescript Force use of any tool
+            ```typescript Force use of any tool wrap
             const modelWithTools = model.bindTools([tool_1], { toolChoice: "any" })
             ```
 
-            ```typescript Force use of specific tools
+            ```typescript Force use of specific tools wrap
             const modelWithTools = model.bindTools([tool_1], { toolChoice: "tool_1" })
             ```
         </CodeGroup>
@@ -709,7 +709,7 @@ Below, we show some common ways you can use tool calling.
     <Accordion title="Parallel tool calls" icon="layer-group">
         Many models support calling multiple tools in parallel when appropriate. This allows the model to gather information from different sources simultaneously.
 
-        ```typescript Parallel tool calls
+        ```typescript Parallel tool calls wrap
         const modelWithTools = model.bind_tools([get_weather])
 
         const response = await modelWithTools.invoke(
@@ -769,7 +769,7 @@ Below, we show some common ways you can use tool calling.
 
         You can accumulate chunks to build complete tool calls:
 
-        ```typescript Accumulate tool calls
+        ```typescript Accumulate tool calls wrap
         let full: AIMessageChunk | null = null
         const stream = await modelWithTools.stream("What's the weather in Boston?")
         for await (const chunk of stream) {
@@ -792,7 +792,7 @@ Models can be requested to provide their response in a format matching a given s
     <Tab title="Pydantic">
         [Pydantic models](https://docs.pydantic.dev/latest/concepts/models/#basic-model-usage) provide the richest feature set with field validation, descriptions, and nested structures.
 
-        ```python
+        ```python wrap
         from pydantic import BaseModel, Field
 
         class Movie(BaseModel):
@@ -810,7 +810,7 @@ Models can be requested to provide their response in a format matching a given s
     <Tab title="TypedDict">
         `TypedDict` provides a simpler alternative using Python's built-in typing, ideal when you don't need runtime validation.
 
-        ```python
+        ```python wrap
         from typing_extensions import TypedDict, Annotated
 
         class MovieDict(TypedDict):
@@ -828,7 +828,7 @@ Models can be requested to provide their response in a format matching a given s
     <Tab title="JSON Schema">
         For maximum control or interoperability, you can provide a raw JSON Schema.
 
-        ```python
+        ```python wrap
         import json
 
         json_schema = {
@@ -872,7 +872,7 @@ Models can be requested to provide their response in a format matching a given s
     <Tab title="Zod">
         A [zod schema](https://zod.dev/) is the preferred method of defining an output schema. Note that when a zod schema is provided, the model output will also be validated against the schema using zod's parse methods.
 
-        ```typescript
+        ```typescript wrap
         import { z } from "zod";
 
         const Movie = z.object({
@@ -897,7 +897,7 @@ Models can be requested to provide their response in a format matching a given s
     <Tab title="JSON Schema">
         For maximum control or interoperability, you can provide a raw JSON Schema.
 
-        ```typescript
+        ```typescript wrap
         const jsonSchema = {
             "title": "Movie",
             "description": "A movie with details",
@@ -963,7 +963,7 @@ Models can be requested to provide their response in a format matching a given s
 It can be useful to return the raw `AIMessage` object alongside the parsed representation to access response metadata such as [token counts](#token-usage). To do this, set `include_raw=True` when calling `with_structured_output`:
 
     :::python
-    ```python highlight={10}
+    ```python highlight={10} wrap
     from pydantic import BaseModel, Field
 
     class Movie(BaseModel):
@@ -985,7 +985,7 @@ It can be useful to return the raw `AIMessage` object alongside the parsed repre
     :::
 
     :::js
-    ```typescript highlight={10}
+    ```typescript highlight={10} wrap
     import { z } from "zod";
 
     const Movie = z.object({
@@ -1014,7 +1014,7 @@ It can be useful to return the raw `AIMessage` object alongside the parsed repre
     Schemas can be nested:
     :::python
     <CodeGroup>
-        ```python Pydantic BaseModel
+        ```python Pydantic BaseModel wrap
         from pydantic import BaseModel, Field
 
         class Actor(BaseModel):
@@ -1130,13 +1130,13 @@ If supported by the underlying model, you can surface this reasoning process to 
 
 :::python
 <CodeGroup>
-    ```python Stream reasoning output
+    ```python Stream reasoning output wrap
     for chunk in model.stream("Why do parrots have colorful feathers?"):
         reasoning_steps = [r for r in chunk.content_blocks if r["type"] == "reasoning"]
         print(reasoning_steps if reasoning_steps else chunk.text)
     ```
 
-    ```python Complete reasoning output
+    ```python Complete reasoning output wrap
     response = model.invoke("Why do parrots have colorful feathers?")
     reasoning_steps = [b for b in response.content_blocks if b["type"] == "reasoning"]
     print(" ".join(step["reasoning"] for step in reasoning_steps))
@@ -1146,7 +1146,7 @@ If supported by the underlying model, you can surface this reasoning process to 
 
 :::js
 <CodeGroup>
-    ```typescript Stream reasoning output
+    ```typescript Stream reasoning output wrap
     const stream = model.stream("Why do parrots have colorful feathers?");
     for await (const chunk of stream) {
         const reasoningSteps = chunk.contentBlocks.filter(b => b.type === "reasoning");
@@ -1154,7 +1154,7 @@ If supported by the underlying model, you can surface this reasoning process to 
     }
     ```
 
-    ```typescript Complete reasoning output
+    ```typescript Complete reasoning output wrap
     const response = await model.invoke("Why do parrots have colorful feathers?");
     const reasoningSteps = response.contentBlocks.filter(b => b.type === "reasoning");
     console.log(reasoningSteps.map(step => step.reasoning).join(" "));
@@ -1235,7 +1235,7 @@ response.content_blocks
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { initChatModel } from "langchain";
 
 const model = await initChatModel("openai:gpt-4.1-mini");
@@ -1259,7 +1259,7 @@ To help manage rate limits, chat model integrations accept a `rate_limiter` para
 <Accordion title="Initialize and use a rate limiter" icon="gauge-high">
     LangChain in comes with (an optional) built-in in memory rate limiter. This limiter is thread safe and can be shared by multiple threads in the same process.
 
-    ```python Define a rate limiter highlight={12}
+    ```python Define a rate limiter highlight={12} wrap
     from langchain_core.rate_limiters import InMemoryRateLimiter
 
     rate_limiter = InMemoryRateLimiter(
@@ -1551,7 +1551,7 @@ For more information on all supported `RunnableConfig` attributes, see the @[`Ru
 
 You can also create a runtime-configurable model by specifying `configurable_fields`. If you don't specify a model value, then `'model'` and `'model_provider'` will be configurable by default.
 
-```python
+```python wrap
 from langchain.chat_models import init_chat_model
 
 configurable_model = init_chat_model(temperature=0)
@@ -1568,7 +1568,7 @@ configurable_model.invoke(
 
 <Accordion title="Configurable model with default values">
     We can create a configurable model with default model values, specify which parameters are configurable, and add prefixes to configurable params:
-    ```python
+    ```python wrap
     first_llm = init_chat_model(
             model="gpt-4.1-mini",
             temperature=0,
@@ -1595,7 +1595,7 @@ configurable_model.invoke(
 <Accordion title="Using a configurable model declaratively">
     We can call declarative operations like `bind_tools`, `with_structured_output`, `with_configurable`, etc. on a configurable model and chain a configurable model in the same way that we would a regularly instantiated chat model object.
 
-    ```python
+    ```python wrap
     from pydantic import BaseModel, Field
 
 

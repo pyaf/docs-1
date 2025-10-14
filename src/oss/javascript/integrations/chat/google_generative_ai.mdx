@@ -28,7 +28,7 @@ You can access Google's `gemini` and `gemini-vision` models, as well as other
 generative models in LangChain through `ChatGoogleGenerativeAI` class in the
 `@langchain/google-genai` integration package.
 
-```{=mdx}
+```{=mdx} wrap
 
 <Tip>
 **You can also access Google's `gemini` family of models via the LangChain VertexAI and VertexAI-web integrations.**
@@ -60,7 +60,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain `ChatGoogleGenerativeAI` integration lives in the `@langchain/google-genai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -87,7 +87,7 @@ const llm = new ChatGoogleGenerativeAI({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     [
         "system",
@@ -198,7 +198,7 @@ and
 
 Instead, you should explicitly define the properties of the object field. Here's an example:
 
-```typescript
+```typescript wrap
 import { tool } from "@langchain/core/tools";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { z } from "zod";
@@ -246,7 +246,7 @@ console.log(toolRes.tool_calls);
 
 Google also offers a built in search tool which you can use to ground content generation in real-world information. Here's an example of how to use it:
 
-```typescript
+```typescript wrap
 import { DynamicRetrievalMode, GoogleSearchRetrievalTool } from "@google/generative-ai";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
@@ -269,17 +269,17 @@ const searchRetrievalResult = await searchRetrievalModel.invoke("Who won the 202
 console.log(searchRetrievalResult.content);
 ```
 
-```output
+```output wrap
 The Los Angeles Dodgers won the 2024 World Series, defeating the New York Yankees in Game 5 on October 30, 2024, by a score of 7-6. This victory marks the Dodgers' eighth World Series title and their first in a full season since 1988.  They achieved this win by overcoming a 5-0 deficit, making them the first team in World Series history to win a clinching game after being behind by such a margin.  The Dodgers also became the first team in MLB postseason history to overcome a five-run deficit, fall behind again, and still win.  Walker Buehler earned the save in the final game, securing the championship for the Dodgers.
 ```
 
 The response also includes metadata about the search result:
 
-```typescript
+```typescript wrap
 console.dir(searchRetrievalResult.response_metadata?.groundingMetadata, { depth: null });
 ```
 
-```output
+```output wrap
 {
   searchEntryPoint: {
     renderedContent: '<style>\n' +
@@ -449,7 +449,7 @@ console.dir(searchRetrievalResult.response_metadata?.groundingMetadata, { depth:
 
 Google Generative AI also supports code execution. Using the built in `CodeExecutionTool`, you can make the model generate code, execute it, and use the results in a final completion:
 
-```typescript
+```typescript wrap
 import { CodeExecutionTool } from "@google/generative-ai";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
@@ -467,7 +467,7 @@ const codeExecutionResult = await codeExecutionModel.invoke("Use code execution 
 console.dir(codeExecutionResult.content, { depth: null });
 ```
 
-```output
+```output wrap
 [
   {
     type: 'text',
@@ -507,7 +507,7 @@ console.dir(codeExecutionResult.content, { depth: null });
 
 You can also pass this generation back to the model as chat history:
 
-```typescript
+```typescript wrap
 const codeExecutionExplanation = await codeExecutionModel.invoke([
   codeExecutionResult,
   {
@@ -519,7 +519,7 @@ const codeExecutionExplanation = await codeExecutionModel.invoke([
 console.log(codeExecutionExplanation.content);
 ```
 
-```output
+```output wrap
 You asked for the sum of the first three and the last three numbers in the list `[1, 2, 3, 72638, 8, 727, 4, 5, 6]`.
 
 Here's a breakdown of the code:
@@ -548,7 +548,7 @@ Therefore, the answer to your question is 21.
 
 Context caching allows you to pass some content to the model once, cache the input tokens, and then refer to the cached tokens for subsequent requests to reduce cost. You can create a `CachedContent` object using `GoogleAICacheManager` class and then pass the `CachedContent` object to your `ChatGoogleGenerativeAIModel` with `enableCachedContent()` method.
 
-```typescript
+```typescript wrap
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import {
   GoogleAICacheManager,

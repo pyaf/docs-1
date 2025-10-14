@@ -58,7 +58,7 @@ The Milvus server offers support for a variety of [indexes](https://milvus.io/do
 
 As an illustration, consider the case of Milvus Standalone. To initiate the Docker container, you can run the following command:
 
-```python
+```python wrap
 !curl -sfL https://raw.githubusercontent.com/milvus-io/milvus/master/scripts/standalone_embed.sh -o standalone_embed.sh
 
 !bash standalone_embed.sh start
@@ -111,7 +111,7 @@ Note the change in the URI below. Once the instance is initialized, navigate to 
 
 Here is an example of how you create your vector store instance with the Milvus database serivce:
 
-```python
+```python wrap
 from langchain_milvus import BM25BuiltInFunction, Milvus
 
 URI = "http://localhost:19530"
@@ -162,7 +162,7 @@ Once you have created your vector store, we can interact with it by adding and d
 
 We can add items to our vector store by using the `add_documents` function.
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_core.documents import Document
@@ -240,7 +240,7 @@ vector_store.add_documents(documents=documents, ids=uuids)
 vector_store.delete(ids=[uuids[-1]])
 ```
 
-```output
+```output wrap
 (insert count: 0, delete count: 1, upsert count: 0, timestamp: 0, success count: 0, err count: 0, cost: 0)
 ```
 
@@ -264,7 +264,7 @@ for res in results:
     print(f"* {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 * Building an exciting new project with LangChain - come check it out! [{'pk': '9905001c-a4a3-455e-ab94-72d0ed11b476', 'source': 'tweet'}]
 * LangGraph is the best framework for building stateful, agentic applications! [{'pk': '1206d237-ee3a-484f-baf2-b5ac38eeb314', 'source': 'tweet'}]
 ```
@@ -296,7 +296,7 @@ retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
 retriever.invoke("Stealing from the bank is a crime", filter={"source": "news"})
 ```
 
-```output
+```output wrap
 [Document(metadata={'pk': 'eacc7256-d7fa-4036-b1f7-83d7a4bee0c5', 'source': 'news'}, page_content='Robbers broke into the city bank and stole $1 million in cash.')]
 ```
 
@@ -312,7 +312,7 @@ For full-text search Milvus VectorStore accepts a `builtin_function` parameter. 
 
 Here is a simple example of hybrid search in Milvus with OpenAI dense embedding for semantic search and BM25 for full-text search:
 
-```python
+```python wrap
 from langchain_milvus import BM25BuiltInFunction, Milvus
 from langchain_openai import OpenAIEmbeddings
 
@@ -365,7 +365,7 @@ When building a retrieval app, you often have to build it with multiple users in
 Milvus recommends using [partition_key](https://milvus.io/docs/multi_tenancy.md#Partition-key-based-multi-tenancy) to implement multi-tenancy. Here is an example:
 > The Partition key feature is not available in Milvus Lite, if you want to use it, you need to start Milvus server, as mentioned above.
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 docs = [
@@ -391,25 +391,25 @@ Do replace `<partition_key>` with the name of the field that is designated as th
 
 Milvus changes to a partition based on the specified partition key, filters entities according to the partition key, and searches among the filtered entities.
 
-```python
+```python wrap
 # This will only get documents for Ankush
 vectorstore.as_retriever(search_kwargs={"expr": 'namespace == "ankush"'}).invoke(
     "where did i work?"
 )
 ```
 
-```output
+```output wrap
 [Document(page_content='i worked at facebook', metadata={'namespace': 'ankush'})]
 ```
 
-```python
+```python wrap
 # This will only get documents for Harrison
 vectorstore.as_retriever(search_kwargs={"expr": 'namespace == "harrison"'}).invoke(
     "where did i work?"
 )
 ```
 
-```output
+```output wrap
 [Document(page_content='i worked at kensho', metadata={'namespace': 'harrison'})]
 ```
 

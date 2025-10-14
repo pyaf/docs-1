@@ -17,7 +17,7 @@ This class is part of a set of 2 classes capable of providing a unified data sto
 
 ### Install the library
 
-```python
+```python wrap
 %pip install -qU  langchain langchain-google-vertexai "langchain-google-community[featurestore]"
 ```
 
@@ -112,7 +112,7 @@ store = VertexFSVectorStore(
 
 > Note: The first synchronization process will take around ~20 minutes because of Feature Online Store creation.
 
-```python
+```python wrap
 all_texts = ["Apples and oranges", "Cars and airplanes", "Pineapple", "Train", "Banana"]
 metadatas = [{"len": len(t)} for t in all_texts]
 
@@ -128,7 +128,7 @@ store.sync_data()
 When in a production environment, you can also use `cron_schedule` class parameter to setup an automatic scheduled synchronization.
 For example:
 
-```python
+```python wrap
 store = VertexFSVectorStore(cron_schedule="TZ=America/Los_Angeles 00 13 11 8 *", ...)
 ```
 
@@ -176,6 +176,6 @@ You can simply use the method `.to_bq_vector_store()` to get a BigQueryVectorSto
 
 Moving back to BigQueryVectorStore is equivalently easy with the `.to_vertex_fs_vector_store()` method.
 
-```python
+```python wrap
 store.to_bq_vector_store()  # pass optional VertexFSVectorStore parameters as arguments
 ```

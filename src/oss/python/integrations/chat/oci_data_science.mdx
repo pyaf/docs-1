@@ -78,7 +78,7 @@ You may instantiate the model with the generic `ChatOCIModelDeployment` or frame
 
 * Using `ChatOCIModelDeployment` when you need a generic entry point for deploying models. You can pass model parameters through `model_kwargs` during the instantiation of this class. This allows for flexibility and ease of configuration without needing to rely on framework-specific details.
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatOCIModelDeployment
 
 # Create an instance of OCI Model Deployment Endpoint
@@ -103,7 +103,7 @@ chat = ChatOCIModelDeployment(
 
 * Using framework specific class like `ChatOCIModelDeploymentVLLM`: This is suitable when you are working with a specific framework (e.g. `vLLM`) and need to pass model parameters directly through the constructor, streamlining the setup process.
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatOCIModelDeploymentVLLM
 
 # Create an instance of OCI Model Deployment Endpoint
@@ -117,7 +117,7 @@ chat = ChatOCIModelDeploymentVLLM(
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",
@@ -130,7 +130,7 @@ ai_msg = chat.invoke(messages)
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content="J'adore programmer.", response_metadata={'token_usage': {'prompt_tokens': 44, 'total_tokens': 52, 'completion_tokens': 8}, 'model_name': 'odsc-llm', 'system_fingerprint': '', 'finish_reason': 'stop'}, id='run-ca145168-efa9-414c-9dd1-21d10766fdd3-0')
 ```
 
@@ -144,7 +144,7 @@ J'adore programmer.
 
 ## Chaining
 
-```python
+```python wrap
 from langchain_core.prompts import ChatPromptTemplate
 
 prompt = ChatPromptTemplate.from_messages(
@@ -167,13 +167,13 @@ chain.invoke(
 )
 ```
 
-```output
+```output wrap
 AIMessage(content='Ich liebe Programmierung.', response_metadata={'token_usage': {'prompt_tokens': 38, 'total_tokens': 48, 'completion_tokens': 10}, 'model_name': 'odsc-llm', 'system_fingerprint': '', 'finish_reason': 'stop'}, id='run-5dd936b0-b97e-490e-9869-2ad3dd524234-0')
 ```
 
 ## Asynchronous calls
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatOCIModelDeployment
 
 system = "You are a helpful translator that translates {input_language} to {output_language}."
@@ -194,13 +194,13 @@ await chain.ainvoke(
 )
 ```
 
-```output
+```output wrap
 AIMessage(content='我喜欢编程', response_metadata={'token_usage': {'prompt_tokens': 37, 'total_tokens': 50, 'completion_tokens': 13}, 'model_name': 'odsc-llm', 'system_fingerprint': '', 'finish_reason': 'stop'}, id='run-a2dc9393-f269-41a4-b908-b1d8a92cf827-0')
 ```
 
 ## Streaming calls
 
-```python
+```python wrap
 import os
 import sys
 
@@ -232,7 +232,7 @@ for chunk in chain.stream({}):
 
 ## Structured output
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatOCIModelDeployment
 from pydantic import BaseModel
 

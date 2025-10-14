@@ -96,7 +96,7 @@ tool = next(tool for tool in tools if tool.name == tool_name)
 tool.invoke({"ens_name": "vitalik.eth", "chain": "ethereum:mainnet"})
 ```
 
-```output
+```output wrap
 EnsNameInfoResponse(wallet_address='0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045', registrant='0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045')
 ```
 
@@ -124,7 +124,7 @@ agent_executor = create_agent(llm, tools)
 
 Example usage:
 
-```python
+```python wrap
 example_query = "please set an allowance on Uniswap of 10 WETH for vitalic.eth."  # spelt wrong intentionally
 
 events = agent_executor.stream(
@@ -137,7 +137,7 @@ for event in events:
 
 Expected output:
 
-```
+``` wrap
 ================================[1m Human Message [0m=================================
 
 please set an allowance on Uniswap of 10 WETH for vitalic.eth.

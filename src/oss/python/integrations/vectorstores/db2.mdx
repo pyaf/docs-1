@@ -55,7 +55,7 @@ from langchain_db2.db2vs import DB2VS
 
 ### Create Documents
 
-```python
+```python wrap
 # Define a list of documents
 documents_json_list = [
     {
@@ -99,7 +99,7 @@ First we will create three vector stores each with different distance strategies
 (You can manually connect to the Db2 Database and will see three tables :
 Documents_DOT, Documents_COSINE and Documents_EUCLIDEAN. )
 
-```python
+```python wrap
 # Create Db2 Vector Stores using different distance strategies
 
 # When using our API calls, start by initializing your vector store with a subset of your documents
@@ -135,7 +135,7 @@ vector_store_euclidean = DB2VS.from_documents(
 
 ### Demonstrating add and delete operations for texts, along with basic similarity search
 
-```python
+```python wrap
 def manage_texts(vector_stores):
     """
     Adds texts to each vector store, demonstrates error handling for duplicate additions,
@@ -181,7 +181,7 @@ manage_texts(vector_store_list)
 
 With filtering, we only select the document id 101 and nothing else
 
-```python
+```python wrap
 # Conduct advanced searches
 def conduct_advanced_searches(vector_stores):
     query = "How are LOBS stored in Db2 Database"

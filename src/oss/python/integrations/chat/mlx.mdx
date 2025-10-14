@@ -31,7 +31,7 @@ llm = MLXPipeline.from_model_id(
 
 Instantiate the chat model and some messages to pass.
 
-```python
+```python wrap
 from langchain_community.chat_models.mlx import ChatMLX
 from langchain_core.messages import HumanMessage
 
@@ -76,7 +76,7 @@ from langchain_community.utilities import SerpAPIWrapper
 
 Configure the agent with a `react-json` style prompt and access to a search engine and calculator.
 
-```python
+```python wrap
 # setup tools
 tools = load_tools(["serpapi", "llm-math"], llm=llm)
 
@@ -143,7 +143,7 @@ agent = (
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 ```
 
-```python
+```python wrap
 agent_executor.invoke(
     {
         "input": "Who is Leo DiCaprio's girlfriend? What is her current age raised to the 0.43 power?"

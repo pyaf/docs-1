@@ -24,7 +24,7 @@ To access ChatAbso models, you'll need to create an OpenAI account, get an API k
 
 Head to (TODO: link) to sign up for ChatAbso and generate an API key. Once you've done this, set the ABSO_API_KEY environment variable:
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -52,7 +52,7 @@ llm = ChatAbso(fast_model="gpt-4o", slow_model="o3-mini")
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",

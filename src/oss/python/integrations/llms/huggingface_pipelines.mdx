@@ -30,7 +30,7 @@ hf = HuggingFacePipeline.from_model_id(
 
 They can also be loaded by passing in an existing `transformers` pipeline directly
 
-```python
+```python wrap
 from langchain_huggingface.llms import HuggingFacePipeline
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
@@ -164,7 +164,7 @@ It is possible to [export your model](https://github.com/huggingface/optimum-int
 
 It is recommended to apply 8 or 4-bit weight quantization to reduce inference latency and model footprint using `--weight-format`:
 
-```python
+```python wrap
 !optimum-cli export openvino --model gpt2  --weight-format int8 ov_model_dir # for 8-bit quantization
 
 !optimum-cli export openvino --model gpt2  --weight-format int4 ov_model_dir # for 4-bit quantization

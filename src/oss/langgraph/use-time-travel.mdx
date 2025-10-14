@@ -214,7 +214,7 @@ console.log(state.joke);
 
 **Output:**
 
-```
+``` wrap
 How about "The Secret Life of Socks in the Dryer"? You know, exploring the mysterious phenomenon of how socks go into the laundry as pairs but come out as singles. Where do they go? Are they starting new lives elsewhere? Is there a sock paradise we don't know about? There's a lot of comedic potential in the everyday mystery that unites us all!
 
 # The Secret Life of Socks in the Dryer
@@ -296,7 +296,7 @@ print(selected_state.values)
 
 **Output:**
 
-```
+``` wrap
 ('write_joke',)
 {'topic': 'How about "The Secret Life of Socks in the Dryer"? You know, exploring the mysterious phenomenon of how socks go into the laundry as pairs but come out as singles. Where do they go? Are they starting new lives elsewhere? Is there a sock paradise we don\\'t know about? There\\'s a lot of comedic potential in the everyday mystery that unites us all!'}
 ```
@@ -312,7 +312,7 @@ console.log(selectedState.values);
 
 **Output:**
 
-```
+``` wrap
 ['writeJoke']
 {'topic': 'How about "The Secret Life of Socks in the Dryer"? You know, exploring the mysterious phenomenon of how socks go into the laundry as pairs but come out as singles. Where do they go? Are they starting new lives elsewhere? Is there a sock paradise we don\\'t know about? There\\'s a lot of comedic potential in the everyday mystery that unites us all!'}
 ```
@@ -324,14 +324,14 @@ console.log(selectedState.values);
 :::python
 `update_state` will create a new checkpoint. The new checkpoint will be associated with the same thread, but a new checkpoint ID.
 
-```python
+```python wrap
 new_config = graph.update_state(selected_state.config, values={"topic": "chickens"})
 print(new_config)
 ```
 
 **Output:**
 
-```
+``` wrap
 {'configurable': {'thread_id': 'c62e2e03-c27b-4cb6-8cea-ea9bfedae006', 'checkpoint_ns': '', 'checkpoint_id': '1f02ac4a-ecee-600b-8002-a1d21df32e4c'}}
 ```
 :::
@@ -348,7 +348,7 @@ console.log(newConfig);
 
 **Output:**
 
-```
+``` wrap
 {'configurable': {'thread_id': 'c62e2e03-c27b-4cb6-8cea-ea9bfedae006', 'checkpoint_ns': '', 'checkpoint_id': '1f02ac4a-ecee-600b-8002-a1d21df32e4c'}}
 ```
 :::
@@ -362,7 +362,7 @@ graph.invoke(None, new_config)
 
 **Output:**
 
-```python
+```python wrap
 {'topic': 'chickens',
  'joke': 'Why did the chicken join a band?\n\nBecause it had excellent drumsticks!'}
 ```
@@ -375,7 +375,7 @@ await graph.invoke(null, newConfig);
 
 **Output:**
 
-```typescript
+```typescript wrap
 {
   'topic': 'chickens',
   'joke': 'Why did the chicken join a band?\n\nBecause it had excellent drumsticks!'

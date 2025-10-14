@@ -26,7 +26,7 @@ If you'd prefer not to set an environment variable you can pass the key in direc
 from langchain_community.llms import EdenAI
 ```
 
-```python
+```python wrap
 llm = EdenAI(edenai_api_key="...", provider="openai", temperature=0.2, max_tokens=250)
 ```
 
@@ -40,7 +40,7 @@ For instance, let's explore the models provided by OpenAI, such as GPT3.5
 
 ### text generation
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 
@@ -97,7 +97,7 @@ print_base64_image(image_output)
 
 ### text generation with callback
 
-```python
+```python wrap
 from langchain_community.llms import EdenAI
 from langchain_core.callbacks import StreamingStdOutCallbackHandler
 
@@ -136,7 +136,7 @@ prompt = PromptTemplate(
 chain = LLMChain(llm=llm, prompt=prompt)
 ```
 
-```python
+```python wrap
 second_prompt = PromptTemplate(
     input_variables=["company_name"],
     template="Write a description of a logo for this company: {company_name}, the logo should not contain text at all ",

@@ -56,7 +56,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain AzureChatOpenAI integration lives in the `@langchain/openai` package:
 
-```{=mdx}
+```{=mdx} wrap
 
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
@@ -71,7 +71,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and generate chat completions:
 
-```typescript
+```typescript wrap
 import { AzureChatOpenAI } from "@langchain/openai"
 
 const llm = new AzureChatOpenAI({
@@ -88,7 +88,7 @@ const llm = new AzureChatOpenAI({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     [
         "system",
@@ -160,7 +160,7 @@ const llmWithManagedIdentity = new AzureChatOpenAI({
 If your instance is hosted under a domain other than the default `openai.azure.com`, you'll need to use the alternate `AZURE_OPENAI_BASE_PATH` environment variable.
 For example, here's how you would connect to the domain `https://westeurope.api.microsoft.com/openai/deployments/{DEPLOYMENT_NAME}`:
 
-```typescript
+```typescript wrap
 import { AzureChatOpenAI } from "@langchain/openai";
 
 const llmWithDifferentDomain = new AzureChatOpenAI({
@@ -178,7 +178,7 @@ const llmWithDifferentDomain = new AzureChatOpenAI({
 
 You can specify custom headers by passing in a `configuration` field:
 
-```typescript
+```typescript wrap
 import { AzureChatOpenAI } from "@langchain/openai";
 
 const llmWithCustomHeaders = new AzureChatOpenAI({

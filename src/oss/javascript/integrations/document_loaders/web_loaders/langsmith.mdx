@@ -35,7 +35,7 @@ export LANGSMITH_API_KEY="your-api-key"
 
 The `LangSmithLoader` integration lives in the `@langchain/core` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -102,7 +102,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 {
   pageContent: 'Conventus supellex aegrotatio termes. Vapulus abscido ubi vita coadunatio modi crapula comparo caecus. Acervus voluptate tergeo pariatur conor argumentum inventore vomito stella.',
   metadata: {
@@ -130,7 +130,7 @@ docs[0]
 console.log(docs[0].metadata)
 ```
 
-```output
+```output wrap
 {
   id: 'f1a04800-6f7a-4232-9743-fb5d9029bf1f',
   created_at: '2024-08-20T17:01:38.984045+00:00',
@@ -153,7 +153,7 @@ console.log(docs[0].metadata)
 console.log(docs[0].metadata.inputs)
 ```
 
-```output
+```output wrap
 {
   input: 'Conventus supellex aegrotatio termes. Vapulus abscido ubi vita coadunatio modi crapula comparo caecus. Acervus voluptate tergeo pariatur conor argumentum inventore vomito stella.'
 }

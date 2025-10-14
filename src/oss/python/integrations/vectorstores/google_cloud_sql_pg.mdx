@@ -30,7 +30,7 @@ Install the integration library, `langchain-google-cloud-sql-pg`, and the librar
 
 **Colab only:** Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -61,7 +61,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -121,7 +121,7 @@ engine = await PostgresEngine.afrom_instance(
 
 The `PostgresVectorStore` class requires a database table. The `PostgresEngine` engine has a helper method `init_vectorstore_table()` that can be used to create a table with the proper schema for you.
 
-```python
+```python wrap
 from langchain_google_cloud_sql_pg import PostgresEngine
 
 await engine.ainit_vectorstore_table(
@@ -150,7 +150,7 @@ embedding = VertexAIEmbeddings(
 
 ### Initialize a default PostgresVectorStore
 
-```python
+```python wrap
 from langchain_google_cloud_sql_pg import PostgresVectorStore
 
 store = await PostgresVectorStore.create(  # Use .create() to initialize an async vector store
@@ -162,7 +162,7 @@ store = await PostgresVectorStore.create(  # Use .create() to initialize an asyn
 
 ### Add texts
 
-```python
+```python wrap
 import uuid
 
 all_texts = ["Apples and oranges", "Cars and airplanes", "Pineapple", "Train", "Banana"]
@@ -251,7 +251,7 @@ custom_store = await PostgresVectorStore.create(
 
 ### Search for documents with metadata filter
 
-```python
+```python wrap
 import uuid
 
 # Add texts to the Vector Store

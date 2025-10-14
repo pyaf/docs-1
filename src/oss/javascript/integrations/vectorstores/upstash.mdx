@@ -20,7 +20,7 @@ To use Upstash vector stores, you'll need to create an Upstash account, create a
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -33,7 +33,7 @@ You can create an index from the [Upstash Console](https://console.upstash.com/l
 
 Upstash vector also has built in embedding support. Which means you can use it directly without the need for an additional embedding model. Check the [embedding models documentation](https://upstash.com/docs/vector/features/embeddingmodels) for more details.
 
-```{=mdx}
+```{=mdx} wrap
 <Note>
 To use the built-in Upstash embeddings, you'll need to select an embedding model when creating the index.
 </Note>
@@ -159,7 +159,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const filter = "source = 'https://example.com'";
 
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, filter);
@@ -169,7 +169,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -178,7 +178,7 @@ See [this page](https://upstash.com/docs/vector/features/filtering) for more on 
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -186,7 +186,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.576] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=0.557] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```

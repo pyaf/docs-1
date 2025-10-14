@@ -129,7 +129,7 @@ Let's walk through each step:
         :::
 
         :::js
-        ```ts
+        ```ts wrap
         const systemPrompt = `You are an expert weather forecaster, who speaks in puns.
 
         You have access to two tools:
@@ -323,7 +323,7 @@ Let's walk through each step:
 
         :::python
 
-        ```python
+        ```python wrap
         agent = create_agent(
             model=model,
             system_prompt=system_prompt,
@@ -364,7 +364,7 @@ Let's walk through each step:
         ```
         :::
         :::js
-        ```ts
+        ```ts wrap
         import { createAgent } from "langchain";
 
         const agent = createAgent({
@@ -408,7 +408,7 @@ Let's walk through each step:
 
 <Expandable title="Full example code">
 :::python
-```python
+```python wrap
 from dataclasses import dataclass
 
 from langchain.agents import create_agent
@@ -505,7 +505,7 @@ print(response['structured_response'])
 
 
 :::js
-```ts
+```ts wrap
 import { createAgent, tool } from "langchain";
 import { initChatModel } from "langchain/chat_models";
 import { MemorySaver, type Runtime } from "@langchain/langgraph";

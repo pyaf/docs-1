@@ -159,7 +159,7 @@ To export data, you will need to create an export job. This job will specify the
 
 You can use the following cURL command to create the job:
 
-```bash
+```bash wrap
 curl --request POST \
   --url 'https://api.smith.langchain.com/api/v1/bulk-exports' \
   --header 'Content-Type: application/json' \
@@ -189,7 +189,7 @@ Requires LangSmith Helm version >= `0.10.42` (application version >= `0.10.109`)
 Scheduled exports collect runs periodically and export to the configured destination.
 To create a scheduled export, include `interval_hours` and remove `end_time`:
 
-```bash
+```bash wrap
 curl --request POST \
   --url 'https://api.smith.langchain.com/api/v1/bulk-exports' \
   --header 'Content-Type: application/json' \
@@ -293,7 +293,7 @@ you will need to create a new export job instead.
 
 Data will be exported into your bucket into the follow Hive partitioned format:
 
-```
+``` wrap
 <bucket>/<prefix>/export_id=<export_id>/tenant_id=<tenant_id>/session_id=<session_id>/runs/year=<year>/month=<month>/day=<day>
 ```
 
@@ -318,7 +318,7 @@ You can COPY data from S3 / Parquet into RedShift by following the [AWS COPY Ins
 
 You can directly query data in S3 / Parquet format in Clickhouse. As an example, if using GCS, you can query the data as follows:
 
-```sql
+```sql wrap
 SELECT count(distinct id) FROM s3('https://storage.googleapis.com/<bucket>/<prefix>/export_id=<export_id>/**',
  'access_key_id', 'access_secret', 'Parquet')
 ```
@@ -363,7 +363,7 @@ aws s3 cp ./test.txt s3://<bucket-name>/tmp/test.txt
 You will need to supply the endpoint_url with `--endpoint-url` option.
 For GCS, the `endpoint_url` is typically `https://storage.googleapis.com`:
 
-```bash
+```bash wrap
 aws configure
 
 # set the same access key credentials and region as you used for the destination

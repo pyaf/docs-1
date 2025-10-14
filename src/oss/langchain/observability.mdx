@@ -35,7 +35,7 @@ You can get your API key from your [LangSmith settings](https://smith.langchain.
 No extra code is needed to log a trace to LangSmith. Just run your agent code as you normally would:
 
 :::python
-```python
+```python wrap
 from langchain.agents import create_agent
 
 def send_email(to: str, subject: str, body: str):
@@ -62,7 +62,7 @@ response = agent.invoke({
 :::
 
 :::js
-```ts
+```ts wrap
 import { createAgent } from "@langchain/agents";
 
 function sendEmail(to: string, subject: string, body: string): string {

@@ -33,7 +33,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 **Colab only:** Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -64,7 +64,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -102,7 +102,7 @@ The `SpannerVectorStore` class instance requires a database table with id, conte
 
 The helper method `init_vector_store_table()` that can be used to create a table with the proper schema for you.
 
-```python
+```python wrap
 from langchain_google_spanner import SecondaryIndex, SpannerVectorStore, TableColumn
 
 SpannerVectorStore.init_vector_store_table(
@@ -190,7 +190,7 @@ db.similarity_search(query="Explain me vector store?", k=3)
 
 To search documents in the vector store with max marginal relevance search.
 
-```python
+```python wrap
 db.max_marginal_relevance_search("Testing the langchain integration with spanner", k=3)
 ```
 

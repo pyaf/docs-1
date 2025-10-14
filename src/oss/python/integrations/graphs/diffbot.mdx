@@ -32,7 +32,7 @@ LangChain provides tools to interact with Graph Databases:
 
 First, get required packages and set environment variables:
 
-```python
+```python wrap
 %pip install -qU  langchain langchain-experimental langchain-openai langchain-neo4j neo4j wikipedia
 ```
 
@@ -42,7 +42,7 @@ First, get required packages and set environment variables:
 This extracted information can be used to construct a knowledge graph.
 To use the API, you'll need to obtain a [free API token from Diffbot](https://app.diffbot.com/get-started/).
 
-```python
+```python wrap
 from langchain_experimental.graph_transformers.diffbot import DiffbotGraphTransformer
 
 diffbot_api_key = "DIFFBOT_KEY"
@@ -122,7 +122,7 @@ chain = GraphCypherQAChain.from_llm(
 chain.run("Which university did Warren Buffett attend?")
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (p:Person {name: "Warren Buffett"})-[:EDUCATED_AT]->(o:Organization)
@@ -141,7 +141,7 @@ Full Context:
 chain.run("Who is or was working at Berkshire Hathaway?")
 ```
 
-```output
+```output wrap
 > Entering new GraphCypherQAChain chain...
 Generated Cypher:
 MATCH (p:Person)-[r:EMPLOYEE_OR_MEMBER_OF]->(o:Organization) WHERE o.name = 'Berkshire Hathaway' RETURN p.name
@@ -151,7 +151,7 @@ Full Context:
 > Finished chain.
 ```
 
-```output
+```output wrap
 'Charlie Munger, Oliver Chace, Howard Buffett, Susan Buffett, and Warren Buffett are or were working at Berkshire Hathaway.'
 ```
 

@@ -25,7 +25,7 @@ Where `<your-registry>` is the URL of your Docker registry (e.g. `myregistry.com
 
 For example, if your registry is `myregistry.com`, your platform is `linux/arm64`, and you want to use the latest version of the images, you would run:
 
-```bash
+```bash wrap
 bash mirror_langsmith_images.sh --registry myregistry --platform linux/arm64 --version 0.10.66
 ```
 
@@ -35,7 +35,7 @@ Alternatively, you can pull, mirror, and push the images manually. The images th
 
 Here is an example of how to mirror the images using Docker:
 
-```bash
+```bash wrap
 # Pull the images from the public registry
 docker pull langchain/langsmith-backend:latest
 docker tag langchain/langsmith-backend:latest <your-registry>/langsmith-backend:latest
@@ -50,7 +50,7 @@ Once the images are mirrored, you will need to configure your LangSmith installa
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 images:
   imagePullSecrets: [] # Add your image pull secrets here if needed
   registry: "" # Set this to your registry URL if you mirrored all images to the same registry using our script. Then you can remove the repository prefix from the images below.
@@ -96,7 +96,7 @@ images:
     tag: "24.8"
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 _REGISTRY=your-registry # Set this to your registry URL if you mirrored all images to the same registry using our script. Otherwise you will need to manually set the repository for each image in the compose file.
 ```

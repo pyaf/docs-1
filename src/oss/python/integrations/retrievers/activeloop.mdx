@@ -13,7 +13,7 @@ For this tutorial we will parse `DeepLake` documentation, and create a RAG syste
 
 We will parse activeloop's docs for this tutorial using `BeautifulSoup` library and LangChain's document parsers like `Html2TextTransformer`, `AsyncHtmlLoader`. So we will need to install the following libraries:
 
-```python
+```python wrap
 %pip install -qU  tiktoken langchain-openai python-dotenv datasets langchain deeplake beautifulsoup4 html2text ragas
 ```
 
@@ -29,7 +29,7 @@ from langchain_community.vectorstores import DeepLake
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 ```
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -45,7 +45,7 @@ token = os.getenv("ACTIVELOOP_TOKEN")
 openai_embeddings = OpenAIEmbeddings()
 ```
 
-```python
+```python wrap
 db = DeepLake(
     dataset_path=f"hub://{ORG_ID}/deeplake-docs-deepmemory",  # org_id stands for your username or organization from activeloop
     embedding=openai_embeddings,
@@ -58,7 +58,7 @@ db = DeepLake(
 
 parsing all links in the webpage using `BeautifulSoup`
 
-```python
+```python wrap
 from urllib.parse import urljoin
 
 import requests
@@ -145,7 +145,7 @@ Here above we showed the overall schema how deep_memory works. So as you can see
 
 Now, let us generate synthetic questions and relevance:
 
-```python
+```python wrap
 from typing import List
 
 from langchain.chains.openai_functions import (
@@ -163,7 +163,7 @@ docs = db.vectorstore.dataset.text.data(fetch_chunks=True, aslist=True)["value"]
 ids = db.vectorstore.dataset.id.data(fetch_chunks=True, aslist=True)["value"]
 ```
 
-```python
+```python wrap
 # If we pass in a model explicitly, we need to make sure it supports the OpenAI function-calling API.
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
@@ -313,7 +313,7 @@ def convert_relevance_to_ground_truth(docs, relevance):
     return ground_truths
 ```
 
-```python
+```python wrap
 ground_truths = convert_relevance_to_ground_truth(docs, test_relevances)
 
 for deep_memory in [False, True]:
@@ -367,7 +367,7 @@ context_recall_score = 0.5634545323
 
 with deep_memory
 
-```python
+```python wrap
 retriever = db.as_retriever()
 retriever.search_kwargs["deep_memory"] = True
 retriever.search_kwargs["k"] = 10
@@ -385,7 +385,7 @@ The base htype of the 'video_seq' tensor is 'video'.
 
 without deep_memory
 
-```python
+```python wrap
 retriever = db.as_retriever()
 retriever.search_kwargs["deep_memory"] = False
 retriever.search_kwargs["k"] = 10
@@ -397,7 +397,7 @@ qa = RetrievalQA.from_chain_type(
 qa.run(query)
 ```
 
-```output
+```output wrap
 The text does not provide information on the base htype of the 'video_seq' tensor.
 ```
 

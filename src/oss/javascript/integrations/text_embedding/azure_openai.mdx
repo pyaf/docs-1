@@ -10,7 +10,7 @@ You can learn more about Azure OpenAI and its difference with the OpenAI API on 
 
 This will help you get started with AzureOpenAIEmbeddings [embedding models](/oss/integrations/text_embedding) using LangChain. For detailed documentation on `AzureOpenAIEmbeddings` features and configuration options, please refer to the [API reference](https://api.js.langchain.com/classes/langchain_openai.AzureOpenAIEmbeddings.html).
 
-```{=mdx}
+```{=mdx} wrap
 
 <Info>
 **Previously, LangChain.js supported integration with Azure OpenAI using the dedicated [Azure OpenAI SDK](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai). This SDK is now deprecated in favor of the new Azure integration in the OpenAI SDK, which allows to access the latest OpenAI models and features the same day they are released, and allows seamless transition between the OpenAI API and Azure OpenAI.**
@@ -60,7 +60,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain AzureOpenAIEmbeddings integration lives in the `@langchain/openai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -86,7 +86,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and embed text:
 
-```typescript
+```typescript wrap
 import { AzureOpenAIEmbeddings } from "@langchain/openai";
 
 const embeddings = new AzureOpenAIEmbeddings({
@@ -104,7 +104,7 @@ Embedding models are often used in retrieval-augmented generation (RAG) flows, b
 
 Below, see how to index and retrieve data using the `embeddings` object we initialized above. In this example, we will index and retrieve a sample document using the demo [`MemoryVectorStore`](/oss/integrations/vectorstores/memory).
 
-```typescript
+```typescript wrap
 // Create a vector store with a sample text
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
@@ -173,7 +173,7 @@ console.log(singleVector.slice(0, 100));
 
 You can embed multiple texts for indexing with `embedDocuments`. The internals used for this method may (but do not have to) differ from embedding queries:
 
-```typescript
+```typescript wrap
 const text2 = "LangGraph is a library for building stateful, multi-actor applications with LLMs";
 
 const vectors = await embeddings.embedDocuments([text, text2]);
@@ -260,7 +260,7 @@ const modelWithManagedIdentity = new AzureOpenAIEmbeddings({
 If your instance is hosted under a domain other than the default `openai.azure.com`, you'll need to use the alternate `AZURE_OPENAI_BASE_PATH` environment variable.
 For example, here's how you would connect to the domain `https://westeurope.api.microsoft.com/openai/deployments/{DEPLOYMENT_NAME}`:
 
-```typescript
+```typescript wrap
 import { AzureOpenAIEmbeddings } from "@langchain/openai";
 
 const embeddingsDifferentDomain = new AzureOpenAIEmbeddings({

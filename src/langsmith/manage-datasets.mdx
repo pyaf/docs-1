@@ -46,7 +46,7 @@ You can tag a version of your dataset in the UI by clicking on **+ Tag this vers
 
 You can also tag versions of your dataset using the SDK. Here's an example of how to tag a version of a dataset using the [Python SDK](https://docs.smith.langchain.com/reference/python/reference):
 
-```python
+```python wrap
 from langsmith import Client
 from datetime import datetime
 
@@ -130,7 +130,7 @@ One common workflow is to fetch examples that have a certain metadata key-value 
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import evaluate
 
 results = evaluate(
@@ -164,7 +164,7 @@ You can use the `list_examples` / `listExamples` method to evaluate on one or mu
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import evaluate
 
 results = evaluate(

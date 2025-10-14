@@ -40,7 +40,7 @@ You can now test the API:
 pip install langgraph-sdk
 ```
 2. Send a message to the agent:
-```python
+```python wrap
 from langgraph_sdk import get_sync_client # or get_client for async
 
 client = get_sync_client(url="your-deployment-url", api_key="your-langsmith-api-key")
@@ -69,7 +69,7 @@ for chunk in client.runs.stream(
 npm install @langchain/langgraph-sdk
 ```
 2. Send a message to the agent:
-```ts
+```ts wrap
 const { Client } = await import("@langchain/langgraph-sdk");
 
 const client = new Client({ apiUrl: "your-deployment-url", apiKey: "your-langsmith-api-key" });
@@ -96,7 +96,7 @@ for await (const chunk of streamResponse) {
 </Tab>
 :::
 <Tab title="Rest API">
-```bash
+```bash wrap
 curl -s --request POST \
     --url <DEPLOYMENT_URL>/runs/stream \
     --header 'Content-Type: application/json' \

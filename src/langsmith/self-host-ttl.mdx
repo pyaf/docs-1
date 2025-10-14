@@ -24,7 +24,7 @@ config:
       shortlived: "1209600"
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env fileFF_TRACE_TIERS_ENABLED=trueTRACE_TIER_TTL_DURATION_SEC_MAP='{"longlived": 34560000, "shortlived": 1209600}'
 ```
 
@@ -92,7 +92,7 @@ queue:
 
 Use this query to analyze expired rows in your tables, and tweak your minimum value accordingly:
 
-```sql
+```sql wrap
 -- Query for Runs table. For other tables, replace 'ttl_seconds' with 'trace_ttl_seconds'
 SELECT
     _part,

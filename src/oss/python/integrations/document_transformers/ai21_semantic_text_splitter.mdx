@@ -28,7 +28,7 @@ if "AI21_API_KEY" not in os.environ:
 
 This example shows how to use AI21SemanticTextSplitter to split a text into chunks based on semantic meaning.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 
 TEXT = (
@@ -63,7 +63,7 @@ for chunk in chunks:
 
 This example shows how to use AI21SemanticTextSplitter to split a text into chunks based on semantic meaning, then merging the chunks based on `chunk_size`.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 
 TEXT = (
@@ -98,7 +98,7 @@ for chunk in chunks:
 
 This example shows how to use AI21SemanticTextSplitter to split a text into Documents based on semantic meaning. The metadata will contain a type for each document.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 
 TEXT = (
@@ -134,7 +134,7 @@ for doc in documents:
 
 This example shows how to use AI21SemanticTextSplitter to create Documents from texts, and adding custom Metadata to each Document.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 
 TEXT = (
@@ -174,7 +174,7 @@ for doc in documents:
 This example shows how to use AI21SemanticTextSplitter to split a text into Documents based on semantic meaning. The metadata will contain a start index for each document.
 **Note** that the start index provides an indication of the order of the chunks rather than the actual start index for each chunk.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 
 TEXT = (
@@ -209,7 +209,7 @@ for doc in documents:
 
 This example shows how to use AI21SemanticTextSplitter to split a list of Documents into chunks based on semantic meaning.
 
-```python
+```python wrap
 from langchain_ai21 import AI21SemanticTextSplitter
 from langchain_core.documents import Document
 

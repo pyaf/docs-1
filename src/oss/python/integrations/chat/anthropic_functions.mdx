@@ -22,7 +22,7 @@ from langchain_anthropic.experimental import ChatAnthropicTools
 
 `ChatAnthropicTools` exposes a `bind_tools` method that allows you to pass in Pydantic models or BaseTools to the llm.
 
-```python
+```python wrap
 from pydantic import BaseModel
 
 
@@ -35,7 +35,7 @@ model = ChatAnthropicTools(model="claude-3-opus-20240229").bind_tools(tools=[Per
 model.invoke("I am a 27 year old named Erick")
 ```
 
-```output
+```output wrap
 AIMessage(content='', additional_kwargs={'tool_calls': [{'function': {'name': 'Person', 'arguments': '{"name": "Erick", "age": "27"}'}, 'type': 'function'}]})
 ```
 
@@ -43,7 +43,7 @@ AIMessage(content='', additional_kwargs={'tool_calls': [{'function': {'name': 'P
 
 `ChatAnthropicTools` also implements the [`with_structured_output` spec](/oss/langchain/structured-output) for extracting values. Note: this may not be as stable as with models that explicitly offer tool calling.
 
-```python
+```python wrap
 chain = ChatAnthropicTools(model="claude-3-opus-20240229").with_structured_output(
     Person
 )

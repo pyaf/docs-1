@@ -72,7 +72,7 @@ except Exception as e:
 
 You can use advanced filtering options to narrow down your search results:
 
-```python
+```python wrap
 from langchain_perigon import ArticlesRetriever, ArticlesFilter
 
 # Create retriever with custom parameters
@@ -209,7 +209,7 @@ for doc in documents:
 
 Filter Wikipedia articles by revision dates:
 
-```python
+```python wrap
 from langchain_perigon import WikipediaRetriever, WikipediaOptions
 
 wiki_retriever = WikipediaRetriever()
@@ -236,7 +236,7 @@ for doc in documents:
 
 Both retrievers support asynchronous operations for better performance:
 
-```python
+```python wrap
 import asyncio
 from langchain_perigon import (
     ArticlesRetriever,

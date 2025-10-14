@@ -71,7 +71,7 @@ connection_string = os.environ.get("DATABASE_URL")
 collection_name = "state_of_the_union"
 ```
 
-```python
+```python wrap
 db = PGEmbedding.from_documents(
     embedding=embeddings,
     documents=docs,
@@ -117,7 +117,7 @@ PGEmbedding.create_hnsw_index(
 
 The function above is equivalent to running the below SQL query:
 
-```sql
+```sql wrap
 CREATE INDEX ON vectors USING hnsw(vec) WITH (maxelements=10000, dims=1536, m=3, efconstruction=16, efsearch=16);
 ```
 
@@ -148,11 +148,11 @@ retriever = store.as_retriever()
 retriever
 ```
 
-```output
+```output wrap
 VectorStoreRetriever(vectorstore=<langchain_community.vectorstores.pghnsw.HNSWVectoreStore object at 0x121d3c8b0>, search_type='similarity', search_kwargs={})
 ```
 
-```python
+```python wrap
 db1 = PGEmbedding.from_existing_index(
     embedding=embeddings,
     collection_name=collection_name,

@@ -27,7 +27,7 @@ audio_path = "path/to/your/audio/file"
 audio_blob = Blob(path=audio_path)
 ```
 
-```python
+```python wrap
 from langchain_community.document_loaders.parsers.audio import AzureOpenAIWhisperParser
 
 endpoint = "<your_endpoint>"
@@ -67,7 +67,7 @@ url = ["www.youtube.url.com"]
 save_dir = "save/directory/"
 ```
 
-```python
+```python wrap
 name = "<your_deployment_name>"
 
 loader = GenericLoader(

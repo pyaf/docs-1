@@ -49,7 +49,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain PuppeteerWebBaseLoader integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -63,7 +63,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and load documents:
 
-```typescript
+```typescript wrap
 import { PuppeteerWebBaseLoader } from "@langchain/community/document_loaders/web/puppeteer"
 
 const loader = new PuppeteerWebBaseLoader("https://langchain.com", {
@@ -79,7 +79,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 Document {
   pageContent: '<div class="page-wrapper"><div class="global-styles w-embed"><style>\n' +
     '\n' +
@@ -419,7 +419,7 @@ By passing these options to the `PuppeteerWebBaseLoader` constructor, you can cu
 To take a screenshot of a site, initialize the loader the same as above, and call the `.screenshot()` method.
 This will return an instance of `Document` where the page content is a base64 encoded image, and the metadata contains a `source` field with the URL of the page.
 
-```typescript
+```typescript wrap
 import { PuppeteerWebBaseLoader } from "@langchain/community/document_loaders/web/puppeteer";
 
 const loaderForScreenshot = new PuppeteerWebBaseLoader("https://langchain.com", {
@@ -436,7 +436,7 @@ console.log(screenshot.pageContent.slice(0, 100));
 console.log(screenshot.metadata);
 ```
 
-```output
+```output wrap
 iVBORw0KGgoAAAANSUhEUgAACWAAAAdoCAIAAAA/Q2IJAAAAAXNSR0IArs4c6QAAIABJREFUeJzsvUuzHUeSJuaPiMjMk3nOuU88
 { source: 'https://langchain.com' }
 ```

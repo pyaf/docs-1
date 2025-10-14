@@ -91,7 +91,7 @@ In either case, the ontology dump should:
 * Include enough information about classes, properties, property attachment to classes (using rdfs:domain, schema:domainIncludes or OWL restrictions), and taxonomies (important individuals).
 * Not include overly verbose and irrelevant definitions and examples that do not help SPARQL construction.
 
-```python
+```python wrap
 from langchain_community.graphs import OntotextGraphDBGraph
 
 # feeding the schema using a user construct query
@@ -102,7 +102,7 @@ graph = OntotextGraphDBGraph(
 )
 ```
 
-```python
+```python wrap
 # feeding the schema using a local RDF file
 
 graph = OntotextGraphDBGraph(
@@ -115,7 +115,7 @@ Either way, the ontology (schema) is fed to the LLM as `Turtle` since `Turtle` w
 
 The Star Wars ontology is a bit unusual in that it includes a lot of specific triples about classes, e.g. that the species `:Aleena` live on `<planet/38>`, they are a subclass of `:Reptile`, have certain typical characteristics (average height, average lifespan, skinColor), and specific individuals (characters) are representatives of that class:
 
-```
+``` wrap
 @prefix : [swapi.co/vocabulary/](https://swapi.co/vocabulary/) .
 @prefix owl: [www.w3.org/2002/07/owl#](http://www.w3.org/2002/07/owl#) .
 @prefix rdfs: [www.w3.org/2000/01/rdf-schema#](http://www.w3.org/2000/01/rdf-schema#) .
@@ -153,7 +153,7 @@ graph = OntotextGraphDBGraph(
 
 We can now use the `OntotextGraphDBQAChain` to ask some questions.
 
-```python
+```python wrap
 import os
 
 from langchain.chains import OntotextGraphDBQAChain
@@ -181,11 +181,11 @@ chain = OntotextGraphDBQAChain.from_llm(
 
 Let's ask a simple one.
 
-```python
+```python wrap
 chain.invoke({chain.input_key: "What is the climate on Tatooine?"})[chain.output_key]
 ```
 
-```output
+```output wrap
 
 
 > Entering new OntotextGraphDBQAChain chain...
@@ -208,13 +208,13 @@ WHERE {
 
 And a bit more complicated one.
 
-```python
+```python wrap
 chain.invoke({chain.input_key: "What is the climate on Luke Skywalker's home planet?"})[
     chain.output_key
 ]
 ```
 
-```output
+```output wrap
 > Entering new OntotextGraphDBQAChain chain...
 Generated SPARQL:
 PREFIX : [swapi.co/vocabulary/](https://swapi.co/vocabulary/)
@@ -238,7 +238,7 @@ WHERE {
 
 We can also ask more complicated questions like
 
-```python
+```python wrap
 chain.invoke(
     {
         chain.input_key: "What is the average box office revenue for all the Star Wars movies?"
@@ -263,7 +263,7 @@ WHERE {
 > Finished chain.
 ```
 
-```output
+```output wrap
 'The average box office revenue for all the Star Wars movies is approximately 754.1 million dollars.'
 ```
 
@@ -285,7 +285,7 @@ The prompt is used for the SPARQL query generation based on the user question an
     The ontology schema delimited by triple backticks in Turtle format is:
     ```
     {schema}
-    ```
+    ``` wrap
     Use only the classes and properties provided in the schema to construct the SPARQL query.
     Do not use any classes or properties that are not explicitly provided in the SPARQL query.
     Include all necessary prefixes.
@@ -351,7 +351,7 @@ The prompt is used for answering the question based on the results returned from
 
   Default value:
 
-  ```python
+  ```python wrap
     GRAPHDB_QA_TEMPLATE = """Task: Generate a natural language response from the results of a SPARQL query.
     You are an assistant that creates well-written and human understandable answers.
     The information part contains the information provided, which you can use to construct an answer.

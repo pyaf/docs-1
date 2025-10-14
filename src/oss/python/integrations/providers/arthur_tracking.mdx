@@ -29,7 +29,7 @@ from langchain_openai import ChatOpenAI
 
 Create LangChain LLM with Arthur callback handler
 
-```python
+```python wrap
 def make_langchain_chat_llm():
     return ChatOpenAI(
         streaming=True,
@@ -70,7 +70,7 @@ def run(llm):
 run(chatgpt)
 ```
 
-```output
+```output wrap
 >>> input >>>
 >>>: What is a callback handler?
 A callback handler, also known as a callback function or callback method, is a piece of code that is executed in response to a specific event or condition. It is commonly used in programming languages that support event-driven or asynchronous programming paradigms.

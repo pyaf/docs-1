@@ -34,7 +34,7 @@ If you're using LangChain or LangGraph, use the built-in integration to trace yo
 
    <CodeGroup>
 
-   ```bash Shell
+   ```bash Shell wrap
    LANGSMITH_OTEL_ENABLED=true
    LANGSMITH_TRACING=true
    LANGSMITH_ENDPOINT=https://api.smith.langchain.com
@@ -102,7 +102,7 @@ For non-LangChain applications or custom instrumentation, you can trace your app
 
    <CodeGroup>
 
-   ```bash Shell
+   ```bash Shell wrap
    OTEL_EXPORTER_OTLP_ENDPOINT=https://api.smith.langchain.com/otel
    OTEL_EXPORTER_OTLP_HEADERS="x-api-key=<your langsmith api key>,Langsmith-Project=<project name>"
    ```
@@ -113,7 +113,7 @@ For non-LangChain applications or custom instrumentation, you can trace your app
 
    This code sets up an OTEL tracer and exporter that will send traces to LangSmith. It then calls OpenAI and sends the required OpenTelemetry attributes.
 
-   ```python
+   ```python wrap
    from openai import OpenAI
    from opentelemetry import trace
    from opentelemetry.sdk.trace import TracerProvider
@@ -188,7 +188,7 @@ Available in LangSmith Python SDK **≥ 0.4.1**. We recommend **≥ 0.4.25** for
 
 By default, the LangSmith OpenTelemetry exporter will send data to the LangSmith API OTEL endpoint, but this can be customized by setting standard OTEL environment variables:
 
-```bash
+```bash wrap
 OTEL_EXPORTER_OTLP_ENDPOINT: Override the endpoint URL
 OTEL_EXPORTER_OTLP_HEADERS: Add custom headers (LangSmith API keys and Project are added automatically)
 OTEL_SERVICE_NAME: Set a custom service name (defaults to "langsmith")
@@ -203,7 +203,7 @@ LangSmith uses the HTTP trace exporter by default. If you'd like to use your own
 
 To send traces to a different provider, configure the OTLP exporter with your provider's endpoint:
 
-```python
+```python wrap
 import os
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
@@ -414,7 +414,7 @@ For exception events:
 
 Use the LangSmith SDK's OpenTelemetry helper to configure export:
 
-```python
+```python wrap
 import asyncio
 from langsmith.integrations.otel import configure
 from google.adk import Runner
@@ -499,7 +499,7 @@ For more advanced scenarios, you can use the OpenTelemetry Collector to fan out 
 
 3. Configure your application to send to the collector:
 
-   ```python
+   ```python wrap
    import os
    from opentelemetry import trace
    from opentelemetry.sdk.trace import TracerProvider
@@ -552,7 +552,7 @@ In distributed systems, context propagation passes trace metadata between servic
 
 To enable distributed tracing across multiple services:
 
-```python
+```python wrap
 import os
 from opentelemetry import trace
 from opentelemetry.propagate import inject, extract

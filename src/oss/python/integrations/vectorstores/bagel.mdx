@@ -74,7 +74,7 @@ docs = cluster.similarity_search(query)
 print(docs[0].page_content[:102])
 ```
 
-```output
+```output wrap
 Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and the
 ```
 
@@ -127,7 +127,7 @@ cluster.delete_cluster()
 
 ## Create cluster with metadata & filter using metadata
 
-```python
+```python wrap
 texts = ["hello bagel", "this is langchain"]
 metadatas = [{"source": "notion"}, {"source": "google"}]
 

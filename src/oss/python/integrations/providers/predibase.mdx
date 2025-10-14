@@ -14,7 +14,7 @@ Learn how to use LangChain with models on Predibase.
 
 Predibase integrates with LangChain by implementing LLM module. You can see a short example below or a full notebook under LLM > Integrations > Predibase.
 
-```python
+```python wrap
 import os
 os.environ["PREDIBASE_API_TOKEN"] = "{PREDIBASE_API_TOKEN}"
 
@@ -47,7 +47,7 @@ print(response)
 
 Predibase also supports Predibase-hosted and HuggingFace-hosted adapters that are fine-tuned on the base model given by the `model` argument:
 
-```python
+```python wrap
 import os
 os.environ["PREDIBASE_API_TOKEN"] = "{PREDIBASE_API_TOKEN}"
 
@@ -83,7 +83,7 @@ print(response)
 
 Predibase also supports adapters that are fine-tuned on the base model given by the `model` argument:
 
-```python
+```python wrap
 import os
 os.environ["PREDIBASE_API_TOKEN"] = "{PREDIBASE_API_TOKEN}"
 

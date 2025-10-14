@@ -8,7 +8,7 @@ This example goes over how to use LangChain to interact with `Replicate` [models
 
 ## Setup
 
-```python
+```python wrap
 # magics to auto-reload external modules in case you are making changes to langchain while working on this notebook
 %load_ext autoreload
 %autoreload 2
@@ -20,7 +20,7 @@ To run this notebook, you'll need to create a [replicate](https://replicate.com)
 !poetry run pip install replicate
 ```
 
-```output
+```output wrap
 Collecting replicate
   Using cached replicate-0.25.1-py3-none-any.whl.metadata (24 kB)
 Requirement already satisfied: httpx<1,>=0.21.0 in /Users/charlieholtz/miniconda3/envs/langchain/lib/python3.9/site-packages (from replicate) (0.24.1)
@@ -65,7 +65,7 @@ Find a model on the [replicate explore page](https://replicate.com/explore), and
 
 For example, here is [`Meta Llama 3`](https://replicate.com/meta/meta-llama-3-8b-instruct).
 
-```python
+```python wrap
 llm = Replicate(
     model="meta/meta-llama-3-8b-instruct",
     model_kwargs={"temperature": 0.75, "max_length": 500, "top_p": 1},
@@ -77,7 +77,7 @@ Assistant:
 llm(prompt)
 ```
 
-```output
+```output wrap
 "Let's break this down step by step:\n\n1. A dog is a living being, specifically a mammal.\n2. Dogs do not possess the cognitive abilities or physical characteristics necessary to operate a vehicle, such as a car.\n3. Operating a car requires complex mental and physical abilities, including:\n\t* Understanding of traffic laws and rules\n\t* Ability to read and comprehend road signs\n\t* Ability to make decisions quickly and accurately\n\t* Ability to physically manipulate the vehicle's controls (e.g., steering wheel, pedals)\n4. Dogs do not possess any of these abilities. They are unable to read or comprehend written language, let alone complex traffic laws.\n5. Dogs also lack the physical dexterity and coordination to operate a vehicle's controls. Their paws and claws are not adapted for grasping or manipulating small, precise objects like a steering wheel or pedals.\n6. Therefore, it is not possible for a dog to drive a car.\n\nAnswer: No."
 ```
 
@@ -87,13 +87,13 @@ Only the `model` param is required, but we can add other model params when initi
 
 For example, if we were running stable diffusion and wanted to change the image dimensions:
 
-```
+``` wrap
 Replicate(model="stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf", input={'image_dimensions': '512x512'})
 ```
 
 *Note that only the first output of a model will be returned.*
 
-```python
+```python wrap
 llm = Replicate(
     model="replicate/dolly-v2-12b:ef0e1aefc61f8e096ebe4db6b2bacc297daf2ef6899f0f7e001ec445893500e5"
 )
@@ -107,13 +107,13 @@ Can a dog drive a car?
 llm(prompt)
 ```
 
-```output
+```output wrap
 'No, dogs lack some of the brain functions required to operate a motor vehicle. They cannot focus and react in time to accelerate or brake correctly. Additionally, they do not have enough muscle control to properly operate a steering wheel.\n\n'
 ```
 
 We can call any replicate model using this syntax. For example, we can call stable diffusion.
 
-```python
+```python wrap
 text2image = Replicate(
     model="stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
     model_kwargs={"image_dimensions": "512x512"},
@@ -125,7 +125,7 @@ image_output = text2image("A cat riding a motorcycle by Picasso")
 image_output
 ```
 
-```output
+```output wrap
 'https://pbxt.replicate.delivery/bqQq4KtzwrrYL9Bub9e7NvMTDeEMm5E9VZueTXkLE7kWumIjA/out-0.png'
 ```
 
@@ -135,7 +135,7 @@ The model spits out a URL. Let's render it.
 !poetry run pip install Pillow
 ```
 
-```output
+```output wrap
 Requirement already satisfied: Pillow in /Users/bagatur/langchain/.venv/lib/python3.9/site-packages (9.5.0)
 
 [notice] A new release of pip is available: 23.2 -> 23.2.1
@@ -158,7 +158,7 @@ img
 
 You can optionally stream the response as it is produced, which is helpful to show interactivity to users for time-consuming generations. See detailed docs on [Streaming](/oss/langchain/streaming) for more information.
 
-```python
+```python wrap
 from langchain_core.callbacks import StreamingStdOutCallbackHandler
 
 llm = Replicate(
@@ -182,7 +182,7 @@ _ = llm.invoke(prompt)
 
 You can also specify stop sequences. If you have a definite stop sequence for the generation that you are going to parse with anyway, it is better (cheaper and faster!) to just cancel the generation once one or more stop sequences are reached, rather than letting the model ramble on till the specified `max_length`. Stop sequences work regardless of whether you are in streaming mode or not, and Replicate only charges you for the generation up until the stop sequence.
 
-```python
+```python wrap
 import time
 
 llm = Replicate(
@@ -207,7 +207,7 @@ print(f"Stopped output:\n {stopped_output}")
 print(f"Stopped output runtime: {end_time - start_time} seconds")
 ```
 
-```output
+```output wrap
 Raw output:
  There are several ways to learn Python, and the best method for you will depend on your learning style and goals. Here are a few suggestions:
 
@@ -237,7 +237,7 @@ from langchain.chains import SimpleSequentialChain
 
 First, let's define the LLM for this model as a flan-5, and text2image as a stable diffusion model.
 
-```python
+```python wrap
 dolly_llm = Replicate(
     model="replicate/dolly-v2-12b:ef0e1aefc61f8e096ebe4db6b2bacc297daf2ef6899f0f7e001ec445893500e5"
 )
@@ -288,7 +288,7 @@ catchphrase = overall_chain.run("colorful socks")
 print(catchphrase)
 ```
 
-```output
+```output wrap
 > Entering new SimpleSequentialChain chain...
 Colorful socks could be named after a song by The Beatles or a color (yellow, blue, pink). A good combination of letters and digits would be 6399. Apple also owns the domain 6399.com so this could be reserved for the Company.
 
@@ -302,7 +302,7 @@ https://pbxt.replicate.delivery/P8Oy3pZ7DyaAC1nbJTxNw95D1A3gCPfi2arqlPGlfG9WYTkR
 https://pbxt.replicate.delivery/P8Oy3pZ7DyaAC1nbJTxNw95D1A3gCPfi2arqlPGlfG9WYTkRA/out-0.png
 ```
 
-```python
+```python wrap
 response = requests.get(
     "https://replicate.delivery/pbxt/682XgeUlFela7kmZgPOf39dDdGDDkwjsCIJ0aQ0AO5bTbbkiA/out-0.png"
 )

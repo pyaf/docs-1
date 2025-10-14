@@ -105,7 +105,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain IBM watsonx.ai integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -160,7 +160,7 @@ const results = await instance.generate([
 console.log(results);
 ```
 
-```output
+```output wrap
 
 print('Hello world.')<|endoftext|>
 {
@@ -173,7 +173,7 @@ print('Hello world.')<|endoftext|>
 
 We can chain our completion model with a prompt template like so:
 
-```javascript
+```javascript wrap
 import { PromptTemplate } from "@langchain/core/prompts"
 
 const prompt = PromptTemplate.fromTemplate("How to say {input} in {output_language}:\n")

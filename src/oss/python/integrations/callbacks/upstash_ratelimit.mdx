@@ -33,7 +33,7 @@ You are now ready to add rate limiting to your chain!
 
 Let's imagine that we want to allow our users to invoke our chain 10 times per minute. Achieving this is as simple as:
 
-```python
+```python wrap
 # set env variables
 import os
 
@@ -66,10 +66,10 @@ except UpstashRatelimitError:
     print("Handling ratelimit.", UpstashRatelimitError)
 ```
 
-```output
+```output wrap
 Error in UpstashRatelimitHandler.on_chain_start callback: UpstashRatelimitError('Request limit reached!')
 ```
-```output
+```output wrap
 Handling ratelimit. <class 'langchain_community.callbacks.upstash_ratelimit_callback.UpstashRatelimitError'>
 ```
 
@@ -128,7 +128,7 @@ You can also employ ratelimiting based on requests and tokens at the same time, 
 
 Here is an example with a chain utilizing an LLM:
 
-```python
+```python wrap
 # set env variables
 import os
 
@@ -166,9 +166,9 @@ except UpstashRatelimitError:
     print("Handling ratelimit.", UpstashRatelimitError)
 ```
 
-```output
+```output wrap
 Error in UpstashRatelimitHandler.on_llm_start callback: UpstashRatelimitError('Token limit reached!')
 ```
-```output
+```output wrap
 Handling ratelimit. <class 'langchain_community.callbacks.upstash_ratelimit_callback.UpstashRatelimitError'>
 ```

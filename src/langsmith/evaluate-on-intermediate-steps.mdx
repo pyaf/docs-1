@@ -34,7 +34,7 @@ Requires `langsmith>=0.3.13`
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import wikipedia as wp
 from openai import OpenAI
 from langsmith import traceable, wrappers
@@ -100,7 +100,7 @@ def qa_pipeline(question: str) -> str:
     return generate_answer(question, context)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import wiki from "wikipedia";
 import { Client } from "langsmith";
@@ -218,7 +218,7 @@ if not ls_client.has_dataset(dataset_name=dataset_name):
     )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 
 const client = new Client();
@@ -251,7 +251,7 @@ Example uses `langchain` for convenience, this is not required.
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langchain.chat_models import init_chat_model
 from langsmith.schemas import Run
 from pydantic import BaseModel, Field
@@ -311,7 +311,7 @@ def no_hallucination(run: Run) -> bool:
     return grade.is_grounded
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { EvaluationResult } from "langsmith/evaluation";
 import { Run, Example } from "langsmith/schemas";
 import { ChatPromptTemplate } from "@langchain/core/prompts";

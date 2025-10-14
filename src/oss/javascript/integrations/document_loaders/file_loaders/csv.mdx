@@ -35,7 +35,7 @@ To access `CSVLoader` document loader you'll need to install the `@langchain/com
 
 The LangChain CSVLoader integration lives in the `@langchain/community` integration package.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -49,7 +49,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and load documents:
 
-```typescript
+```typescript wrap
 import { CSVLoader } from "@langchain/community/document_loaders/fs/csv"
 
 const exampleCsvPath = "../../../../../../langchain/src/document_loaders/tests/example_data/example_separator.csv";
@@ -64,7 +64,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 Document {
   pageContent: 'id｜html: 1｜"<i>Corruption discovered at the core of the Banking Clan!</i>"',
   metadata: {
@@ -79,7 +79,7 @@ Document {
 console.log(docs[0].metadata)
 ```
 
-```output
+```output wrap
 {
   source: '../../../../../../langchain/src/document_loaders/tests/example_data/example_separator.csv',
   line: 1
@@ -113,7 +113,7 @@ const singleColumnDocs = await singleColumnLoader.load();
 console.log(singleColumnDocs[0]);
 ```
 
-```output
+```output wrap
 Document {
   pageContent: '<i>Corruption discovered at the core of the Banking Clan!</i>',
   metadata: {

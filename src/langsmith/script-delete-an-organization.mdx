@@ -60,13 +60,13 @@ Ensure you have the following tools/items ready.
 
 Run the following command to run the organization removal script:
 
-```bash
+```bash wrap
 sh delete_organization.sh <postgres_url> <clickhouse_url> --organization_id <organization_id>
 ```
 
 For example, if you are using the bundled version with port-forwarding, the command would look like:
 
-```bash
+```bash wrap
 sh delete_organization.sh "postgres://postgres:postgres@localhost:5432/postgres" "clickhouse://default:password@localhost:8123/default" --organization_id 4ec70ec7-0808-416a-b836-7100aeec934b
 ```
 

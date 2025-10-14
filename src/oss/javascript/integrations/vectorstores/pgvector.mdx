@@ -30,7 +30,7 @@ This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/op
 
 We'll also use the [`uuid`](https://www.npmjs.com/package/uuid) package to generate ids in the required format.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -86,7 +86,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 To instantiate the vector store, call the `.initialize()` static method. This will automatically check for the presence of a table, given by `tableName` in the passed `config`. If it is not there, it will create it with the required columns.
 
-```{=mdx}
+```{=mdx} wrap
 
 :<Warning>
 **Security**
@@ -187,7 +187,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const filter = { source: "https://example.com" };
 
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, filter);
@@ -197,7 +197,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -236,7 +236,7 @@ The above filter syntax supports exact match, but the following are also support
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -244,7 +244,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.835] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=0.852] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -291,7 +291,7 @@ You can reuse connections by creating a pool, then creating new `PGVectorStore` 
 
 Note that you should call `.initialize()` to set up your database at least once to set up your tables properly before using the constructor.
 
-```typescript
+```typescript wrap
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { PGVectorStore } from "@langchain/community/vectorstores/pgvector";
 import pg from "pg";
@@ -378,7 +378,7 @@ The method parameters include:
 
 For more info, see the [Pgvector GitHub repo](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) and the [HNSW paper from Malkov Yu A. and Yashunin D. A.. 2020. Efficient and robust approximate nearest neighbor search using hierarchical navigable small world graphs](https://arxiv.org/pdf/1603.09320)
 
-```typescript
+```typescript wrap
 import { OpenAIEmbeddings } from "@langchain/openai";
 import {
   DistanceStrategy,

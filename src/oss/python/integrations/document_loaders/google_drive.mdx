@@ -34,7 +34,7 @@ The first time you use GoogleDriveLoader, you will be displayed with the consent
 from langchain_google_community import GoogleDriveLoader
 ```
 
-```python
+```python wrap
 loader = GoogleDriveLoader(
     folder_id="1yucgL9WGgWZdM1TOuKkeghlPizuzMYb5",
     token_path="/path/where/you/want/token/to/be/created/google_token.json",
@@ -171,7 +171,7 @@ for doc in loader.load():
 
 Authorized identities for each file ingested by Google Drive Loader can be loaded along with metadata per Document.
 
-```python
+```python wrap
 from langchain_google_community import GoogleDriveLoader
 
 loader = GoogleDriveLoader(
@@ -253,7 +253,7 @@ for doc in loader.load():
 
 You can customize your pattern.
 
-```python
+```python wrap
 from langchain_core.prompts.prompt import PromptTemplate
 
 loader = GoogleDriveLoader(

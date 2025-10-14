@@ -58,7 +58,7 @@ vector_store = FAISS(
 
 ### Add items to vector store
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_core.documents import Document
@@ -173,7 +173,7 @@ for res in results:
     print(f"* {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 * Building an exciting new project with LangChain - come check it out! [{'source': 'tweet'}]
 * LangGraph is the best framework for building stateful, agentic applications! [{'source': 'tweet'}]
 ```
@@ -204,7 +204,7 @@ for res in results:
     print(f"* {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 * Building an exciting new project with LangChain - come check it out! [{'source': 'tweet'}]
 * LangGraph is the best framework for building stateful, agentic applications! [{'source': 'tweet'}]
 ```
@@ -221,7 +221,7 @@ for res, score in results:
     print(f"* [SIM={score:3f}] {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 * [SIM=0.893688] The weather forecast for tomorrow is cloudy and overcast, with a high of 62 degrees. [{'source': 'news'}]
 ```
 
@@ -238,7 +238,7 @@ retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
 retriever.invoke("Stealing from the bank is a crime", filter={"source": "news"})
 ```
 
-```output
+```output wrap
 [Document(metadata={'source': 'news'}, page_content='Robbers broke into the city bank and stole $1 million in cash.')]
 ```
 
@@ -268,7 +268,7 @@ docs = new_vector_store.similarity_search("qux")
 docs[0]
 ```
 
-```output
+```output wrap
 Document(metadata={'source': 'tweet'}, page_content='Building an exciting new project with LangChain - come check it out!')
 ```
 

@@ -80,7 +80,7 @@ print(results)
 
 **Expected results:**
 
-```text
+```text wrap
 Found the following 2 results:
 [Document(id='ea2b4f13-b0b7-4cef-bb91-0fc4f4c41295', metadata={'source': 'docs'}, page_content='ZeusDB is fast'), Document(id='33dc1e87-a18a-4827-a0df-6ee47eabc7b2', metadata={'source': 'docs'}, page_content='LangChain is powerful')]
 ```
@@ -93,7 +93,7 @@ For convenience, you can create and populate a vector store in a single step:
 
 #### Example 1: Create from texts (creates index and adds texts in one step)
 
-```python
+```python wrap
 vector_store_texts = ZeusDBVectorStore.from_texts(
     texts=["Hello world", "Goodbye world"],
     embedding=embeddings,
@@ -110,7 +110,7 @@ print(f"Found in texts store: {results[0].page_content}")                  # -> 
 
 **Expected results:**
 
-```text
+```text wrap
 texts store count: 2
 texts store peek: [('e9c39b44-b610-4e00-91f3-bf652e9989ac', {'source': 'text1', 'text': 'Hello world'}), ('d33f210c-ed53-4006-a64a-a9eee397fec9', {'source': 'text2', 'text': 'Goodbye world'})]
 Found in texts store: Hello world
@@ -120,7 +120,7 @@ Found in texts store: Hello world
 
 #### Example 2: - Create from documents (creates index and adds documents in one step)
 
-```python
+```python wrap
 new_docs = [
     Document(page_content="Python is great", metadata={"source": "python"}),
     Document(page_content="JavaScript is flexible", metadata={"source": "js"}),
@@ -141,7 +141,7 @@ print(f"Found in docs store: {results[0].page_content}")                   # -> 
 
 **Expected results:**
 
-```text
+```text wrap
 docs store count: 2
 docs store peek: [('aab2d1c1-7e02-4817-8dd8-6fb03570bb6f', {'text': 'Python is great', 'source': 'python'}), ('9a8a82cb-0e70-456c-9db2-556e464de14e', {'text': 'JavaScript is flexible', 'source': 'js'})]
 Found in docs store: Python is great
@@ -249,7 +249,7 @@ print(results_with_scores)
 
 **Expected results:**
 
-```text
+```text wrap
 [
   (Document(id='ac0eaf5b-9f02-4ce2-8957-c369a7262c61', metadata={'source': 'docs'}, page_content='LangChain is powerful'), 0.8218843340873718),
   (Document(id='faae3adf-7cf3-463c-b282-3790b096fa23', metadata={'source': 'docs'}, page_content='ZeusDB is fast'), 0.9140053391456604)
@@ -448,7 +448,7 @@ print("Deleted first doc:", deleted)
 
 **Expected results:**
 
-```text
+```text wrap
 Added IDs: ['9c440918-715f-49ba-9b97-0d991d29e997', 'ad59c645-d3ba-4a4a-a016-49ed39514123']
 Fast results: ['ZeusDB is fast', 'LangChain is powerful']
 Powerful results: ['LangChain is powerful', 'ZeusDB is fast']
@@ -461,7 +461,7 @@ Deleted first doc: True
 
 ### Performance Monitoring
 
-```python
+```python wrap
 # Get index statistics
 stats = vector_store.get_zeusdb_stats()
 print(f"Index size: {stats.get('total_vectors', '0')} vectors")

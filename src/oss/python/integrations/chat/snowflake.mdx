@@ -43,7 +43,7 @@ if os.environ.get("SNOWFLAKE_ROLE") is None:
     os.environ["SNOWFLAKE_ROLE"] = getpass.getpass("Role: ")
 ```
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatSnowflakeCortex
 from langchain_core.messages import HumanMessage, SystemMessage
 

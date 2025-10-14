@@ -20,11 +20,11 @@ Let's dive in!
 
 This section covers installation of dependencies and setting up custom data connectors for Valthera.
 
-```python
+```python wrap
 pip install openai langchain langchain_openai valthera langchain_valthera langgraph
 ```
 
-```python
+```python wrap
 from typing import Any, Dict, List
 
 from valthera.connectors.base import BaseConnector
@@ -116,7 +116,7 @@ class MockSnowflakeConnector(BaseConnector):
 
 In this section, we instantiate the core components. First, we create a Data Aggregator to combine data from the custom connectors. Then, we configure the scoring metrics for motivation and ability.
 
-```python
+```python wrap
 from valthera.aggregator import DataAggregator
 
 # Constants for configuration
@@ -140,7 +140,7 @@ data_aggregator = DataAggregator(
 # You can now fetch unified user data by calling data_aggregator.get_user_context(user_id)
 ```
 
-```python
+```python wrap
 from typing import Callable, Union
 
 from valthera.scorer import ValtheraScorer
@@ -229,7 +229,7 @@ scorer = ValtheraScorer(motivation_config, ability_config)
 
 Next, we set up the Reasoning Engine and Trigger Generator, then bring all components together by instantiating the Valthera Tool. Finally, we execute the agent workflow to process an input message.
 
-```python
+```python wrap
 import os
 
 from langchain_openai import ChatOpenAI
@@ -298,7 +298,7 @@ except ValueError as e:
     print(f"Error initializing trigger generator: {e}")
 ```
 
-```python
+```python wrap
 from langchain_valthera.tools import ValtheraTool
 from langchain.agents import create_agent
 

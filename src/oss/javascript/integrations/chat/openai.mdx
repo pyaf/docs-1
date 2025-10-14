@@ -45,7 +45,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain `ChatOpenAI` integration lives in the `@langchain/openai` package:
 
-```{=mdx}
+```{=mdx} wrap
 
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
@@ -72,7 +72,7 @@ const llm = new ChatOpenAI({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
   {
     role: "system",
@@ -204,7 +204,7 @@ If you need additional information like logprobs or token usage, these will be r
     **Requires `@langchain/core` version >=0.1.48.**
 </Info>
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 // See https://cookbook.openai.com/examples/using_logprobs for details
@@ -378,7 +378,7 @@ As of Aug 6, 2024, OpenAI supports a `strict` argument when calling tools that w
 
 Here's an example with tool calling. Passing an extra `strict: true` argument to `.bindTools` will pass the param through to all tool definitions:
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
@@ -464,7 +464,7 @@ weatherToolResult.tool_calls;
 
 We can also pass `strict: true` to the [`.withStructuredOutput()`](https://js.langchain.com/docs/how_to/structured_output/#the-.withstructuredoutput-method). Here's an example:
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 const traitSchema = z.object({
@@ -635,7 +635,7 @@ const response = await llmWithTools.invoke(
 
 Note that the above command creates a new [container](https://platform.openai.com/docs/guides/tools-code-interpreter#containers). We can re-use containers across calls by specifying an existing container ID.
 
-```typescript
+```typescript wrap
 const tool_outputs: Record<string, any>[] = response.additional_kwargs.tool_outputs
 const container_id = tool_outputs[0].container_id
 
@@ -652,7 +652,7 @@ const llmWithTools = llm.bindTools([
 
 ChatOpenAI supports the built-in [remote MCP tool](https://platform.openai.com/docs/guides/tools-remote-mcp) that allows for model-generated calls to MCP servers to happen on OpenAI servers.
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 const llm = new ChatOpenAI({
@@ -681,7 +681,7 @@ When instructed, OpenAI will request approval before making calls to a remote MC
 
 In the above command, we instructed the model to never require approval. We can also configure the model to always request approval, or to always request approval for specific tools:
 
-```typescript
+```typescript wrap
 ...
 const llmWithMcp = llm.bindTools([
   {
@@ -826,7 +826,7 @@ Newer OpenAI models will automatically [cache parts of your prompt](https://open
 
 Here's an example
 
-```typescript
+```typescript wrap
 // @lc-docs-hide-cell
 
 const CACHED_TEXT = `## Components
@@ -1158,7 +1158,7 @@ Some OpenAI models (such as their `gpt-4o` and `gpt-4o-mini` series) support [Pr
 
 Here's an example:
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 const modelWithPredictions = new ChatOpenAI({
@@ -1211,7 +1211,7 @@ await modelWithPredictions.invoke(
 );
 ```
 
-```output
+```output wrap
 AIMessage {
   "id": "chatcmpl-AQLyQKnazr7lEV7ejLTo1UqhzHDBl",
   "content": "/// <summary>\n/// Represents a user with a first name, last name, and email.\n/// </summary>\npublic class User\n{\n/// <summary>\n/// Gets or sets the user's first name.\n/// </summary>\npublic string FirstName { get; set; }\n\n/// <summary>\n/// Gets or sets the user's last name.\n/// </summary>\npublic string LastName { get; set; }\n\n/// <summary>\n/// Gets or sets the user's email.\n/// </summary>\npublic string Email { get; set; }\n}",
@@ -1260,7 +1260,7 @@ Note that currently predictions are billed as additional tokens and will increas
 
 Some OpenAI models (such as `gpt-4o-audio-preview`) support generating audio output. This example shows how to use that feature:
 
-```typescript
+```typescript wrap
 import { ChatOpenAI } from "@langchain/openai";
 
 const modelWithAudioOutput = new ChatOpenAI({
@@ -1282,7 +1282,7 @@ console.log({
 })
 ```
 
-```output
+```output wrap
 {
   id: 'audio_67129e9466f48190be70372922464162',
   data: 'UklGRgZ4BABXQVZFZm10IBAAAAABAAEAwF0AAIC7AAACABAATElTVBoAAABJTkZPSVNGVA4AAABMYXZmNTguMjkuMTAwAGRhdGHA',
@@ -1297,7 +1297,7 @@ We see that the audio data is returned inside the `data` field. We are also prov
 
 OpenAI also supports streaming audio output. Here's an example:
 
-```typescript
+```typescript wrap
 import { AIMessageChunk } from "@langchain/core/messages";
 import { concat } from "@langchain/core/utils/stream"
 import { ChatOpenAI } from "@langchain/openai";
@@ -1324,7 +1324,7 @@ console.log({
 })
 ```
 
-```output
+```output wrap
 {
   id: 'audio_67129e976ce081908103ba4947399a3eaudio_67129e976ce081908103ba4947399a3e',
   transcript: 'Why was the cat sitting on the computer? Because it wanted to keep an eye on the mouse!',
@@ -1338,7 +1338,7 @@ console.log({
 
 These models also support passing audio as input. For this, you must specify `input_audio` fields as seen below:
 
-```typescript
+```typescript wrap
 import { HumanMessage } from "@langchain/core/messages";
 
 const userInput = new HumanMessage({
@@ -1357,7 +1357,7 @@ const userInputAudioRes = await modelWithAudioOutput.invoke([userInput]);
 console.log((userInputAudioRes.additional_kwargs.audio as Record<string, any>).transcript);
 ```
 
-```output
+```output wrap
 That's a great joke! It's always fun to imagine why cats do the funny things they do. Keeping an eye on the "mouse" is a creatively punny way to describe it!
 ```
 

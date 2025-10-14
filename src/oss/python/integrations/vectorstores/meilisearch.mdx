@@ -100,7 +100,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_text(state_of_the_union)
 ```
 
-```python
+```python wrap
 # Use Meilisearch vector store to store texts & associated embeddings as vector
 vector_store = Meilisearch.from_texts(
     texts=texts, embedding=embeddings, embedders=embedders, embedder_name=embedder_name

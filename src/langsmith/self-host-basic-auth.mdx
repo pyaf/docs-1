@@ -31,7 +31,7 @@ Changing the JWT secret will log out your users
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 config:
   authType: mixed
   basicAuth:
@@ -41,7 +41,7 @@ config:
     jwtSecret: <SECRET>
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 AUTH_TYPE=mixed
 BASIC_AUTH_ENABLED=true

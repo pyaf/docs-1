@@ -23,7 +23,7 @@ This notebook covers how to load document objects from a container on `Azure Blo
 from langchain_community.document_loaders import AzureBlobStorageContainerLoader
 ```
 
-```python
+```python wrap
 loader = AzureBlobStorageContainerLoader(conn_str="<conn_str>", container="<container>")
 ```
 
@@ -31,7 +31,7 @@ loader = AzureBlobStorageContainerLoader(conn_str="<conn_str>", container="<cont
 loader.load()
 ```
 
-```output
+```output wrap
 [Document(page_content='Lorem ipsum dolor sit amet.', lookup_str='', metadata={'source': '/var/folders/y6/8_bzdg295ld6s1_97_12m4lr0000gn/T/tmpaa9xl6ch/fake.docx'}, lookup_index=0)]
 ```
 
@@ -49,7 +49,7 @@ loader = AzureBlobStorageContainerLoader(
 loader.load()
 ```
 
-```output
+```output wrap
 [Document(page_content='Lorem ipsum dolor sit amet.', lookup_str='', metadata={'source': '/var/folders/y6/8_bzdg295ld6s1_97_12m4lr0000gn/T/tmpujbkzf_l/fake.docx'}, lookup_index=0)]
 ```
 

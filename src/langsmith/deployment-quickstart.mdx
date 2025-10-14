@@ -52,7 +52,7 @@ You can now test the API:
       pip install langgraph-sdk
       ```
     2. Send a message to the assistant (threadless run):
-      ```python
+      ```python wrap
       from langgraph_sdk import get_client
 
       client = get_client(url="your-deployment-url", api_key="your-langsmith-api-key")
@@ -79,7 +79,7 @@ You can now test the API:
       pip install langgraph-sdk
       ```
     2. Send a message to the assistant (threadless run):
-      ```python
+      ```python wrap
       from langgraph_sdk import get_sync_client
 
       client = get_sync_client(url="your-deployment-url", api_key="your-langsmith-api-key")
@@ -106,7 +106,7 @@ You can now test the API:
       npm install @langchain/langgraph-sdk
       ```
     2. Send a message to the assistant (threadless run):
-      ```js
+      ```js wrap
       const { Client } = await import("@langchain/langgraph-sdk");
 
       const client = new Client({ apiUrl: "your-deployment-url", apiKey: "your-langsmith-api-key" });

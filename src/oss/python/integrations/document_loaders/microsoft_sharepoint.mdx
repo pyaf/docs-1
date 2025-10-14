@@ -42,7 +42,7 @@ loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID")
 
 Once the authentication has been done, the loader will store a token (`o365_token.txt`) at `~/.credentials/` folder. This token could be used later to authenticate without the copy/paste steps explained earlier. To use this token for authentication, you need to change the `auth_with_token` parameter to True in the instantiation of the loader.
 
-```python
+```python wrap
 from langchain_community.document_loaders.sharepoint import SharePointLoader
 
 loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", auth_with_token=True)
@@ -54,7 +54,7 @@ loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", auth_w
 
 `SharePointLoader` can load documents from a specific folder within your Document Library. For instance, you want to load all documents that are stored at `Documents/marketing` folder within your Document Library.
 
-```python
+```python wrap
 from langchain_community.document_loaders.sharepoint import SharePointLoader
 
 loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", folder_path="Documents/marketing", auth_with_token=True)
@@ -63,7 +63,7 @@ documents = loader.load()
 
 If you are receiving the error `Resource not found for the segment`, try using the `folder_id` instead of the folder path, which can be obtained from the [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/graph-explorer)
 
-```python
+```python wrap
 loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", auth_with_token=True
                           folder_id="<folder-id>")
 documents = loader.load()
@@ -71,7 +71,7 @@ documents = loader.load()
 
 If you wish to load documents from the root directory, you can omit `folder_id`, `folder_path` and `documents_ids` and loader will load root directory.
 
-```python
+```python wrap
 # loads documents from root directory
 loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", auth_with_token=True)
 documents = loader.load()
@@ -93,7 +93,7 @@ Another possibility is to provide a list of `object_id` for each document you wa
 
 For instance, to retrieve information about all objects that are stored at `data/finance/` folder, you need make a request to: `https://graph.microsoft.com/v1.0/drives/<document-library-id>/root:/data/finance:/children`. Once you have the list of IDs that you are interested in, then you can instantiate the loader with the following parameters.
 
-```python
+```python wrap
 from langchain_community.document_loaders.sharepoint import SharePointLoader
 
 loader = SharePointLoader(document_library_id="YOUR DOCUMENT LIBRARY ID", object_ids=["ID_1", "ID_2"], auth_with_token=True)
@@ -104,7 +104,7 @@ documents = loader.load()
 
 By default `SharePointLoader` loads file types defined in [`document_loaders/parsers/registry`](https://github.com/langchain-ai/langchain/blob/master/libs/community/langchain_community/document_loaders/parsers/registry.py#L10-L22) using the default parsers (see below).
 
-```python
+```python wrap
 def _get_default_parser() -> BaseBlobParser:
     """Get default mime-type based parser."""
     return MimeTypeBasedParser(
@@ -128,7 +128,7 @@ cannot mix them.
 
 Do not include the leading dot for file extensions.
 
-```python
+```python wrap
 # using file extensions:
 handlers = {
     "doc": MsWordParser(),
@@ -152,7 +152,7 @@ In case multiple file extensions map to the same MIME type, the last dictionary 
 apply.
 Example:
 
-```python
+```python wrap
 # 'jpg' and 'jpeg' both map to 'image/jpeg' MIME type. SecondParser() will be used
 # to parse all jpg/jpeg files.
 handlers = {

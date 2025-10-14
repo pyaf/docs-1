@@ -57,7 +57,7 @@ texts = text_splitter.create_documents([state_of_the_union])
 print(texts[0])
 print(texts[1])
 ```
-```output
+```output wrap
 page_content='Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and'
 page_content='of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.'
 ```
@@ -66,7 +66,7 @@ page_content='of Congress and the Cabinet. Justices of the Supreme Court. My fel
 print(text_splitter.split_text(state_of_the_union)[:2])
 ```
 
-```output
+```output wrap
 ['Madam Speaker, Madam Vice President, our First Lady and Second Gentleman. Members of Congress and',
  'of Congress and the Cabinet. Justices of the Supreme Court. My fellow Americans.']
 ```
@@ -77,7 +77,7 @@ To obtain the string content directly, use `.splitText`.
 
 To create LangChain @[Document] objects (e.g., for use in downstream tasks), use `.createDocuments`.
 
-```ts
+```ts wrap
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 
 const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 100, chunkOverlap: 0 })

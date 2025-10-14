@@ -60,7 +60,7 @@ model.invoke("Hello how are you?")
 
 ## Chaining
 
-```python
+```python wrap
 from langchain_core.prompts import PromptTemplate
 
 prompt = PromptTemplate.from_template("How to say {input} in {output_language}:\n")
@@ -89,7 +89,7 @@ Outlines allows you to apply various constraints to the generated output:
 
 #### Regex Constraint
 
-```python
+```python wrap
 model.regex = r"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)"
 response = model.invoke("What is the IP address of Google's DNS server?")
 
@@ -98,7 +98,7 @@ response
 
 ### Type Constraints
 
-```python
+```python wrap
 model.type_constraints = int
 response = model.invoke("What is the answer to life, the universe, and everything?")
 ```

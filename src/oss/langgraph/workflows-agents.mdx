@@ -80,7 +80,7 @@ Workflows and agentic systems are based on LLMs and the various augmentations yo
 ![LLM augmentations](/oss/images/augmented_llm.png)
 
 :::python
-```python
+```python wrap
 
 # Schema for structured output
 from pydantic import BaseModel, Field
@@ -171,7 +171,7 @@ Prompt chaining is when each LLM call processes the output of the previous call.
 
 :::python
 <CodeGroup>
-```python Graph API
+```python Graph API wrap
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
 from IPython.display import Image, display
@@ -707,7 +707,7 @@ Routing workflows process inputs and then directs them to context-specific tasks
 
 :::python
 <CodeGroup>
-```python Graph API
+```python Graph API wrap
 from typing_extensions import Literal
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -812,7 +812,7 @@ display(Image(router_workflow.get_graph().draw_mermaid_png()))
 state = router_workflow.invoke({"input": "Write me a joke about cats"})
 print(state["output"])
 ```
-```python Functional API
+```python Functional API wrap
 from typing_extensions import Literal
 from pydantic import BaseModel
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -887,7 +887,7 @@ for step in router_workflow.stream("Write me a joke about cats", stream_mode="up
 
 :::js
 <CodeGroup>
-```typescript Graph API
+```typescript Graph API wrap
 import { StateGraph, Annotation } from "@langchain/langgraph";
 import { z } from "zod";
 
@@ -996,7 +996,7 @@ const state = await routerWorkflow.invoke({
 });
 console.log(state.output);
 ```
-```typescript Functional API
+```typescript Functional API wrap
 import { z } from "zod";
 import { task, entrypoint } from "@langchain/langgraph";
 
@@ -1108,7 +1108,7 @@ Orchestrator-worker workflows provide more flexibility and are often used when s
 
 :::python
 <CodeGroup>
-```python Graph API
+```python Graph API wrap
 from typing import Annotated, List
 import operator
 
@@ -1132,7 +1132,7 @@ class Sections(BaseModel):
 # Augment the LLM with schema for structured output
 planner = llm.with_structured_output(Sections)
 ```
-```python Functional API
+```python Functional API wrap
 from typing import List
 
 
@@ -1227,7 +1227,7 @@ type SectionsSchema = {
 // Augment the LLM with schema for structured output
 const planner = llm.withStructuredOutput(sectionsSchema);
 ```
-```typescript Functional API
+```typescript Functional API wrap
 import { z } from "zod";
 import { task, entrypoint } from "@langchain/langgraph";
 
@@ -1308,7 +1308,7 @@ Orchestrator-worker workflows are common and LangGraph has built-in support for 
 
 
 :::python
-```python
+```python wrap
 from langgraph.types import Send
 
 
@@ -1412,7 +1412,7 @@ Markdown(state["final_report"])
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { Annotation, StateGraph, Send } from "@langchain/langgraph";
 
 // Graph state
@@ -1514,7 +1514,7 @@ Evaluator-optimizer workflows are commonly used when there's particular success 
 
 :::python
 <CodeGroup>
-```python Graph API
+```python Graph API wrap
 # Graph state
 class State(TypedDict):
     joke: str
@@ -1596,7 +1596,7 @@ display(Image(optimizer_workflow.get_graph().draw_mermaid_png()))
 state = optimizer_workflow.invoke({"topic": "Cats"})
 print(state["joke"])
 ```
-```python Functional API
+```python Functional API wrap
 # Schema for structured output to use in evaluation
 class Feedback(BaseModel):
     grade: Literal["funny", "not funny"] = Field(
@@ -1652,7 +1652,7 @@ for step in optimizer_workflow.stream("Cats", stream_mode="updates"):
 
 :::js
 <CodeGroup>
-```typescript Graph API
+```typescript Graph API wrap
 import { z } from "zod";
 import { Annotation, StateGraph } from "@langchain/langgraph";
 
@@ -1728,7 +1728,7 @@ const optimizerWorkflow = new StateGraph(StateAnnotation)
 const state = await optimizerWorkflow.invoke({ topic: "Cats" });
 console.log(state.joke);
 ```
-```typescript Functional API
+```typescript Functional API wrap
 import { z } from "zod";
 import { task, entrypoint } from "@langchain/langgraph";
 
@@ -1853,7 +1853,7 @@ llm_with_tools = llm.bind_tools(tools)
 ```
 
 <CodeGroup>
-```python Graph API
+```python Graph API wrap
 from langgraph.graph import MessagesState
 from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage
 
@@ -1928,7 +1928,7 @@ messages = agent.invoke({"messages": messages})
 for m in messages["messages"]:
     m.pretty_print()
 ```
-```python Functional API
+```python Functional API wrap
 from langgraph.graph import add_messages
 from langchain_core.messages import (
     SystemMessage,
@@ -2041,7 +2041,7 @@ const llmWithTools = llm.bindTools(tools);
 ```
 
 <CodeGroup>
-```typescript Graph API
+```typescript Graph API wrap
 import { MessagesAnnotation, StateGraph } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import {
@@ -2102,7 +2102,7 @@ const messages = [{
 const result = await agentBuilder.invoke({ messages });
 console.log(result.messages);
 ```
-```typescript Functional API
+```typescript Functional API wrap
 import { task, entrypoint, addMessages } from "@langchain/langgraph";
 import { BaseMessageLike, ToolCall } from "@langchain/core/messages";
 

@@ -54,7 +54,7 @@ graph.load_schema()
 graph.get_schema
 ```
 
-```output
+```output wrap
 In the following, each IRI is followed by the local name and optionally its description in parentheses.
 The RDF graph supports the following node types:
 [xmlns.com/foaf/0.1/PersonalProfileDocument](http://xmlns.com/foaf/0.1/PersonalProfileDocument) (PersonalProfileDocument, None), [www.w3.org/ns/auth/cert#RSAPublicKey](http://www.w3.org/ns/auth/cert#RSAPublicKey) (RSAPublicKey, None), [www.w3.org/2000/10/swap/pim/contact#Male](http://www.w3.org/2000/10/swap/pim/contact#Male) (Male, None), [xmlns.com/foaf/0.1/Person](http://xmlns.com/foaf/0.1/Person) (Person, None), [www.w3.org/2006/vcard/ns#Work](http://www.w3.org/2006/vcard/ns#Work) (Work, None)
@@ -101,13 +101,13 @@ Full Context:
 
 Analogously, you can update the graph, i.e., insert triples, using natural language.
 
-```python
+```python wrap
 chain.run(
     "Save that the person with the name 'Timothy Berners-Lee' has a work homepage at 'http://www.w3.org/foo/bar/'"
 )
 ```
 
-```output
+```output wrap
 > Entering new GraphSparqlQAChain chain...
 Identified intent:
 UPDATE
@@ -150,7 +150,7 @@ graph.query(query)
 
 You can return the SPARQL query step from the Sparql QA Chain using the `return_sparql_query` parameter
 
-```python
+```python wrap
 chain = GraphSparqlQAChain.from_llm(
     ChatOpenAI(temperature=0), graph=graph, verbose=True, return_sparql_query=True
 )
@@ -162,7 +162,7 @@ print(f"SPARQL query: {result['sparql_query']}")
 print(f"Final answer: {result['result']}")
 ```
 
-```output
+```output wrap
 > Entering new GraphSparqlQAChain chain...
 Identified intent:
 SELECT

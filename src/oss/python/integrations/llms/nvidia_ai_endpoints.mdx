@@ -48,7 +48,7 @@ For more information on accessing the llm models through this api, check out the
 
 ### Credentials
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -119,7 +119,7 @@ async for chunk in llm.astream_log(prompt):
     print(chunk)
 ```
 
-```python
+```python wrap
 response = llm.invoke(
     "X_train, y_train, X_test, y_test = train_test_split(X, y, test_size=0.1) #Train a logistic regression model, predict the labels on the test set and compute the accuracy score"
 )

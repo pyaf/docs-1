@@ -29,7 +29,7 @@ To use Chroma vector stores, you'll need to install the `@langchain/community` i
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -182,7 +182,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```python
+```python wrap
 const filter = { source: "https://example.com" };
 
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, filter);
@@ -196,7 +196,7 @@ See [this page](https://docs.trychroma.com/guides#filtering-by-metadata) for mor
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```python
+```python wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2, filter)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {

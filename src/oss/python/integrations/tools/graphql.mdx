@@ -53,7 +53,7 @@ agent = create_agent("openai:gpt-4.1-mini", tools)
 
 Now, we can use the Agent to run queries against the Star Wars GraphQL API. Let's ask the Agent to list all the Star Wars films and their release dates.
 
-```python
+```python wrap
 graphql_fields = """allFilms {
     films {
       title
@@ -87,7 +87,7 @@ for step in agent.stream(
     step["messages"][-1].pretty_print()
 ```
 
-```output
+```output wrap
 ================================ Human Message =================================
 
 Search for the titles of all the stawars films stored in the graphql database that has this schema allFilms {

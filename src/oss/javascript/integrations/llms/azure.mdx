@@ -2,7 +2,7 @@
 title: Azure OpenAI
 ---
 
-```{=mdx}
+```{=mdx} wrap
 
 <Warning>
 **You are currently on a page documenting the use of Azure OpenAI text completion models. The latest and most popular Azure OpenAI models are [chat completion models](/oss/langchain/models).**
@@ -67,7 +67,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain AzureOpenAI integration lives in the `@langchain/openai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -81,7 +81,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and generate chat completions:
 
-```typescript
+```typescript wrap
 import { AzureOpenAI } from "@langchain/openai"
 
 const llm = new AzureOpenAI({
@@ -107,7 +107,7 @@ const completion = await llm.invoke(inputText)
 completion
 ```
 
-```output
+```output wrap
 provides AI solutions to businesses. They offer a range of services including natural language processing, computer vision, and machine learning. Their solutions are designed to help businesses automate processes, gain insights from data, and improve decision-making. AzureOpenAI also offers consulting services to help businesses identify and implement the best AI solutions for their specific needs. They work with a variety of industries, including healthcare, finance, and retail. With their expertise in AI and their partnership with Microsoft Azure, AzureOpenAI is a trusted provider of AI solutions for businesses looking to stay ahead in the rapidly evolving world of technology.
 ```
 
@@ -142,7 +142,7 @@ const managedIdentityLLM = new AzureOpenAI({
 If your instance is hosted under a domain other than the default `openai.azure.com`, you'll need to use the alternate `AZURE_OPENAI_BASE_PATH` environment variable.
 For example, here's how you would connect to the domain `https://westeurope.api.microsoft.com/openai/deployments/{DEPLOYMENT_NAME}`:
 
-```typescript
+```typescript wrap
 import { AzureOpenAI } from "@langchain/openai";
 
 const differentDomainLLM = new AzureOpenAI({

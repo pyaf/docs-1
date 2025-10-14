@@ -16,7 +16,7 @@ It's likely that your terminal is denied access to `~/Library/Messages`. To use 
 
 We have created an example database you can use at [this linked drive file](https://drive.google.com/file/d/1NebNKqTA2NXApCmeH6mu0unJD2tANZzo/view?usp=sharing).
 
-```python
+```python wrap
 # This uses some example data
 import requests
 
@@ -67,7 +67,7 @@ The `load()` (or `lazy_load`) methods return a list of "ChatSessions" that curre
 
 You can optionally choose to merge message "runs" (consecutive messages from the same sender) and select a sender to represent the "AI". The fine-tuned LLM will learn to generate these AI messages.
 
-```python
+```python wrap
 from typing import List
 
 from langchain_community.chat_loaders.utils import (
@@ -91,7 +91,7 @@ chat_sessions: List[ChatSession] = list(
 chat_sessions[0]["messages"][:3]
 ```
 
-```output
+```output wrap
 [AIMessage(content="Slow and steady, that's my motto.", additional_kwargs={'message_time': 1693182723, 'sender': 'Tortoise'}, example=False),
  HumanMessage(content='Speed is key!', additional_kwargs={'message_time': 1693182753, 'sender': 'Hare'}, example=False),
  AIMessage(content='A balanced approach is more reliable.', additional_kwargs={'message_time': 1693182783, 'sender': 'Tortoise'}, example=False)]
@@ -123,7 +123,7 @@ and have set your `OPENAI_API_KEY` appropriately
 %pip install -qU  langchain-openai
 ```
 
-```python
+```python wrap
 import json
 import time
 from io import BytesIO
@@ -164,7 +164,7 @@ job = openai.fine_tuning.jobs.create(
 
 Grab a cup of tea while your model is being prepared. This may take some time!
 
-```python
+```python wrap
 status = openai.fine_tuning.jobs.retrieve(job.id).status
 start_time = time.time()
 while status != "succeeded":

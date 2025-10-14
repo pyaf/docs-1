@@ -102,7 +102,7 @@ print(docs[0].page_content)
 
 `similarity_search` using `Script Scoring` with Custom Parameters
 
-```python
+```python wrap
 docsearch = OpenSearchVectorSearch.from_documents(
     docs, embeddings, opensearch_url="http://localhost:9200", is_appx_search=False
 )
@@ -123,7 +123,7 @@ print(docs[0].page_content)
 
 `similarity_search` using `Painless Scripting` with Custom Parameters
 
-```python
+```python wrap
 docsearch = OpenSearchVectorSearch.from_documents(
     docs, embeddings, opensearch_url="http://localhost:9200", is_appx_search=False
 )
@@ -145,7 +145,7 @@ print(docs[0].page_content)
 
 If you’d like to look up for some similar documents, but you’d also like to receive diverse results, MMR is method you should consider. Maximal marginal relevance optimizes for similarity to query AND diversity among selected documents.
 
-```python
+```python wrap
 query = "What did the president say about Ketanji Brown Jackson"
 docs = docsearch.max_marginal_relevance_search(query, k=2, fetch_k=10, lambda_param=0.5)
 ```
@@ -154,7 +154,7 @@ docs = docsearch.max_marginal_relevance_search(query, k=2, fetch_k=10, lambda_pa
 
 It's also possible to use a preexisting OpenSearch instance with documents that already have vectors present.
 
-```python
+```python wrap
 # this is just an example, you would need to change these values to point to another opensearch instance
 docsearch = OpenSearchVectorSearch(
     index_name="index-*",
@@ -183,7 +183,7 @@ We need to install several `python` packages.
 %pip install -qU  boto3 requests requests-aws4auth
 ```
 
-```python
+```python wrap
 import boto3
 from opensearchpy import RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
@@ -221,7 +221,7 @@ docs = docsearch.similarity_search(
 %pip install -qU  boto3
 ```
 
-```python
+```python wrap
 # This is just an example to show how to use Amazon OpenSearch Service, you need to set proper values.
 import boto3
 from opensearchpy import RequestsHttpConnection

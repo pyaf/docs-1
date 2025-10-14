@@ -97,7 +97,7 @@ class ProviderStrategy(Generic[SchemaT]):
 LangChain automatically uses `ProviderStrategy` when you pass a schema type directly to `create_agent.response_format` and the model supports native structured output:
 
 <CodeGroup>
-    ```python Pydantic Model
+    ```python Pydantic Model wrap
     from pydantic import BaseModel
     from langchain.agents import create_agent
 
@@ -121,7 +121,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
     # ContactInfo(name='John Doe', email='john@example.com', phone='(555) 123-4567')
     ```
 
-    ```python Dataclass
+    ```python Dataclass wrap
     from dataclasses import dataclass
     from langchain.agents import create_agent
 
@@ -146,7 +146,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
     # ContactInfo(name='John Doe', email='john@example.com', phone='(555) 123-4567')
     ```
 
-    ```python TypedDict
+    ```python TypedDict wrap
     from typing_extensions import TypedDict
     from langchain.agents import create_agent
 
@@ -170,7 +170,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
     # {'name': 'John Doe', 'email': 'john@example.com', 'phone': '(555) 123-4567'}
     ```
 
-    ```python JSON Schema
+    ```python JSON Schema wrap
     from langchain.agents import create_agent
 
     contact_info_schema = {
@@ -215,7 +215,7 @@ function providerStrategy<StructuredResponseT>(
 LangChain automatically uses `ProviderStrategy` when you pass a schema type directly to `createAgent.responseFormat` and the model supports native structured output:
 
 <CodeGroup>
-    ```ts Zod Schema
+    ```ts Zod Schema wrap
     import { z } from "zod";
     import { createAgent, providerStrategy } from "langchain";
 
@@ -239,7 +239,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
     // { name: "John Doe", email: "john@example.com", phone: "(555) 123-4567" }
     ```
 
-    ```ts JSON Schema
+    ```ts JSON Schema wrap
     import { createAgent, providerStrategy } from "langchain";
 
     const contactInfoSchema = {
@@ -328,7 +328,7 @@ class ToolStrategy(Generic[SchemaT]):
 </ParamField>
 
 <CodeGroup>
-    ```python Pydantic Model
+    ```python Pydantic Model wrap
     from pydantic import BaseModel, Field
     from typing import Literal
     from langchain.agents import create_agent
@@ -353,7 +353,7 @@ class ToolStrategy(Generic[SchemaT]):
     # ProductReview(rating=5, sentiment='positive', key_points=['fast shipping', 'expensive'])
     ```
 
-    ```python Dataclass
+    ```python Dataclass wrap
     from dataclasses import dataclass
     from typing import Literal
     from langchain.agents import create_agent
@@ -379,7 +379,7 @@ class ToolStrategy(Generic[SchemaT]):
     # ProductReview(rating=5, sentiment='positive', key_points=['fast shipping', 'expensive'])
     ```
 
-    ```python TypedDict
+    ```python TypedDict wrap
     from typing import Literal
     from typing_extensions import TypedDict
     from langchain.agents import create_agent
@@ -404,7 +404,7 @@ class ToolStrategy(Generic[SchemaT]):
     # {'rating': 5, 'sentiment': 'positive', 'key_points': ['fast shipping', 'expensive']}
     ```
 
-    ```python JSON Schema
+    ```python JSON Schema wrap
     from langchain.agents import create_agent
     from langchain.agents.structured_output import ToolStrategy
 
@@ -445,7 +445,7 @@ class ToolStrategy(Generic[SchemaT]):
     # {'rating': 5, 'sentiment': 'positive', 'key_points': ['fast shipping', 'expensive']}
     ```
 
-    ```python Union Types
+    ```python Union Types wrap
     from pydantic import BaseModel, Field
     from typing import Literal, Union
     from langchain.agents import create_agent
@@ -481,7 +481,7 @@ class ToolStrategy(Generic[SchemaT]):
 
 The `tool_message_content` parameter allows you to customize the message that appears in the conversation history when structured output is generated:
 
-```python
+```python wrap
 from pydantic import BaseModel, Field
 from typing import Literal
 from langchain.agents import create_agent
@@ -526,7 +526,7 @@ Action item captured and added to meeting notes!
 ```
 
 Without `tool_message_content`, our final `ToolMessage` would be:
-```
+``` wrap
 ================================= Tool Message =================================
 Name: MeetingAction
 
@@ -564,7 +564,7 @@ function toolStrategy<StructuredResponseT>(
 </ParamField>
 
 <CodeGroup>
-    ```ts Zod Schema
+    ```ts Zod Schema wrap
     import { z } from "zod";
     import { createAgent, toolStrategy } from "langchain";
 
@@ -588,7 +588,7 @@ function toolStrategy<StructuredResponseT>(
     // { "rating": 5, "sentiment": "positive", "keyPoints": ["fast shipping", "expensive"] }
     ```
 
-    ```ts JSON Schema
+    ```ts JSON Schema wrap
     import { createAgent, toolStrategy } from "langchain";
 
     const productReviewSchema = {
@@ -629,7 +629,7 @@ function toolStrategy<StructuredResponseT>(
     // { "rating": 5, "sentiment": "positive", "keyPoints": ["fast shipping", "expensive"] }
     ```
 
-    ```ts Union Types
+    ```ts Union Types wrap
     import { z } from "zod";
     import { createAgent, toolStrategy } from "langchain";
 
@@ -664,7 +664,7 @@ function toolStrategy<StructuredResponseT>(
 
 The `toolMessageContent` parameter allows you to customize the message that appears in the conversation history when structured output is generated:
 
-```ts
+```ts wrap
 import { z } from "zod";
 import { createAgent, toolStrategy } from "langchain";
 
@@ -701,7 +701,7 @@ console.log(result);
 
 Without `toolMessageContent`, we'd see:
 
-```ts
+```ts wrap
 # console.log(result);
 /**
  * {
@@ -724,7 +724,7 @@ Models can make mistakes when generating structured output via tool calling. Lan
 When a model incorrectly calls multiple structured output tools, the agent provides error feedback in a `ToolMessage` and prompts the model to retry:
 
 :::python
-```python
+```python wrap
 from pydantic import BaseModel, Field
 from typing import Union
 from langchain.agents import create_agent
@@ -749,7 +749,7 @@ agent.invoke({
 })
 ```
 
-```
+``` wrap
 ================================ Human Message =================================
 
 Extract info: John Doe (john@email.com) is organizing Tech Conference on March 15th
@@ -790,7 +790,7 @@ Returning structured response: {'name': 'John Doe', 'email': 'john@email.com'}
 ```
 :::
 :::js
-```ts
+```ts wrap
 import { z } from "zod";
 import { createAgent, toolStrategy } from "langchain";
 
@@ -843,7 +843,7 @@ console.log(result);
 When structured output doesn't match the expected schema, the agent provides specific error feedback:
 
 :::python
-```python
+```python wrap
 from pydantic import BaseModel, Field
 from langchain.agents import create_agent
 from langchain.agents.structured_output import ToolStrategy
@@ -864,7 +864,7 @@ agent.invoke({
 })
 ```
 
-```
+``` wrap
 ================================ Human Message =================================
 
 Parse this: Amazing product, 10/10!
@@ -899,7 +899,7 @@ Returning structured response: {'rating': 5, 'comment': 'Amazing product'}
 You can customize how errors are handled using the `handle_errors` parameter:
 
 **Custom error message:**
-```python
+```python wrap
 ToolStrategy(
     schema=ProductRating,
     handle_errors="Please provide a valid rating between 1-5 and include a comment."
@@ -934,7 +934,7 @@ ToolStrategy(
 If `handle_errors` is a tuple of exceptions, the agent will only retry (using the default error message) if the exception raised is one of the specified types. In all other cases, the exception will be raised.
 
 **Custom error handler function:**
-```python
+```python wrap
 def custom_error_handler(error: Exception) -> str:
     if isinstance(error, StructuredOutputValidationError):
         return "There was an issue with the format. Try again.
@@ -984,7 +984,7 @@ response_format = ToolStrategy(
 ```
 :::
 :::js
-```ts
+```ts wrap
 import { z } from "zod";
 import { createAgent, toolStrategy } from "langchain";
 
@@ -1029,7 +1029,7 @@ console.log(result);
 You can customize how errors are handled using the `handleErrors` parameter:
 
 **Custom error message:**
-```ts
+```ts wrap
 const responseFormat = toolStrategy(ProductRating, {
     handleError: "Please provide a valid rating between 1-5 and include a comment."
 )
@@ -1039,7 +1039,7 @@ const responseFormat = toolStrategy(ProductRating, {
 ```
 
 **Handle specific exceptions only:**
-```ts
+```ts wrap
 import { ToolInputParsingException } from "@langchain/core/tools";
 
 const responseFormat = toolStrategy(ProductRating, {
@@ -1056,7 +1056,7 @@ const responseFormat = toolStrategy(ProductRating, {
 ```
 
 **Handle multiple exception types:**
-```ts
+```ts wrap
 const responseFormat = toolStrategy(ProductRating, {
     handleError: (error: ToolStrategyError) => {
         if (error instanceof ToolInputParsingException) {

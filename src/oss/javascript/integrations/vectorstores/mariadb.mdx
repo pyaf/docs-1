@@ -30,7 +30,7 @@ This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/op
 
 We'll also use the [`uuid`](https://www.npmjs.com/package/uuid) package to generate ids in the required format.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -164,7 +164,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2, { "year": 2021 });
 for (const doc of similaritySearchResults) {
   console.log(`* ${doc.pageContent} [${JSON.stringify(doc.metadata, null)}]`);
@@ -178,14 +178,14 @@ for (const doc of similaritySearchResults) {
 
 The above filter syntax use be more complex:
 
-```json
+```json wrap
 # name = 'martin' OR firstname = 'john'
 let res = await vectorStore.similaritySearch("biology", 2, {"$or": [{"name":"martin"}, {"firstname", "john"}] });
 ```
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2)
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -193,7 +193,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=0.835] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=0.852] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -240,7 +240,7 @@ You can reuse connections by creating a pool, then creating new `MariaDBStore` i
 
 Note that you should call `.initialize()` to set up your database at least once to set up your tables properly before using the constructor.
 
-```typescript
+```typescript wrap
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { MariaDBStore } from "@langchain/community/vectorstores/mariadb";
 import mariadb from "mariadb";

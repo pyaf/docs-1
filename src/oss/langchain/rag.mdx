@@ -51,7 +51,7 @@ lines of code. See below for the full code snippet:
 <Accordion title="Expand for full code snippet">
 
 :::python
-```python
+```python wrap
 import bs4
 from langchain.agents import AgentState, create_agent
 from langchain_community.document_loaders import WebBaseLoader
@@ -128,7 +128,7 @@ Task decomposition refers to...
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import "cheerio";
 import { createAgent, tool } from "langchain";
 import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
@@ -210,7 +210,7 @@ This tutorial requires these langchain dependencies:
 ```bash pip
 pip install langchain langchain-text-splitters langchain-community
 ```
-```bash conda
+```bash conda wrap
 conda install langchain langchain-text-splitters langchain-community -c conda-forge
 ```
 </CodeGroup>
@@ -325,7 +325,7 @@ docs](https://beautiful-soup-4.readthedocs.io/en/latest/#beautifulsoup)).
 In this case only HTML tags with class “post-content”, “post-title”, or
 “post-header” are relevant, so we'll remove all others.
 
-```python
+```python wrap
 import bs4
 from langchain_community.document_loaders import WebBaseLoader
 
@@ -347,7 +347,7 @@ Total characters: 43131
 ```python
 print(docs[0].page_content[:500])
 ```
-```output
+```output wrap
       LLM Powered Autonomous Agents
 
 Date: June 23, 2023  |  Estimated Reading Time: 31 min  |  Author: Lilian Weng
@@ -359,7 +359,7 @@ In
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import "cheerio";
 import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
 
@@ -471,7 +471,7 @@ document_ids = vector_store.add_documents(documents=all_splits)
 
 print(document_ids[:3])
 ```
-```output
+```output wrap
 ['07c18af6-ad58-479a-bfb1-d508033f9c64', '9000bf8e-1993-446f-8d4d-f4e507ba4b8f', 'ba3b5d14-bed9-4f5f-88be-44c88aedc2e6']
 ```
 :::
@@ -587,7 +587,7 @@ separate from the stringified representation that is sent to the model.
 Retrieval tools are not limited to a single string `query` argument, as in the above example. You can
 force the LLM to specify additional search parameters by adding arguments— for example, a category:
 
-```python
+```python wrap
 from typing import Literal
 
 def retrieve_context(query: str, section: Literal["beginning", "middle", "end"]):
@@ -642,7 +642,7 @@ for event in agent.stream(
 ):
     event["messages"][-1].pretty_print()
 ```
-```
+``` wrap
 ================================ Human Message =================================
 
 What is the standard method for Task Decomposition?
@@ -771,7 +771,7 @@ this chain by removing tools from the agent and instead incorporating the retrie
 prompt:
 
 :::python
-```python
+```python wrap
 from langchain.agents import AgentState
 from langchain_core.messages import MessageLikeRepresentation
 
@@ -795,7 +795,7 @@ agent = create_agent(llm, tools=[], system_prompt=prompt_with_context)
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { createAgent, dynamicSystemPromptMiddleware } from "langchain";
 import { SystemMessage } from "@langchain/core/messages";
 
@@ -881,7 +881,7 @@ do this for the two-step chain case by:
 populate that key (as well as inject the context).
 
 :::python
-```python
+```python wrap
 from langchain_core.documents import Document
 from langchain.agents.middleware import AgentMiddleware, AgentState
 from langchain_core.messages import AIMessage
@@ -918,7 +918,7 @@ agent = create_agent(
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { createMiddleware, Document, createAgent } from "langchain";
 import { MessagesZodSchema } from "@langchain/langgraph";
 

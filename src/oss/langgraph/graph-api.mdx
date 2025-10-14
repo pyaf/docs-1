@@ -96,7 +96,7 @@ Let's look at an example:
 
 :::python
 
-```python
+```python wrap
 class InputState(TypedDict):
     user_input: str
 
@@ -566,7 +566,7 @@ LangGraph supports caching of tasks/nodes based on the input to the node. To use
 
 For example:
 
-```python
+```python wrap
 import time
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph
@@ -691,7 +691,7 @@ By default, the return value `routing_function` is used as the name of the node 
 
 You can optionally provide a dictionary that maps the `routing_function`'s output to the name of the next node.
 
-```python
+```python wrap
 graph.add_conditional_edges("node_a", routing_function, {True: "node_b", False: "node_c"})
 ```
 
@@ -762,7 +762,7 @@ graph.add_conditional_edges(START, routing_function)
 
 You can optionally provide a dictionary that maps the `routing_function`'s output to the name of the next node.
 
-```python
+```python wrap
 graph.add_conditional_edges(START, routing_function, {True: "node_b", False: "node_c"})
 ```
 
@@ -901,7 +901,7 @@ Check out this [how-to guide](/oss/langgraph/graph-api.md#combine-control-flow-a
 :::python
 If you are using [subgraphs](/oss/langgraph/use-subgraphs), you might want to navigate from a node within a subgraph to a different subgraph (i.e. a different node in the parent graph). To do so, you can specify `graph=Command.PARENT` in `Command`:
 
-```python
+```python wrap
 def my_node(state: State) -> Command[Literal["other_subgraph"]]:
     return Command(
         update={"foo": "bar"},
@@ -924,7 +924,7 @@ When you send updates from a subgraph node to a parent graph node for a key that
 :::js
 If you are using [subgraphs](/oss/langgraph/use-subgraphs), you might want to navigate from a node within a subgraph to a different subgraph (i.e. a different node in the parent graph). To do so, you can specify `graph: Command.PARENT` in `Command`:
 
-```typescript
+```typescript wrap
 import { Command } from "@langchain/langgraph";
 
 graph.addNode("myNode", (state) => {
@@ -949,7 +949,7 @@ When you send updates from a subgraph node to a parent graph node for a key that
 :::js
 If you are using [subgraphs](/oss/langgraph/use-subgraphs), you might want to navigate from a node within a subgraph to a different subgraph (i.e. a different node in the parent graph). To do so, you can specify `graph: Command.PARENT` in `Command`:
 
-```typescript
+```typescript wrap
 import { Command } from "@langchain/langgraph";
 
 graph.addNode("myNode", (state) => {
@@ -1097,7 +1097,7 @@ graph.addNode("myNode", (state, runtime) => {
 :::python
 The recursion limit sets the maximum number of [super-steps](#graphs) the graph can execute during a single execution. Once the limit is reached, LangGraph will raise `GraphRecursionError`. By default this value is set to 25 steps. The recursion limit can be set on any graph at runtime, and is passed to `.invoke`/`.stream` via the config dictionary. Importantly, `recursion_limit` is a standalone `config` key and should not be passed inside the `configurable` key as all other user-defined configuration. See the example below:
 
-```python
+```python wrap
 graph.invoke(inputs, config={"recursion_limit": 5}, context={"llm": "anthropic"})
 ```
 

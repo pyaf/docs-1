@@ -20,7 +20,7 @@ from langchain_core.prompts import PromptTemplate
 
 Make sure to get your API key from ForefrontAI. You are given a 5 day free trial to test different models.
 
-```python
+```python wrap
 # get a new token: https://docs.forefront.ai/forefront/api-reference/authentication
 
 from getpass import getpass
@@ -62,7 +62,7 @@ llm_chain = LLMChain(prompt=prompt, llm=llm)
 
 Provide a question and run the LLMChain.
 
-```python
+```python wrap
 question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
 
 llm_chain.run(question)

@@ -188,7 +188,7 @@ Finally, you can create a thread with an arbitrary pre-defined state by providin
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     curl --request POST \
         --url <DEPLOYMENT_URL>/threads \
         --header 'Content-Type: application/json' \
@@ -292,7 +292,7 @@ The `search` method allows you to filter on metadata:
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     console.log((await client.threads.search({ metadata: { "graph_id": "agent" }, limit: 1 })));
     ```
     </Tab>
@@ -475,7 +475,7 @@ Optionally, to view the state of a thread at a given checkpoint, simply pass in 
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     const threadState = await client.threads.getState(<THREAD_ID>, <CHECKPOINT_ID>);
     ```
     </Tab>

@@ -120,7 +120,7 @@ await myWorkflow.invoke({ value: 1, anotherValue: 2 });
   be persisted in the checkpointer.
 
   :::python
-  ```python
+  ```python wrap
   import uuid
   from langchain.chat_models import init_chat_model
   from langgraph.func import entrypoint, task
@@ -153,7 +153,7 @@ await myWorkflow.invoke({ value: 1, anotherValue: 2 });
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { v4 as uuidv4 } from "uuid";
   import { ChatOpenAI } from "@langchain/openai";
   import { entrypoint, task, MemorySaver } from "@langchain/langgraph";
@@ -225,7 +225,7 @@ const graph = entrypoint(
   This example demonstrates how to run multiple LLM calls in parallel using `@task`. Each call generates a paragraph on a different topic, and results are joined into a single text output.
 
   :::python
-  ```python
+  ```python wrap
   import uuid
   from langchain.chat_models import init_chat_model
   from langgraph.func import entrypoint, task
@@ -261,7 +261,7 @@ const graph = entrypoint(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { v4 as uuidv4 } from "uuid";
   import { ChatOpenAI } from "@langchain/openai";
   import { entrypoint, task, MemorySaver } from "@langchain/langgraph";
@@ -431,7 +431,7 @@ const someWorkflow = entrypoint(
 You can call other **entrypoints** from within an **entrypoint** or a **task**.
 
 :::python
-```python
+```python wrap
 @entrypoint() # Will automatically use the checkpointer from the parent entrypoint
 def some_other_workflow(inputs: dict) -> int:
     return inputs["value"]
@@ -491,7 +491,7 @@ const myWorkflow = entrypoint(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { v4 as uuidv4 } from "uuid";
   import { entrypoint, MemorySaver } from "@langchain/langgraph";
 
@@ -636,7 +636,7 @@ updates: {"main": 5}
 ## Retry policy
 
 :::python
-```python
+```python wrap
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.func import entrypoint, task
 from langgraph.types import RetryPolicy
@@ -679,7 +679,7 @@ main.invoke({'any_input': 'foobar'}, config=config)
 :::
 
 :::js
-```typescript
+```typescript wrap
 import {
   MemorySaver,
   entrypoint,
@@ -814,7 +814,7 @@ for await (const chunk of await main.stream(
 ## Resuming after an error
 
 :::python
-```python
+```python wrap
 import time
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.func import entrypoint, task
@@ -891,7 +891,7 @@ main.invoke(None, config=config)
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { entrypoint, task, MemorySaver } from "@langchain/langgraph";
 
 // This variable is just used for demonstration purposes to simulate a network failure.
@@ -1127,7 +1127,7 @@ Given a tool call, our function will `interrupt` for human review. At that point
 * Generate a custom tool message (e.g., instructing the model to re-format its tool call)
 
 :::python
-```python
+```python wrap
 from typing import Union
 
 def review_tool_call(tool_call: ToolCall) -> Union[ToolCall, ToolMessage]:
@@ -1333,7 +1333,7 @@ config = {
 graph.get_state(config)
 ```
 
-```
+``` wrap
 StateSnapshot(
     values={'messages': [HumanMessage(content="hi! I'm bob"), AIMessage(content='Hi Bob! How are you doing today?), HumanMessage(content="what's my name?"), AIMessage(content='Your name is Bob.')]}, next=(),
     config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1f029ca3-1f5b-6704-8004-820c16b69a5a'}},
@@ -1365,7 +1365,7 @@ const config = {
 await graph.getState(config);
 ```
 
-```
+``` wrap
 StateSnapshot {
   values: {
     messages: [
@@ -1405,7 +1405,7 @@ config = {
 list(graph.get_state_history(config))
 ```
 
-```
+``` wrap
 [
     StateSnapshot(
         values={'messages': [HumanMessage(content="hi! I'm bob"), AIMessage(content='Hi Bob! How are you doing today? Is there anything I can help you with?'), HumanMessage(content="what's my name?"), AIMessage(content='Your name is Bob.')]},
@@ -1484,7 +1484,7 @@ for await (const state of graph.getStateHistory(config)) {
 }
 ```
 
-```
+``` wrap
 [
   StateSnapshot {
     values: {
@@ -1516,7 +1516,7 @@ Use `entrypoint.final` to decouple what is returned to the caller from what is p
 * You need to control what gets passed to the previous parameter on the next run.
 
 :::python
-```python
+```python wrap
 from langgraph.func import entrypoint
 from langgraph.checkpoint.memory import InMemorySaver
 
@@ -1538,7 +1538,7 @@ print(accumulate.invoke(3, config=config))  # 3
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { entrypoint, MemorySaver } from "@langchain/langgraph";
 
 const checkpointer = new MemorySaver();

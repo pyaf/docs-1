@@ -32,7 +32,7 @@ To access `UnstructuredLoader` document loader you'll need to install the `@lang
 
 You can run Unstructured locally in your computer using Docker. To do so, you need to have Docker installed. You can find the instructions to install Docker [here](https://docs.docker.com/get-docker/).
 
-```bash
+```bash wrap
 docker run -p 8000:8000 -d --rm --name unstructured-api downloads.unstructured.io/unstructured-io/unstructured-api:latest --port 8000 --host 0.0.0.0
 ```
 
@@ -48,7 +48,7 @@ export UNSTRUCTURED_API_KEY="your-api-key"
 
 The LangChain UnstructuredLoader integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -62,7 +62,7 @@ import IntegrationInstallTooltip from "@mdx_components/integration_install_toolt
 
 Now we can instantiate our model object and load documents:
 
-```typescript
+```typescript wrap
 import { UnstructuredLoader } from "@langchain/community/document_loaders/fs/unstructured"
 
 const loader = new UnstructuredLoader("../../../../../../examples/src/document_loaders/example_data/notion.mdx")
@@ -105,7 +105,7 @@ console.log(docs[0].metadata)
 
 You can also load all of the files in the directory using [`UnstructuredDirectoryLoader`](https://api.js.langchain.com/classes/langchain.document_loaders_fs_unstructured.UnstructuredDirectoryLoader.html), which inherits from [`DirectoryLoader`](/oss/integrations/document_loaders/file_loaders/directory):
 
-```typescript
+```typescript wrap
 import { UnstructuredDirectoryLoader } from "@langchain/community/document_loaders/fs/unstructured";
 
 const directoryLoader = new UnstructuredDirectoryLoader(

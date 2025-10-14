@@ -90,7 +90,7 @@ For more information, refer to the following setup guides for external services:
 
       The output should show at least one storage class with a provisioner that supports dynamic provisioning. For example:
 
-      ```bash
+      ```bash wrap
       NAME            PROVISIONER                 RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
       gp2 (default)   ebs.csi.eks.amazonaws.com   Delete          WaitForFirstConsumer   true                   161d
       ```
@@ -121,7 +121,7 @@ For more information, refer to the following setup guides for external services:
 
 2. At a minimum, you will need to set the following configuration options (using basic auth):
 
-   ```yaml
+   ```yaml wrap
    config:
      langsmithLicenseKey: "<your license key>"
      apiKeySalt: "<your api key salt>"
@@ -142,7 +142,7 @@ You will also need to specify connection details for any external databases you 
 
       Output should look something like:
 
-      ```bash
+      ```bash wrap
       kubectl get pods                                                                                                                                                                     ⎈ langsmith-eks-2vauP7wf 21:07:46No resources found in default namespace.
       ```
 
@@ -152,7 +152,7 @@ You will also need to specify connection details for any external databases you 
 
 2. Ensure you have the LangChain Helm repo added. (skip this step if you are using local charts)
 
-   ```bash
+   ```bash wrap
    helm repo add langchain https://langchain-ai.github.io/helm/"langchain" has been added to your repositories
    ```
 
@@ -161,7 +161,7 @@ You will also need to specify connection details for any external databases you 
    * We generally recommend using the latest version.
    * You can also run `helm search repo langchain/langsmith --versions` to see the available versions. The output will look something like this:
 
-   ```
+   ``` wrap
    langchain/langsmith     0.10.14         0.10.32         Helm chart to deploy the langsmith application ...
    langchain/langsmith     0.10.13         0.10.32         Helm chart to deploy the langsmith application ...
    langchain/langsmith     0.10.12         0.10.32         Helm chart to deploy the langsmith application ...
@@ -205,7 +205,7 @@ You will also need to specify connection details for any external databases you 
 
    Output should look something like:
 
-   ```
+   ``` wrap
    NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE
    langsmith-backend       ClusterIP      172.20.140.77    <none>                                                                    1984/TCP       35h
    langsmith-frontend      LoadBalancer   172.20.253.251   <external ip>                                                             80:31591/TCP   35h
@@ -222,7 +222,7 @@ You will also need to specify connection details for any external databases you 
    ```
 
    Expected output:
-   ```json
+   ```json wrap
    [{"id":"00000000-0000-0000-0000-000000000000","has_waitlist_access":true,"created_at":"2023-09-13T18:25:10.488407","display_name":"Personal","config":{"is_personal":true,"max_identities":1},"tenant_handle":"default"}]
    ```
 

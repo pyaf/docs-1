@@ -57,7 +57,7 @@ The `inputs` and `outputs` can be fetched by the `ROOT.presigned_url` provided i
 
 This is an example of the entire payload we send to your webhook endpoint:
 
-```json
+```json wrap
 {
   "rule_id": "d75d7417-0c57-4655-88fe-1db3cda3a47a",
   "start_time": "2024-04-05T01:28:54.734491+00:00",
@@ -109,7 +109,7 @@ We strongly recommend you add a secret query string parameter to the webhook URL
 
 An example would be
 
-```
+``` wrap
 https://api.example.com/langsmith_webhook?secret=38ee77617c3a489ab6e871fbeb2ec87d
 ```
 
@@ -179,7 +179,7 @@ We can also set up a LangSmith secret - luckily there is already an integration 
 After that, you can create a Python file that will serve as your endpoint.
 An example is below, with comments explaining what is going on:
 
-```python
+```python wrap
 from fastapi import HTTPException, status, Request, Query
 from modal import Secret, Stub, web_endpoint, Image
 
@@ -228,7 +228,7 @@ We can now deploy this easily with `modal deploy ...` (see docs [here](https://m
 
 You should now get something like:
 
-```
+``` wrap
 ✓ Created objects.
 ├── 🔨 Created mount /Users/harrisonchase/workplace/langsmith-docs/example-webhook.py
 ├── 🔨 Created mount PythonPackage:langsmith

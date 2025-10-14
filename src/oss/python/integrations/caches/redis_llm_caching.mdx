@@ -81,7 +81,7 @@ OpenAI API key has been set for this session.
 
 ## Using RedisCache
 
-```python
+```python wrap
 # Initialize RedisCache
 redis_cache = RedisCache(redis_url=REDIS_URL)
 
@@ -116,7 +116,7 @@ redis_cache.clear()
 print("Cache cleared")
 ```
 
-```output
+```output wrap
 First call (not cached):
 Result:
 
@@ -135,7 +135,7 @@ Cache cleared
 
 ## Using RedisSemanticCache
 
-```python
+```python wrap
 # Initialize RedisSemanticCache
 embeddings = OpenAIEmbeddings()
 semantic_cache = RedisSemanticCache(
@@ -198,7 +198,7 @@ Semantic cache cleared
 
 ### Custom TTL (Time-To-Live)
 
-```python
+```python wrap
 # Initialize RedisCache with custom TTL
 ttl_cache = RedisCache(redis_url=REDIS_URL, ttl=5)  # 60 seconds TTL
 

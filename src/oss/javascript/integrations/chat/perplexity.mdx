@@ -45,7 +45,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain Perplexity integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -74,7 +74,7 @@ const llm = new ChatPerplexity({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
   {
     role: "system",

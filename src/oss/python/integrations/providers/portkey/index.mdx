@@ -31,7 +31,7 @@ pip install -U portkey_ai
 
 We can now connect to the Portkey AI Gateway by updating the `ChatOpenAI` model in LangChain
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -61,7 +61,7 @@ The `virtual_key` parameter sets the authentication and provider for the AI prov
 
 > Notice that the `api_key` can be left blank as that authentication won't be used.
 
-```python
+```python wrap
 from langchain_openai import ChatOpenAI
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -104,7 +104,7 @@ config = {
 
 We can then use this config in our requests being made from langchain.
 
-```python
+```python wrap
 portkey_headers = createHeaders(
     api_key=PORTKEY_API_KEY,
     config=config
@@ -125,7 +125,7 @@ Portkey's LangChain integration gives you full visibility into the running of an
 
 We only need to modify the `ChatOpenAI` class to use the AI Gateway as above.
 
-```python
+```python wrap
 from langchain import hub
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_openai import ChatOpenAI

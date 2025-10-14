@@ -16,7 +16,7 @@ This notebook shows how to use agents to interact with the NASA toolkit. The too
 %pip install -qU langchain-community
 ```
 
-```python
+```python wrap
 from langchain.agents import AgentType, initialize_agent
 from langchain_community.agent_toolkits.nasa.toolkit import NasaToolkit
 from langchain_community.utilities.nasa import NasaAPIWrapper
@@ -32,7 +32,7 @@ agent = initialize_agent(
 
 ### Querying media assets
 
-```python
+```python wrap
 agent.run(
     "Can you find three pictures of the moon published between the years 2014 and 2020?"
 )
@@ -40,7 +40,7 @@ agent.run(
 
 ### Querying details about media assets
 
-```python
+```python wrap
 output = agent.run(
     "I've just queried an image of the moon with the NASA id NHQ_2019_0311_Go Forward to the Moon."
     " Where can I find the metadata manifest for this asset?"

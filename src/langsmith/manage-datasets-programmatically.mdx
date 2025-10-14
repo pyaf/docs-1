@@ -19,7 +19,7 @@ If you have many examples to create, consider using the `create_examples`/`creat
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import Client
 
 examples = [
@@ -61,7 +61,7 @@ client.create_examples(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 
 const client = new Client();
@@ -193,7 +193,7 @@ dataset = client.upload_csv(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 
 const client = new Client();
@@ -357,7 +357,7 @@ You can filter by dataset ID:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 examples = client.list_examples(dataset_id="c9ace0d8-a82c-4b6c-13d2-83401d68e9ab")
 ```
 
@@ -423,7 +423,7 @@ For example, if you have an example with metadata `{"foo": "bar", "baz": "qux"}`
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 examples = client.list_examples(dataset_name=dataset_name, metadata={"foo": "bar"})
 ```
 
@@ -450,14 +450,14 @@ You can use the `has` operator to fetch examples with metadata fields that conta
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 examples = client.list_examples(
   dataset_name=dataset_name,
   filter='and(not(has(metadata, \'{"foo": "bar"}\')), exists(metadata, "tenant_id"))'
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 const examples = await client.listExamples({
   datasetName: datasetName,
   filter: 'and(not(has(metadata, \'{"foo": "bar"}\')), exists(metadata, "tenant_id"))'
@@ -501,7 +501,7 @@ You can also programmatically update multiple examples in a single request with 
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.update_examples(
   example_ids=[example.id, example_2.id],
   inputs=[{"input": "updated input 1"}, {"input": "updated input 2"}],

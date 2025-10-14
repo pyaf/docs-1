@@ -116,7 +116,7 @@ graph TD
 
 :::python
 You can use middleware in an agent by passing it `create_agent`:
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import SummarizationMiddleware, HumanInTheLoopMiddleware
 
@@ -183,7 +183,7 @@ The `summarizationMiddleware` automatically manages conversation history by summ
 - Multi-turn dialogues with extensive context
 
 :::python
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import SummarizationMiddleware
 
@@ -270,7 +270,7 @@ When using prompt caching, you'll likely want to use a checkpointer to store con
 history across invocations.
 
 :::python
-```python
+```python wrap
 from langchain_anthropic import ChatAnthropic
 from langchain.agents.middleware.prompt_caching import AnthropicPromptCachingMiddleware
 from langchain.agents import create_agent
@@ -295,7 +295,7 @@ agent.invoke({"messages": [HumanMessage("What's my name?")]})
 ```
 :::
 :::js
-```typescript
+```typescript wrap
 import { createAgent, HumanMessage, anthropicPromptCachingMiddleware } from "langchain";
 
 const LONG_PROMPT = `
@@ -329,7 +329,7 @@ A system prompt can be dynamically set right before each model invocation using 
 
 For example, you can adjust the system prompt based on the user's expertise level:
 
-```python
+```python wrap
 from typing import TypedDict
 
 from langchain.agents import create_agent
@@ -374,7 +374,7 @@ A system prompt can be dynamically set right before each model invocation using 
 
 For example, you can adjust the system prompt based on the user's expertise level:
 
-```typescript
+```typescript wrap
 import { z } from "zod";
 import { createAgent, dynamicSystemPromptMiddleware } from "langchain";
 
@@ -491,7 +491,7 @@ Runs before the model is run. Can modify state by returning a new state object o
 
 Signature:
 :::python
-```python
+```python wrap
 from langchain.agents.middleware import AgentMiddleware, AgentState
 from langchain_core.messages import AIMessage
 
@@ -578,7 +578,7 @@ Modifies the model request. The model request has several key properties:
 
 Signature:
 :::python
-```python
+```python wrap
 from langchain.agents.middleware import AgentState, ModelRequest, AgentMiddleware
 
 class MyMiddleware(AgentMiddleware):
@@ -757,7 +757,7 @@ await agent.invoke(
 When using multiple middleware, their state and context schemas are merged. All required properties from all middleware must be satisfied:
 
 :::python
-```python
+```python wrap
 from langchain.agents.middleware import AgentMiddleware
 from langchain_core.messages import HumanMessage
 from typing import Any, Dict
@@ -975,7 +975,7 @@ Doing so provides several benefits:
 
 Use middleware to dynamically select which tools are available at runtime based on context.
 
-```python
+```python wrap
 from langchain.agents import create_agent
 from langchain.agents.middleware import AgentState, ModelRequest, modify_model_request
 
@@ -1001,7 +1001,7 @@ agent = create_agent(
 This example shows how to select between GitHub and GitLab tools based on the user's provider.
 
 :::python
-```python Expandable
+```python Expandable wrap
 from dataclasses import dataclass
 from typing import Literal
 
@@ -1056,7 +1056,7 @@ agent.invoke(
 :::
 
 :::js
-```typescript Expandable
+```typescript Expandable wrap
 import { z } from "zod";
 import { createAgent, createMiddleware, tool, HumanMessage } from "langchain";
 

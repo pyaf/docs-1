@@ -42,7 +42,7 @@ and rules:
 
 The following is an example of a query path in JSON format:
 
-```json
+```json wrap
  {
   "query_paths": [
     {
@@ -81,7 +81,7 @@ Expiriemental alternative to `cassandra_db_select_table_data` which takes a quer
 
 Install the following Python modules:
 
-```bash
+```bash wrap
 pip install ipykernel python-dotenv cassio langchain-openai langchain langchain-community langchainhub
 ```
 
@@ -126,7 +126,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 ```
 
-```python
+```python wrap
 # Import necessary libraries
 import os
 
@@ -143,7 +143,7 @@ from langchain_openai import ChatOpenAI
 
 ## Connect to a Cassandra Database
 
-```python
+```python wrap
 cassio.init(auto=True)
 session = cassio.config.resolve_session()
 if not session:
@@ -152,7 +152,7 @@ if not session:
     )
 ```
 
-```python
+```python wrap
 # Test data pep
 
 session = cassio.config.resolve_session()
@@ -272,7 +272,7 @@ prompt = hub.pull("hwchase17/openai-tools-agent")
 agent = create_openai_tools_agent(llm, tools, prompt)
 ```
 
-```python
+```python wrap
 input = (
     QUERY_PATH_PROMPT
     + "\n\nHere is your task: Find all the videos that the user with the email address 'patrick@datastax.com' has uploaded to the langchain_agent_test keyspace."
@@ -285,7 +285,7 @@ response = agent_executor.invoke({"input": input})
 print(response["output"])
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `cassandra_db_schema` with `{'keyspace': 'langchain_agent_test'}`

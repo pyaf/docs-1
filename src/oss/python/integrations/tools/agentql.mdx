@@ -38,7 +38,7 @@ The following two tools are also bundled as `AgentQLBrowserToolkit` and must be 
 
 To run this notebook, install `Playwright` browser and configure Jupyter Notebook's `asyncio` loop.
 
-```python
+```python wrap
 !playwright install
 
 # This import is required only for jupyter notebooks, since they have their own eventloop
@@ -92,7 +92,7 @@ You can set the following params:
 
 `ExtractWebDataBrowserTool` is implemented with AgentQL's SDK. You can find more details about the parameters and the functions in AgentQL's [API References](https://docs.agentql.com/python-sdk/api-references/agentql-page#querydata).
 
-```python
+```python wrap
 from langchain_agentql.tools import ExtractWebDataBrowserTool
 from langchain_agentql.utils import create_async_playwright_browser
 
@@ -150,7 +150,7 @@ extract_web_data_tool.invoke(
 )
 ```
 
-```output
+```output wrap
 {'data': {'posts': [{'title': 'Launch Week Recap—make the web AI-ready',
     'url': 'https://www.agentql.com/blog/2024-launch-week-recap',
     'date': 'Nov 18, 2024',
@@ -208,12 +208,12 @@ await extract_web_data_browser_tool.ainvoke(
 )
 ```
 
-```output
+```output wrap
 /usr/local/lib/python3.11/dist-packages/agentql/_core/_utils.py:167: UserWarning: 🚨 The function get_data_by_prompt_experimental is experimental and may not work as expected 🚨
   warnings.warn(
 ```
 
-```output
+```output wrap
 {'blog_posts': [{'title': 'Launch Week Recap—make the web AI-ready',
    'url': 'https://www.agentql.com/blog/2024-launch-week-recap',
    'date': 'Nov 18, 2024',
@@ -240,7 +240,7 @@ await extract_web_data_browser_tool.ainvoke(
 
 - `prompt`: A Natural Language description of the web element to find on the page.
 
-```python
+```python wrap
 selector = await extract_web_element_tool.ainvoke({"prompt": "Next page button"})
 selector
 ```
@@ -249,7 +249,7 @@ selector
 "[tf623_id='194']"
 ```
 
-```python
+```python wrap
 from langchain_community.tools.playwright import ClickTool
 
 # Disabling 'visible_only' will allow us to click on elements that are not visible on the page
@@ -292,7 +292,7 @@ llm = init_chat_model(model="gpt-4o", model_provider="openai")
 
 ### Execute Tool Chain
 
-```python
+```python wrap
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableConfig, chain
 
@@ -325,7 +325,7 @@ tool_chain.invoke(
 )
 ```
 
-```output
+```output wrap
 {'messages': [ToolMessage(content='{"data": {"posts": [{"title": "Launch Week Recap—make the web AI-ready", "url": "https://www.agentql.com/blog/2024-launch-week-recap", "date": "Nov 18, 2024", "author": "Rachel-Lee Nabors"}, {"title": "Accurate data extraction from PDFs and images with AgentQL", "url": "https://www.agentql.com/blog/accurate-data-extraction-pdfs-images", "date": "Feb 1, 2025", "author": "Rachel-Lee Nabors"}, {"title": "Introducing Scheduled Scraping Workflows", "url": "https://www.agentql.com/blog/scheduling", "date": "Dec 2, 2024", "author": "Rachel-Lee Nabors"}, {"title": "Updates to Our Pricing Model", "url": "https://www.agentql.com/blog/2024-pricing-update", "date": "Nov 19, 2024", "author": "Rachel-Lee Nabors"}, {"title": "Get data from any page: AgentQL’s REST API Endpoint—Launch week day 5", "url": "https://www.agentql.com/blog/data-rest-api", "date": "Nov 15, 2024", "author": "Rachel-Lee Nabors"}]}, "metadata": {"request_id": "1a84ed12-d02a-497d-b09d-21fe49342fa3", "generated_query": null, "screenshot": null}}', name='extract_web_data_with_rest_api', tool_call_id='call_z4Rl1MpjJZNcbLlq1OCneoMF')]}
 ```
 
@@ -348,7 +348,7 @@ agentql_toolkit = AgentQLBrowserToolkit(async_browser=async_agent_browser)
 agentql_toolkit.get_tools()
 ```
 
-```output
+```output wrap
 [ExtractWebDataBrowserTool(async_browser=<Browser type=<BrowserType name=chromium executable_path=/root/.cache/ms-playwright/chromium-1155/chrome-linux/chrome> version=133.0.6943.16>),
  GetWebElementBrowserTool(async_browser=<Browser type=<BrowserType name=chromium executable_path=/root/.cache/ms-playwright/chromium-1155/chrome-linux/chrome> version=133.0.6943.16>)]
 ```
@@ -364,7 +364,7 @@ playwright_toolkit = [
 playwright_toolkit
 ```
 
-```output
+```output wrap
 [NavigateTool(async_browser=<Browser type=<BrowserType name=chromium executable_path=/root/.cache/ms-playwright/chromium-1155/chrome-linux/chrome> version=133.0.6943.16>),
  ClickTool(async_browser=<Browser type=<BrowserType name=chromium executable_path=/root/.cache/ms-playwright/chromium-1155/chrome-linux/chrome> version=133.0.6943.16>, visible_only=False)]
 ```
@@ -434,11 +434,11 @@ Tool Calls:
   Args:
     prompt: Extract all the news titles from this page.
 ```
-```output
+```output wrap
 /usr/local/lib/python3.11/dist-packages/agentql/_core/_utils.py:167: UserWarning: 🚨 The function get_data_by_prompt_experimental is experimental and may not work as expected 🚨
   warnings.warn(
 ```
-```output
+```output wrap
 ================================= Tool Message =================================
 Name: extract_web_data_from_browser
 
@@ -454,7 +454,7 @@ Tool Calls:
   Args:
     prompt: Extract the current page URL
 ```
-```output
+```output wrap
 /usr/local/lib/python3.11/dist-packages/agentql/_core/_utils.py:167: UserWarning: 🚨 The function get_data_by_prompt_experimental is experimental and may not work as expected 🚨
   warnings.warn(
 ```
@@ -480,7 +480,7 @@ Tool Calls:
   Args:
     prompt: Extract the current page URL
 ```
-```output
+```output wrap
 /usr/local/lib/python3.11/dist-packages/agentql/_core/_utils.py:167: UserWarning: 🚨 The function get_data_by_prompt_experimental is experimental and may not work as expected 🚨
   warnings.warn(
 ```
@@ -496,11 +496,11 @@ Tool Calls:
   Args:
     prompt: Extract all the news titles from this page.
 ```
-```output
+```output wrap
 /usr/local/lib/python3.11/dist-packages/agentql/_core/_utils.py:167: UserWarning: 🚨 The function get_data_by_prompt_experimental is experimental and may not work as expected 🚨
   warnings.warn(
 ```
-```output
+```output wrap
 ================================= Tool Message =================================
 Name: extract_web_data_from_browser
 

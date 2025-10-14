@@ -22,7 +22,7 @@ from langchain_community.utilities import GoogleSerperAPIWrapper
 
 You can use it as part of a Self Ask chain:
 
-```python
+```python wrap
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain_openai import OpenAI
 from langchain.agents import initialize_agent, Tool
@@ -48,7 +48,7 @@ self_ask_with_search.run("What is the hometown of the reigning men's U.S. Open c
 ```
 
 #### Output
-```
+``` wrap
 Entering new AgentExecutor chain...
  Yes.
 Follow up: Who is the reigning men's U.S. Open champion?

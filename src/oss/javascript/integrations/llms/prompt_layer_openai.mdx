@@ -11,7 +11,7 @@ LangChain integrates with PromptLayer for logging and debugging prompts and resp
 1. Create a PromptLayer account here: [https://promptlayer.com](https://www.promptlayer.com/).
 2. Create an API token and pass it either as `promptLayerApiKey` argument in the `PromptLayerOpenAI` constructor or in the `PROMPTLAYER_API_KEY` environment variable.
 
-```typescript
+```typescript wrap
 import { PromptLayerOpenAI } from "langchain/llms/openai";
 
 const model = new PromptLayerOpenAI({
@@ -28,7 +28,7 @@ const res = await model.invoke(
 
 LangChain also integrates with PromptLayer for Azure-hosted OpenAI instances:
 
-```typescript
+```typescript wrap
 import { PromptLayerOpenAI } from "langchain/llms/openai";
 
 const model = new PromptLayerOpenAI({

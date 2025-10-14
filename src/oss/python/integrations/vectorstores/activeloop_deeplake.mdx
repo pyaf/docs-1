@@ -52,7 +52,7 @@ embeddings = OpenAIEmbeddings()
 
 Create a dataset locally at `./my_deeplake/`, then run similarity search. The Deeplake+LangChain integration uses Deep Lake datasets under the hood, so `dataset` and `vector store` are used interchangeably. To create a dataset in your own cloud, or in the Deep Lake storage, [adjust the path accordingly](https://docs.deeplake.ai/latest/getting-started/storage-and-creds/storage-options/).
 
-```python
+```python wrap
 db = DeeplakeVectorStore(
     dataset_path="./my_deeplake/", embedding_function=embeddings, overwrite=True
 )
@@ -127,7 +127,7 @@ db.similarity_search(
 
 Distance function `L2` for Euclidean, `cos` for cosine similarity
 
-```python
+```python wrap
 db.similarity_search(
     "What did the president say about Ketanji Brown Jackson?", distance_metric="l2"
 )
@@ -157,7 +157,7 @@ By default, Deep Lake datasets are stored locally. To store them in memory, in t
 os.environ["ACTIVELOOP_TOKEN"] = activeloop_token
 ```
 
-```python
+```python wrap
 # Embed and store the texts
 username = "<USERNAME_OR_ORG>"  # your username on app.activeloop.ai
 dataset_path = f"hub://{username}/langchain_testing_python"  # could be also ./local/path (much faster locally), s3://bucket/path/to/dataset, gcs://path/to/dataset, etc.
@@ -214,7 +214,7 @@ db.dataset.summary()
 
 ### Creating vector stores on AWS S3
 
-```python
+```python wrap
 dataset_path = "s3://BUCKET/langchain_test"  # could be also ./local/path (much faster locally), hub://bucket/path/to/dataset, gcs://path/to/dataset, etc.
 
 embedding = OpenAIEmbeddings()
@@ -249,7 +249,7 @@ embeds = db.dataset["embeddings"][:]
 
 Copy already created dataset to the cloud. You can also transfer from cloud to local.
 
-```python
+```python wrap
 import deeplake
 
 username = "<USERNAME_OR_ORG>"  # your username on app.activeloop.ai
@@ -260,7 +260,7 @@ destination = f"hub://{username}/langchain_test_copy"  # could be local, s3, gcs
 deeplake.copy(src=source, dst=destination)
 ```
 
-```python
+```python wrap
 db = DeeplakeVectorStore(dataset_path=destination, embedding_function=embeddings)
 db.add_documents(docs)
 ```

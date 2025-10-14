@@ -17,7 +17,7 @@ os.environ["OPENAI_API_KEY"] = getpass.getpass()
 
 ### Prepare a list of image urls from Wikimedia
 
-```python
+```python wrap
 from langchain_community.document_loaders import ImageCaptionLoader
 
 list_image_urls = [
@@ -34,7 +34,7 @@ list_docs = loader.load()
 list_docs
 ```
 
-```output
+```output wrap
 [Document(metadata={'image_path': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Ara_ararauna_Luc_Viatour.jpg/1554px-Ara_ararauna_Luc_Viatour.jpg'}, page_content='an image of a bird flying in the air [SEP]'),
  Document(metadata={'image_path': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/1928_Model_A_Ford.jpg/640px-1928_Model_A_Ford.jpg'}, page_content='an image of a vintage car parked on the street [SEP]')]
 ```
@@ -52,7 +52,7 @@ Image.open(requests.get(list_image_urls[0], stream=True).raw).convert("RGB")
 
 ### Create the index
 
-```python
+```python wrap
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -110,6 +110,6 @@ response = rag_chain.invoke({"input": "What kind of images are there?"})
 print(response["answer"])
 ```
 
-```output
+```output wrap
 There are images of a bird flying in the air and a vintage car parked on the street.
 ```

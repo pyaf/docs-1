@@ -23,7 +23,7 @@ You'll need to install `langchain-community` with `pip install -qU langchain-com
 
 To instantiate and configure the client you need to provide either the `url` or the `host` and `port` of your document indexing pipeline. In the code below we use a publicly available [demo pipeline](https://pathway.com/solutions/ai-pipelines#try-it-out), which REST API you can access at `https://demo-document-indexing.pathway.stream`. This demo ingests documents from [Google Drive](https://drive.google.com/drive/u/0/folders/1cULDv2OaViJBmOfG5WB0oWcgayNrGtVs) and [Sharepoint](https://navalgo.sharepoint.com/sites/ConnectorSandbox/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FConnectorSandbox%2FShared%20Documents%2FIndexerSandbox&p=true&ga=1) and maintains an index for retrieving documents.
 
-```python
+```python wrap
 from langchain_community.vectorstores import PathwayVectorClient
 
 client = PathwayVectorClient(url="https://demo-document-indexing.pathway.stream")
@@ -46,7 +46,7 @@ print(docs[0].page_content)
 
 We support document filtering using [jmespath](https://jmespath.org/) expressions, for instance:
 
-```python
+```python wrap
 # take into account only sources modified later than unix timestamp
 docs = client.similarity_search(query, metadata_filter="modified_at >= `1702672093`")
 

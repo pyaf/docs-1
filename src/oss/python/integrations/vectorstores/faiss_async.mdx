@@ -23,7 +23,7 @@ See `synchronous` version [here](/oss/integrations/vectorstores/faiss).
 
 We want to use OpenAIEmbeddings so we have to get the OpenAI API Key.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -140,7 +140,7 @@ db1.docstore._dict
 
 FAISS vectorstore can also support filtering, since the FAISS does not natively support filtering we have to do it manually. This is done by first fetching more results than `k` and then filtering them. You can filter the documents based on metadata. You can also set the `fetch_k` parameter when calling any search method to set how many documents you want to fetch before filtering. Here is a small example:
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 list_of_documents = [
@@ -168,7 +168,7 @@ Content: foo, Metadata: {'page': 4}, Score: 5.159960813797904e-15
 
 Now we make the same query call but we filter for only `page = 1`
 
-```python
+```python wrap
 results_with_scores = await db.asimilarity_search_with_score("foo", filter=dict(page=1))
 for doc, score in results_with_scores:
     print(f"Content: {doc.page_content}, Metadata: {doc.metadata}, Score: {score}")
@@ -194,7 +194,7 @@ Content: bar, Metadata: {'page': 1}
 
 Here is an example of how to set `fetch_k` parameter when calling `similarity_search`. Usually you would want the `fetch_k` parameter >> `k` parameter. This is because the `fetch_k` parameter is the number of documents that will be fetched before filtering. If you set `fetch_k` to a low number, you might not get enough documents to filter from.
 
-```python
+```python wrap
 results = await db.asimilarity_search("foo", filter=dict(page=1), k=1, fetch_k=4)
 for doc in results:
     print(f"Content: {doc.page_content}, Metadata: {doc.metadata}")

@@ -54,7 +54,7 @@ vector_store = OpenGauss(embedding=embeddings, config=config)
 
 ### Add items to vector store
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 document_1 = Document(page_content="foo", metadata={"source": "https://example.com"})

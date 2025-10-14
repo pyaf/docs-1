@@ -28,7 +28,7 @@ os.environ["TRUBRICS_EMAIL"] = "***@***"
 os.environ["TRUBRICS_PASSWORD"] = "***"
 ```
 
-```python
+```python wrap
 from langchain_community.callbacks.trubrics_callback import TrubricsCallbackHandler
 ```
 
@@ -36,7 +36,7 @@ from langchain_community.callbacks.trubrics_callback import TrubricsCallbackHand
 
 The `TrubricsCallbackHandler` can receive various optional arguments. See [here](https://trubrics.github.io/trubrics-sdk/platform/user_prompts/#saving-prompts-to-trubrics) for kwargs that can be passed to Trubrics prompts.
 
-```python
+```python wrap
 class TrubricsCallbackHandler(BaseCallbackHandler):
 
     """
@@ -68,7 +68,7 @@ from langchain_openai import OpenAI
 llm = OpenAI(callbacks=[TrubricsCallbackHandler()])
 ```
 
-```output
+```output wrap
 2023-09-26 11:30:02.149 | INFO     | trubrics.platform.auth:get_trubrics_auth_token:61 - User jeff.kayne@trubrics.com has been authenticated.
 ```
 
@@ -76,7 +76,7 @@ llm = OpenAI(callbacks=[TrubricsCallbackHandler()])
 res = llm.generate(["Tell me a joke", "Write me a poem"])
 ```
 
-```output
+```output wrap
 2023-09-26 11:30:07.760 | INFO     | trubrics.platform:log_prompt:102 - User prompt saved to Trubrics.
 2023-09-26 11:30:08.042 | INFO     | trubrics.platform:log_prompt:102 - User prompt saved to Trubrics.
 ```
@@ -152,7 +152,7 @@ chat_res = chat_llm.invoke(
 )
 ```
 
-```output
+```output wrap
 2023-09-26 11:30:10.550 | INFO     | trubrics.platform:log_prompt:102 - User prompt saved to Trubrics.
 ```
 

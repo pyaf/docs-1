@@ -32,7 +32,7 @@ To use Faiss vector stores, you'll need to install the `@langchain/community` in
 
 This guide will also use [OpenAI embeddings](/oss/integrations/text_embedding/openai), which require you to install the `@langchain/openai` integration package. You can also use [other supported embeddings models](/oss/integrations/text_embedding) if you wish.
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -121,7 +121,7 @@ Once your vector store has been created and the relevant documents have been add
 
 Performing a simple similarity search can be done as follows:
 
-```typescript
+```typescript wrap
 const similaritySearchResults = await vectorStore.similaritySearch("biology", 2);
 
 for (const doc of similaritySearchResults) {
@@ -129,7 +129,7 @@ for (const doc of similaritySearchResults) {
 }
 ```
 
-```output
+```output wrap
 * The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```
@@ -138,7 +138,7 @@ Filtering by metadata is currently not supported.
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
 
-```typescript
+```typescript wrap
 const similaritySearchWithScoreResults = await vectorStore.similaritySearchWithScore("biology", 2);
 
 for (const [doc, score] of similaritySearchWithScoreResults) {
@@ -146,7 +146,7 @@ for (const [doc, score] of similaritySearchWithScoreResults) {
 }
 ```
 
-```output
+```output wrap
 * [SIM=1.671] The powerhouse of the cell is the mitochondria [{"source":"https://example.com"}]
 * [SIM=1.705] Mitochondria are made out of lipids [{"source":"https://example.com"}]
 ```

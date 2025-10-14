@@ -31,7 +31,7 @@ Invoking the above graph will result in an error like this:
 graph.invoke({ "some_key": "someval" });
 ```
 
-```
+``` wrap
 InvalidUpdateError: Expected dict, got ['whoops']
 For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_GRAPH_NODE_RETURN_VALUE
 ```
@@ -68,7 +68,7 @@ Invoking the above graph will result in an error like this:
 await graph.invoke({ someKey: "someval" });
 ```
 
-```
+``` wrap
 InvalidUpdateError: Expected object, got ['whoops']
 For troubleshooting, visit: https://langchain-ai.github.io/langgraphjs/troubleshooting/errors/INVALID_GRAPH_NODE_RETURN_VALUE
 ```

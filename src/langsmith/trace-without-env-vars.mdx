@@ -22,7 +22,7 @@ Due to a number of asks for finer-grained control of tracing using the `trace` c
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith import Client, tracing_context, traceable
 from langsmith.wrappers import wrap_openai
@@ -57,7 +57,7 @@ with tracing_context(enabled=True):
   chat_pipeline("Can you summarize this morning's meetings?", langsmith_extra={"client": langsmith_client})
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 import { traceable } from "langsmith/traceable";
 import { wrapOpenAI } from "langsmith/wrappers";

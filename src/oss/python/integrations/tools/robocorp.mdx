@@ -25,7 +25,7 @@ We can add python function as actions as shown [here](https://github.com/robocor
 
 Let's add a dummy function to `action.py`.
 
-```python
+```python wrap
 @action
 def get_weather_forecast(city: str, days: int, scale: str = "celsius") -> str:
     """
@@ -67,7 +67,7 @@ Optionally you can set the following environment variables:
 
 We started the local action server, above, running on `http://localhost:8080`.
 
-```python
+```python wrap
 from langchain.agents import AgentExecutor, OpenAIFunctionsAgent
 from langchain_core.messages import SystemMessage
 from langchain_openai import ChatOpenAI
@@ -90,7 +90,7 @@ executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 executor.invoke("What is the current weather today in San Francisco in fahrenheit?")
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `robocorp_action_server_get_weather_forecast` with `{'city': 'San Francisco', 'days': 1, 'scale': 'fahrenheit'}`

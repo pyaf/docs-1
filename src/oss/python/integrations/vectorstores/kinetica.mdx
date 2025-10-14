@@ -67,7 +67,7 @@ def create_config() -> KineticaSettings:
     return KineticaSettings(host=HOST, username=USERNAME, password=PASSWORD)
 ```
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_core.documents import Document
@@ -139,7 +139,7 @@ uuids = [str(uuid4()) for _ in range(len(documents))]
 
 ## Similarity Search with Euclidean Distance (Default)
 
-```python
+```python wrap
 # The Kinetica Module will try to create a table with the name of the collection.
 # So, make sure that the collection name is unique and the user has the permission to create a table.
 
@@ -193,7 +193,7 @@ for res, score in results:
     print(f"* [SIM={score:3f}] {res.page_content} [{res.metadata}]")
 ```
 
-```output
+```output wrap
 Similarity Search
 * Building an exciting new project with LangChain - come check it out! [{'source': 'tweet'}]
 * LangGraph is the best framework for building stateful, agentic applications! [{'source': 'tweet'}]
@@ -243,7 +243,7 @@ docs_with_score[0]
 docs_with_score[1]
 ```
 
-```output
+```output wrap
 (Document(metadata={'source': 'tweet'}, page_content='Building an exciting new project with LangChain - come check it out!'),
  1.2609431743621826)
 ```
@@ -270,7 +270,7 @@ docs_with_score = db.similarity_search_with_score("foo")
 docs_with_score[0]
 ```
 
-```output
+```output wrap
 (Document(metadata={'source': 'tweet'}, page_content='Building an exciting new project with LangChain - come check it out!'),
  1.260920763015747)
 ```
@@ -285,6 +285,6 @@ retriever = store.as_retriever()
 print(retriever)
 ```
 
-```output
+```output wrap
 tags=['Kinetica', 'OpenAIEmbeddings'] vectorstore=<langchain_community.vectorstores.kinetica.Kinetica object at 0x7a48142b2230> search_kwargs={}
 ```

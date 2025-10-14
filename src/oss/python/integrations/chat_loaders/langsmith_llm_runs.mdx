@@ -74,7 +74,7 @@ class Calculator(BaseModel):
                 return "Cannot divide by zero"
 ```
 
-```python
+```python wrap
 from pprint import pprint
 
 from langchain_core.utils.function_calling import convert_pydantic_to_openai_function
@@ -84,7 +84,7 @@ openai_function_def = convert_pydantic_to_openai_function(Calculator)
 pprint(openai_function_def)
 ```
 
-```output
+```output wrap
 {'description': 'A calculator function',
  'name': 'Calculator',
  'parameters': {'description': 'A calculator function',
@@ -103,7 +103,7 @@ pprint(openai_function_def)
                 'type': 'object'}}
 ```
 
-```python
+```python wrap
 from langchain_core.output_parsers.openai_functions import PydanticOutputFunctionsParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -122,7 +122,7 @@ chain = (
 )
 ```
 
-```python
+```python wrap
 math_questions = [
     "What's 45/9?",
     "What's 81/9?",
@@ -202,7 +202,7 @@ training_data = convert_messages_for_finetuning(chat_sessions)
 
 Now, initiate the fine-tuning process using the OpenAI library.
 
-```python
+```python wrap
 import json
 import time
 from io import BytesIO

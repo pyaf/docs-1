@@ -26,7 +26,7 @@ Here, we will create a new Vespa application and deploy that using Docker.
 
 First, we need to create an application package:
 
-```python
+```python wrap
 from vespa.package import ApplicationPackage, Field, RankProfile
 
 app_package = ApplicationPackage(name="testapp")
@@ -82,7 +82,7 @@ please refer to the PyVespa application for how to connect.
 
 Now, let's load some documents:
 
-```python
+```python wrap
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import CharacterTextSplitter
 
@@ -106,7 +106,7 @@ To feed these to Vespa, we need to configure how the vector store should map to
 fields in the Vespa application. Then we create the vector store directly from
 this set of documents:
 
-```python
+```python wrap
 vespa_config = dict(
     page_content_field="text",
     embedding_field="embedding",
@@ -207,7 +207,7 @@ To use this vector store as a
 simply call the `as_retriever` function, which is a standard vector store
 method:
 
-```python
+```python wrap
 db = VespaStore.from_documents(docs, embedding_function, app=vespa_app, **vespa_config)
 retriever = db.as_retriever()
 query = "What did the president say about Ketanji Brown Jackson"
@@ -257,7 +257,7 @@ vespa_config.update(dict(metadata_fields=["date", "rating", "author"]))
 Now, when searching for these documents, these fields will be returned.
 Also, these fields can be filtered on:
 
-```python
+```python wrap
 db = VespaStore.from_documents(docs, embedding_function, app=vespa_app, **vespa_config)
 query = "What did the president say about Ketanji Brown Jackson"
 results = db.similarity_search(query, filter="rating > 3")
@@ -274,7 +274,7 @@ rather just write this yourself.
 
 First, let's add a BM25 ranking function to our application:
 
-```python
+```python wrap
 from vespa.package import FieldSet
 
 app_package.schema.add_field_set(FieldSet(name="default", fields=["text"]))
@@ -309,7 +309,7 @@ Hybrid search means using both a classic term-based search such as
 BM25 and a vector search and combining the results. We need to create
 a new rank profile for hybrid search on Vespa:
 
-```python
+```python wrap
 app_package.schema.add_rank_profile(
     RankProfile(
         name="hybrid",
@@ -324,7 +324,7 @@ db = VespaStore.from_documents(docs, embedding_function, app=vespa_app, **vespa_
 Here, we score each document as a combination of it's BM25 score and its
 distance score. We can query using a custom query:
 
-```python
+```python wrap
 query = "What did the president say about Ketanji Brown Jackson"
 query_embedding = embedding_function.embed_query(query)
 nearest_neighbor_expression = (

@@ -65,7 +65,7 @@ Here's an example that simulates a multi-turn customer support interaction. This
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openevals.simulators import run_multiturn_simulation, create_llm_simulated_user
 from openevals.types import ChatCompletionMessage
 from langsmith.wrappers import wrap_openai
@@ -108,7 +108,7 @@ simulator_result = run_multiturn_simulation(
 print(simulator_result)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAI } from "openai";
 import { wrapOpenAI } from "langsmith/wrappers/openai";
 import {
@@ -160,7 +160,7 @@ console.log(result);
 
 The response looks like this:
 
-```json
+```json wrap
 {
   "trajectory": [
     {
@@ -221,7 +221,7 @@ Here's an example:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openevals.simulators import run_multiturn_simulation, create_llm_simulated_user
 from openevals.llm import create_llm_as_judge
 from openevals.types import ChatCompletionMessage
@@ -280,7 +280,7 @@ def test_multiturn_message_with_openai():
     assert res["evaluator_results"][0]["score"]
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAI } from "openai";
 import { wrapOpenAI } from "langsmith/wrappers/openai";
 import * as ls from "langsmith/vitest";
@@ -379,7 +379,7 @@ Here's an example:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openevals.simulators import run_multiturn_simulation, create_llm_simulated_user
 from openevals.llm import create_llm_as_judge
 from openevals.types import ChatCompletionMessage
@@ -448,7 +448,7 @@ results = ls_client.evaluate(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAI } from "openai";
 import { Client } from "langsmith";
 import { wrapOpenAI } from "langsmith/wrappers/openai";
@@ -537,7 +537,7 @@ The above examples run using the same simulated user persona for all input examp
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openevals.simulators import run_multiturn_simulation, create_llm_simulated_user
 from openevals.llm import create_llm_as_judge
 from openevals.types import ChatCompletionMessage
@@ -613,7 +613,7 @@ results = ls_client.evaluate(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { OpenAI } from "openai";
 import { Client } from "langsmith";
 import { wrapOpenAI } from "langsmith/wrappers/openai";

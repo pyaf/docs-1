@@ -14,7 +14,7 @@ This package requires a PostgreSQL database with the `pgvector` extension.
 
 You can run the following command to spin up a container for a `pgvector` enabled Postgres instance:
 
-```shell
+```shell wrap
 docker run --name pgvector-container -e POSTGRES_USER=langchain -e POSTGRES_PASSWORD=langchain -e POSTGRES_DB=langchain -p 6024:5432 -d pgvector/pgvector:pg16
 ```
 
@@ -32,7 +32,7 @@ Install the integration library, `langchain-postgres`.
 
 Set your Postgres values to test the functionality in this notebook against a Postgres instance.
 
-```python
+```python wrap
 # @title Set your values or use the defaults to connect to Docker { display-mode: "form" }
 POSTGRES_USER = "langchain"  # @param {type: "string"}
 POSTGRES_PASSWORD = "langchain"  # @param {type: "string"}
@@ -177,7 +177,7 @@ await store.aadd_documents(docs)
 
 Add text directly to the vectorstore, if not structured as a Document.
 
-```python
+```python wrap
 import uuid
 
 all_texts = ["Apples and oranges", "Cars and airplanes", "Pineapple", "Train", "Banana"]
@@ -253,7 +253,7 @@ await store.areindex("my-hnsw-index")  # Re-index using the index name
 
 Remove a vector index.
 
-```python
+```python wrap
 await store.adrop_vector_index()  # Delete index using the default name
 await store.adrop_vector_index("my-hnsw-index")  # Delete index using the index name
 ```
@@ -334,7 +334,7 @@ A Vector Store can take advantage of relational data to filter similarity search
 | $and      | Logical (and)           |
 | $or       | Logical (or)            |
 
-```python
+```python wrap
 import uuid
 
 docs = [
@@ -374,7 +374,7 @@ Assuming there's a pre-existing table in PG DB: `products`, which stores product
 
 ### SQL query for table creation
 
-  ```
+  ``` wrap
     CREATE TABLE products (
         product_id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -391,7 +391,7 @@ Assuming there's a pre-existing table in PG DB: `products`, which stores product
 
 ### Insertion of records
 
-  ```
+  ``` wrap
 INSERT INTO
   products (name,
     description,
@@ -424,7 +424,7 @@ Here is how this table mapped to `PGVectorStore`:
 
 * **`metadata_json_column="metadata"`**: The `metadata` column can store any additional information about the products in a flexible JSON format. This allows for storing varied and complex data that doesn't fit into the standard columns.
 
-```python
+```python wrap
 # Set an existing table name
 TABLE_NAME = "products"
 # SCHEMA_NAME = "my_schema"

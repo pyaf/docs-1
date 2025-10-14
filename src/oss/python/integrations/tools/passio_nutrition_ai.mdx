@@ -79,7 +79,7 @@ prompt = hub.pull("hwchase17/openai-functions-agent")
 prompt.messages
 ```
 
-```output
+```output wrap
 [SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[], template='You are a helpful assistant')),
  MessagesPlaceholder(variable_name='chat_history', optional=True),
  HumanMessagePromptTemplate(prompt=PromptTemplate(input_variables=['input'], template='{input}')),
@@ -121,7 +121,7 @@ Hello! How can I assist you today?
 {'input': 'hi!', 'output': 'Hello! How can I assist you today?'}
 ```
 
-```python
+```python wrap
 agent_executor.invoke({"input": "how many calories are in a slice pepperoni pizza?"})
 ```
 
@@ -133,7 +133,7 @@ agent_executor.invoke(
 )
 ```
 
-```python
+```python wrap
 agent_executor.invoke(
     {
         "input": "I had sliced pepper jack cheese for a snack.  How much protein did I have?"
@@ -141,7 +141,7 @@ agent_executor.invoke(
 )
 ```
 
-```python
+```python wrap
 agent_executor.invoke(
     {
         "input": "I had sliced colby cheese for a snack. Give me calories for this Schnuck Markets product."
@@ -149,7 +149,7 @@ agent_executor.invoke(
 )
 ```
 
-```python
+```python wrap
 agent_executor.invoke(
     {
         "input": "I had chicken tikka masala for dinner.  how much calories, protein, and fat did I have with default quantity?"

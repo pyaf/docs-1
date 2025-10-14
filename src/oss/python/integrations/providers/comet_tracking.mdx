@@ -19,7 +19,7 @@ In this guide we will demonstrate how to track your LangChain Experiments, Evalu
 
 ### Install Comet and Dependencies
 
-```python
+```python wrap
 %pip install -qU  comet_ml langchain langchain-openai google-search-results spacy textstat pandas
 
 
@@ -50,7 +50,7 @@ os.environ["SERPAPI_API_KEY"] = "..."
 
 ### Scenario 1: Using just an LLM
 
-```python
+```python wrap
 from langchain_community.callbacks import CometCallbackHandler
 from langchain_core.callbacks import StdOutCallbackHandler
 from langchain_openai import OpenAI
@@ -72,7 +72,7 @@ comet_callback.flush_tracker(llm, finish=True)
 
 ### Scenario 2: Using an LLM in a Chain
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_community.callbacks import CometCallbackHandler
 from langchain_core.callbacks import StdOutCallbackHandler
@@ -101,7 +101,7 @@ comet_callback.flush_tracker(synopsis_chain, finish=True)
 
 ### Scenario 3: Using An Agent with Tools
 
-```python
+```python wrap
 from langchain.agents import initialize_agent, load_tools
 from langchain_community.callbacks import CometCallbackHandler
 from langchain_core.callbacks import StdOutCallbackHandler
@@ -140,7 +140,7 @@ In the snippet below, we will use the [ROUGE](https://huggingface.co/spaces/eval
 %pip install -qU  rouge-score
 ```
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_community.callbacks import CometCallbackHandler
 from langchain_core.callbacks import StdOutCallbackHandler

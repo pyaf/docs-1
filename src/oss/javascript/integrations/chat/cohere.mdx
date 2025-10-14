@@ -48,7 +48,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain ChatCohere integration lives in the `@langchain/cohere` package:
 
-```{=mdx}
+```{=mdx} wrap
 
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
@@ -98,7 +98,7 @@ const llmWithCustomClient = new ChatCohere({
 
 ## Invocation
 
-```typescript
+```typescript wrap
 const aiMsg = await llm.invoke([
     [
         "system",
@@ -109,7 +109,7 @@ const aiMsg = await llm.invoke([
 aiMsg
 ```
 
-```output
+```output wrap
 AIMessage {
   "content": "J'adore programmer.",
   "additional_kwargs": {
@@ -204,7 +204,7 @@ J'adore programmer.
 Cohere also comes out of the box with RAG support.
 You can pass in documents as context to the API request and Cohere's models will use them when generating responses.
 
-```typescript
+```typescript wrap
 import { ChatCohere } from "@langchain/cohere";
 import { HumanMessage } from "@langchain/core/messages";
 
@@ -264,7 +264,7 @@ const connectorsRes = await llmWithConnectors.invoke(
 console.dir(connectorsRes, { depth: null });
 ```
 
-```output
+```output wrap
 AIMessage {
   lc_serializable: true,
   lc_kwargs: {

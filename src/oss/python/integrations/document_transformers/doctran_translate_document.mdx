@@ -35,7 +35,7 @@ True
 
 This is the document we'll translate
 
-```python
+```python wrap
 sample_text = """[Generated with ChatGPT]
 
 Confidential Document - For Internal Use Only
@@ -90,7 +90,7 @@ translated_document = qa_translator.transform_documents(documents)
 print(translated_document[0].page_content)
 ```
 
-```output
+```output wrap
 Documento Confidencial - Solo para Uso Interno
 
 Fecha: 1 de Julio de 2023
@@ -141,7 +141,7 @@ result = await qa_translator.atransform_documents(documents)
 print(result[0].page_content)
 ```
 
-```output
+```output wrap
 Documento Confidencial - Solo para Uso Interno
 
 Fecha: 1 de Julio de 2023

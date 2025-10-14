@@ -42,7 +42,7 @@ from langsmith.client import Client
 client = Client()
 ```
 
-```python
+```python wrap
 import requests
 
 url = "https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/docs/integrations/chat_loaders/example_data/langsmith_chat_dataset.json"
@@ -68,7 +68,7 @@ _ = client.create_examples(
 
 Now we can create an instance of LangSmithRunChatLoader and load the chat sessions using its lazy_load() method.
 
-```python
+```python wrap
 from langchain_community.chat_loaders.langsmith import LangSmithDatasetChatLoader
 
 loader = LangSmithDatasetChatLoader(dataset_name=dataset_name)
@@ -88,7 +88,7 @@ training_data = convert_messages_for_finetuning(chat_sessions)
 
 Now, initiate the fine-tuning process using the OpenAI library.
 
-```python
+```python wrap
 import json
 import time
 from io import BytesIO
@@ -144,7 +144,7 @@ model = ChatOpenAI(
 model.invoke("There were three ravens sat on a tree.")
 ```
 
-```output
+```output wrap
 AIMessage(content='[{"s": "There were three ravens", "object": "tree", "relation": "sat on"}, {"s": "three ravens", "object": "a tree", "relation": "sat on"}]')
 ```
 

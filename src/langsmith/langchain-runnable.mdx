@@ -49,7 +49,7 @@ llm = init_chat_model("gpt-4o")
 chain = prompt | llm | StrOutputParser()
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";

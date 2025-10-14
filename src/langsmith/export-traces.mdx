@@ -152,7 +152,7 @@ If you have a list of run IDs, you can list them directly:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 run_ids = ['a36092d2-4ad5-4fb4-9c0d-0dba9a2ed836','9398e6be-964f-4aa4-8ae9-ad78cd4b7074']
 selected_runs = client.list_runs(id=run_ids)
 ```
@@ -183,7 +183,7 @@ Threads are grouped by setting a shared thread ID. The LangSmith UI lets you use
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 group_key = "<your_thread_id>"
 filter_string = f'and(in(metadata_key, ["session_id","conversation_id","thread_id"]), eq(metadata_value, "{group_key}"))'
 thread_runs = client.list_runs(
@@ -193,7 +193,7 @@ thread_runs = client.list_runs(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 const groupKey = "<your_thread_id>";
 const filterString = `and(in(metadata_key, ["session_id","conversation_id","thread_id"]), eq(metadata_value, "${groupKey}"))`;
 const threadRuns: Run[] = [];
@@ -280,11 +280,11 @@ client.listRuns({projectName: "<your_project>", filter: 'neq(error, null)'})
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.list_runs(project_name="<your_project>", filter='gt(start_time, "2023-07-15T12:34:56Z")')
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({projectName: "<your_project>", filter: 'gt(start_time, "2023-07-15T12:34:56Z")'})
 ```
 
@@ -322,14 +322,14 @@ client.listRuns({projectName: "<your_project>", filter: 'has(tags, "2aa1cf4")'})
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.list_runs(
   project_name="<your_project>",
   filter='and(gt(start_time, "2023-07-15T12:34:56Z"), or(neq(error, null), and(eq(feedback_key, "Correctness"), eq(feedback_score, 0.0))))'
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({
   projectName: "<your_project>",
   filter: 'and(gt(start_time, "2023-07-15T12:34:56Z"), or(neq(error, null), and(eq(feedback_key, "Correctness"), eq(feedback_score, 0.0))))'
@@ -349,7 +349,7 @@ client.list_runs(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({
   projectName: "<your_project>",
   filter: 'and(or(has(tags, "experimental"), has(tags, "beta")), gt(latency, 2))'
@@ -386,7 +386,7 @@ If you want to check for the presence of metadata, you can use the `eq` operator
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 to_search = {
     "user_id": ""
 }
@@ -403,7 +403,7 @@ client.list_runs(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // Check for any run with the "user_id" metadata key
 client.listRuns({
   projectName: 'default',
@@ -424,14 +424,14 @@ A common pattern is to add environment information to your traces via metadata. 
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.list_runs(
   project_name="default",
   filter="and(eq(metadata_key, 'environment'), eq(metadata_value, 'production'))"
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({
   projectName: 'default',
   filter: `and(eq(metadata_key, 'environment'), eq(metadata_value, 'production'))`
@@ -446,14 +446,14 @@ Another common way to associate traces in the same conversation is by using a sh
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.list_runs(
   project_name="default",
   filter="and(eq(metadata_key, 'conversation_id'), eq(metadata_value, 'a1b2c3d4-e5f6-7890'))"
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({
   projectName: 'default',
   filter: `and(eq(metadata_key, 'conversation_id'), eq(metadata_value, 'a1b2c3d4-e5f6-7890'))`
@@ -468,7 +468,7 @@ You can use negative filtering on metadata, input, and output key-value pairs to
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 # Find all runs where the metadata does not contain a "conversation_id" key
 client.list_runs(
   project_name="default",
@@ -494,7 +494,7 @@ client.list_runs(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 // Find all runs where the metadata does not contain a "conversation_id" key
 client.listRuns({
   projectName: 'default',
@@ -528,14 +528,14 @@ If you want to combine multiple conditions to refine your search, you can use th
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 client.list_runs(
   project_name="default",
   filter="and(eq(name, 'ChatOpenAI'), eq(metadata_key, 'conversation_id'), eq(metadata_value, '69b12c91-b1e2-46ce-91de-794c077e8151'))"
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 client.listRuns({
   projectName: 'default',
   filter: `and(eq(name, 'ChatOpenAI'), eq(metadata_key, 'conversation_id'), eq(metadata_value, '69b12c91-b1e2-46ce-91de-794c077e8151'))`
@@ -586,7 +586,7 @@ To optimize the query, the example:
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from collections import defaultdict
 from concurrent.futures import Future, ThreadPoolExecutor
 from datetime import datetime, timedelta
@@ -676,7 +676,7 @@ The following Python example demonstrates how to export retriever inputs and out
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from collections import defaultdict
 from concurrent.futures import Future, ThreadPoolExecutor
 from datetime import datetime, timedelta

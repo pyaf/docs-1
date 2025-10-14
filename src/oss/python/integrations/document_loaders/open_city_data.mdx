@@ -22,7 +22,7 @@ E.g., `tmnf-yvry` for [SF Police data](https://dev.socrata.com/foundry/data.sfgo
 from langchain_community.document_loaders import OpenCityDataLoader
 ```
 
-```python
+```python wrap
 dataset = "vw6y-z8j6"  # 311 data
 dataset = "tmnf-yvry"  # crime data
 loader = OpenCityDataLoader(city_id="data.sfgov.org", dataset_id=dataset, limit=2000)
@@ -32,7 +32,7 @@ loader = OpenCityDataLoader(city_id="data.sfgov.org", dataset_id=dataset, limit=
 docs = loader.load()
 ```
 
-```output
+```output wrap
 WARNING:root:Requests made without an app_token will be subject to strict throttling limits.
 ```
 

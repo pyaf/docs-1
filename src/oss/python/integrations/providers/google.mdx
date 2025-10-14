@@ -40,7 +40,7 @@ export GOOGLE_API_KEY="YOUR_API_KEY"
 Use the `ChatGoogleGenerativeAI` class to interact with Gemini models. See
 details in [this guide](/oss/integrations/chat/google_generative_ai).
 
-```python
+```python wrap
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 
@@ -138,13 +138,13 @@ from langchain_google_vertexai.model_garden import ChatAnthropicVertex
 
 #### Llama on Vertex AI Model Garden
 
-```python
+```python wrap
 from langchain_google_vertexai.model_garden_maas.llama import VertexModelGardenLlama
 ```
 
 #### Mistral on Vertex AI Model Garden
 
-```python
+```python wrap
 from langchain_google_vertexai.model_garden_maas.mistral import VertexModelGardenMistral
 ```
 
@@ -285,7 +285,7 @@ uv add langchain-google-alloydb-pg
 
 See [usage example](/oss/integrations/document_loaders/google_alloydb).
 
-```python
+```python wrap
 from langchain_google_alloydb_pg import AlloyDBLoader # AlloyDBEngine also available
 ```
 
@@ -351,7 +351,7 @@ uv add langchain-google-cloud-sql-mysql
 
 See [usage example](/oss/integrations/document_loaders/google_cloud_sql_mysql).
 
-```python
+```python wrap
 from langchain_google_cloud_sql_mysql import MySQLLoader # MySQLEngine also available
 ```
 
@@ -373,7 +373,7 @@ uv add langchain-google-cloud-sql-mssql
 
 See [usage example](/oss/integrations/document_loaders/google_cloud_sql_mssql).
 
-```python
+```python wrap
 from langchain_google_cloud_sql_mssql import MSSQLLoader # MSSQLEngine also available
 ```
 
@@ -395,7 +395,7 @@ uv add langchain-google-cloud-sql-pg
 
 See [usage example](/oss/integrations/document_loaders/google_cloud_sql_pg).
 
-```python
+```python wrap
 from langchain_google_cloud_sql_pg import PostgresLoader # PostgresEngine also available
 ```
 
@@ -660,7 +660,7 @@ uv add langchain-google-alloydb-pg
 
 See [usage example](/oss/integrations/vectorstores/google_alloydb).
 
-```python
+```python wrap
 from langchain_google_alloydb_pg import AlloyDBVectorStore # AlloyDBEngine also available
 ```
 
@@ -688,7 +688,7 @@ uv add google-cloud-bigquery
 
 See [usage example](/oss/integrations/vectorstores/google_bigquery_vector_search).
 
-```python
+```python wrap
 # Note: BigQueryVectorSearch might be in langchain or langchain_community depending on version
 # Check imports in the usage example.
 from langchain.vectorstores import BigQueryVectorSearch # Or langchain_community.vectorstores
@@ -778,7 +778,7 @@ uv add langchain-google-cloud-sql-mysql
 
 See [usage example](/oss/integrations/vectorstores/google_cloud_sql_mysql).
 
-```python
+```python wrap
 from langchain_google_cloud_sql_mysql import MySQLVectorStore # MySQLEngine also available
 ```
 
@@ -800,7 +800,7 @@ uv add langchain-google-cloud-sql-pg
 
 See [usage example](/oss/integrations/vectorstores/google_cloud_sql_pg).
 
-```python
+```python wrap
 from langchain_google_cloud_sql_pg import PostgresVectorStore # PostgresEngine also available
 ```
 
@@ -880,7 +880,7 @@ from langchain_google_community import VertexAIMultiTurnSearchRetriever
 
 ##### VertexAISearchRetriever
 
-```python
+```python wrap
 # Note: The example code shows VertexAIMultiTurnSearchRetriever, confirm if VertexAISearchRetriever is separate or related.
 # Assuming it might be related or a typo in the original doc:
 from langchain_google_community import VertexAISearchRetriever # Verify class name if needed
@@ -901,7 +901,7 @@ Note: `GoogleDocumentAIWarehouseRetriever` (from `langchain`) is deprecated. Use
 Requires installation of relevant Document AI packages (check specific docs).
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install langchain-google-community # Add specific docai dependencies if needed
 ```
 
@@ -910,7 +910,7 @@ uv add langchain-google-community # Add specific docai dependencies if needed
 ```
 </CodeGroup>
 
-```python
+```python wrap
 from langchain_google_community.documentai_warehouse import DocumentAIWarehouseRetriever
 ```
 
@@ -950,11 +950,11 @@ Tools for interacting with Google Drive.
 Install required packages:
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-```bash uv
+```bash uv wrap
 uv add google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 </CodeGroup>
@@ -971,7 +971,7 @@ from langchain_googledrive.tools.google_drive.tool import GoogleDriveSearchTool
 Query financial data. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -992,7 +992,7 @@ from langchain_community.utilities.google_finance import GoogleFinanceAPIWrapper
 Query job listings. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1003,7 +1003,7 @@ uv add google-search-results langchain-community # Requires langchain-community
 
 See [usage example and authorization instructions](/oss/integrations/tools/google_jobs).
 
-```python
+```python wrap
 from langchain_community.tools.google_jobs import GoogleJobsQueryRun
 # Note: Utilities might be shared, e.g., GoogleFinanceAPIWrapper was listed, verify correct utility
 # from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # If exists
@@ -1014,7 +1014,7 @@ from langchain_community.tools.google_jobs import GoogleJobsQueryRun
 Perform visual searches. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1046,7 +1046,7 @@ uv add googlemaps langchain # Requires base langchain
 
 See [usage example and authorization instructions](/oss/integrations/tools/google_places).
 
-```python
+```python wrap
 # Note: GooglePlacesTool might be in langchain or langchain_community depending on version
 from langchain.tools import GooglePlacesTool # Or langchain_community.tools
 ```
@@ -1056,7 +1056,7 @@ from langchain.tools import GooglePlacesTool # Or langchain_community.tools
 Search academic papers. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1111,7 +1111,7 @@ See [detailed notebook](/oss/integrations/tools/google_search).
 Query Google Trends data. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1225,7 +1225,7 @@ Requires `langchain-google-vertexai`.
 
 >Pair-wise evaluation using Vertex AI models.
 
-```python
+```python wrap
 from langchain_google_vertexai.evaluators.evaluation import VertexPairWiseStringEvaluator
 ```
 
@@ -1233,7 +1233,7 @@ from langchain_google_vertexai.evaluators.evaluation import VertexPairWiseString
 
 >Evaluate a single prediction string using Vertex AI models.
 
-```python
+```python wrap
 # Note: Original doc listed VertexPairWiseStringEvaluator twice. Assuming this class exists.
 from langchain_google_vertexai.evaluators.evaluation import VertexStringEvaluator # Verify class name if needed
 ```
@@ -1308,11 +1308,11 @@ Retrieve documents from Google Drive.
 Install required packages:
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-```bash uv
+```bash uv wrap
 uv add google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 </CodeGroup>
@@ -1332,11 +1332,11 @@ Tools for interacting with Google Drive.
 Install required packages:
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-```bash uv
+```bash uv wrap
 uv add google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 </CodeGroup>
@@ -1352,7 +1352,7 @@ from langchain_googledrive.tools.google_drive.tool import GoogleDriveSearchTool
 Query financial data. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1373,7 +1373,7 @@ from langchain_community.utilities.google_finance import GoogleFinanceAPIWrapper
 Query job listings. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1384,7 +1384,7 @@ uv add google-search-results langchain-community # Requires langchain-community
 
 See [usage example and authorization instructions](/oss/integrations/tools/google_jobs).
 
-```python
+```python wrap
 from langchain_community.tools.google_jobs import GoogleJobsQueryRun
 # Note: Utilities might be shared, e.g., GoogleFinanceAPIWrapper was listed, verify correct utility
 # from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # If exists
@@ -1395,7 +1395,7 @@ from langchain_community.tools.google_jobs import GoogleJobsQueryRun
 Perform visual searches. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash
+```bash wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1427,7 +1427,7 @@ uv add googlemaps langchain # Requires base langchain
 
 See [usage example and authorization instructions](/oss/integrations/tools/google_places).
 
-```python
+```python wrap
 # Note: GooglePlacesTool might be in langchain or langchain_community depending on version
 from langchain.tools import GooglePlacesTool # Or langchain_community.tools
 ```
@@ -1437,7 +1437,7 @@ from langchain.tools import GooglePlacesTool # Or langchain_community.tools
 Search academic papers. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash
+```bash wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1491,7 +1491,7 @@ See [detailed notebook](/oss/integrations/tools/google_search).
 Query Google Trends data. Requires `google-search-results` package and SerpApi key.
 
 <CodeGroup>
-```bash pip
+```bash pip wrap
 pip install google-search-results langchain-community # Requires langchain-community
 ```
 
@@ -1624,7 +1624,7 @@ from langchain.tools import YouTubeSearchTool # Or langchain_community.tools
 Download audio from YouTube videos. Requires `yt_dlp`, `pydub`, `librosa`.
 
 <CodeGroup>
-```bash
+```bash wrap
 pip install yt_dlp pydub librosa langchain-community # Requires langchain-community
 ```
 
@@ -1635,7 +1635,7 @@ uv add yt_dlp pydub librosa langchain-community # Requires langchain-community
 
 See [usage example and authorization instructions](/oss/integrations/document_loaders/youtube_audio).
 
-```python
+```python wrap
 from langchain_community.document_loaders.blob_loaders.youtube_audio import YoutubeAudioLoader
 # Often used with whisper parsers:
 # from langchain_community.document_loaders.parsers import OpenAIWhisperParser, OpenAIWhisperParserLocal
@@ -1646,7 +1646,7 @@ from langchain_community.document_loaders.blob_loaders.youtube_audio import Yout
 Load video transcripts. Requires `youtube-transcript-api`.
 
 <CodeGroup>
-```bash
+```bash wrap
 pip install youtube-transcript-api langchain-community # Requires langchain-community
 ```
 

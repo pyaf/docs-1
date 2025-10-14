@@ -21,7 +21,7 @@ os.environ["OPENAI_API_KEY"] = "insertapikey"
 
 ## Run as a chain
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_community.utilities.dalle_image_generator import DallEAPIWrapper
 from langchain_core.prompts import PromptTemplate
@@ -35,7 +35,7 @@ prompt = PromptTemplate(
 chain = LLMChain(llm=llm, prompt=prompt)
 ```
 
-```python
+```python wrap
 image_url = DallEAPIWrapper().run(chain.run("halloween night at a haunted museum"))
 ```
 
@@ -72,7 +72,7 @@ else:
 
 ## Run as a tool with an agent
 
-```python
+```python wrap
 from langchain_community.tools.openai_dalle_image_generation import (
     OpenAIDALLEImageGenerationTool,
 )

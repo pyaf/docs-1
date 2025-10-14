@@ -94,7 +94,7 @@ ISSUER_SUB_CLAIM_OVERRIDES='{"https://idp.yourdomain.com": "customClaim"}'
 
 If unset, the default value for this configuration uses the `oid` claim when Azure Entra ID is used as the identity provider:
 
-```
+``` wrap
 ISSUER_SUB_CLAIM_OVERRIDES='{"https://login.microsoftonline.com/": "oid", "https://sts.windows.net/": "oid", "https://login.microsoftonline.us/": "oid", "https://login.partner.microsoftonline.cn/": "oid"}'
 ```
 
@@ -179,7 +179,7 @@ This method of configuration is required in order to use SCIM with Okta.
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 config:
   authType: mixed
   hostname: https://langsmith.example.com # the domain of your instance (note no trailing slash)
@@ -192,7 +192,7 @@ config:
     oauthScopes: "email,profile,openid"
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 AUTH_TYPE=mixed
 INITIAL_ORG_ADMIN_EMAIL=test@email.com # Set this if required
@@ -233,7 +233,7 @@ SCIM is not compatible with this method of configuration. Refer to [**Via Okta I
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 config:
   authType: mixed
   hostname: https://langsmith.example.com # the domain of your instance (note no trailing slash)
@@ -246,7 +246,7 @@ config:
     oauthScopes: "email,profile,openid"
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 AUTH_TYPE=mixed
 INITIAL_ORG_ADMIN_EMAIL=test@email.com # Set this if required

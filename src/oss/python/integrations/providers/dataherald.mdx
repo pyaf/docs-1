@@ -37,7 +37,7 @@ For a more detailed walkthrough of this wrapper, see [this notebook](/oss/integr
 ### Tool
 
 You can use the tool in an agent like this:
-```python
+```python wrap
 from langchain_community.utilities.dataherald import DataheraldAPIWrapper
 from langchain_community.tools.dataherald.tool import DataheraldTextToSQL
 from langchain_openai import ChatOpenAI
@@ -54,7 +54,7 @@ agent_executor.invoke({"input":"Return the sql for this question: How many emplo
 ```
 
 Output
-```shell
+```shell wrap
 > Entering new AgentExecutor chain...
 I need to use a tool that can convert this question into SQL.
 Action: dataherald

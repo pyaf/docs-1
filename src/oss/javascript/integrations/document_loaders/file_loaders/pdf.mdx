@@ -34,7 +34,7 @@ To access `PDFLoader` document loader you'll need to install the `@langchain/com
 
 The LangChain PDFLoader integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -63,7 +63,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 Document {
   pageContent: 'Table of Contents\n' +
     'UNITED STATES\n' +
@@ -225,7 +225,7 @@ const noExtraSpacesDocs = await noExtraSpacesLoader.load();
 console.log(noExtraSpacesDocs[0].pageContent.slice(100, 250))
 ```
 
-```output
+```output wrap
 (Mark One)
 ☑ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934
 FOR THE FISCAL YEAR ENDED MAY 31, 2023
@@ -235,7 +235,7 @@ OR
 
 ## Loading directories
 
-```typescript
+```typescript wrap
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
@@ -276,7 +276,7 @@ Unknown file type: no_metadata.md
 Unknown file type: tags_and_frontmatter.md
 Unknown file type: test.mp3
 ```
-```output
+```output wrap
 Document {
   pageContent: 'Bitcoin: A Peer-to-Peer Electronic Cash System\n' +
     'Satoshi Nakamoto\n' +

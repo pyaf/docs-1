@@ -24,7 +24,7 @@ Use the `PsychicLoader` class to load in documents from a connection. Each conne
 [notice] To update, run: pip install -U pip
 ```
 
-```python
+```python wrap
 from langchain_community.document_loaders import PsychicLoader
 from psychicapi import ConnectorId
 
@@ -50,7 +50,7 @@ from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
 ```
 
-```python
+```python wrap
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
 

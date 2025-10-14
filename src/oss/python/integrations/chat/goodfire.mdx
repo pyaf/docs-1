@@ -26,7 +26,7 @@ To access Goodfire models you'll need to create a/an Goodfire account, get an AP
 
 Head to [Goodfire Settings](https://platform.goodfire.ai/organization/settings/api-keys) to sign up to Goodfire and generate an API key. Once you've done this set the GOODFIRE_API_KEY environment variable.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -36,7 +36,7 @@ if not os.getenv("GOODFIRE_API_KEY"):
 
 To enable automated tracing of your model calls, set your [LangSmith](https://docs.smith.langchain.com/) API key:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_TRACING"] = "true"
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 ```
@@ -71,13 +71,13 @@ llm = ChatGoodfire(
 )
 ```
 
-```output
+```output wrap
 None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
 ```
 
 ## Invocation
 
-```python
+```python wrap
 messages = [
     (
         "system",
@@ -89,7 +89,7 @@ ai_msg = await llm.ainvoke(messages)
 ai_msg
 ```
 
-```output
+```output wrap
 AIMessage(content="J'adore la programmation.", additional_kwargs={}, response_metadata={}, id='run-8d43cf35-bce8-4827-8935-c64f8fb78cd0-0', usage_metadata={'input_tokens': 51, 'output_tokens': 39, 'total_tokens': 90})
 ```
 
@@ -114,7 +114,7 @@ pirate_features = client.features.search(
 pirate_features
 ```
 
-```output
+```output wrap
 FeatureGroup([
    0: "The assistant should adopt the persona of a pirate",
    1: "The assistant should roleplay as a pirate",
@@ -138,7 +138,7 @@ pirate_variant.set(pirate_features[1], 0.3)
 await llm.ainvoke("Tell me a joke", model=pirate_variant)
 ```
 
-```output
+```output wrap
 AIMessage(content='Why did the scarecrow win an award? Because he was outstanding in his field! Arrr! Hope that made ye laugh, matey!', additional_kwargs={}, response_metadata={}, id='run-7d8bd30f-7f80-41cb-bdb6-25c29c22a7ce-0', usage_metadata={'input_tokens': 35, 'output_tokens': 60, 'total_tokens': 95})
 ```
 

@@ -30,7 +30,7 @@ Install the integration library, `langchain-google-cloud-sql-mysql`, and the lib
 
 **Colab only:** Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -61,7 +61,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -123,7 +123,7 @@ engine = MySQLEngine.from_instance(
 
 The `MySQLVectorStore` class requires a database table. The `MySQLEngine` class has a helper method `init_vectorstore_table()` that can be used to create a table with the proper schema for you.
 
-```python
+```python wrap
 engine.init_vectorstore_table(
     table_name=TABLE_NAME,
     vector_size=768,  # Vector size for VertexAI model(textembedding-gecko@latest)
@@ -170,7 +170,7 @@ store = MySQLVectorStore(
 
 ### Add texts
 
-```python
+```python wrap
 import uuid
 
 all_texts = ["Apples and oranges", "Cars and airplanes", "Pineapple", "Train", "Banana"]
@@ -210,7 +210,7 @@ docs = store.similarity_search_by_vector(query_vector, k=2)
 print(docs)
 ```
 
-```output
+```output wrap
 [Document(page_content='Pineapple', metadata={'len': 9}), Document(page_content='Banana', metadata={'len': 6})]
 ```
 
@@ -279,7 +279,7 @@ It can be helpful to narrow down the documents before working with them.
 
 For example, documents can be filtered on metadata using the `filter` argument.
 
-```python
+```python wrap
 import uuid
 
 # add texts to the vector store
@@ -295,6 +295,6 @@ docs = custom_store.similarity_search_by_vector(query_vector, filter="len >= 6")
 print(docs)
 ```
 
-```output
+```output wrap
 [Document(page_content='Pineapple', metadata={'len': 9}), Document(page_content='Banana', metadata={'len': 6}), Document(page_content='Apples and oranges', metadata={'len': 18}), Document(page_content='Cars and airplanes', metadata={'len': 18})]
 ```

@@ -29,7 +29,7 @@ You will need an API key that can be obtained from chat.maritaca.ai ("Chaves da 
 
 Let's define our language model, ChatMaritalk, and configure it with your API key.
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatMaritalk
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts.chat import ChatPromptTemplate
@@ -93,7 +93,7 @@ await async_invoke_chain("dog")
 
 For this example, we need to install some extra libraries:
 
-```python
+```python wrap
 !pip install unstructured rank_bm25 pdf2image pdfminer-six pikepdf pypdf unstructured_inference fastapi kaleido uvicorn "pillow<10.1.0" pillow_heif -q
 ```
 
@@ -101,7 +101,7 @@ For this example, we need to install some extra libraries:
 
 The first step is to create a database with the information from the notice. For this, we will download the notice from the COMVEST website and segment the extracted text into 500-character windows.
 
-```python
+```python wrap
 from langchain_community.document_loaders import OnlinePDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -131,7 +131,7 @@ retriever = BM25Retriever.from_documents(texts)
 
 Now that we have our searcher, we just need to implement a prompt specifying the task and invoke the chain.
 
-```python
+```python wrap
 from langchain.chains.question_answering import load_qa_chain
 
 prompt = """Baseado nos seguintes documentos, responda a pergunta abaixo.

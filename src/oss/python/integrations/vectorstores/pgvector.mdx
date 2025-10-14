@@ -27,7 +27,7 @@ pip install -qU langchain-postgres
 
 You can run the following command to spin up a postgres container with the `pgvector` extension:
 
-```python
+```python wrap
 %docker run --name pgvector-container -e POSTGRES_USER=langchain -e POSTGRES_PASSWORD=langchain -e POSTGRES_DB=langchain -p 6024:5432 -d pgvector/pgvector:pg16
 ```
 
@@ -37,7 +37,7 @@ There are no credentials needed to run this notebook, just make sure you downloa
 
 If you want to get best in-class automated tracing of your model calls you can also set your [LangSmith](https://docs.smith.langchain.com/) API key by uncommenting below:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 # os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -54,7 +54,7 @@ from langchain_openai import OpenAIEmbeddings
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 ```
 
-```python
+```python wrap
 from langchain_postgres import PGVector
 
 # See docker command above to launch a postgres instance with pgvector enabled.
@@ -75,7 +75,7 @@ vector_store = PGVector(
 
 Note that adding documents by ID will over-write any existing documents that match that ID.
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 docs = [
@@ -170,7 +170,7 @@ for doc in results:
     print(f"* {doc.page_content} [{doc.metadata}]")
 ```
 
-```output
+```output wrap
 * there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
 * the library hosts a weekly story time for kids [{'id': 9, 'topic': 'reading', 'location': 'library'}]
 * ducks are also found in the pond [{'id': 2, 'topic': 'animals', 'location': 'pond'}]
@@ -179,7 +179,7 @@ for doc in results:
 
 If you provide a dict with multiple fields, but no operators, the top level will be interpreted as a logical **AND** filter
 
-```python
+```python wrap
 vector_store.similarity_search(
     "ducks",
     k=10,
@@ -187,7 +187,7 @@ vector_store.similarity_search(
 )
 ```
 
-```output
+```output wrap
 [Document(metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond'),
  Document(metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond')]
 ```
@@ -205,7 +205,7 @@ vector_store.similarity_search(
 )
 ```
 
-```output
+```output wrap
 [Document(metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond'),
  Document(metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond')]
 ```
@@ -218,7 +218,7 @@ for doc, score in results:
     print(f"* [SIM={score:3f}] {doc.page_content} [{doc.metadata}]")
 ```
 
-```output
+```output wrap
 * [SIM=0.763449] there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
 ```
 
@@ -233,7 +233,7 @@ retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
 retriever.invoke("kitty")
 ```
 
-```output
+```output wrap
 [Document(metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 

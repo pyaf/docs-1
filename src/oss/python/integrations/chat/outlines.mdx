@@ -40,7 +40,7 @@ The LangChain Outlines integration lives in the `langchain-community` package an
 
 Now we can instantiate our model object and generate chat completions:
 
-```python
+```python wrap
 from langchain_community.chat_models.outlines import ChatOutlines
 
 # For llamacpp backend
@@ -80,7 +80,7 @@ for chunk in model.stream(messages):
 
 ## Chaining
 
-```python
+```python wrap
 from langchain_core.prompts import ChatPromptTemplate
 
 prompt = ChatPromptTemplate.from_messages(
@@ -109,7 +109,7 @@ ChatOutlines allows you to apply various constraints to the generated output:
 
 ### Regex Constraint
 
-```python
+```python wrap
 model.regex = r"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)"
 
 response = model.invoke("What is the IP address of Google's DNS server?")
@@ -119,7 +119,7 @@ response.content
 
 ### Type Constraints
 
-```python
+```python wrap
 model.type_constraints = int
 response = model.invoke("What is the answer to life, the universe, and everything?")
 
@@ -164,7 +164,7 @@ response.content
 
 You can also use LangChain's Structured Output with ChatOutlines:
 
-```python
+```python wrap
 from pydantic import BaseModel
 
 

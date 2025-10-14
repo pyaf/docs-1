@@ -12,7 +12,7 @@ And install the `langchain-oceanbase` integration package.
 %pip install -qU "langchain-oceanbase"
 Check the connection to OceanBase and set the memory usage ratio for vector data:
 
-```python
+```python wrap
 from pyobvector import ObVecClient
 
 tmp_client = ObVecClient()
@@ -62,7 +62,7 @@ vector_store = OceanbaseVectorStore(
 
 - TODO: Edit and then run code cell to generate output
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 document_1 = Document(page_content="foo", metadata={"source": "https://foo.com"})

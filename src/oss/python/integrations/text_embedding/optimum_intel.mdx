@@ -8,7 +8,7 @@ The embedders are based on optimized models, created by using [optimum-intel](ht
 
 Example text is based on [SBERT](https://www.sbert.net/docs/pretrained_cross-encoders.html).
 
-```python
+```python wrap
 from langchain_community.embeddings import QuantizedBiEncoderEmbeddings
 
 model_name = "Intel/bge-small-en-v1.5-rag-int8-static"
@@ -21,7 +21,7 @@ model = QuantizedBiEncoderEmbeddings(
 )
 ```
 
-```output
+```output wrap
 loading configuration file inc_config.json from cache at
 INCConfig {
   "distillation": {},
@@ -48,7 +48,7 @@ We can check better suits our query.
 question = "How many people live in Berlin?"
 ```
 
-```python
+```python wrap
 documents = [
     "Berlin had a population of 3,520,031 registered inhabitants in an area of 891.82 square kilometers.",
     "Berlin is well known for its museums.",

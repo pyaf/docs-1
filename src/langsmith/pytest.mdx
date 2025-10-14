@@ -42,7 +42,7 @@ To track a test in LangSmith add the `@pytest.mark.langsmith` decorator. Every d
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 ###################### my_app/main.py ######################
 import openai
 from langsmith import traceable, wrappers
@@ -159,7 +159,7 @@ This will create/sync an example with name "test_cd", inputs `{"c": 5}` and refe
 
 By default LangSmith collects the pass/fail rate under the `pass` feedback key for each test case. You can add additional feedback with `log_feedback`.
 
-```python
+```python wrap
 import openai
 import pytest
 from langsmith import wrappers
@@ -221,7 +221,7 @@ We generally recommend setting `LANGSMITH_TEST_SUITE` to get a consolidated view
 
 You can name an experiment using the `LANGSMITH_EXPERIMENT` env var:
 
-```bash
+```bash wrap
 LANGSMITH_TEST_SUITE="SQL app tests" LANGSMITH_EXPERIMENT="baseline" pytest tests/
 ```
 
@@ -245,7 +245,7 @@ All requests will be cached to `tests/cassettes` and loaded from there on subseq
 
 In `langsmith>=0.4.10`, you may selectively enable caching for requests to individual URLs or hostnames like this:
 
-```python
+```python wrap
 @pytest.mark.langsmith(cached_hosts=["api.openai.com", "https://api.anthropic.com"])
 def my_test():
     ...
@@ -360,7 +360,7 @@ This will log the binary "expectation" score to the experiment results, addition
 
 `expect` also provides "fuzzy match" methods. For example:
 
-```python
+```python wrap
 @pytest.mark.langsmith(output_keys=["expectation"])
 @pytest.mark.parametrize(
     "query, expectation",

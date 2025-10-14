@@ -170,7 +170,7 @@ Content: bar --- Similiarity: 0.8434
 Content: bar --- Similiarity: 0.8434
 ```
 
-```python
+```python wrap
 # you can also add new documents as follows
 new_document = ["baz"]
 new_metadata = [{"user": "sam", "age": 50, "job": "janitor", "credit_score": "high"}]
@@ -211,7 +211,7 @@ docs = retriever.invoke(query)
 docs
 ```
 
-```output
+```output wrap
 [Document(page_content='foo', metadata={'id': 'doc:users_modified:988ecca7574048e396756efc0e79aeca', 'user': 'john', 'job': 'engineer', 'credit_score': 'high', 'age': '18'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:009b1afeb4084cc6bdef858c7a99b48e', 'user': 'derrick', 'job': 'doctor', 'credit_score': 'low', 'age': '45'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:7087cee9be5b4eca93c30fbdd09a2731', 'user': 'nancy', 'job': 'doctor', 'credit_score': 'high', 'age': '94'}),
@@ -232,7 +232,7 @@ docs = retriever.invoke(query)
 docs
 ```
 
-```output
+```output wrap
 [Document(page_content='foo', metadata={'id': 'doc:users_modified:988ecca7574048e396756efc0e79aeca', 'user': 'john', 'job': 'engineer', 'credit_score': 'high', 'age': '18'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:009b1afeb4084cc6bdef858c7a99b48e', 'user': 'derrick', 'job': 'doctor', 'credit_score': 'low', 'age': '45'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:7087cee9be5b4eca93c30fbdd09a2731', 'user': 'nancy', 'job': 'doctor', 'credit_score': 'high', 'age': '94'})]
@@ -251,7 +251,7 @@ retriever = vds.as_retriever(
 retriever.invoke("foo")
 ```
 
-```output
+```output wrap
 [Document(page_content='foo', metadata={'id': 'doc:users_modified:988ecca7574048e396756efc0e79aeca', 'user': 'john', 'job': 'engineer', 'credit_score': 'high', 'age': '18'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:009b1afeb4084cc6bdef858c7a99b48e', 'user': 'derrick', 'job': 'doctor', 'credit_score': 'low', 'age': '45'}),
  Document(page_content='foo', metadata={'id': 'doc:users_modified:7087cee9be5b4eca93c30fbdd09a2731', 'user': 'nancy', 'job': 'doctor', 'credit_score': 'high', 'age': '94'})]
@@ -261,7 +261,7 @@ retriever.invoke("foo")
 retriever.invoke("foo")
 ```
 
-```output
+```output wrap
 [Document(page_content='foo', metadata={'id': 'doc:users:8f6b673b390647809d510112cde01a27', 'user': 'john', 'job': 'engineer', 'credit_score': 'high', 'age': '18'}),
  Document(page_content='bar', metadata={'id': 'doc:users:93521560735d42328b48c9c6f6418d6a', 'user': 'tyler', 'job': 'engineer', 'credit_score': 'high', 'age': '100'}),
  Document(page_content='foo', metadata={'id': 'doc:users:125ecd39d07845eabf1a699d44134a5b', 'user': 'nancy', 'job': 'doctor', 'credit_score': 'high', 'age': '94'}),
@@ -272,7 +272,7 @@ retriever.invoke("foo")
 
 To delete your entries you have to address them by their keys.
 
-```python
+```python wrap
 # delete the indices too
 InMemoryVectorStore.drop_index(
     index_name="users", delete_documents=True, redis_url="redis://localhost:6379"

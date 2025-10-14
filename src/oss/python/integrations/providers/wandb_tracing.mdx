@@ -25,14 +25,14 @@ from langchain.agents import AgentType, initialize_agent, load_tools
 from langchain_openai import OpenAI
 ```
 
-```python
+```python wrap
 # Agent run with tracing. Ensure that OPENAI_API_KEY is set appropriately to run this example.
 
 llm = OpenAI(temperature=0)
 tools = load_tools(["llm-math"], llm=llm)
 ```
 
-```python
+```python wrap
 agent = initialize_agent(
     tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
 )

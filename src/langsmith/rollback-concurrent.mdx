@@ -92,7 +92,7 @@ Now let's run a thread with the multitask parameter set to "rollback":
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     # the first run will be rolled back
     rolled_back_run = await client.runs.create(
         thread["thread_id"],
@@ -110,7 +110,7 @@ Now let's run a thread with the multitask parameter set to "rollback":
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     // the first run will be interrupted
     let rolledBackRun = await client.runs.create(
       thread["thread_id"],
@@ -132,7 +132,7 @@ Now let's run a thread with the multitask parameter set to "rollback":
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     curl --request POST \
     --url <DEPLOY<ENT_URL>>/threads/<THREAD_ID>/runs \
     --header 'Content-Type: application/json' \
@@ -175,7 +175,7 @@ We can see that the thread has data only from the second run
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     source pretty_print.sh && curl --request GET \
     --url <DEPLOYMENT_URL>/threads/<THREAD_ID>/state | \
     jq -c '.values.messages[]' | while read -r element; do
@@ -189,7 +189,7 @@ We can see that the thread has data only from the second run
 
 Output:
 
-```
+``` wrap
 ================================ Human Message =================================
 
 what's the weather in nyc?

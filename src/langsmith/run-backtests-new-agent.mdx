@@ -37,7 +37,7 @@ uv add langsmith langchain langchain-anthropic langchainhub emoji
 ```
 </CodeGroup>
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -61,7 +61,7 @@ os.environ["TAVILY_API_KEY"] = "YOUR TAVILY API KEY"
 
 For this example lets create a simple Tweet-writing application that has access to some internet search tools:
 
-```python
+```python wrap
 from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
 from langchain_community.tools import DuckDuckGoSearchRun, TavilySearchResults
@@ -98,7 +98,7 @@ agent = create_agent(gpt_3_5_turbo, tools=tools, state_modifier=instructions)
 
 Now lets simulate some production data:
 
-```python
+```python wrap
 fake_production_inputs = [
     "Alan turing's early childhood",
     "Economic impacts of the European Union",
@@ -126,7 +126,7 @@ The first step is to generate a dataset based on the production *inputs*. Then c
 
 You can select the runs to backtest on using the `filter` argument of `list_runs`. The `filter` argument uses the LangSmith [trace query syntax](/langsmith/trace-query-syntax) to select runs.
 
-```python
+```python wrap
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
 from langsmith import Client
@@ -155,7 +155,7 @@ prod_runs = list(
 1. The inputs, and optionally the outputs, are saved to a dataset as Examples.
 2. The inputs and outputs are stored as an experiment, as if you had run the `evaluate` function and received those outputs.
 
-```python
+```python wrap
 # Name of the dataset we want to create
 dataset_name = f'{project_name}-backtesting {start_time.strftime("%Y-%m-%d")}-{end_time.strftime("%Y-%m-%d")}'
 # Name of the experiment we want to create from the historical runs
@@ -188,7 +188,7 @@ Now we can start the process of benchmarking our production runs against a new s
 
 First let's define the evaluators we will use to compare the two systems. Note that we have no reference outputs, so we'll need to come up with evaluation metrics that only require the actual outputs.
 
-```python
+```python wrap
 import emoji
 from pydantic import BaseModel, Field
 from langchain_core.messages import convert_to_openai_messages

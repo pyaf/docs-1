@@ -26,7 +26,7 @@ Safari blocks plain-HTTP traffic on localhost. When running Studio with `langgra
 
 The command outputs a URL in this format:
 
-```shell
+```shell wrap
 https://smith.langchain.com/studio/?baseUrl=https://hamilton-praise-heart-costumes.trycloudflare.com
 ```
 
@@ -63,7 +63,7 @@ Disable Brave Shields for LangSmith using the Brave icon in the URL bar.
 
 The command outputs a URL in this format:
 
-```shell
+```shell wrap
 https://smith.langchain.com/studio/?baseUrl=https://hamilton-praise-heart-costumes.trycloudflare.com
 ```
 
@@ -80,12 +80,12 @@ Define a mapping between router outputs and target nodes:
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     graph.add_conditional_edges("node_a", routing_function, {True: "node_b", False: "node_c"})
     ```
     </Tab>
     <Tab title="Javascript">
-    ```ts
+    ```ts wrap
     graph.addConditionalEdges("node_a", routingFunction, { true: "node_b", false: "node_c" });
     ```
     </Tab>

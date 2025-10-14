@@ -36,7 +36,7 @@ Lemon AI automatically solves given tasks by finding the right combination of re
 
 Similar to [OpenAI functions](https://openai.com/blog/function-calling-and-other-api-updates), Lemon AI provides the option to define workflows as reusable functions. These functions can be defined for use cases where it is especially important to move as close as possible to near-deterministic behavior. Specific workflows can be defined in a separate lemonai.json:
 
-```json
+```json wrap
 [
   {
     "name": "Hackernews Airtable User Workflow",
@@ -61,13 +61,13 @@ from lemonai import execute_workflow
 
 To use tools that require authentication, you have to store the corresponding access credentials in your environment in the format `"{tool name}_{authentication string}"` where the authentication string is one of ["API_KEY", "SECRET_KEY", "SUBSCRIPTION_KEY", "ACCESS_KEY"] for API keys or ["ACCESS_TOKEN", "SECRET_TOKEN"] for authentication tokens. Examples are "OPENAI_API_KEY", "BING_SUBSCRIPTION_KEY", "AIRTABLE_ACCESS_TOKEN".
 
-```python
+```python wrap
 """ Load all relevant API Keys and Access Tokens into your environment variables """
 os.environ["OPENAI_API_KEY"] = "*INSERT OPENAI API KEY HERE*"
 os.environ["AIRTABLE_ACCESS_TOKEN"] = "*INSERT AIRTABLE TOKEN HERE*"
 ```
 
-```python
+```python wrap
 hackernews_username = "*INSERT HACKERNEWS USERNAME HERE*"
 airtable_base_id = "*INSERT BASE ID HERE*"
 airtable_table_id = "*INSERT TABLE ID HERE*"
@@ -91,7 +91,7 @@ execute_workflow(llm=model, prompt_string=prompt)
 
 To gain transparency on how your Agent interacts with Lemon AI tools to solve a given task, all decisions made, tools used and operations performed are written to a local `lemonai.log` file. Every time your LLM agent is interacting with the Lemon AI tool stack a corresponding log entry is created.
 
-```log
+```log wrap
 2023-06-26T11:50:27.708785+0100 - b5f91c59-8487-45c2-800a-156eac0c7dae - hackernews-get-user
 2023-06-26T11:50:39.624035+0100 - b5f91c59-8487-45c2-800a-156eac0c7dae - airtable-append-data
 2023-06-26T11:58:32.925228+0100 - 5efe603c-9898-4143-b99a-55b50007ed9d - hackernews-get-user

@@ -341,7 +341,7 @@ The main supported way to initialize a `CacheBackedEmbeddings` is `fromBytesStor
 - `CacheBackedEmbeddings` does not cache query embeddings by default. To enable this, specify a `query_embedding_store`.
 </Important>
 
-```typescript
+```typescript wrap
 import { CacheBackedEmbeddings } from "langchain/embeddings/cache_backed";
 import { InMemoryStore } from "@langchain/core/stores";
 

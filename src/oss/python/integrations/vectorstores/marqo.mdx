@@ -10,7 +10,7 @@ You'll need to install `langchain-community` with `pip install -qU langchain-com
 
 To run this notebook with our docker image please run the following commands first to get Marqo:
 
-```
+``` wrap
 docker pull marqoai/marqo:latest
 docker rm -f marqo
 docker run --name marqo -it --privileged -p 8882:8882 --add-host host.docker.internal:host-gateway marqoai/marqo:latest
@@ -35,7 +35,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 docs = text_splitter.split_documents(documents)
 ```
 
-```python
+```python wrap
 import marqo
 
 # initialize marqo
@@ -60,7 +60,7 @@ Index langchain-demo exists.
 print(result_docs[0].page_content)
 ```
 
-```output
+```output wrap
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
 
 Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.
@@ -75,7 +75,7 @@ result_docs = docsearch.similarity_search_with_score(query)
 print(result_docs[0][0].page_content, result_docs[0][1], sep="\n")
 ```
 
-```output
+```output wrap
 Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections.
 
 Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service.
@@ -98,7 +98,7 @@ The documents that are returned are customised by passing your own function to t
 
 #### Multimodal Example
 
-```python
+```python wrap
 # use a new index
 index_name = "langchain-multimodal-demo"
 
@@ -139,7 +139,7 @@ client.index(index_name).add_documents(
    'status': 201}]}
 ```
 
-```python
+```python wrap
 def get_content(res):
     """Helper to format Marqo's documents into text to be used as page_content"""
     return f"{res['caption']}: {res['image']}"
@@ -157,14 +157,14 @@ for doc in doc_results:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 Plane: https://raw.githubusercontent.com/marqo-ai/marqo/mainline/examples/ImageSearchGuide/data/image2.jpg
 Bus: https://raw.githubusercontent.com/marqo-ai/marqo/mainline/examples/ImageSearchGuide/data/image4.jpg
 ```
 
 #### Text only example
 
-```python
+```python wrap
 # use a new index
 index_name = "langchain-byo-index-demo"
 
@@ -204,7 +204,7 @@ client.index(index_name).add_documents(
    'status': 201}]}
 ```
 
-```python
+```python wrap
 # Note text indexes retain the ability to use add_texts despite different field names in documents
 # this is because the page_content_builder callback lets you handle these document fields as required
 
@@ -232,11 +232,11 @@ doc_results = docsearch.similarity_search(query)
 print(doc_results[0].page_content)
 ```
 
-```output
+```output wrap
 A smartphone is a portable computer device that combines mobile telephone functions and computing functions into one unit.
 ```
 
-```python
+```python wrap
 query = "elephants"
 doc_results = docsearch.similarity_search(query, page_content_builder=get_content)
 
@@ -257,7 +257,7 @@ doc_results = docsearch.similarity_search(query)
 print(doc_results[0].page_content)
 ```
 
-```output
+```output wrap
 A smartphone is a portable computer device that combines mobile telephone functions and computing functions into one unit.
 ```
 
@@ -267,7 +267,7 @@ doc_results = docsearch.similarity_search(query)
 print(doc_results[0].page_content)
 ```
 
-```output
+```output wrap
 A telephone is a telecommunications device that permits two or more users toconduct a conversation when they are too far apart to be easily heard directly.
 ```
 
@@ -306,7 +306,7 @@ docsearch = Marqo.from_documents(docs, index_name=index_name)
 Index langchain-qa-with-retrieval exists.
 ```
 
-```python
+```python wrap
 chain = RetrievalQAWithSourcesChain.from_chain_type(
     OpenAI(temperature=0), chain_type="stuff", retriever=docsearch.as_retriever()
 )
@@ -319,7 +319,7 @@ chain(
 )
 ```
 
-```output
+```output wrap
 {'answer': ' The president honored Justice Breyer, thanking him for his service and noting that he is a retiring Justice of the United States Supreme Court.\n',
  'sources': '../../../state_of_the_union.txt'}
 ```

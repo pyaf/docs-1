@@ -27,7 +27,7 @@ cosmosdb_db_graph_id = "mygraph"
 cosmosdb_access_Key = "longstring=="
 ```
 
-```python
+```python wrap
 import nest_asyncio
 from langchain_community.chains.graph_qa.gremlin import GremlinQAChain
 from langchain_community.graphs import GremlinGraph
@@ -52,7 +52,7 @@ For Gremlin, always add property called 'label' for each Node.
 If no label is set, Node.type is used as a label.
 For cosmos using natural id's make sense, as they are visible in the graph explorer.
 
-```python
+```python wrap
 source_doc = Document(
     page_content="Matrix is a movie where Keanu Reeves, Laurence Fishburne and Carrie-Anne Moss acted."
 )

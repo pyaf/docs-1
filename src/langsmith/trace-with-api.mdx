@@ -21,7 +21,7 @@ In the simple example, you do not need to set the `dotted_order` opr `trace_id` 
 
 The following example shows how you might leverage our API directly in Python. The same principles apply to other languages.
 
-```python
+```python wrap
 import openai
 import os
 import requests
@@ -102,7 +102,7 @@ See the doc on the [Run (span) data format](/langsmith/run-data-format) for more
 
 For faster ingestion of runs and higher rate limits, you can use the POST `/runs/multipart` [link](https://api.smith.langchain.com/redoc#tag/run/operation/multipart_ingest_runs_api_v1_runs_multipart_post) endpoint. Below is an example. It requires `orjson` (for fast json ) and `requests_toolbelt` to run
 
-```python
+```python wrap
 import json
 import os
 import uuid

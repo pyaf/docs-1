@@ -22,7 +22,7 @@ To run this notebook, you will need to do the following:
 
 After confirmed access to database in the runtime environment of this notebook, filling the following values and run the cell before running example scripts.
 
-```python
+```python wrap
 # @markdown Please fill in the both the Google Cloud region and name of your Cloud SQL instance.
 REGION = "us-central1"  # @param {type:"string"}
 INSTANCE = "test-instance"  # @param {type:"string"}
@@ -46,7 +46,7 @@ The integration lives in its own `langchain-google-cloud-sql-mssql` package, so 
 
 **Colab only**: Uncomment the following cell to restart the kernel or use the button to restart the kernel. For Vertex AI Workbench you can restart the terminal using the button on top.
 
-```python
+```python wrap
 # # Automatically restart kernel after installs so that your environment can access the new packages
 # import IPython
 
@@ -77,7 +77,7 @@ If you don't know your project ID, try the following:
 * Run `gcloud projects list`.
 * See the support page: [Locate the project ID](https://support.google.com/googleapi/answer/7014113).
 
-```python
+```python wrap
 # @markdown Please fill in the value below with your Google Cloud project ID and then run the cell.
 
 PROJECT_ID = "my-project-id"  # @param {type:"string"}
@@ -185,7 +185,7 @@ for doc in docs:
 
 Other than loading documents from a table, we can also choose to load documents from a view generated from a SQL query. For example:
 
-```python
+```python wrap
 from langchain_google_cloud_sql_mssql import MSSQLLoader
 
 loader = MSSQLLoader(
@@ -225,7 +225,7 @@ print("Documents after delete:", loader.load())
 
 First we prepare an example table with non-default schema, and populate it with some arbitrary data.
 
-```python
+```python wrap
 import sqlalchemy
 
 with engine.connect() as conn:

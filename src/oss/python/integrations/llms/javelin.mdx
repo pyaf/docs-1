@@ -21,7 +21,7 @@ Before we begin, we must install the `javelin_sdk` and set up the Javelin API ke
 pip install 'javelin_sdk'
 ```
 
-```output
+```output wrap
 Requirement already satisfied: javelin_sdk in /usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages (0.1.8)
 Requirement already satisfied: httpx<0.25.0,>=0.24.0 in /usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages (from javelin_sdk) (0.24.1)
 Requirement already satisfied: pydantic<2.0.0,>=1.10.7 in /usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages (from javelin_sdk) (1.10.12)
@@ -40,7 +40,7 @@ Note: you may need to restart the kernel to use updated packages.
 This section will demonstrate how to interact with the Javelin AI Gateway to get completions from a large language model. Here is a Python script that demonstrates this:
 (note) assumes that you have setup a route in the gateway called 'eng_dept03'
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_community.llms import JavelinAIGateway
 from langchain_core.prompts import PromptTemplate
@@ -74,7 +74,7 @@ Cell In[6], line 2
       3 from langchain.prompts import PromptTemplate
       5 route_completions = "eng_dept03"
 ```
-```output
+```output wrap
 ImportError: cannot import name 'JavelinAIGateway' from 'langchain.llms' (/usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages/langchain/llms/__init__.py)
 ```
 
@@ -83,7 +83,7 @@ ImportError: cannot import name 'JavelinAIGateway' from 'langchain.llms' (/usr/l
 This section demonstrates how to use the Javelin AI Gateway to obtain embeddings for text queries and documents. Here is a Python script that illustrates this:
 (note) assumes that you have setup a route in the gateway called 'embeddings'
 
-```python
+```python wrap
 from langchain_community.embeddings import JavelinAIGatewayEmbeddings
 
 embeddings = JavelinAIGatewayEmbeddings(
@@ -101,7 +101,7 @@ print(embeddings.embed_documents(["hello"]))
 ```output
 ImportError                               Traceback (most recent call last)
 ```
-```output
+```output wrap
 Cell In[9], line 1
 ----> 1 from langchain.embeddings import JavelinAIGatewayEmbeddings
       2 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -110,7 +110,7 @@ Cell In[9], line 1
             6     route="embeddings",
       7 )
 ```
-```output
+```output wrap
 ImportError: cannot import name 'JavelinAIGatewayEmbeddings' from 'langchain.embeddings' (/usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages/langchain/embeddings/__init__.py)
 ```
 
@@ -119,7 +119,7 @@ ImportError: cannot import name 'JavelinAIGatewayEmbeddings' from 'langchain.emb
 This section illustrates how to interact with the Javelin AI Gateway to facilitate a chat with a large language model. Here is a Python script that demonstrates this:
 (note) assumes that you have setup a route in the gateway called 'mychatbot_route'
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatJavelinAIGateway
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -148,7 +148,7 @@ print(chat(messages))
 ```output
 ImportError                               Traceback (most recent call last)
 ```
-```output
+```output wrap
 Cell In[8], line 1
 ----> 1 from langchain.chat_models import ChatJavelinAIGateway
       2 from langchain.schema import HumanMessage, SystemMessage
@@ -159,7 +159,7 @@ Cell In[8], line 1
      10     ),
      11 ]
 ```
-```output
+```output wrap
 ImportError: cannot import name 'ChatJavelinAIGateway' from 'langchain.chat_models' (/usr/local/Caskroom/miniconda/base/lib/python3.11/site-packages/langchain/chat_models/__init__.py)
 ```
 

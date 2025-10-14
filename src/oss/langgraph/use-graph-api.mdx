@@ -75,7 +75,7 @@ This state tracks a list of [message](https://python.langchain.com/docs/concepts
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { BaseMessage } from "@langchain/core/messages";
 import { MessagesZodMeta } from "@langchain/langgraph";
 import { registry } from "@langchain/langgraph/zod";
@@ -187,20 +187,20 @@ result = graph.invoke({"messages": [HumanMessage("Hi")]})
 result
 ```
 
-```
+``` wrap
 {'messages': [HumanMessage(content='Hi'), AIMessage(content='Hello!')], 'extra_field': 10}
 ```
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { HumanMessage } from "@langchain/core/messages";
 
 const result = await graph.invoke({ messages: [new HumanMessage("Hi")], extraField: 0 });
 console.log(result);
 ```
 
-```
+``` wrap
 { messages: [HumanMessage { content: 'Hi' }, AIMessage { content: 'Hello!' }], extraField: 10 }
 ```
 :::
@@ -278,7 +278,7 @@ For Zod state schemas, we can define reducers by using the special `.langgraph.r
 
 In the earlier example, our node updated the `"messages"` key in the state by appending a message to it. Below, we add a reducer to this key, such that updates are automatically appended:
 
-```typescript {highlight={4}}
+```typescript {highlight={4}} wrap
 import "@langchain/langgraph/zod";
 
 const State = z.object({
@@ -457,7 +457,7 @@ When distinct schemas are specified, an internal schema will still be used for c
 Below, we'll see how to define distinct input and output schema.
 
 :::python
-```python
+```python wrap
 from langgraph.graph import StateGraph, START, END
 from typing_extensions import TypedDict
 
@@ -544,7 +544,7 @@ In some cases, you may want nodes to exchange information that is crucial for in
 Below, we'll create an example sequential graph consisting of three nodes (node_1, node_2 and node_3), where private data is passed between the first two steps (node_1 and node_2), while the third step (node_3) only has access to the public overall state.
 
 :::python
-```python
+```python wrap
 from langgraph.graph import StateGraph, START, END
 from typing_extensions import TypedDict
 
@@ -611,7 +611,7 @@ Output of graph invocation: {'a': 'set by node_3'}
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { StateGraph, START, END } from "@langchain/langgraph";
 import * as z from "zod";
 
@@ -730,7 +730,7 @@ graph.invoke({"a": "hello"})
 
 Invoke the graph with an **invalid** input
 
-```python
+```python wrap
 try:
     graph.invoke({"a": 123})  # Should be a string
 except Exception as e:
@@ -738,7 +738,7 @@ except Exception as e:
     print(e)
 ```
 
-```
+``` wrap
 An exception was raised because `a` is an integer rather than a string.
 1 validation error for OverallState
 a
@@ -757,7 +757,7 @@ See below for additional features of Pydantic model state:
 
   Let's see these behaviors in action.
 
-  ```python
+  ```python wrap
   from langgraph.graph import StateGraph, START, END
   from pydantic import BaseModel
 
@@ -995,7 +995,7 @@ console.log(await graph.invoke({}, { context: { myRuntimeValue: "b" } }));
   :::python
   Below we demonstrate a practical example in which we configure what LLM to use at runtime. We will use both OpenAI and Anthropic models.
 
-  ```python
+  ```python wrap
   from dataclasses import dataclass
 
   from langchain.chat_models import init_chat_model
@@ -1044,7 +1044,7 @@ console.log(await graph.invoke({}, { context: { myRuntimeValue: "b" } }));
   :::js
   Below we demonstrate a practical example in which we configure what LLM to use at runtime. We will use both OpenAI and Anthropic models.
 
-  ```typescript
+  ```typescript wrap
   import { ChatOpenAI } from "@langchain/openai";
   import { ChatAnthropic } from "@langchain/anthropic";
   import { BaseMessage } from "@langchain/core/messages";
@@ -1104,7 +1104,7 @@ console.log(await graph.invoke({}, { context: { myRuntimeValue: "b" } }));
   :::python
   Below we demonstrate a practical example in which we configure two parameters: the LLM and system message to use at runtime.
 
-  ```python
+  ```python wrap
   from dataclasses import dataclass
   from langchain.chat_models import init_chat_model
   from langchain_core.messages import SystemMessage
@@ -1144,7 +1144,7 @@ console.log(await graph.invoke({}, { context: { myRuntimeValue: "b" } }));
       message.pretty_print()
   ```
 
-  ```
+  ``` wrap
   ================================ Human Message ================================
 
   hi
@@ -1157,7 +1157,7 @@ console.log(await graph.invoke({}, { context: { myRuntimeValue: "b" } }));
   :::js
   Below we demonstrate a practical example in which we configure two parameters: the LLM and system message to use at runtime.
 
-  ```typescript
+  ```typescript wrap
   import { ChatOpenAI } from "@langchain/openai";
   import { ChatAnthropic } from "@langchain/anthropic";
   import { SystemMessage, BaseMessage } from "@langchain/core/messages";
@@ -1281,7 +1281,7 @@ By default, the retry policy retries on any exception except for the following:
   :::python
   Consider an example in which we are reading from a SQL database. Below we pass two different retry policies to nodes:
 
-  ```python
+  ```python wrap
   import sqlite3
   from typing_extensions import TypedDict
   from langchain.chat_models import init_chat_model
@@ -1319,7 +1319,7 @@ By default, the retry policy retries on any exception except for the following:
   :::js
   Consider an example in which we are reading from a SQL database. Below we pass two different retry policies to nodes:
 
-  ```typescript
+  ```typescript wrap
   import Database from "better-sqlite3";
   import { ChatAnthropic } from "@langchain/anthropic";
   import { StateGraph, START, END, MessagesZodMeta } from "@langchain/langgraph";
@@ -1885,7 +1885,7 @@ graph.invoke({"value_1": "c"}, {"configurable": {"max_concurrency": 10}})
 **Set max concurrency**
 You can control the maximum number of concurrent tasks by setting `max_concurrency` in the [configuration](https://reference.langchain.com/javascript/interfaces/_langchain_langgraph.index.LangGraphRunnableConfig.html) when invoking the graph.
 
-```typescript
+```typescript wrap
 const result = await graph.invoke({ value1: "c" }, {configurable: {max_concurrency: 10}});
 ```
 </Tip>
@@ -2141,7 +2141,7 @@ return ["b", "c"];
 LangGraph supports map-reduce and other advanced branching patterns using the Send API. Here is an example of how to use it:
 
 :::python
-```python
+```python wrap
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import Send
 from typing_extensions import TypedDict, Annotated
@@ -2195,7 +2195,7 @@ for step in graph.stream({"topic": "animals"}):
     print(step)
 ```
 
-```
+``` wrap
 {'generate_topics': {'subjects': ['lions', 'elephants', 'penguins']}}
 {'generate_joke': {'jokes': ["Why don't lions like fast food? Because they can't catch it!"]}}
 {'generate_joke': {'jokes': ["Why don't elephants use computers? They're afraid of the mouse!"]}}
@@ -2205,7 +2205,7 @@ for step in graph.stream({"topic": "animals"}):
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { StateGraph, START, END, Send } from "@langchain/langgraph";
 import { registry } from "@langchain/langgraph/zod";
 import * as z from "zod";
@@ -2270,7 +2270,7 @@ for await (const step of await graph.stream({ topic: "animals" })) {
 }
 ```
 
-```
+``` wrap
 { generateTopics: { subjects: [ 'lions', 'elephants', 'penguins' ] } }
 { generateJoke: { jokes: [ "Why don't lions like fast food? Because they can't catch it!" ] } }
 { generateJoke: { jokes: [ "Why don't elephants use computers? They're afraid of the mouse!" ] } }
@@ -2790,7 +2790,7 @@ const myNode = (state: State): Command => {
 We show an end-to-end example below. Let's create a simple graph with 3 nodes: A, B and C. We will first execute node A, and then decide whether to go to Node B or Node C next based on the output of node A.
 
 :::python
-```python
+```python wrap
 import random
 from typing_extensions import TypedDict, Literal
 from langgraph.graph import StateGraph, START
@@ -2866,7 +2866,7 @@ Called C
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { StateGraph, START, Command } from "@langchain/langgraph";
 import * as z from "zod";
 
@@ -2949,7 +2949,7 @@ Called C
 If you are using [subgraphs](/oss/langgraph/use-subgraphs), you might want to navigate from a node within a subgraph to a different subgraph (i.e. a different node in the parent graph). To do so, you can specify `graph=Command.PARENT` in `Command`:
 
 :::python
-```python
+```python wrap
 def my_node(state: State) -> Command[Literal["my_other_node"]]:
     return Command(
         update={"foo": "bar"},
@@ -2960,7 +2960,7 @@ def my_node(state: State) -> Command[Literal["my_other_node"]]:
 :::
 
 :::js
-```typescript
+```typescript wrap
 const myNode = (state: State): Command => {
   return new Command({
     update: { foo: "bar" },
@@ -2979,7 +2979,7 @@ When you send updates from a subgraph node to a parent graph node for a key that
 </Warning>
 
 :::python
-```python {highlight={6,23,33,37}}
+```python {highlight={6,23,33,37}} wrap
 import operator
 from typing_extensions import Annotated
 
@@ -3038,7 +3038,7 @@ Called C
 :::
 
 :::js
-```typescript {highlight={7,20,34,39}}
+```typescript {highlight={7,20,34,39}} wrap
 import { StateGraph, START, Command } from "@langchain/langgraph";
 import { registry } from "@langchain/langgraph/zod";
 import * as z from "zod";
@@ -3109,7 +3109,7 @@ Called C
 A common use case is updating graph state from inside a tool. For example, in a customer support application you might want to look up customer information based on their account number or ID in the beginning of the conversation. To update the graph state from the tool, you can return `Command(update={"my_custom_key": "foo", "messages": [...]})` from the tool:
 
 :::python
-```python
+```python wrap
 @tool
 def lookup_user_info(tool_call_id: Annotated[str, InjectedToolCallId], config: RunnableConfig):
     """Use this to look up user information to better assist them with their questions."""
@@ -3126,7 +3126,7 @@ def lookup_user_info(tool_call_id: Annotated[str, InjectedToolCallId], config: R
 :::
 
 :::js
-```typescript
+```typescript wrap
 import { tool } from "@langchain/core/tools";
 import { Command } from "@langchain/langgraph";
 import * as z from "zod";
@@ -3343,7 +3343,7 @@ If preferred, we could render the Graph into a `.png`. Here we could use three o
 
 By default, `draw_mermaid_png()` uses Mermaid.Ink's API to generate the diagram.
 
-```python
+```python wrap
 from IPython.display import Image, display
 from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
 
@@ -3354,7 +3354,7 @@ display(Image(app.get_graph().draw_mermaid_png()))
 
 **Using Mermaid + Pyppeteer**
 
-```python
+```python wrap
 import nest_asyncio
 
 nest_asyncio.apply()  # Required for Jupyter Notebook to run async functions
@@ -3376,7 +3376,7 @@ display(
 
 **Using Graphviz**
 
-```python
+```python wrap
 try:
     display(Image(app.get_graph().draw_png()))
 except ImportError:

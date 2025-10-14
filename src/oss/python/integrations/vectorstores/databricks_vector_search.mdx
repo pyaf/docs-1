@@ -68,7 +68,7 @@ Also for delta-sync index, you can choose to use Databricks-managed embeddings o
 
 The following code creates a **direct-access** index. Please refer to the [Databricks documentation](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) for the instruction to create the other type of indexes.
 
-```python
+```python wrap
 index_name = "<your-index-name>"  # Format: "<catalog>.<schema>.<index-name>"
 
 index = client.create_direct_access_index(
@@ -136,7 +136,7 @@ vector_store = DatabricksVectorSearch(
 
 Note: Adding items to vector store via `add_documents` method is only supported for a **direct-access** index.
 
-```python
+```python wrap
 from langchain_core.documents import Document
 
 document_1 = Document(page_content="foo", metadata={"source": "https://example.com"})
@@ -229,7 +229,7 @@ retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
 retriever.invoke("thud")
 ```
 
-```output
+```output wrap
 [Document(metadata={'source': 'https://example.com', 'id': '1'}, page_content='foo')]
 ```
 

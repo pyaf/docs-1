@@ -29,13 +29,13 @@ embeddings = FakeEmbeddings(size=3)
 
 Start the database with the [official demo docker image](https://github.com/tensorchord/pgvecto.rs#installation).
 
-```python
+```python wrap
 ! docker run --name pgvecto-rs-demo -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d tensorchord/pgvecto-rs:latest
 ```
 
 Then contruct the db URL
 
-```python
+```python wrap
 ## PGVecto.rs needs the connection string to the database.
 ## We will load it from the environment variables.
 import os
@@ -58,7 +58,7 @@ URL = "postgresql+psycopg://{username}:{password}@{host}:{port}/{db_name}".forma
 
 Finally, create the VectorStore from the documents:
 
-```python
+```python wrap
 db1 = PGVecto_rs.from_documents(
     documents=docs,
     embedding=embeddings,
@@ -97,7 +97,7 @@ for doc in docs:
 
 ### Similarity Search with Filter
 
-```python
+```python wrap
 from pgvecto_rs.sdk.filters import meta_contains
 
 query = "What did the president say about Ketanji Brown Jackson"

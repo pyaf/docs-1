@@ -89,7 +89,7 @@ Find all examples with matching metadata across all datasets in a workspace.
 
 - `as_of` must be explicitly specified as a timestamp. Only examples created before the `as_of` date will be returned
 
-```bash
+```bash wrap
 curl -X GET "https://api.smith.langchain.com/api/v1/examples?as_of=2024-01-01T00:00:00Z" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -111,7 +111,7 @@ Once you have the example IDs, send a delete request. This will zero-out the inp
 
 - Specify example IDs and add `"hard_delete": true` to the query params of the request
 
-```bash
+```bash wrap
 curl -X DELETE "https://api.smith.langchain.com/api/v1/examples?hard_delete=true" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \

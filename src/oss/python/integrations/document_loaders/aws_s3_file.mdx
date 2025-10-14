@@ -24,7 +24,7 @@ loader = S3FileLoader("testing-hwc", "fake.docx")
 loader.load()
 ```
 
-```output
+```output wrap
 [Document(page_content='Lorem ipsum dolor sit amet.', lookup_str='', metadata={'source': 's3://testing-hwc/fake.docx'}, lookup_index=0)]
 ```
 
@@ -35,7 +35,7 @@ named arguments when creating the S3DirectoryLoader.
 This is useful for instance when AWS credentials can't be set as environment variables.
 See the [list of parameters](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html#boto3.session.Session) that can be configured.
 
-```python
+```python wrap
 loader = S3FileLoader(
     "testing-hwc", "fake.docx", aws_access_key_id="xxxx", aws_secret_access_key="yyyy"
 )

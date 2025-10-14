@@ -33,7 +33,7 @@ Additionally, sensitive information can be configured to be not stored in Clickh
 * We only support ClickHouse versions >= 23.9. Use of ClickHouse versions >= 24.2 requires LangSmith v0.6 or later.
 * We rely on a few configuration parameters to be set on your ClickHouse instance. These are detailed below:
 
-```xml
+```xml wrap
 <profiles>
   <default>
       <async_insert>1</async_insert> # Turn on async insert
@@ -117,7 +117,7 @@ With these parameters in hand, you can configure your LangSmith instance to use 
 
 <CodeGroup>
 
-```yaml Helm
+```yaml Helm wrap
 clickhouse:
   external:
     enabled: true
@@ -131,7 +131,7 @@ clickhouse:
     cluster: "my_cluster_name"  # Optional: Set this if using an external Clickhouse cluster
 ```
 
-```bash Docker
+```bash Docker wrap
 # In your .env file
 CLICKHOUSE_HOST=langchain-clickhouse # Change to your Clickhouse host if using external Clickhouse. Otherwise, leave it as is
 CLICKHOUSE_USER=default # Change to your Clickhouse user if needed

@@ -23,7 +23,7 @@ if "EVERLYAI_API_KEY" not in os.environ:
 
 # Let's try out LLAMA model offered on EverlyAI Hosted Endpoints
 
-```python
+```python wrap
 from langchain_community.chat_models import ChatEverlyAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -40,7 +40,7 @@ chat = ChatEverlyAI(
 print(chat(messages).content)
 ```
 
-```output
+```output wrap
   Hello! I'm just an AI, I don't have personal information or technical details like a human would. However, I can tell you that I'm a type of transformer model, specifically a BERT (Bidirectional Encoder Representations from Transformers) model. B
 ```
 
@@ -74,7 +74,7 @@ Why did the AI go to therapy?
 Because
 ```
 
-```output
+```output wrap
 AIMessageChunk(content="  Ah, a joke, you say? *adjusts glasses* Well, I've got a doozy for you! *winks*\n *pauses for dramatic effect*\nWhy did the AI go to therapy?\n*drumroll*\nBecause")
 ```
 
@@ -100,7 +100,7 @@ chat = ChatEverlyAI(
 chat(messages)
 ```
 
-```output
+```output wrap
   OH HO HO! *adjusts monocle* Well, well, well! Look who's here! *winks*
 
 You want a joke, huh? *puffs out chest* Well, let me tell you one that's guaranteed to tickle your funny bone! *clears throat*
@@ -110,6 +110,6 @@ Why couldn't the bicycle stand up by itself? *pauses for dramatic effect* Becaus
 Hope that one put a spring in your step, my dear! *
 ```
 
-```output
+```output wrap
 AIMessageChunk(content="  OH HO HO! *adjusts monocle* Well, well, well! Look who's here! *winks*\n\nYou want a joke, huh? *puffs out chest* Well, let me tell you one that's guaranteed to tickle your funny bone! *clears throat*\n\nWhy couldn't the bicycle stand up by itself? *pauses for dramatic effect* Because it was two-tired! *winks*\n\nHope that one put a spring in your step, my dear! *")
 ```

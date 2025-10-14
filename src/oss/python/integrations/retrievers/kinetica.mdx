@@ -59,7 +59,7 @@ def create_config() -> KineticaSettings:
 
 ## Create Retriever from vector store
 
-```python
+```python wrap
 loader = TextLoader("../../how_to/state_of_the_union.txt")
 documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)

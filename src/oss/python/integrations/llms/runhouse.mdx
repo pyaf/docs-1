@@ -12,18 +12,18 @@ This example goes over how to use LangChain and [Runhouse](https://github.com/ru
 %pip install -qU  runhouse
 ```
 
-```python
+```python wrap
 import runhouse as rh
 from langchain.chains import LLMChain
 from langchain_community.llms import SelfHostedHuggingFaceLLM, SelfHostedPipeline
 from langchain_core.prompts import PromptTemplate
 ```
 
-```output
+```output wrap
 INFO | 2023-04-17 16:47:36,173 | No auth token provided, so not using RNS API to save and load configs
 ```
 
-```python
+```python wrap
 # For an on-demand A100 with GCP, Azure, or Lambda
 gpu = rh.cluster(name="rh-a10x", instance_type="A100:1", use_spot=False)
 
@@ -44,7 +44,7 @@ Answer: Let's think step by step."""
 prompt = PromptTemplate.from_template(template)
 ```
 
-```python
+```python wrap
 llm = SelfHostedHuggingFaceLLM(
     model_id="gpt2", hardware=gpu, model_reqs=["pip:./", "transformers", "torch"]
 )
@@ -54,7 +54,7 @@ llm = SelfHostedHuggingFaceLLM(
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 ```
 
-```python
+```python wrap
 question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
 
 llm_chain.run(question)
@@ -65,7 +65,7 @@ INFO | 2023-02-17 05:42:23,537 | Running _generate_text via gRPC
 INFO | 2023-02-17 05:42:24,016 | Time to send message: 0.48 seconds
 ```
 
-```output
+```output wrap
 "\n\nLet's say we're talking sports teams who won the Super Bowl in the year Justin Beiber"
 ```
 
@@ -136,7 +136,7 @@ INFO | 2023-02-17 05:42:59,522 | Time to send message: 0.3 seconds
 
 You can send your pipeline directly over the wire to your model, but this will only work for small models (&lt;2 Gb), and will be pretty slow:
 
-```python
+```python wrap
 pipeline = load_pipeline()
 llm = SelfHostedPipeline.from_pipeline(
     pipeline=pipeline, hardware=gpu, model_reqs=["pip:./", "transformers", "torch"]
@@ -145,7 +145,7 @@ llm = SelfHostedPipeline.from_pipeline(
 
 Instead, we can also send it to the hardware's filesystem, which will be much faster.
 
-```python
+```python wrap
 import pickle
 
 rh.blob(pickle.dumps(pipeline), path="models/pipeline.pkl").save().to(

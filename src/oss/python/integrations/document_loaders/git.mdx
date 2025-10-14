@@ -12,7 +12,7 @@ This notebook shows how to load text files from `Git` repository.
 %pip install -qU  GitPython
 ```
 
-```python
+```python wrap
 from git import Repo
 
 repo = Repo.clone_from(
@@ -41,7 +41,7 @@ len(data)
 print(data[0])
 ```
 
-```output
+```output wrap
 page_content='.venv\n.github\n.git\n.mypy_cache\n.pytest_cache\nDockerfile' metadata={'file_path': '.dockerignore', 'file_name': '.dockerignore', 'file_type': ''}
 ```
 

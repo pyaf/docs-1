@@ -37,7 +37,7 @@ For more information on accessing the chat models through this API, check out th
 
 4. Copy and save the generated key as `NVIDIA_API_KEY`. From there, you should have access to the endpoints.
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -245,7 +245,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 ```
 
-```python
+```python wrap
 vectorstore = FAISS.from_texts(
     ["harrison worked at kensho"],
     embedding=NVIDIAEmbeddings(model="NV-Embed-QA"),
@@ -274,7 +274,7 @@ chain = (
 chain.invoke("where did harrison work?")
 ```
 
-```python
+```python wrap
 prompt = ChatPromptTemplate.from_messages(
     [
         (

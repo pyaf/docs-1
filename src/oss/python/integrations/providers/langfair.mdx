@@ -39,7 +39,7 @@ llm = ChatVertexAI(
 )
 ```
 We can use `ResponseGenerator.generate_responses` to generate 25 responses for each prompt, as is convention for toxicity evaluation.
-```python
+```python wrap
 from langfair.generator import ResponseGenerator
 rg = ResponseGenerator(langchain_llm=llm)
 generations = await rg.generate_responses(prompts=prompts, count=25)

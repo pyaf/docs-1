@@ -15,7 +15,7 @@ This tutorial illustrates how to work with an end-to-end data and embedding mana
 
 ### Install the library
 
-```python
+```python wrap
 %pip install -qU  langchain langchain-google-vertexai "langchain-google-community[featurestore]"
 ```
 
@@ -108,7 +108,7 @@ store = BigQueryVectorStore(
 
 ### Add texts
 
-```python
+```python wrap
 all_texts = ["Apples and oranges", "Cars and airplanes", "Pineapple", "Train", "Banana"]
 metadatas = [{"len": len(t)} for t in all_texts]
 
@@ -147,7 +147,7 @@ docs = store.similarity_search_by_vector(query_vector, filter={"len": 6})
 print(docs)
 ```
 
-```python
+```python wrap
 # SQL-based Filters
 # This should return "Banana", "Apples and oranges" and "Cars and airplanes" documents.
 docs = store.similarity_search_by_vector(query_vector, filter="len = 6 AND len > 17")
@@ -185,6 +185,6 @@ You can simply use the method `.to_vertex_fs_vector_store()` to get a VertexFSVe
 
 Moving back to BigQueryVectorStore is equivalently easy with the `.to_bq_vector_store()` method.
 
-```python
+```python wrap
 store.to_vertex_fs_vector_store()  # pass optional VertexFSVectorStore parameters as arguments
 ```

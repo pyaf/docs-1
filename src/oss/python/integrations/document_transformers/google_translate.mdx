@@ -24,7 +24,7 @@ from langchain_google_community import GoogleTranslateTransformer
 
 This is the document we'll translate
 
-```python
+```python wrap
 sample_text = """[Generated with Google Bard]
 Subject: Key Business Process Updates
 
@@ -104,7 +104,7 @@ for doc in translated_documents:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 {'model': '', 'detected_language_code': 'en'}
 [Generado con Google Bard]
 Asunto: Actualizaciones clave de procesos comerciales

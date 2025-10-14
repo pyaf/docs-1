@@ -10,7 +10,7 @@ This notebook shows how to use functionality related to the `ClickHouse` vector 
 
 First set up a local clickhouse server with docker:
 
-```python
+```python wrap
 ! docker run -d -p 8123:8123 -p 9000:9000 --name langchain-clickhouse-server --ulimit nofile=262144:262144 -e CLICKHOUSE_SKIP_USER_SETUP=1 clickhouse/clickhouse-server:25.7
 ```
 
@@ -26,7 +26,7 @@ There are no credentials for this notebook, just make sure you have installed th
 
 If you want to get best in-class automated tracing of your model calls you can also set your [LangSmith](https://docs.smith.langchain.com/) API key by uncommenting below:
 
-```python
+```python wrap
 # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
 # os.environ["LANGSMITH_TRACING"] = "true"
 ```
@@ -58,7 +58,7 @@ Once you have created your vector store, we can interact with it by adding and d
 
 We can add items to our vector store by using the `add_documents` function.
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_core.documents import Document
@@ -161,7 +161,7 @@ for res in results:
 
 You can also search with score:
 
-```python
+```python wrap
 results = vector_store.similarity_search_with_score("Will it be hot tomorrow?", k=1)
 for res, score in results:
     print(f"* [SIM={score:3f}] {res.page_content} [{res.metadata}]")

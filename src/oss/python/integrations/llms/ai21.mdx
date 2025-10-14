@@ -46,7 +46,7 @@ chain = prompt | model
 chain.invoke({"question": "What is LangChain?"})
 ```
 
-```output
+```output wrap
 '\nLangChain is a (database)\nLangChain is a database for storing and processing documents'
 ```
 
@@ -58,7 +58,7 @@ and a question and returns an answer based entirely on this context.
 This means that if the answer to your question is not in the document,
 the model will indicate it (instead of providing a false answer)
 
-```python
+```python wrap
 from langchain_ai21 import AI21ContextualAnswers
 
 tsm = AI21ContextualAnswers()

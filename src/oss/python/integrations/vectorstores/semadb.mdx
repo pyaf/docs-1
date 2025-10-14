@@ -102,7 +102,7 @@ docs = db.similarity_search(query)
 print(docs[0].page_content)
 ```
 
-```output
+```output wrap
 And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
 ```
 
@@ -111,7 +111,7 @@ docs = db.similarity_search_with_score(query)
 docs[0]
 ```
 
-```output
+```output wrap
 (Document(page_content='And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.', metadata={'source': '../../how_to/state_of_the_union.txt', 'text': 'And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.'}),
  0.42369342)
 ```

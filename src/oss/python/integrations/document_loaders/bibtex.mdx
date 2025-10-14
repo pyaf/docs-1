@@ -30,7 +30,7 @@ First, you need to install `bibtexparser` and `PyMuPDF`.
 from langchain_community.document_loaders import BibtexLoader
 ```
 
-```python
+```python wrap
 # Create a dummy bibtex file and download a pdf.
 import urllib.request
 
@@ -66,7 +66,7 @@ docs = BibtexLoader("./biblio.bib").load()
 docs[0].metadata
 ```
 
-```output
+```output wrap
 {'id': 'einstein1915',
  'published_year': '1915',
  'title': 'Die Feldgleichungen der Gravitation',

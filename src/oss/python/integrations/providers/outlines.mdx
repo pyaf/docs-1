@@ -53,7 +53,7 @@ from langchain_community.chat_models import ChatOutlines
 
 Both `Outlines` and `ChatOutlines` classes share similar configuration options:
 
-```python
+```python wrap
 model = Outlines(
     model="meta-llama/Llama-2-7b-chat-hf",  # Model identifier
     backend="transformers",  # Backend to use (transformers, llamacpp, vllm, or mlxlm)
@@ -91,7 +91,7 @@ The `backend` parameter specifies which backend to use:
 Outlines provides several methods for structured generation:
 
 1. **Regex Matching**:
-   ```python
+   ```python wrap
    model = Outlines(
        model="meta-llama/Llama-2-7b-chat-hf",
        regex=r"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)"

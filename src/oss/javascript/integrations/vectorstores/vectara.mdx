@@ -12,7 +12,7 @@ Vectara uses its own embeddings under the hood, so you don't have to provide any
 
 This also means that if you provide your own embeddings, they'll be a no-op.
 
-```typescript
+```typescript wrap
 const store = await VectaraStore.fromTexts(
   ["hello world", "hi there"],
   [{ foo: "bar" }, { foo: "baz" }],

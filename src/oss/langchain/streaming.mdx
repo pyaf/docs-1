@@ -60,7 +60,7 @@ for chunk in agent.stream(
         print(f"content: {data['messages'][-1].content_blocks}")
 ```
 
-```shell title="Output"
+```shell title="Output" wrap
 step: agent
 content: [{'type': 'tool_call', 'name': 'get_weather', 'args': {'city': 'San Francisco'}, 'id': 'call_OW2NYNsNSKhRZpjW0wm2Aszd'}]
 
@@ -73,7 +73,7 @@ content: [{'type': 'text', 'text': 'It’s always sunny in San Francisco!'}]
 :::
 
 :::js
-```typescript
+```typescript wrap
 import z from "zod";
 import { createAgent, tool } from "langchain";
 
@@ -178,7 +178,7 @@ for token, metadata in agent.stream(
     print("\n")
 ```
 
-```shell title="Output" expandable
+```shell title="Output" expandable wrap
 node: agent
 content: [{'type': 'tool_call_chunk', 'id': 'call_vbCyBcP8VuneUzyYlSBZZsVa', 'name': 'get_weather', 'args': '', 'index': 0}]
 
@@ -428,7 +428,7 @@ for stream_mode, chunk in agent.stream(
     print("\n")
 ```
 
-```shell title="Output"
+```shell title="Output" wrap
 stream_mode: updates
 content: {'agent': {'messages': [AIMessage(content='', response_metadata={'token_usage': {'completion_tokens': 280, 'prompt_tokens': 132, 'total_tokens': 412, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 256, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 0}}, 'model_provider': 'openai', 'model_name': 'gpt-5-nano-2025-08-07', 'system_fingerprint': None, 'id': 'chatcmpl-C9tlgBzGEbedGYxZ0rTCz5F7OXpL7', 'service_tier': 'default', 'finish_reason': 'tool_calls', 'logprobs': None}, id='lc_run--480c07cb-e405-4411-aa7f-0520fddeed66-0', tool_calls=[{'name': 'get_weather', 'args': {'city': 'San Francisco'}, 'id': 'call_KTNQIftMrl9vgNwEfAJMVu7r', 'type': 'tool_call'}], usage_metadata={'input_tokens': 132, 'output_tokens': 280, 'total_tokens': 412, 'input_token_details': {'audio': 0, 'cache_read': 0}, 'output_token_details': {'audio': 0, 'reasoning': 256}})]}}
 

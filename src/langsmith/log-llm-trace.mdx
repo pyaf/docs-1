@@ -219,7 +219,7 @@ outputs = {
 }
 ```
 
-```python Multimodal
+```python Multimodal wrap
 inputs = {
   "messages": [
     {
@@ -268,7 +268,7 @@ Here's a boilerplate example of how to use `process_inputs` and `process_outputs
 <Expandable title="the code">
 <CodeGroup>
 
-```python Python
+```python Python wrap
 class OriginalInputs(BaseModel):
     """Your app's custom request shape"""
 
@@ -309,7 +309,7 @@ When using a custom model, it is recommended to also provide the following `meta
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import traceable
 
 inputs = [
@@ -337,7 +337,7 @@ def chat_model(messages: list):
 chat_model(inputs)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable } from "langsmith/traceable";
 
 const messages = [
@@ -411,7 +411,7 @@ This code will log the following trace:
 </div>
 If you implement a custom streaming chat_model, you can "reduce" the outputs into the same format as the non-streaming version. This is currently only supported in Python.
 
-```python
+```python wrap
 def _reduce_chunks(chunks: list):
     all_text = "".join([chunk["choices"][0]["message"]["content"] for chunk in chunks])
     return {"choices": [{"message": {"content": all_text, "role": "assistant"}}]}
@@ -506,7 +506,7 @@ Requires `langsmith>=0.3.43` (Python) and `langsmith>=0.3.30` (JS/TS).
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import traceable, get_current_run_tree
 
 inputs = [
@@ -546,7 +546,7 @@ def chat_model(messages: list):
 chat_model(inputs)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable, getCurrentRunTree } from "langsmith/traceable";
 
 const messages = [
@@ -601,7 +601,7 @@ You can add a `usage_metadata` key to the function's response to set manual toke
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import traceable
 
 inputs = [
@@ -639,7 +639,7 @@ def chat_model(messages: list):
 chat_model(inputs)
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { traceable } from "langsmith/traceable";
 
 const messages = [

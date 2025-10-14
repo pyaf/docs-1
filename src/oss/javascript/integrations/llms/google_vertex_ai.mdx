@@ -2,7 +2,7 @@
 title: Google Vertex AI
 ---
 
-```{=mdx}
+```{=mdx} wrap
 
 <Warning>
 **You are currently on a page documenting the use of Google Vertex models as text completion models. Many popular models available on Google Vertex are [chat completion models](/oss/langchain/models).**
@@ -57,13 +57,13 @@ the `@langchain/google-vertexai-web` package.
 
 Then, you'll need to add your service account credentials directly as a `GOOGLE_VERTEX_AI_WEB_CREDENTIALS` environment variable:
 
-```
+``` wrap
 GOOGLE_VERTEX_AI_WEB_CREDENTIALS={"type":"service_account","project_id":"YOUR_PROJECT-12345",...}
 ```
 
 You can also pass your credentials directly in code like this:
 
-```typescript
+```typescript wrap
 import { VertexAI } from "@langchain/google-vertexai";
 // Or uncomment this line if you're using the web version:
 // import { VertexAI } from "@langchain/google-vertexai-web";
@@ -86,7 +86,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain VertexAI integration lives in the `@langchain/google-vertexai` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -126,7 +126,7 @@ const completion = await llm.invoke(inputText)
 completion
 ```
 
-```txt
+```txt wrap
 offers a wide range of cloud computing services and artificial intelligence solutions to businesses and developers worldwide.
 ```
 

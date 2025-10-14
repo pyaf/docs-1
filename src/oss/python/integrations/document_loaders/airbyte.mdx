@@ -88,7 +88,7 @@ My name is Verdie and I am 1.73 meters tall.
 
 One of the powerful features of `AirbyteLoader` is its ability to load large documents from upstream sources. When working with large datasets, the default `.load()` behavior can be slow and memory-intensive. To avoid this, you can use the `.lazy_load()` method to load documents in a more memory-efficient manner.
 
-```python
+```python wrap
 import time
 
 loader = AirbyteLoader(

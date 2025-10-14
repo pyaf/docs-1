@@ -18,7 +18,7 @@ from langchain_core.prompts.chat import (
 chat = JinaChat(temperature=0)
 ```
 
-```python
+```python wrap
 messages = [
     SystemMessage(
         content="You are a helpful assistant that translates English to French."
@@ -38,7 +38,7 @@ You can make use of templating by using a `MessagePromptTemplate`. You can build
 
 For convenience, there is a `from_template` method exposed on the template. If you were to use this template, this is what it would look like:
 
-```python
+```python wrap
 template = (
     "You are a helpful assistant that translates {input_language} to {output_language}."
 )
@@ -47,7 +47,7 @@ human_template = "{text}"
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 ```
 
-```python
+```python wrap
 chat_prompt = ChatPromptTemplate.from_messages(
     [system_message_prompt, human_message_prompt]
 )

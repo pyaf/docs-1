@@ -16,7 +16,7 @@ This example goes over how to use LangChain to interact with Aleph Alpha models
 %pip install -qU  aleph-alpha-client
 ```
 
-```python
+```python wrap
 # create a new token: https://docs.aleph-alpha.com/docs/account/#create-a-new-token
 
 from getpass import getpass
@@ -60,7 +60,7 @@ question = "What is AI?"
 llm_chain.invoke({"question": question})
 ```
 
-```output
+```output wrap
 ' Artificial Intelligence is the simulation of human intelligence processes by machines.\n\n'
 ```
 

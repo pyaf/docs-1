@@ -66,7 +66,7 @@ Once configured, your Semantic Kernel application will automatically send traces
 
 This example includes a minimal app that configures the kernel, defines prompt-based functions, and invokes them to generate traced activity.
 
-```python
+```python wrap
 import os
 import asyncio
 from semantic_kernel import Kernel
@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
 You can add custom metadata to your traces by setting span attributes:
 
-```python
+```python wrap
 from opentelemetry import trace
 
 # Get the current tracer

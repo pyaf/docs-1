@@ -16,7 +16,7 @@ To run this notebook, you'll need a [Minimax account](https://api.minimax.chat),
 from langchain_community.llms import Minimax
 ```
 
-```python
+```python wrap
 # Load the model
 minimax = Minimax(minimax_api_key="YOUR_API_KEY", minimax_group_id="YOUR_GROUP_ID")
 ```
@@ -28,7 +28,7 @@ minimax("What is the difference between panda and bear?")
 
 # Chained model calls
 
-```python
+```python wrap
 # get api_key and group_id: https://api.minimax.chat/user-center/basic-information
 # We need `MINIMAX_API_KEY` and `MINIMAX_GROUP_ID`
 

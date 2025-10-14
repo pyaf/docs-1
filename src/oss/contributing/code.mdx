@@ -229,7 +229,7 @@ Set up a development environment for the package(s) you're working on:
                 ```
                 :::
                 :::js
-                ```bash
+                ```bash wrap
                 pnpm install
                 pnpm --filter langchain test  # Ensure tests pass before starting development
                 ```
@@ -250,7 +250,7 @@ Set up a development environment for the package(s) you're working on:
             <Accordion title="Provider packages">
                 For changes to [partner integrations](/oss/integrations/providers):
 
-                ```bash
+                ```bash wrap
                 pnpm install
                 pnpm --filter @langchain/{provider} test  # Ensure tests pass before starting development
                 ```
@@ -270,7 +270,7 @@ Set up a development environment for the package(s) you're working on:
             <Accordion title="Community packages">
                 For changes to [community integrations](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-community):
 
-                ```bash
+                ```bash wrap
                 pnpm install
                 pnpm --filter @langchain/community test  # Ensure tests pass before starting development
                 ```

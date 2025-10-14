@@ -32,7 +32,7 @@ You must also set your document collection to `isAutoEmbedded === false`.
 
 ## Load or create a Collection from documents
 
-```python
+```python wrap
 from uuid import uuid4
 
 from langchain_community.document_loaders import WebBaseLoader
@@ -121,7 +121,7 @@ for d, s in docs_scores:
     print(d.page_content, " -> ", s, "\n====\n")
 ```
 
-```output
+```output wrap
 the positions of the two principal planets, (and these the most
 necessary for the navigator,) Jupiter and Saturn, require each not less
 than one hundred and sixteen tables. Yet it is not only necessary to
@@ -242,7 +242,7 @@ for d in docs:
     print(d.page_content, " -> ", d.metadata, "\n====\n")
 ```
 
-```output
+```output wrap
 or remotely, for this purpose. But in addition to these, a great number
 of tables, exclusively astronomical, are likewise indispensable. The
 predictions of the astronomer, with respect to the positions and motions
@@ -273,7 +273,7 @@ observing becomes ineffectual for want of yet greater industry of  ->  {'source'
 
 Now, we set up a filter
 
-```python
+```python wrap
 filter = {
     "where": {
         "jsonpath": (
@@ -288,7 +288,7 @@ for d in docs:
     print(d.page_content, " -> ", d.metadata, "\n====\n")
 ```
 
-```output
+```output wrap
 possess all knowledge which is likely to be useful to him in his work,
 and this I have endeavored in my case to do. If I remember rightly, you
 on one occasion, in the early days of our friendship, defined my limits

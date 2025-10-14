@@ -13,7 +13,7 @@ Code evaluators are just functions that take a dataset example and the resulting
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import evaluate
 
 def correct(outputs: dict, reference_outputs: dict) -> bool:
@@ -78,7 +78,7 @@ Requires `langsmith>=0.2.0`
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from langsmith import evaluate, wrappers
 from langsmith.schemas import Run, Example
 from openai import AsyncOpenAI
@@ -125,7 +125,7 @@ results = evaluate(
 )
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import { Client } from "langsmith";
 import { evaluate } from "langsmith/evaluation";
 import { Run, Example } from "langsmith/schemas";

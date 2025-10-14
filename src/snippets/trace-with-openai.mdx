@@ -12,7 +12,7 @@ By default, the traces will be logged to a project named `default`. To log trace
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 import openai
 from langsmith import traceable
 from langsmith.wrappers import wrap_openai
@@ -38,7 +38,7 @@ def chat_pipeline(question: str):
 chat_pipeline("Can you summarize this morning's meetings?")
 ```
 
-```typescript TypeScript
+```typescript TypeScript wrap
 import OpenAI from "openai";
 import { traceable } from "langsmith/traceable";
 import { wrapOpenAI } from "langsmith/wrappers";

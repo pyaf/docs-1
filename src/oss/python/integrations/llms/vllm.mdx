@@ -32,7 +32,7 @@ llm = VLLM(
 print(llm.invoke("What is the capital of France ?"))
 ```
 
-```output
+```output wrap
 INFO 08-06 11:37:33 llm_engine.py:70] Initializing an LLM engine with config: model='mosaicml/mpt-7b', tokenizer='mosaicml/mpt-7b', tokenizer_mode=auto, trust_remote_code=True, dtype=torch.bfloat16, use_dummy_weights=False, download_dir=None, use_np_weights=False, tensor_parallel_size=1, seed=0)
 INFO 08-06 11:37:41 llm_engine.py:196] # GPU blocks: 861, # CPU blocks: 512
 ```
@@ -45,7 +45,7 @@ What is the capital of France ? The capital of France is Paris.
 
 ## Integrate the model in an LLMChain
 
-```python
+```python wrap
 from langchain.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 
@@ -122,7 +122,7 @@ llm = VLLMOpenAI(
 print(llm.invoke("Rome is"))
 ```
 
-```output
+```output wrap
  a city that is filled with history, ancient buildings, and art around every corner
 ```
 
@@ -130,7 +130,7 @@ print(llm.invoke("Rome is"))
 
 LoRA adapters can be used with any vLLM model that implements `SupportsLoRA`.
 
-```python
+```python wrap
 from langchain_community.llms import VLLM
 from vllm.lora.request import LoRARequest
 

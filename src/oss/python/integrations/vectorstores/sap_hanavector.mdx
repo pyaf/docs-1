@@ -58,7 +58,7 @@ Alternatively, you can compute embeddings directly in SAP HANA using its native 
 
 > **Caution:** Ensure NLP is enabled in your SAP HANA Cloud instance.
 
-```python
+```python wrap
 from langchain_hana import HanaInternalEmbeddings
 
 embeddings = HanaInternalEmbeddings(internal_embedding_model_id="SAP_NEB.20240715")
@@ -122,7 +122,7 @@ for doc in docs:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 --------------------------------------------------------------------------------
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
 
@@ -152,7 +152,7 @@ for doc in docs:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 --------------------------------------------------------------------------------
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
 
@@ -174,7 +174,7 @@ for doc in docs:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 --------------------------------------------------------------------------------
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
 
@@ -193,7 +193,7 @@ A vector index can significantly speed up top-k nearest neighbor queries for vec
 
 For more information about creating an index at the database level, please refer to the [official documentation](https://help.sap.com/docs/hana-cloud-database/sap-hana-cloud-sap-hana-database-vector-engine-guide/create-vector-index-statement-data-definition).
 
-```python
+```python wrap
 # HanaDB instance uses cosine similarity as default:
 db_cosine = HanaDB(
     embedding=embeddings, connection=connection, table_name="STATE_OF_THE_UNION"
@@ -228,7 +228,7 @@ for doc in docs:
     print(doc.page_content)
 ```
 
-```output
+```output wrap
 --------------------------------------------------------------------------------
 One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court.
 
@@ -248,7 +248,7 @@ Let each of us here tonight in this Chamber send an unmistakable signal to Ukrai
 
 ## Basic Vectorstore Operations
 
-```python
+```python wrap
 db = HanaDB(
     connection=connection, embedding=embeddings, table_name="LANGCHAIN_DEMO_BASIC"
 )
@@ -274,7 +274,7 @@ db.add_documents(docs)
 
 Add documents with metadata.
 
-```python
+```python wrap
 docs = [
     Document(
         page_content="foo",
@@ -344,7 +344,7 @@ The table below shows the available filter operators.
 | `$and`   | Logical "and", supporting 2 or more operands |
 | `$or`    | Logical "or", supporting 2 or more operands |
 
-```python
+```python wrap
 # Prepare some test documents
 docs = [
     Document(
@@ -382,7 +382,7 @@ def print_filter_result(result):
 
 Filtering with `$ne`, `$gt`, `$gte`, `$lt`, `$lte`
 
-```python
+```python wrap
 advanced_filter = {"id": {"$ne": 1}}
 print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
@@ -423,7 +423,7 @@ Filter: {'id': {'$lte': 1}}
 
 Filtering with `$between`, `$in`, `$nin`
 
-```python
+```python wrap
 advanced_filter = {"id": {"$between": (1, 2)}}
 print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
@@ -450,7 +450,7 @@ Filter: {'name': {'$nin': ['Adam Smith', 'Bob Johnson']}}
 
 Text filtering with `$like`
 
-```python
+```python wrap
 advanced_filter = {"name": {"$like": "a%"}}
 print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
@@ -470,7 +470,7 @@ Filter: {'name': {'$like': '%a%'}}
 
 Text filtering with `$contains`
 
-```python
+```python wrap
 advanced_filter = {"name": {"$contains": "bob"}}
 print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
@@ -501,7 +501,7 @@ Filter: {'name': {'$contains': 'Adam Smith'}}
 
 Combined filtering with `$and`, `$or`
 
-```python
+```python wrap
 advanced_filter = {"$or": [{"id": 1}, {"name": "bob"}]}
 print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
@@ -521,7 +521,7 @@ print(f"Filter: {advanced_filter}")
 print_filter_result(db.similarity_search("just testing", k=5, filter=advanced_filter))
 ```
 
-```output
+```output wrap
 Filter: {'$or': [{'id': 1}, {'name': 'bob'}]}
 {'name': 'Adam Smith', 'is_active': True, 'id': 1, 'height': 10.0}
 Filter: {'$and': [{'id': 1}, {'id': 2}]}
@@ -556,7 +556,7 @@ retriever = db.as_retriever()
 
 Define the prompt.
 
-```python
+```python wrap
 from langchain_core.prompts import PromptTemplate
 
 prompt_template = """
@@ -612,7 +612,7 @@ print("================")
 print(f"Number of used source document chunks: {len(source_docs)}")
 ```
 
-```output
+```output wrap
 Answer from LLM:
 ================
 The United States has set up joint patrols with Mexico and Guatemala to catch more human traffickers at the border. This collaborative effort aims to improve border security and combat illegal activities such as human trafficking.
@@ -640,7 +640,7 @@ print("================")
 print(result["answer"])
 ```
 
-```output
+```output wrap
 Answer from LLM:
 ================
 Countries like Mexico and Guatemala are participating in joint patrols to catch human traffickers. The United States is also working with partners in South and Central America to host more refugees and secure their borders. Additionally, the U.S. is working with twenty-seven members of the European Union, as well as countries like France, Germany, Italy, the United Kingdom, Canada, Japan, Korea, Australia, New Zealand, and Switzerland.
@@ -654,7 +654,7 @@ As default behaviour, the table for the embeddings is created with 3 columns:
 - A column `VEC_META`, which contains the metadata of the Document
 - A column `VEC_VECTOR`, which contains the embeddings-vector of the Document's text
 
-```python
+```python wrap
 # Access the vector DB with a new table
 db = HanaDB(
     connection=connection, embedding=embeddings, table_name="LANGCHAIN_DEMO_NEW_TABLE"
@@ -679,7 +679,7 @@ db.add_documents(docs)
 
 Show the columns in table "LANGCHAIN_DEMO_NEW_TABLE"
 
-```python
+```python wrap
 cur = connection.cursor()
 cur.execute(
     "SELECT COLUMN_NAME, DATA_TYPE_NAME FROM SYS.TABLE_COLUMNS WHERE SCHEMA_NAME = CURRENT_SCHEMA AND TABLE_NAME = 'LANGCHAIN_DEMO_NEW_TABLE'"
@@ -698,7 +698,7 @@ cur.close()
 
 Show the value of the inserted document in the three columns
 
-```python
+```python wrap
 cur = connection.cursor()
 cur.execute(
     "SELECT VEC_TEXT, VEC_META, TO_NVARCHAR(VEC_VECTOR) FROM LANGCHAIN_DEMO_NEW_TABLE LIMIT 1"
@@ -718,7 +718,7 @@ Custom tables must have at least three columns that match the semantics of a sta
 
 The table can contain additional columns. When new Documents are inserted into the table, these additional columns must allow NULL values.
 
-```python
+```python wrap
 # Create a new table "MY_OWN_TABLE_ADD" with three "standard" columns and one additional column
 my_own_table_name = "MY_OWN_TABLE_ADD"
 cur = connection.cursor()
@@ -798,7 +798,7 @@ Some other text
 
 To allow flexible metadata values, all metadata is stored as JSON in the metadata column by default. If some of the used metadata keys and value types are known, they can be stored in additional columns instead by creating the target table with the key names as column names and passing them to the HanaDB constructor via the specific_metadata_columns list. Metadata keys that match those values are copied into the special column during insert. Filters use the special columns instead of the metadata JSON column for keys in the specific_metadata_columns list.
 
-```python
+```python wrap
 # Create a new table "PERFORMANT_CUSTOMTEXT_FILTER" with three "standard" columns and one additional column
 my_own_table_name = "PERFORMANT_CUSTOMTEXT_FILTER"
 cur = connection.cursor()
@@ -852,7 +852,7 @@ print(rows[0][3])  # The vector
 cur.close()
 ```
 
-```output
+```output wrap
 Filters on this value are very performant
 Some other text
 {"start": 400, "end": 450, "doc_name": "other.txt", "CUSTOMTEXT": "Filters on this value are very performant"}

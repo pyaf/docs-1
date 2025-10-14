@@ -826,7 +826,7 @@ inference provider of your choice.
     To do this, you can set the `LC_OUTPUT_VERSION` environment variable to `v1`. Or,
     initialize any chat model with `outputVersion: "v1"`:
 
-    ```typescript
+    ```typescript wrap
     import { initChatModel } from "langchain";
 
     const model = await initChatModel("openai:gpt-5-nano", { outputVersion: "v1" });

@@ -75,7 +75,7 @@ import sqlite3
 # ... database connection and query code
 ```
 
-```
+``` wrap
 [(1, 'AC/DC'), (2, 'Accept'), (3, 'Aerosmith'), (4, 'Alanis Morissette'), (5, 'Alice In Chains'), (6, 'Antônio Carlos Jobim'), (7, 'Apocalyptica'), (8, 'Audioslave'), (9, 'BackBeat'), (10, 'Billy Cobham')]
 ```
 
@@ -108,7 +108,7 @@ We'll create two SQL helper functions:
 
 To make testing easier, we'll add a "mock" mode to these functions. When mock mode is enabled, the functions will simulate database operations without actually modifying any data.
 
-```python
+```python wrap
 import sqlite3
 
 def _refund(invoice_id: int | None, invoice_line_ids: list[int] | None, mock: bool = False) -> float:
@@ -133,7 +133,7 @@ The graph's state will track:
 * All customer and purchase information extracted from the conversation
 * The next message to send to the user (followup text)
 
-```python
+```python wrap
 from typing import Literal
 import json
 
@@ -260,7 +260,7 @@ def lookup(state: State) -> dict:
         response = "We did not find any purchases associated with the information you've provided. Are you sure you've entered all of your information correctly?"
         followup = response
     else:
-        response = f"Which of the following purchases would you like to be refunded for?\n\n```json{json.dumps(results, indent=2)}\n```"
+        response = f"Which of the following purchases would you like to be refunded for?\n\n```json{json.dumps(results, indent=2)}\n```" wrap
         followup = f"Which of the following purchases would you like to be refunded for?\n\n{tabulate(results, headers='keys')}"
     return {
         "messages": [{"role": "assistant", "content": response}],
@@ -284,7 +284,7 @@ refund_graph = graph_builder.compile()
 
 We can visualize our refund graph:
 
-```
+``` wrap
 # Assumes you're in an interactive Python environmentfrom IPython.display import Image, display ...
 ```
 
@@ -294,7 +294,7 @@ We can visualize our refund graph:
 
 For the lookup (i.e. question-answering) agent, we'll use a simple ReACT architecture and give the agent tools for looking up track names, artist names, and album names based on various filters. For example, you can look up albums by a particular artist, artists who released songs with a specific name, etc.
 
-```python
+```python wrap
 from langchain.embeddings import init_embeddings
 from langchain_core.tools import tool
 from langchain_core.vectorstores import InMemoryVectorStore
@@ -337,7 +337,7 @@ display(Image(qa_graph.get_graph(xray=True).draw_mermaid_png()))
 
 Now let's define a parent agent that combines our two task-specific agents. The only job of the parent agent is to route to one of the sub-agents by classifying the user's current intent, and to compile the output into a followup message.
 
-```python
+```python wrap
 # Schema for routing user intent.
 # We'll use structured outputs to enforce that the model returns only
 # the desired output.
@@ -409,17 +409,17 @@ display(Image(graph.get_graph().draw_mermaid_png()))
 
 Let's give our custom support agent a whirl!
 
-```python
+```python wrap
 state = await graph.ainvoke(
     {"messages": [{"role": "user", "content": "what james brown songs do you have"}]}
 )
 print(state["followup"])
 ```
-```
+``` wrap
 I found 20 James Brown songs in the database, all from the album "Sex Machine". Here they are: ...
 ```
 
-```python
+```python wrap
 state = await graph.ainvoke({"messages": [
     {
         "role": "user",
@@ -447,7 +447,7 @@ Let's run each type of evaluation:
 
 First, let's create a [dataset](/langsmith/evaluation-concepts#datasets) that evaluates end-to-end performance of the agent. For simplicity we'll use the same dataset for final response and trajectory evaluation, so we'll add both ground-truth responses and trajectories for each example question. We'll cover the trajectories in the next section.
 
-```python
+```python wrap
 from langsmith import Client
 
 client = Client()
@@ -513,7 +513,7 @@ if not client.has_dataset(dataset_name=dataset_name):
 
 We'll create a custom [LLM-as-judge](/langsmith/evaluation-concepts#llm-as-judge) evaluator that uses another model to compare our agent's output on each example to the reference response, and judge if they're equivalent or not:
 
-```python
+```python wrap
 # LLM-as-judge instructions
 grader_instructions = """You are a teacher grading a quiz.
 
@@ -557,7 +557,7 @@ Now we can run our evaluation. Our evaluator assumes that our target function re
 
 Also remember that in our refund graph we made the refund node configurable, so that if we specified `config={"env": "test"}`, we would mock out the refunds without actually updating the DB. We'll use this configurable variable in our target `run_graph` method when invoking our graph:
 
-```python
+```python wrap
 # Target function
 async def run_graph(inputs: dict) -> dict:
     """Run graph and track the trajectory it takes along with the final response."""
@@ -592,7 +592,7 @@ This is where trajectory evaluations come in. A trajectory evaluation:
 For this example, our end-to-end dataset contains an ordered list of steps that we expect the agent to take. Let's create an evaluator that checks the agent's actual trajectory against these expected steps and calculates what percentage were completed:
 
 
-```python
+```python wrap
 def trajectory_subsequence(outputs: dict, reference_outputs: dict) -> float:
     """Check how many of the desired steps the agent took."""
     if len(reference_outputs['trajectory']) > len(outputs['trajectory']):
@@ -611,7 +611,7 @@ Now we can run our evaluation. Our evaluator assumes that our target function re
 
 Note that we are reusing the same dataset as for our final response evaluation, so we could have run both evaluators together and defined a target function that returns both "response" and "trajectory". In practice it's often useful to have separate datasets for each type of evaluation, which is why we show them separately here:
 
-```python
+```python wrap
 async def run_graph(inputs: dict) -> dict:
     """Run graph and track the trajectory it takes along with the final response."""
     trajectory = []
@@ -655,7 +655,7 @@ While end-to-end tests give you the most signal about your agents performance, f
 
 In our case, a crucial part of our agent is that it routes the user's intention correctly into either the "refund" path or the "question answering" path. Let's create a dataset and run some evaluations to directly stress test this one component.
 
-```python
+```python wrap
 # Create dataset
 examples = [
     {
@@ -712,7 +712,7 @@ You can see what these results look like here: [LangSmith link](https://smith.la
 Here's a consolidated script with all the above code:
 
 <Accordion title="Reference code">
-```python
+```python wrap
 import json
 import sqlite3
 from typing import Literal
@@ -1062,7 +1062,7 @@ def lookup(state: State) -> dict:
         response = "We did not find any purchases associated with the information you've provided. Are you sure you've entered all of your information correctly?"
         followup = response
     else:
-        response = f"Which of the following purchases would you like to be refunded for?\n\n```json{json.dumps(results, indent=2)}\n```"
+        response = f"Which of the following purchases would you like to be refunded for?\n\n```json{json.dumps(results, indent=2)}\n```" wrap
         followup = f"Which of the following purchases would you like to be refunded for?\n\n{tabulate(results, headers='keys')}"
     return {
         "messages": [{"role": "assistant", "content": response}],

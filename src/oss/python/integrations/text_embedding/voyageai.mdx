@@ -31,7 +31,7 @@ embeddings = VoyageAIEmbeddings(
 
 Prepare the documents and use `embed_documents` to get their embeddings.
 
-```python
+```python wrap
 documents = [
     "Caching embeddings enables the storage or temporary caching of embeddings, eliminating the necessity to recompute them each time.",
     "An LLMChain is a chain that composes basic LLM functionality. It consists of a PromptTemplate and a language model (either an LLM or chat model). It formats the prompt template using the input key values provided (and also memory key values, if available), passes the formatted string to LLM and returns the LLM output.",
@@ -95,6 +95,6 @@ top1_retrieved_doc = result[0].page_content  # return the top1 retrieved result
 print(top1_retrieved_doc)
 ```
 
-```output
+```output wrap
 An LLMChain is a chain that composes basic LLM functionality. It consists of a PromptTemplate and a language model (either an LLM or chat model). It formats the prompt template using the input key values provided (and also memory key values, if available), passes the formatted string to LLM and returns the LLM output.
 ```

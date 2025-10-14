@@ -59,7 +59,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 The LangChain RecursiveUrlLoader integration lives in the `@langchain/community` package:
 
-```{=mdx}
+```{=mdx} wrap
 import IntegrationInstallTooltip from "@mdx_components/integration_install_tooltip.mdx";
 <IntegrationInstallTooltip></IntegrationInstallTooltip>
 
@@ -80,7 +80,7 @@ We also suggest adding a package like [`html-to-text`](https://www.npmjs.com/pac
 
 Now we can instantiate our model object and load documents:
 
-```typescript
+```typescript wrap
 import { RecursiveUrlLoader } from "@langchain/community/document_loaders/web/recursive_url"
 import { compile } from "html-to-text";
 
@@ -100,7 +100,7 @@ const docs = await loader.load()
 docs[0]
 ```
 
-```output
+```output wrap
 {
   pageContent: '\n' +
     '/\n' +
@@ -337,7 +337,7 @@ docs[0]
 console.log(docs[0].metadata)
 ```
 
-```output
+```output wrap
 {
   source: 'https://langchain.com/',
   title: 'LangChain',
@@ -348,7 +348,7 @@ console.log(docs[0].metadata)
 
 ## Options
 
-```typescript
+```typescript wrap
 interface Options {
   excludeDirs?: string[]; // webpage directories to exclude.
   extractor?: (text: string) => string; // a function to extract the text of the document from the webpage, by default it returns the page as it is. It is recommended to use tools like html-to-text to extract the text. By default, it just returns the page as it is.

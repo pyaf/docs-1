@@ -86,7 +86,7 @@ Add the following code into your app file (e.g., `app.py` or `app.ts`):
 
 <CodeGroup>
 
-```python Python
+```python Python wrap
 from openai import OpenAI
 
 def retriever(query: str):
@@ -167,7 +167,7 @@ This snippet wraps the OpenAI client so that every subsequent model call is logg
 
     <CodeGroup>
 
-    ```python Python highlight={2,7}
+    ```python Python highlight={2,7} wrap
     from openai import OpenAI
     from langsmith.wrappers import wrap_openai  # traces openai calls
 
@@ -195,7 +195,7 @@ This snippet wraps the OpenAI client so that every subsequent model call is logg
         print(rag("Where did Harrison work?"))
     ```
 
-    ```typescript TypeScript highlight={3,9}
+    ```typescript TypeScript highlight={3,9} wrap
     import "dotenv/config";
     import OpenAI from "openai";
     import { wrapOpenAI } from "langsmith/wrappers"; // traces openai calls
@@ -275,7 +275,7 @@ You can also use the `traceable` decorator for [Python](https://docs.smith.langc
 
     <CodeGroup>
 
-    ```python Python highlight={3,10}
+    ```python Python highlight={3,10} wrap
     from openai import OpenAI
     from langsmith.wrappers import wrap_openai
     from langsmith import traceable
@@ -305,7 +305,7 @@ You can also use the `traceable` decorator for [Python](https://docs.smith.langc
         print(rag("Where did Harrison work?"))
     ```
 
-    ```typescript TypeScript highlight={3,11}
+    ```typescript TypeScript highlight={3,11} wrap
     import "dotenv/config";
     import OpenAI from "openai";
     import { wrapOpenAI, traceable } from "langsmith/wrappers";

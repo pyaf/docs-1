@@ -109,7 +109,7 @@ The `metadata` attribute can capture information about the source of the documen
 We can generate sample documents when desired:
 
 :::python
-```python
+```python wrap
 from langchain_core.documents import Document
 
 documents = [
@@ -192,7 +192,7 @@ console.log(docs.length);
 print(f"{docs[0].page_content[:200]}\n")
 print(docs[0].metadata)
 ```
-```output
+```output wrap
 Table of Contents
 UNITED STATES
 SECURITIES AND EXCHANGE COMMISSION
@@ -209,7 +209,7 @@ FO
 ```typescript
 console.log(docs[0].pageContent.slice(0, 200));
 ```
-```output
+```output wrap
 Table of Contents
 UNITED STATES
 SECURITIES AND EXCHANGE COMMISSION
@@ -328,7 +328,7 @@ console.log(vector1.slice(0, 10));
 ```
 :::
 
-```output
+```output wrap
 Generated vectors of length 1536
 
 [-0.008586574345827103, -0.03341241180896759, -0.008936782367527485, -0.0036674530711025, 0.010564599186182022, 0.009598285891115665, -0.028587326407432556, -0.015824200585484505, 0.0030416189692914486, -0.012899317778646946]
@@ -385,7 +385,7 @@ results = vector_store.similarity_search(
 
 print(results[0])
 ```
-```output
+```output wrap
 page_content='direct to consumer operations sell products through the following number of retail stores in the United States:
 U.S. RETAIL STORES NUMBER
 NIKE Brand factory stores 213
@@ -404,7 +404,7 @@ const results1 = await vectorStore.similaritySearch(
 
 console.log(results1[0]);
 ```
-```output
+```output wrap
 Document {
     pageContent: 'direct to consumer operations sell products...',
     metadata: {'page': 4, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 3125}
@@ -420,7 +420,7 @@ results = await vector_store.asimilarity_search("When was Nike incorporated?")
 
 print(results[0])
 ```
-```output
+```output wrap
 page_content='Table of Contents
 PART I
 ITEM 1. BUSINESS
@@ -436,7 +436,7 @@ and sales through our digital platforms (also referred to as "NIKE Brand Digital
 Return scores:
 
 :::python
-```python
+```python wrap
 # Note that providers implement different scores; the score here
 # is a distance metric that varies inversely with similarity.
 
@@ -445,7 +445,7 @@ doc, score = results[0]
 print(f"Score: {score}\n")
 print(doc)
 ```
-```output
+```output wrap
 Score: 0.23699893057346344
 
 page_content='Table of Contents
@@ -468,7 +468,7 @@ const results2 = await vectorStore.similaritySearchWithScore(
 
 console.log(results2[0]);
 ```
-```output
+```output wrap
 Score: 0.23699893057346344
 
 Document {
@@ -487,7 +487,7 @@ embedding = embeddings.embed_query("How were Nike's margins impacted in 2023?")
 results = vector_store.similarity_search_by_vector(embedding)
 print(results[0])
 ```
-```output
+```output wrap
 page_content='Table of Contents
 GROSS MARGIN
 FISCAL 2023 COMPARED TO FISCAL 2022
@@ -564,7 +564,7 @@ retriever.batch(
 
 
 
-```output
+```output wrap
 [[Document(metadata={'page': 4, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 3125}, page_content='direct to consumer operations sell products through the following number of retail stores in the United States:\nU.S. RETAIL STORES NUMBER\nNIKE Brand factory stores 213 \nNIKE Brand in-line stores (including employee-only stores) 74 \nConverse stores (including factory stores) 82 \nTOTAL 369 \nIn the United States, NIKE has eight significant distribution centers. Refer to Item 2. Properties for further information.\n2023 FORM 10-K 2')],
  [Document(metadata={'page': 3, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 0}, page_content='Table of Contents\nPART I\nITEM 1. BUSINESS\nGENERAL\nNIKE, Inc. was incorporated in 1967 under the laws of the State of Oregon. As used in this Annual Report on Form 10-K (this "Annual Report"), the terms "we," "us," "our,"\n"NIKE" and the "Company" refer to NIKE, Inc. and its predecessors, subsidiaries and affiliates, collectively, unless the context indicates otherwise.\nOur principal business activity is the design, development and worldwide marketing and selling of athletic footwear, apparel, equipment, accessories and services. NIKE is\nthe largest seller of athletic footwear and apparel in the world. We sell our products through NIKE Direct operations, which are comprised of both NIKE-owned retail stores\nand sales through our digital platforms (also referred to as "NIKE Brand Digital"), to retail accounts and to a mix of independent distributors, licensees and sales')]]
 ```
@@ -586,7 +586,7 @@ retriever.batch(
     ],
 )
 ```
-```output
+```output wrap
 [[Document(metadata={'page': 4, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 3125}, page_content='direct to consumer operations sell products through the following number of retail stores in the United States:\nU.S. RETAIL STORES NUMBER\nNIKE Brand factory stores 213 \nNIKE Brand in-line stores (including employee-only stores) 74 \nConverse stores (including factory stores) 82 \nTOTAL 369 \nIn the United States, NIKE has eight significant distribution centers. Refer to Item 2. Properties for further information.\n2023 FORM 10-K 2')],
  [Document(metadata={'page': 3, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 0}, page_content='Table of Contents\nPART I\nITEM 1. BUSINESS\nGENERAL\nNIKE, Inc. was incorporated in 1967 under the laws of the State of Oregon. As used in this Annual Report on Form 10-K (this "Annual Report"), the terms "we," "us," "our,"\n"NIKE" and the "Company" refer to NIKE, Inc. and its predecessors, subsidiaries and affiliates, collectively, unless the context indicates otherwise.\nOur principal business activity is the design, development and worldwide marketing and selling of athletic footwear, apparel, equipment, accessories and services. NIKE is\nthe largest seller of athletic footwear and apparel in the world. We sell our products through NIKE Direct operations, which are comprised of both NIKE-owned retail stores\nand sales through our digital platforms (also referred to as "NIKE Brand Digital"), to retail accounts and to a mix of independent distributors, licensees and sales')]]
 ```
@@ -607,7 +607,7 @@ await retriever.batch([
   "What was Nike's revenue in 2023?",
 ]);
 ```
-```output
+```output wrap
 [
     [Document {
         metadata: {'page': 4, 'source': '../example_data/nke-10k-2023.pdf', 'start_index': 3125},

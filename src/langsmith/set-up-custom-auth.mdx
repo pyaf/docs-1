@@ -57,7 +57,7 @@ npx @langchain/langgraph-cli dev
 
 The server will start and open [Studio](/langsmith/studio) in your browser:
 
-```
+``` wrap
 > - 🚀 API: http://127.0.0.1:2024
 > - 🎨 Studio UI: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
 > - 📚 API Docs: http://127.0.0.1:2024/docs
@@ -82,7 +82,7 @@ The [`Auth`](https://langchain-ai.github.io/langgraph/cloud/reference/sdk/python
 
 Create a new file `src/security/auth.py`. This is where your code will live to check if users are allowed to access your bot:
 
-```python {highlight={10,15-16}} title="src/security/auth.py"
+```python {highlight={10,15-16}} title="src/security/auth.py" wrap
 from langgraph_sdk import Auth
 
 # This is our toy user database. Do not do this in production

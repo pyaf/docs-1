@@ -20,7 +20,7 @@ The Nebius integration can be installed via pip:
 
 Nebius requires an API key that can be passed as an initialization parameter `api_key` or set as the environment variable `NEBIUS_API_KEY`. You can obtain an API key by creating an account on [Nebius AI Studio](https://studio.nebius.ai/).
 
-```python
+```python wrap
 import getpass
 import os
 
@@ -33,7 +33,7 @@ if "NEBIUS_API_KEY" not in os.environ:
 
 The `NebiusRetriever` requires a `NebiusEmbeddings` instance and a list of documents. Here's how to initialize it:
 
-```python
+```python wrap
 from langchain_core.documents import Document
 from langchain_nebius import NebiusEmbeddings, NebiusRetriever
 
@@ -158,7 +158,7 @@ Top 1 result:
 
 NebiusRetriever supports async operations:
 
-```python
+```python wrap
 import asyncio
 
 

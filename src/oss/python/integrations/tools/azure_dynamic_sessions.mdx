@@ -22,7 +22,7 @@ POOL_MANAGEMENT_ENDPOINT = getpass.getpass()
 
 You'll also need to install the `langchain-azure-dynamic-sessions` package:
 
-```python
+```python wrap
 %pip install -qU langchain-azure-dynamic-sessions langchain-openai langchainhub langchain langchain-community
 ```
 
@@ -155,7 +155,7 @@ display(img)
 
 ## Simple agent example
 
-```python
+```python wrap
 from langchain import hub
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_azure_dynamic_sessions import SessionsPythonREPLTool
@@ -176,7 +176,7 @@ response = agent_executor.invoke(
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
 
 Invoking: `Python_REPL` with `import math

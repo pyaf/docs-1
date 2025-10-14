@@ -30,7 +30,7 @@ model = Predibase(
 )
 ```
 
-```python
+```python wrap
 from langchain_community.llms import Predibase
 
 # With a fine-tuned adapter hosted at Predibase (adapter_version must be specified).
@@ -47,7 +47,7 @@ model = Predibase(
 )
 ```
 
-```python
+```python wrap
 from langchain_community.llms import Predibase
 
 # With a fine-tuned adapter hosted at HuggingFace (adapter_version does not apply and will be ignored).
@@ -74,7 +74,7 @@ print(response)
 
 ## Chain Call Setup
 
-```python
+```python wrap
 from langchain_community.llms import Predibase
 
 model = Predibase(
@@ -88,7 +88,7 @@ model = Predibase(
 )
 ```
 
-```python
+```python wrap
 # With a fine-tuned adapter hosted at Predibase (adapter_version must be specified).
 model = Predibase(
     model="mistral-7b",
@@ -103,7 +103,7 @@ model = Predibase(
 )
 ```
 
-```python
+```python wrap
 # With a fine-tuned adapter hosted at HuggingFace (adapter_version does not apply and will be ignored).
 llm = Predibase(
     model="mistral-7b",
@@ -124,7 +124,7 @@ from langchain.chains import LLMChain
 from langchain_core.prompts import PromptTemplate
 ```
 
-```python
+```python wrap
 # This is an LLMChain to write a synopsis given a title of a play.
 template = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
 
@@ -134,7 +134,7 @@ prompt_template = PromptTemplate(input_variables=["title"], template=template)
 synopsis_chain = LLMChain(llm=llm, prompt=prompt_template)
 ```
 
-```python
+```python wrap
 # This is an LLMChain to write a review of a play given a synopsis.
 template = """You are a play critic from the New York Times. Given the synopsis of play, it is your job to write a review for that play.
 
@@ -160,7 +160,7 @@ review = overall_chain.run("Tragedy at sunset on the beach")
 
 ## Fine-tuned LLM (Use your own fine-tuned LLM from Predibase)
 
-```python
+```python wrap
 from langchain_community.llms import Predibase
 
 model = Predibase(
@@ -179,7 +179,7 @@ model = Predibase(
 # replace my-base-LLM with the name of your choice of a serverless base model in Predibase
 ```
 
-```python
+```python wrap
 # Optionally use `kwargs` to dynamically overwrite "generate()" settings.
 # response = model.invoke("Can you help categorize the following emails into positive, negative, and neutral?", **{"temperature": 0.5, "max_new_tokens": 1024})
 ```

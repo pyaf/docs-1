@@ -103,7 +103,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU "langchain[azure]"
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -125,7 +125,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU langchain-google-genai
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -167,7 +167,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU langchain-huggingface
 ```
-```python
+```python wrap
 from langchain_huggingface import HuggingFaceEmbeddings
 
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
@@ -210,7 +210,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU langchain-mistralai
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -264,7 +264,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU langchain-voyageai
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -282,7 +282,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU langchain-ibm
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -334,7 +334,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU "langchain[langchain-perplexity]"
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -352,7 +352,7 @@ embeddings.embed_query("Hello, world!")
 ```bash
 pip install -qU "langchain[langchain-deepseek]"
 ```
-```python
+```python wrap
 import getpass
 import os
 
@@ -388,7 +388,7 @@ The main supported way to initialize a `CacheBackedEmbeddings` is `from_bytes_st
 - `CacheBackedEmbeddings` does not cache query embeddings by default. To enable this, specify a `query_embedding_cache`.
 </Important>
 
-```python
+```python wrap
 import time
 from langchain.embeddings import CacheBackedEmbeddings  # [!code highlight]
 from langchain.storage import LocalFileStore # [!code highlight]

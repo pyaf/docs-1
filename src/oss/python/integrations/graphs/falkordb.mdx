@@ -28,7 +28,7 @@ from langchain_openai import ChatOpenAI
 graph = FalkorDBGraph(database="movies")
 ```
 
-```python
+```python wrap
 graph.query(
     """
     CREATE
@@ -71,13 +71,13 @@ import os
 os.environ["OPENAI_API_KEY"] = "API_KEY_HERE"
 ```
 
-```output
+```output wrap
 Node properties: [[OrderedDict([('label', None), ('properties', ['name', 'birthDate', 'title'])])]]
 Relationships properties: [[OrderedDict([('type', None), ('properties', [])])]]
 Relationships: [['(:Person)-[:ACTED_IN]->(:Movie)']]
 ```
 
-```python
+```python wrap
 chain = FalkorDBQAChain.from_llm(ChatOpenAI(temperature=0), graph=graph, verbose=True)
 ```
 
@@ -87,7 +87,7 @@ chain = FalkorDBQAChain.from_llm(ChatOpenAI(temperature=0), graph=graph, verbose
 chain.run("Who played in Top Gun?")
 ```
 
-```output
+```output wrap
 > Entering new FalkorDBQAChain chain...
 Generated Cypher:
 MATCH (p:Person)-[:ACTED_IN]->(m:Movie)

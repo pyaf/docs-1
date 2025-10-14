@@ -56,7 +56,7 @@ graph.invoke( # (1)!
 
 <Tabs>
     <Tab title="Agent prompt">
-    ```python {highlight={6,20}}
+    ```python {highlight={6,20}} wrap
     from langchain_core.messages import AnyMessage
     from langgraph.runtime import get_runtime
     from langgraph.prebuilt.chat_agent_executor import AgentState
@@ -185,7 +185,7 @@ await graph.invoke(
     :::
 
     :::js
-    ```typescript {highlight={6,12,22}}
+    ```typescript {highlight={6,12,22}} wrap
     import type { BaseMessage } from "@langchain/core/messages";
     import { createReactAgent } from "@langchain/langgraph/prebuilt";
     import { MessagesZodMeta } from "@langchain/langgraph";

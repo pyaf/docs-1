@@ -24,12 +24,12 @@ from langchain_community.retrievers import (
 
 ## Create New Retriever
 
-```python
+```python wrap
 elasticsearch_url = "http://localhost:9200"
 retriever = ElasticSearchBM25Retriever.create(elasticsearch_url, "langchain-index-4")
 ```
 
-```python
+```python wrap
 # Alternatively, you can load an existing index
 # import elasticsearch
 # elasticsearch_url="http://localhost:9200"

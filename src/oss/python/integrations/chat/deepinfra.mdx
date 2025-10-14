@@ -11,7 +11,7 @@ Make sure to get your API key from DeepInfra. You have to [Login](https://deepin
 You are given a 1 hour free of serverless GPU compute to test different models. (see [here](https://github.com/deepinfra/deepctl#deepctl))
 You can print your token with `deepctl auth token`
 
-```python
+```python wrap
 # get a new token: https://deepinfra.com/login?from=%2Fdash
 
 import os
@@ -60,7 +60,7 @@ DeepInfra currently supports only invoke and async invoke tool calling.
 
 For a complete list of models that support tool calling, please refer to our [tool calling documentation](https://deepinfra.com/docs/advanced/function_calling).
 
-```python
+```python wrap
 import asyncio
 
 from dotenv import find_dotenv, load_dotenv

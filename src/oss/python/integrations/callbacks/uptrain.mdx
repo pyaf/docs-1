@@ -39,11 +39,11 @@ These evaluations collectively ensure the robustness and effectiveness of the RA
 
 ## Install Dependencies
 
-```python
+```python wrap
 %pip install -qU langchain langchain_openai langchain-community uptrain faiss-cpu flashrank
 ```
 
-```output
+```output wrap
 huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
 To disable this warning, you can either:
  - Avoid using `tokenizers` before the fork if possible
@@ -58,7 +58,7 @@ NOTE: that you can also install `faiss-gpu` instead of `faiss-cpu` if you want t
 
 ## Import Libraries
 
-```python
+```python wrap
 from getpass import getpass
 
 from langchain.chains import RetrievalQA
@@ -172,7 +172,7 @@ UpTrain callback handler will automatically capture the query, context and respo
 - **[Factual Accuracy](https://docs.uptrain.ai/predefined-evaluations/context-awareness/factual-accuracy)**: Check how factually accurate the response is.
 - **[Response Completeness](https://docs.uptrain.ai/predefined-evaluations/response-quality/response-completeness)**: Check if the response contains all the information that the query is asking for.
 
-```python
+```python wrap
 # Create the RAG prompt
 template = """Answer the question based only on the following context, which can include text and tables:
 {context}
@@ -197,11 +197,11 @@ query = "What did the president say about Ketanji Brown Jackson"
 docs = chain.invoke(query, config=config)
 ```
 
-```output
+```output wrap
 2024-04-17 17:03:44.969 | INFO     | uptrain.framework.evalllm:evaluate_on_server:378 - Sending evaluation request for rows 0 to <50 to the Uptrain
 2024-04-17 17:04:05.809 | INFO     | uptrain.framework.evalllm:evaluate:367 - Local server not running, start the server to log data and visualize in the dashboard!
 ```
-```output
+```output wrap
 Question: What did the president say about Ketanji Brown Jackson
 Response: The president mentioned that he had nominated Ketanji Brown Jackson to serve on the United States Supreme Court 4 days ago. He described her as one of the nation's top legal minds who will continue Justice Breyer’s legacy of excellence. He also mentioned that she is a former top litigator in private practice, a former federal public defender, and comes from a family of public school educators and police officers. He described her as a consensus builder and noted that since her nomination, she has received a broad range of support from various groups, including the Fraternal Order of Police and former judges appointed by both Democrats and Republicans.
 
@@ -218,7 +218,7 @@ To evaluate this retriever, UpTrain will run the following evaluation:
 
 - **[Multi Query Accuracy](https://docs.uptrain.ai/predefined-evaluations/query-quality/multi-query-accuracy)**: Checks if the multi-queries generated mean the same as the original query.
 
-```python
+```python wrap
 # Create the retriever
 multi_query_retriever = MultiQueryRetriever.from_llm(retriever=retriever, llm=llm)
 
@@ -245,7 +245,7 @@ question = "What did the president say about Ketanji Brown Jackson"
 docs = chain.invoke(question, config=config)
 ```
 
-```output
+```output wrap
 2024-04-17 17:04:10.675 | INFO     | uptrain.framework.evalllm:evaluate_on_server:378 - Sending evaluation request for rows 0 to <50 to the Uptrain
 2024-04-17 17:04:16.804 | INFO     | uptrain.framework.evalllm:evaluate:367 - Local server not running, start the server to log data and visualize in the dashboard!
 ```
@@ -258,11 +258,11 @@ Multi Queries:
 
 Multi Query Accuracy Score: 0.5
 ```
-```output
+```output wrap
 2024-04-17 17:04:22.027 | INFO     | uptrain.framework.evalllm:evaluate_on_server:378 - Sending evaluation request for rows 0 to <50 to the Uptrain
 2024-04-17 17:04:44.033 | INFO     | uptrain.framework.evalllm:evaluate:367 - Local server not running, start the server to log data and visualize in the dashboard!
 ```
-```output
+```output wrap
 Question: What did the president say about Ketanji Brown Jackson
 Response: The president mentioned that he had nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to serve on the United States Supreme Court 4 days ago. He described her as one of the nation's top legal minds who will continue Justice Breyer’s legacy of excellence. He also mentioned that since her nomination, she has received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans.
 
@@ -297,7 +297,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 result = chain.invoke(query, config=config)
 ```
 
-```output
+```output wrap
 2024-04-17 17:04:46.462 | INFO     | uptrain.framework.evalllm:evaluate_on_server:378 - Sending evaluation request for rows 0 to <50 to the Uptrain
 2024-04-17 17:04:53.561 | INFO     | uptrain.framework.evalllm:evaluate:367 - Local server not running, start the server to log data and visualize in the dashboard!
 ```
@@ -307,11 +307,11 @@ Question: What did the president say about Ketanji Brown Jackson
 Context Conciseness Score: 0.0
 Context Reranking Score: 1.0
 ```
-```output
+```output wrap
 2024-04-17 17:04:56.947 | INFO     | uptrain.framework.evalllm:evaluate_on_server:378 - Sending evaluation request for rows 0 to <50 to the Uptrain
 2024-04-17 17:05:16.551 | INFO     | uptrain.framework.evalllm:evaluate:367 - Local server not running, start the server to log data and visualize in the dashboard!
 ```
-```output
+```output wrap
 Question: What did the president say about Ketanji Brown Jackson
 Response: The President mentioned that he nominated Circuit Court of Appeals Judge Ketanji Brown Jackson to serve on the United States Supreme Court 4 days ago. He described her as one of the nation's top legal minds who will continue Justice Breyer’s legacy of excellence.
 

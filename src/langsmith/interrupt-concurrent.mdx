@@ -91,7 +91,7 @@ Now we can start our two runs and join the second one until it has completed:
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     # the first run will be interrupted
     interrupted_run = await client.runs.create(
         thread["thread_id"],
@@ -111,7 +111,7 @@ Now we can start our two runs and join the second one until it has completed:
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     // the first run will be interrupted
     let interruptedRun = await client.runs.create(
       thread["thread_id"],
@@ -135,7 +135,7 @@ Now we can start our two runs and join the second one until it has completed:
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     curl --request POST \
     --url <DEPLOY<ENT_URL>>/threads/<THREAD_ID>/runs \
     --header 'Content-Type: application/json' \
@@ -178,7 +178,7 @@ We can see that the thread has partial data from the first run + data from the s
     ```
     </Tab>
     <Tab title="CURL">
-    ```bash
+    ```bash wrap
     source pretty_print.sh && curl --request GET \
     --url <DEPLOYMENT_URL>/threads/<THREAD_ID>/state | \
     jq -c '.values.messages[]' | while read -r element; do
@@ -192,7 +192,7 @@ We can see that the thread has partial data from the first run + data from the s
 
 Output:
 
-```
+``` wrap
 ================================ Human Message =================================
 
 what's the weather in sf?
@@ -239,12 +239,12 @@ Verify that the original, interrupted run was interrupted
 
 <Tabs>
     <Tab title="Python">
-    ```python
+    ```python wrap
     print((await client.runs.get(thread["thread_id"], interrupted_run["run_id"]))["status"])
     ```
     </Tab>
     <Tab title="Javascript">
-    ```js
+    ```js wrap
     console.log((await client.runs.get(thread['thread_id'], interruptedRun["run_id"]))["status"])
     ```
     </Tab>

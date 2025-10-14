@@ -24,14 +24,14 @@ llm = OpenAI(
 
 ### Next, load the Natural Language API Toolkits
 
-```python
+```python wrap
 speak_toolkit = NLAToolkit.from_llm_and_url(llm, "https://api.speak.com/openapi.yaml")
 klarna_toolkit = NLAToolkit.from_llm_and_url(
     llm, "https://www.klarna.com/us/shopping/public/openai/v0/api-docs/"
 )
 ```
 
-```output
+```output wrap
 Attempting to load an OpenAPI 3.0.1 spec.  This may result in degraded performance. Convert your OpenAPI spec to 3.1.* spec for better support.
 Attempting to load an OpenAPI 3.0.1 spec.  This may result in degraded performance. Convert your OpenAPI spec to 3.1.* spec for better support.
 Attempting to load an OpenAPI 3.0.1 spec.  This may result in degraded performance. Convert your OpenAPI spec to 3.1.* spec for better support.
@@ -39,7 +39,7 @@ Attempting to load an OpenAPI 3.0.1 spec.  This may result in degraded performan
 
 ### Create the Agent
 
-```python
+```python wrap
 # Slightly tweak the instructions from the default agent
 openapi_format_instructions = """Use the following format:
 
@@ -66,13 +66,13 @@ mrkl = initialize_agent(
 )
 ```
 
-```python
+```python wrap
 mrkl.run(
     "I have an end of year party for my Italian class and have to buy some Italian clothes for it"
 )
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to find out what kind of Italian clothes are available
 Action: Open_AI_Klarna_product_Api.productsUsingGET
@@ -84,7 +84,7 @@ Final Answer: You can buy two products from the Alé brand in Italian Blue for y
 > Finished chain.
 ```
 
-```output
+```output wrap
 'You can buy two products from the Alé brand in Italian Blue for your end of year party. The Alé Colour Block Short Sleeve Jersey Men - Italian Blue costs $86.49, and the Alé Dolid Flash Jersey Men - Italian Blue costs $40.00.'
 ```
 
@@ -103,7 +103,7 @@ Since each NLATool exposes a concisee natural language interface to its wrapped 
 spoonacular_api_key = ""  # Copy from the API Console
 ```
 
-```python
+```python wrap
 requests = Requests(headers={"x-api-key": spoonacular_api_key})
 spoonacular_toolkit = NLAToolkit.from_llm_and_url(
     llm,
@@ -113,7 +113,7 @@ spoonacular_toolkit = NLAToolkit.from_llm_and_url(
 )
 ```
 
-```output
+```output wrap
 Attempting to load an OpenAPI 3.0.0 spec.  This may result in degraded performance. Convert your OpenAPI spec to 3.1.* spec for better support.
 Unsupported APIPropertyLocation "header" for parameter Content-Type. Valid values are ['path', 'query'] Ignoring optional parameter
 Unsupported APIPropertyLocation "header" for parameter Accept. Valid values are ['path', 'query'] Ignoring optional parameter
@@ -159,7 +159,7 @@ mrkl = initialize_agent(
 )
 ```
 
-```python
+```python wrap
 # Make the query more complex!
 user_input = (
     "I'm learning Italian, and my language class is having an end of year party... "
@@ -172,7 +172,7 @@ user_input = (
 mrkl.run(user_input)
 ```
 
-```output
+```output wrap
 > Entering new AgentExecutor chain...
  I need to find a recipe and an outfit that is Italian-themed.
 Action: spoonacular_API.searchRecipes
@@ -188,7 +188,7 @@ Final Answer: To present for your Italian language class, you could wear an Ital
 > Finished chain.
 ```
 
-```output
+```output wrap
 'To present for your Italian language class, you could wear an Italian Gold Sparkle Perfectina Necklace - Gold, an Italian Design Miami Cuban Link Chain Necklace - Gold, or an Italian Gold Miami Cuban Link Chain Necklace - Gold. For a recipe, you could make Turkey Tomato Cheese Pizza, Broccolini Quinoa Pilaf, Bruschetta Style Pork & Pasta, Salmon Quinoa Risotto, Italian Tuna Pasta, Roasted Brussels Sprouts With Garlic, Asparagus Lemon Risotto, Italian Steamed Artichokes, Crispy Italian Cauliflower Poppers Appetizer, or Pappa Al Pomodoro.'
 ```
 
@@ -200,7 +200,7 @@ natural_language_api_tools[1].run(
 )
 ```
 
-```output
+```output wrap
 "In Italian, you can say 'Buon appetito' to someone to wish them to enjoy their meal. This phrase is commonly used in Italy when someone is about to eat, often at the beginning of a meal. It's similar to saying 'Bon appétit' in French or 'Guten Appetit' in German."
 ```
 

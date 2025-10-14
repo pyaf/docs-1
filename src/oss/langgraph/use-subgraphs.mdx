@@ -52,7 +52,7 @@ A simple way to implement a subgraph is to invoke a graph from inside the node o
 If that's the case for your application, you need to define a node **function that invokes the subgraph**. This function needs to transform the input (parent) state to the subgraph state before invoking the subgraph, and transform the results back to the parent state before returning the state update from the node.
 
 :::python
-```python
+```python wrap
 from typing_extensions import TypedDict
 from langgraph.graph.state import StateGraph, START
 
@@ -172,7 +172,7 @@ const graph = builder.compile();
       print(chunk)
   ```
 
-  ```
+  ``` wrap
   ((), {'node_1': {'foo': 'hi! foo'}})
   (('node_2:9c36dd0f-151a-cb42-cbad-fa2f851f9ab7',), {'grandchild_1': {'my_grandchild_key': 'hi Bob, how are you'}})
   (('node_2:9c36dd0f-151a-cb42-cbad-fa2f851f9ab7',), {'grandchild_2': {'bar': 'hi! foobaz'}})
@@ -233,7 +233,7 @@ const graph = builder.compile();
   1. Transform the state to the subgraph state
   2. Transform response back to the parent state
 
-  ```
+  ``` wrap
   [[], { node1: { foo: 'hi! foo' } }]
   [['node2:9c36dd0f-151a-cb42-cbad-fa2f851f9ab7'], { subgraphNode1: { baz: 'baz' } }]
   [['node2:9c36dd0f-151a-cb42-cbad-fa2f851f9ab7'], { subgraphNode2: { bar: 'hi! foobaz' } }]
@@ -246,7 +246,7 @@ const graph = builder.compile();
   This is an example with two levels of subgraphs: parent -> child -> grandchild.
 
   :::python
-  ```python
+  ```python wrap
   # Grandchild graph
   from typing_extensions import TypedDict
   from langgraph.graph.state import StateGraph, START, END
@@ -317,7 +317,7 @@ const graph = builder.compile();
       print(chunk)
   ```
 
-  ```
+  ``` wrap
   ((), {'parent_1': {'my_key': 'hi Bob'}})
   (('child:2e26e9ce-602f-862c-aa66-1ea5a4655e3b', 'child_1:781bb3b1-3971-84ce-810b-acf819a03f9c'), {'grandchild_1': {'my_grandchild_key': 'hi Bob, how are you'}})
   (('child:2e26e9ce-602f-862c-aa66-1ea5a4655e3b',), {'child_1': {'my_child_key': 'hi Bob, how are you today?'}})
@@ -327,7 +327,7 @@ const graph = builder.compile();
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START, END } from "@langchain/langgraph";
   import * as z from "zod";
 
@@ -403,7 +403,7 @@ const graph = builder.compile();
   5. We're transforming the state from the child state channels (`myChildKey`) back to the parent state channels (`myKey`)
   6. We're passing a function here instead of just a compiled graph (`childGraph`)
 
-  ```
+  ``` wrap
   [[], { parent1: { myKey: 'hi Bob' } }]
   [['child:2e26e9ce-602f-862c-aa66-1ea5a4655e3b', 'child1:781bb3b1-3971-84ce-810b-acf819a03f9c'], { grandchild1: { myGrandchildKey: 'hi Bob, how are you' } }]
   [['child:2e26e9ce-602f-862c-aa66-1ea5a4655e3b'], { child1: { myChildKey: 'hi Bob, how are you today?' } }]
@@ -487,7 +487,7 @@ const graph = builder.compile();
 
 <Accordion title="Full example: shared state schemas">
   :::python
-  ```python
+  ```python wrap
   from typing_extensions import TypedDict
   from langgraph.graph.state import StateGraph, START
 
@@ -536,7 +536,7 @@ const graph = builder.compile();
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START } from "@langchain/langgraph";
   import * as z from "zod";
 
@@ -734,7 +734,7 @@ Subgraph state can only be viewed **when the subgraph is interrupted**. Once you
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START, MemorySaver, interrupt, Command } from "@langchain/langgraph";
   import * as z from "zod";
 
@@ -805,7 +805,7 @@ for await (const chunk of await graph.stream(
 
 <Accordion title="Stream from subgraphs">
   :::python
-  ```python
+  ```python wrap
   from typing_extensions import TypedDict
   from langgraph.graph.state import StateGraph, START
 
@@ -851,7 +851,7 @@ for await (const chunk of await graph.stream(
       print(chunk)
   ```
 
-  ```
+  ``` wrap
   ((), {'node_1': {'foo': 'hi! foo'}})
   (('node_2:e58e5673-a661-ebb0-70d4-e298a7fc28b7',), {'subgraph_node_1': {'bar': 'bar'}})
   (('node_2:e58e5673-a661-ebb0-70d4-e298a7fc28b7',), {'subgraph_node_2': {'foo': 'hi! foobar'}})
@@ -860,7 +860,7 @@ for await (const chunk of await graph.stream(
   :::
 
   :::js
-  ```typescript
+  ```typescript wrap
   import { StateGraph, START } from "@langchain/langgraph";
   import * as z from "zod";
 
@@ -912,7 +912,7 @@ for await (const chunk of await graph.stream(
 
   1. Set `subgraphs: true` to stream outputs from subgraphs.
 
-  ```
+  ``` wrap
   [[], { node1: { foo: 'hi! foo' } }]
   [['node2:e58e5673-a661-ebb0-70d4-e298a7fc28b7'], { subgraphNode1: { bar: 'bar' } }]
   [['node2:e58e5673-a661-ebb0-70d4-e298a7fc28b7'], { subgraphNode2: { foo: 'hi! foobar' } }]
