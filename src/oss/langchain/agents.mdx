@@ -204,7 +204,7 @@ const dynamicModelSelection = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "gpt-4o-mini", // Default model
+  model: "gpt-4o-mini", // Base model (used when messageCount ≤ 10)
   tools,
   middleware: [dynamicModelSelection] as const,
 });
