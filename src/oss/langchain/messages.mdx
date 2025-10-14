@@ -975,7 +975,7 @@ it as output. Below we show short examples of input messages featuring multimoda
     ```typescript Image input
     // From URL
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this image." },
         { type: "image", url: "https://example.com/path/to/image.jpg" },
       ],
@@ -983,7 +983,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From base64 data
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this image." },
         {
           type: "image",
@@ -995,7 +995,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From provider-managed File ID
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this image." },
         { type: "image", fileId: "file-abc123" },
       ],
@@ -1005,7 +1005,7 @@ it as output. Below we show short examples of input messages featuring multimoda
     ```typescript PDF document input
     // From URL
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this document." },
         { type: "file", url: "https://example.com/path/to/document.pdf" },
       ],
@@ -1013,7 +1013,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From base64 data
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this document." },
         {
           type: "file",
@@ -1025,7 +1025,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From provider-managed File ID
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this document." },
         { type: "file", fileId: "file-abc123" },
       ],
@@ -1035,7 +1035,7 @@ it as output. Below we show short examples of input messages featuring multimoda
     ```typescript Audio input
     // From base64 data
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this audio." },
         {
           type: "audio",
@@ -1047,7 +1047,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From provider-managed File ID
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this audio." },
         { type: "audio", fileId: "file-abc123" },
       ],
@@ -1057,7 +1057,7 @@ it as output. Below we show short examples of input messages featuring multimoda
     ```typescript Video input
     // From base64 data
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this video." },
         {
           type: "video",
@@ -1069,7 +1069,7 @@ it as output. Below we show short examples of input messages featuring multimoda
 
     // From provider-managed File ID
     const message = new HumanMessage({
-      content: [
+      contentBlocks: [
         { type: "text", text: "Describe the content of this video." },
         { type: "video", fileId: "file-abc123" },
       ],
