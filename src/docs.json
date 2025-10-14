@@ -445,64 +445,7 @@
                 "pages": [
                   "langsmith/home",
                   "langsmith/pricing-plans",
-                  {
-                    "group": "App development",
-                    "pages": [
-                      "langsmith/why-langgraph",
-                      {
-                        "group": "Data models",
-                        "pages": [
-                          {
-                            "group": "Assistants",
-                            "pages": [
-                              "langsmith/assistants",
-                              "langsmith/configuration-cloud",
-                              "langsmith/use-threads"
-                            ]
-                          },
-                          {
-                            "group": "Runs",
-                            "pages": [
-                              "langsmith/background-run",
-                              "langsmith/same-thread",
-                              "langsmith/cron-jobs",
-                              "langsmith/stateless-runs",
-                              "langsmith/configurable-headers"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Core capabilities",
-                        "pages": [
-                          "langsmith/streaming",
-                          "langsmith/add-human-in-the-loop",
-                          "langsmith/human-in-the-loop-time-travel",
-                          "langsmith/server-mcp",
-                          "langsmith/server-a2a",
-                          "langsmith/use-webhooks",
-                          {
-                            "group": "Double-texting",
-                            "pages": [
-                              "langsmith/double-texting",
-                              "langsmith/interrupt-concurrent",
-                              "langsmith/rollback-concurrent",
-                              "langsmith/reject-concurrent",
-                              "langsmith/enqueue-concurrent"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Tutorials",
-                        "pages": [
-                          "langsmith/autogen-integration",
-                          "langsmith/use-stream-react",
-                          "langsmith/generative-ui-react"
-                        ]
-                      }
-                    ]
-                  },
+
                   {
                     "group": "Account administration",
                     "pages": [
@@ -865,6 +808,64 @@
                       ]
                   },
                   {
+                    "group": "App development",
+                    "pages": [
+                      "langsmith/why-langgraph",
+                      {
+                        "group": "Data models",
+                        "pages": [
+                          {
+                            "group": "Assistants",
+                            "pages": [
+                              "langsmith/assistants",
+                              "langsmith/configuration-cloud",
+                              "langsmith/use-threads"
+                            ]
+                          },
+                          {
+                            "group": "Runs",
+                            "pages": [
+                              "langsmith/background-run",
+                              "langsmith/same-thread",
+                              "langsmith/cron-jobs",
+                              "langsmith/stateless-runs",
+                              "langsmith/configurable-headers"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Core capabilities",
+                        "pages": [
+                          "langsmith/streaming",
+                          "langsmith/add-human-in-the-loop",
+                          "langsmith/human-in-the-loop-time-travel",
+                          "langsmith/server-mcp",
+                          "langsmith/server-a2a",
+                          "langsmith/use-webhooks",
+                          {
+                            "group": "Double-texting",
+                            "pages": [
+                              "langsmith/double-texting",
+                              "langsmith/interrupt-concurrent",
+                              "langsmith/rollback-concurrent",
+                              "langsmith/reject-concurrent",
+                              "langsmith/enqueue-concurrent"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Tutorials",
+                        "pages": [
+                          "langsmith/autogen-integration",
+                          "langsmith/use-stream-react",
+                          "langsmith/generative-ui-react"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "Studio",
                     "pages": [
                       "langsmith/studio",
@@ -974,7 +975,7 @@
                         ]
                       },
                       {
-                        "group": "Platform components",
+                        "group": "Deployment components",
                         "pages": [
                           "langsmith/components",
                           "langsmith/langgraph-server",
@@ -1374,64 +1375,6 @@
                   "langsmith/home",
                   "langsmith/pricing-plans",
                   {
-                    "group": "App development",
-                    "pages": [
-                      "langsmith/why-langgraph",
-                      {
-                        "group": "Data models",
-                        "pages": [
-                          {
-                            "group": "Assistants",
-                            "pages": [
-                              "langsmith/assistants",
-                              "langsmith/configuration-cloud",
-                              "langsmith/use-threads"
-                            ]
-                          },
-                          {
-                            "group": "Runs",
-                            "pages": [
-                              "langsmith/background-run",
-                              "langsmith/same-thread",
-                              "langsmith/cron-jobs",
-                              "langsmith/stateless-runs",
-                              "langsmith/configurable-headers"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Core capabilities",
-                        "pages": [
-                          "langsmith/streaming",
-                          "langsmith/add-human-in-the-loop",
-                          "langsmith/human-in-the-loop-time-travel",
-                          "langsmith/server-mcp",
-                          "langsmith/server-a2a",
-                          "langsmith/use-webhooks",
-                          {
-                            "group": "Double-texting",
-                            "pages": [
-                              "langsmith/double-texting",
-                              "langsmith/interrupt-concurrent",
-                              "langsmith/rollback-concurrent",
-                              "langsmith/reject-concurrent",
-                              "langsmith/enqueue-concurrent"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Tutorials",
-                        "pages": [
-                          "langsmith/autogen-integration",
-                          "langsmith/use-stream-react",
-                          "langsmith/generative-ui-react"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "Account administration",
                     "pages": [
                       "langsmith/administration-overview",
@@ -1793,6 +1736,64 @@
                       ]
                   },
                   {
+                    "group": "App development",
+                    "pages": [
+                      "langsmith/why-langgraph",
+                      {
+                        "group": "Data models",
+                        "pages": [
+                          {
+                            "group": "Assistants",
+                            "pages": [
+                              "langsmith/assistants",
+                              "langsmith/configuration-cloud",
+                              "langsmith/use-threads"
+                            ]
+                          },
+                          {
+                            "group": "Runs",
+                            "pages": [
+                              "langsmith/background-run",
+                              "langsmith/same-thread",
+                              "langsmith/cron-jobs",
+                              "langsmith/stateless-runs",
+                              "langsmith/configurable-headers"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Core capabilities",
+                        "pages": [
+                          "langsmith/streaming",
+                          "langsmith/add-human-in-the-loop",
+                          "langsmith/human-in-the-loop-time-travel",
+                          "langsmith/server-mcp",
+                          "langsmith/server-a2a",
+                          "langsmith/use-webhooks",
+                          {
+                            "group": "Double-texting",
+                            "pages": [
+                              "langsmith/double-texting",
+                              "langsmith/interrupt-concurrent",
+                              "langsmith/rollback-concurrent",
+                              "langsmith/reject-concurrent",
+                              "langsmith/enqueue-concurrent"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Tutorials",
+                        "pages": [
+                          "langsmith/autogen-integration",
+                          "langsmith/use-stream-react",
+                          "langsmith/generative-ui-react"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "Studio",
                     "pages": [
                       "langsmith/studio",
@@ -1902,7 +1903,7 @@
                         ]
                       },
                       {
-                        "group": "Platform components",
+                        "group": "Deployment components",
                         "pages": [
                           "langsmith/components",
                           "langsmith/langgraph-server",
