@@ -334,7 +334,7 @@
                     "group": "Additional resources",
                     "icon": "list",
                     "pages": [
-                      "langchain-academy",
+                      "oss/python/langchain/academy",
                       "oss/python/langgraph/case-studies"
                     ]
                   }
@@ -1385,7 +1385,7 @@
                     "group": "LangChain Academy",
                     "icon": "graduation-cap",
                     "pages": [
-                      "langchain-academy"
+                      "oss/javascript/langchain/academy"
                     ]
                   },
                   {
