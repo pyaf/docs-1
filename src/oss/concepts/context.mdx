@@ -195,7 +195,7 @@ await graph.invoke(
 
     const agent = createAgent({  // [!code highlight]
       model: "anthropic:claude-3-7-sonnet-latest",
-      tools: [...],
+      tools: [/* your tools here */],
       middleware: [personalizedPrompt] as const, // [!code highlight]
     });
 
