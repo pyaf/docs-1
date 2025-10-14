@@ -478,7 +478,7 @@
             ]
           },
           {
-            "dropdown": "LangSmith",
+            "product": "LangSmith",
             "icon": "rocket",
             "description": "LLM observability, evaluation, and deployment",
             "tabs": [
@@ -1406,7 +1406,7 @@
             ]
           },
           {
-            "dropdown": "LangSmith",
+            "product": "LangSmith",
             "icon": "rocket",
             "description": "LLM observability, evaluation, and deployment",
             "tabs": [

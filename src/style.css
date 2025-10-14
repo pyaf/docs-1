@@ -70,4 +70,9 @@ button.version-picker-button span {
   line-height: 1.5 !important; /* Consistent line height */
 }
 
-
+/* Ensure mermaid diagrams are centered */
+.mermaid {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
