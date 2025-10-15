@@ -6,4 +6,9 @@
 
 Reference documentation for the [`langchain`](https://pypi.org/project/langchain/) package.
 
-TODO: expand overview (follow LangGraph example)
+- [Agents](../agents.md): Agent interface and factory.
+- [Middleware](../middleware.md): Middleware for agents.
+- [Models](../models.md): Chat model interfaces.
+- [Messages](../messages.md): Chat message types.
+- [Tools](../tools.md): Tool interface and factory.
+- [Embeddings](../embeddings.md): Embedding model interfaces.
