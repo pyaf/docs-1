@@ -10,7 +10,7 @@ There are three main packages in the LangChain ecosystem, though most users will
 
 <div class="grid cards" markdown>
 
-- __`langchain`__
+- :simple-langchain:{ .lg .middle } __`langchain`__
 
     ---
 
@@ -18,7 +18,7 @@ There are three main packages in the LangChain ecosystem, though most users will
 
     [:octicons-arrow-right-24: Reference](./index.md)
 
-- __`langchain-core`__
+- :material-atom:{ .lg .middle } __`langchain-core`__
 
     ---
 
@@ -26,7 +26,7 @@ There are three main packages in the LangChain ecosystem, though most users will
 
     [:octicons-arrow-right-24: Reference](../langchain_core/index.md)
 
-- __`langchain-classic`__
+- :fontawesome-solid-building-columns:{ .lg .middle } __`langchain-classic`__
 
     ---
 
