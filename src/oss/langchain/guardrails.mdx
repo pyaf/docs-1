@@ -27,15 +27,18 @@ You can implement guardrails using [middleware](/oss/langchain/middleware) to in
   />
 </div>
 
-## Deterministic vs. model-based guardrails
-
 Guardrails can be implemented using two complementary approaches:
 
-- **Deterministic guardrails** use rule-based logic like regex patterns, keyword matching, or explicit checks. They're fast, predictable, and cost-effective, but may miss nuanced violations.
+<CardGroup cols={2}>
+  <Card title="Deterministic guardrails" icon="list-check">
+    Use rule-based logic like regex patterns, keyword matching, or explicit checks. Fast, predictable, and cost-effective, but may miss nuanced violations.
+  </Card>
+  <Card title="Model-based guardrails" icon="brain">
+    Use LLMs or classifiers to evaluate content with semantic understanding. Catch subtle issues that rules miss, but are slower and more expensive.
+  </Card>
+</CardGroup>
 
-- **Model-based guardrails** use LLMs or classifiers to evaluate content with semantic understanding. They catch subtle issues that rules miss, but are slower and more expensive.
-
-LangChain provides both built-in guardrails (e.g., PII detection, human-in-the-loop) and a flexible middleware system for building custom guardrails using either approach.
+LangChain provides both built-in guardrails (e.g., [PII detection](#pii-detection), [human-in-the-loop](#human-in-the-loop)) and a flexible middleware system for building custom guardrails using either approach.
 
 ## Built-in guardrails
 
