@@ -27,15 +27,15 @@ You can implement guardrails using [middleware](/oss/langchain/middleware) to in
   />
 </div>
 
-## Deterministic vs model-based guardrails
+## Deterministic vs. model-based guardrails
 
 Guardrails can be implemented using two complementary approaches:
 
-**Deterministic guardrails** use rule-based logic like regex patterns, keyword matching, or explicit checks. They're fast, predictable, and cost-effective, but may miss nuanced violations.
+- **Deterministic guardrails** use rule-based logic like regex patterns, keyword matching, or explicit checks. They're fast, predictable, and cost-effective, but may miss nuanced violations.
 
-**Model-based guardrails** use LLMs or classifiers to evaluate content with semantic understanding. They catch subtle issues that rules miss, but are slower and more expensive.
+- **Model-based guardrails** use LLMs or classifiers to evaluate content with semantic understanding. They catch subtle issues that rules miss, but are slower and more expensive.
 
-LangChain provides both built-in guardrails (PII detection, human-in-the-loop) and a flexible middleware system for building custom guardrails using either approach.
+LangChain provides both built-in guardrails (e.g., PII detection, human-in-the-loop) and a flexible middleware system for building custom guardrails using either approach.
 
 ## Built-in guardrails
 
@@ -631,7 +631,7 @@ const result = await agent.invoke({
 ```
 :::
 
-### Combining multiple guardrails
+### Combine multiple guardrails
 
 You can stack multiple guardrails by adding them to the middleware array. They execute in order, allowing you to build layered protection:
 
