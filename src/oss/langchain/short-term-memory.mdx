@@ -2,9 +2,15 @@
 title: Short-term memory
 ---
 
-import AlphaCallout from '/snippets/alpha-lc-callout.mdx';
+import AlphaCalloutPy from '/snippets/alpha-lc-callout-py.mdx';
+import AlphaCalloutJS from '/snippets/alpha-lc-callout-js.mdx';
 
-<AlphaCallout />
+:::python
+<AlphaCalloutPy />
+:::
+:::js
+<AlphaCalloutJS />
+:::
 
 ## Overview
 
@@ -77,13 +83,20 @@ await agent.invoke(
 
 In production, use a checkpointer backed by a database:
 
+
 :::python
+```shell
+pip install langgraph-checkpoint-postgres
+```
+
 ```python
 from langchain.agents import create_agent
+
 from langgraph.checkpoint.postgres import PostgresSaver  # [!code highlight]
 
 DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable"
 with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
+    checkpointer.setup() # auto create tables in PostgresSql
     agent = create_agent(
         "openai:gpt-5",
         [get_user_info],
@@ -128,11 +141,13 @@ agent = create_agent(
 )
 
 # Custom state can be passed in invoke
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "Hello"}],
-    "user_id": "user_123",  # [!code highlight]
-    "preferences": {"theme": "dark"}  # [!code highlight]
-})
+result = agent.invoke(
+    {
+        "messages": [{"role": "user", "content": "Hello"}],
+        "user_id": "user_123",  # [!code highlight]
+        "preferences": {"theme": "dark"}  # [!code highlight]
+    },
+    {"configurable": {"thread_id": "1"}})
 ```
 :::
 :::js

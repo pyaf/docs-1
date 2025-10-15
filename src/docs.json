@@ -171,6 +171,7 @@
                     "group": "Advanced usage",
                     "pages": [
                       "oss/python/langchain/middleware",
+                      "oss/python/langchain/guardrails",
                       "oss/python/langchain/structured-output",
                       "oss/python/langchain/runtime",
                       "oss/python/langchain/context-engineering",
@@ -339,14 +340,9 @@
                 "pages": [
                   "oss/python/reference/overview",
                   {
-                    "group": "LangChain",
+                    "group": "Reference",
                     "pages": [
-                      "oss/python/reference/langchain-python"
-                    ]
-                  },
-                  {
-                    "group": "LangGraph",
-                    "pages": [
+                      "oss/python/reference/langchain-python",
                       "oss/python/reference/langgraph-python"
                     ]
                   },
@@ -467,6 +463,7 @@
                     "group": "Advanced usage",
                     "pages": [
                       "oss/javascript/langchain/middleware",
+                      "oss/javascript/langchain/guardrails",
                       "oss/javascript/langchain/structured-output",
                       "oss/javascript/langchain/runtime",
                       "oss/javascript/langchain/context-engineering",
@@ -668,16 +665,11 @@
               {
                 "tab": "Reference",
                 "pages": [
-                  "oss/python/reference/overview",
+                  "oss/javascript/reference/overview",
                   {
-                    "group": "LangChain ",
+                    "group": "Reference",
                     "pages": [
-                      "oss/javascript/reference/langchain-javascript"
-                    ]
-                  },
-                  {
-                    "group": "LangGraph",
-                    "pages": [
+                      "oss/javascript/reference/langchain-javascript",
                       "oss/javascript/reference/langgraph-javascript"
                     ]
                   },
@@ -772,12 +764,11 @@
             "pages": [
               "langsmith/home",
               "langsmith/pricing-plans",
-
+              "langsmith/create-account-api-key",
               {
                 "group": "Account administration",
                 "pages": [
                   "langsmith/administration-overview",
-                  "langsmith/create-account-api-key",
                   "langsmith/set-up-a-workspace",
                   "langsmith/manage-organization-by-api",
                   "langsmith/billing",
@@ -794,10 +785,7 @@
                   "langsmith/langgraph-js-ts-sdk",
                   "langsmith/smith-api-ref",
                   "langsmith/server-api-ref",
-                  "langsmith/api-ref-control-plane",
-                  "langsmith/remote-graph",
-                  "langsmith/cli",
-                  "langsmith/env-var"
+                  "langsmith/api-ref-control-plane"
                 ]
               },
               {
@@ -844,6 +832,7 @@
                       "langsmith/trace-anthropic",
                       "langsmith/trace-openai",
                       "langsmith/trace-with-autogen",
+                      "langsmith/trace-claude-agent-sdk",
                       "langsmith/trace-claude-code",
                       "langsmith/trace-with-crewai",
                       "langsmith/trace-with-google-adk",
@@ -1118,6 +1107,15 @@
                       "langsmith/monorepo-support"
                       ]
                     },
+                    {
+                      "group": "Deployment components",
+                      "pages": [
+                        "langsmith/components",
+                        "langsmith/langgraph-server",
+                        "langsmith/data-plane",
+                        "langsmith/control-plane"
+                      ]
+                    },
                     "langsmith/graph-rebuild",
                     "langsmith/use-remote-graph",
                     "langsmith/semantic-search",
@@ -1211,6 +1209,14 @@
                     "langsmith/custom-middleware",
                     "langsmith/custom-routes"
                 ]
+              },
+              {
+                "group": "Reference",
+                "pages": [
+                  "langsmith/remote-graph",
+                  "langsmith/cli",
+                  "langsmith/env-var"
+                ]
               }
             ]
           },
@@ -1289,15 +1295,6 @@
                       "langsmith/self-host-external-clickhouse",
                       "langsmith/self-host-external-postgres",
                       "langsmith/self-host-external-redis"
-                    ]
-                  },
-                  {
-                    "group": "Deployment components",
-                    "pages": [
-                      "langsmith/components",
-                      "langsmith/langgraph-server",
-                      "langsmith/data-plane",
-                      "langsmith/control-plane"
                     ]
                   },
                   {
