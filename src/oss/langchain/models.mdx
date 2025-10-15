@@ -45,7 +45,8 @@ The easiest way to get started with a standalone model in LangChain is to use `i
 ```python
 response = model.invoke("Why do parrots talk?")
 ```
-See @[`init_chat_model`][init_chat_model] for more detail.
+
+See @[`init_chat_model`][init_chat_model] for more detail, including information on how to pass model [parameters](#parameters).
 :::
 :::js
 The easiest way to get started with a standalone model in LangChain is to use `initChatModel` to initialize one from a [provider](/oss/integrations/providers) of your choice (examples below):
@@ -54,7 +55,7 @@ The easiest way to get started with a standalone model in LangChain is to use `i
 ```typescript
 const response = await model.invoke("Why do parrots talk?");
 ```
-See @[`initChatModel`][initChatModel] for more detail.
+See @[`initChatModel`][initChatModel] for more detail, including information on how to pass model [parameters](#parameters).
 :::
 
 
@@ -119,6 +120,32 @@ A chat model takes parameters that can be used to configure its behavior. The fu
     The maximum number of attempts the system will make to resend a request if it fails due to issues like network timeouts or rate limits.
 </ParamField>
 :::
+
+:::python
+Using `init_chat_model`, pass these parameters as inline <Tooltip tip="Arbitrary keyword arguments" cta="Learn more" href="https://www.w3schools.com/python/python_args_kwargs.asp">`**kwargs`</Tooltip>:
+
+```python Initialize using model parameters
+model = init_chat_model(
+    "anthropic:claude-sonnet-4-5-20250929",
+    temperature=0.7,
+    timeout=30,
+    max_tokens=1000,
+)
+```
+:::
+:::js
+Using `initChatModel`, pass these parameters as inline parameters:
+
+```python Initialize using model parameters
+const model = await init_chat_model(
+    "anthropic:claude-sonnet-4-5-20250929",
+    temperature=0.7,
+    timeout=30,
+    max_tokens=1000,
+)
+```
+:::
+
 <Info>
     To find all the parameters supported by a given chat model, head to the [integrations](/oss/integrations/providers) page.
 </Info>
@@ -1600,7 +1627,7 @@ configurable_model.invoke(
 )
 configurable_model.invoke(
     "what's your name",
-        config={"configurable": {"model": "claude-3-5-sonnet-latest"}},  # Run with Claude
+        config={"configurable": {"model": "claude-sonnet-4-5-20250929"}},  # Run with Claude
 )
 ```
 
@@ -1621,7 +1648,7 @@ configurable_model.invoke(
         "what's your name",
             config={
             "configurable": {
-                "first_model": "claude-3-5-sonnet-latest",
+                "first_model": "claude-sonnet-4-5-20250929",
                 "first_temperature": 0.5,
                 "first_max_tokens": 100,
             }
@@ -1675,7 +1702,7 @@ configurable_model.invoke(
     ```python
     llm_with_tools.invoke(
         "what's bigger in 2024 LA or NYC",
-            config={"configurable": {"model": "claude-3-5-sonnet-latest"}},
+            config={"configurable": {"model": "claude-sonnet-4-5-20250929"}},
     ).tool_calls
     ```
     ```
