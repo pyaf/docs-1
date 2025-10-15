@@ -1,4 +1,4 @@
-# `langchain`
+# :simple-langchain:{ .lg .middle } `langchain`
 
 [![PyPI - Version](https://img.shields.io/pypi/v/langchain?label=%20)](https://pypi.org/project/langchain/#history)
 [![PyPI - License](https://img.shields.io/pypi/l/langchain)](https://opensource.org/licenses/MIT)

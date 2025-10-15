@@ -4,9 +4,9 @@ hide:
   - toc
 ---
 
-Welcome to the LangChain package reference documentation!
+Welcome to the [LangChain](https://github.com/langchain-ai/langchain) package reference documentation!
 
-There are three main packages in the LangChain ecosystem, though most users will primarily interact with the main [`langchain`](./index.md) package:
+There are three main packages in the LangChain ecosystem, though most users will primarily interact with the main [`langchain`](./langchain/index.md) package:
 
 <div class="grid cards" markdown>
 
@@ -16,7 +16,7 @@ There are three main packages in the LangChain ecosystem, though most users will
 
     The main entrypoint containing all implementations you need for building applications with LLMs.
 
-    [:octicons-arrow-right-24: Reference](./index.md)
+    [:octicons-arrow-right-24: Reference](./langchain/index.md)
 
 - :material-atom:{ .lg .middle } __`langchain-core`__
 
