@@ -1701,7 +1701,7 @@ dependencies = [
 [[package]]
 name = "langchain-aws"
 version = "1.0.0a1"
-source = { git = "https://github.com/langchain-ai/langchain-aws.git?subdirectory=libs%2Faws#24f60270925963c2b4c9f9d198df435ddf106eb9" }
+source = { git = "https://github.com/langchain-ai/langchain-aws.git?subdirectory=libs%2Faws#f36bec98f64b65ad4c884b29e5b79469df08b3c3" }
 dependencies = [
     { name = "boto3" },
     { name = "langchain-core" },
