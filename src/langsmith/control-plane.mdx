@@ -3,9 +3,9 @@ title: LangSmith control plane
 sidebarTitle: Control plane
 ---
 
-The _control plane_ is the part of LangSmith that manages deployments. It includes the control plane UI, where users create and update [LangGraph Servers](/langsmith/langgraph-server), and the LangSmith Deployment APIs, which support the UI and provide programmatic access.
+The _control plane_ is the part of LangSmith that manages deployments. It includes the control plane UI, where users create and update [LangGraph Servers](/langsmith/langgraph-server), and the control plane APIs, which support the UI and provide programmatic access.
 
-When you make an update through the control plane, the update is stored in control plane state. The [data plane](/langsmith/data-plane) “listener” polls for these updates by calling the LangSmith Deployment APIs.
+When you make an update through the control plane, the update is stored in control plane state. The [data plane](/langsmith/data-plane) “listener” polls for these updates by calling the control plane APIs.
 
 ## Control plane UI
 
@@ -22,9 +22,9 @@ From the control plane UI, you can:
 
 The Control plane UI is embedded in [LangSmith](https://docs.smith.langchain.com).
 
-## LangSmith Deployment API
+## Control plane API
 
-This section describes the data model of the LangSmith Deployment API. The API is used to create, update, and delete deployments. See the [LangSmith Deployment API reference](/langsmith/api-ref-control-plane) for more details.
+This section describes the data model of the control plane API. The API is used to create, update, and delete deployments. See the [control plane API reference](/langsmith/api-ref-control-plane) for more details.
 
 ### Integrations
 
