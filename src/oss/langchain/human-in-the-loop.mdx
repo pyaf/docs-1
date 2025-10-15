@@ -382,81 +382,6 @@ await agent.invoke(
 
 </Tab>
 
-<Tab title="Response structure">
-Each decision type has a specific structure that must be followed when resuming execution.
-
-### Approve
-
-**Python:**
-```python
-{
-    "type": "approve"
-}
-```
-
-**JavaScript:**
-```typescript
-{
-    type: "approve"
-}
-```
-
-No additional fields required. The action executes as originally proposed.
-
----
-
-### Edit
-
-**Python:**
-```python
-{
-    "type": "edit",
-    "edited_action": {
-        "name": "tool_name",  # Tool to execute (usually same as original)
-        "args": {             # Modified arguments
-            "param1": "value1",
-            "param2": "value2"
-        }
-    }
-}
-```
-
-**JavaScript:**
-```typescript
-{
-    type: "edit",
-    editedAction: {
-        name: "tool_name",  // Tool to execute (usually same as original)
-        args: {             // Modified arguments
-            param1: "value1",
-            param2: "value2"
-        }
-    }
-}
-```
-
-The `edited_action` must include both the tool `name` and the complete `args` object with all modified parameters.
-
----
-
-### Reject
-
-**Python:**
-```python
-{
-    "type": "reject",
-    "message": "Explanation of why the action was rejected and guidance for the agent"
-}
-```
-
-**JavaScript:**
-```typescript
-{
-    type: "reject",
-    message: "Explanation of why the action was rejected and guidance for the agent"
-}
-```
-
 The `message` is added to the conversation as feedback to help the agent understand why the action was rejected and what it should do instead.
 
 ---
@@ -465,7 +390,7 @@ The `message` is added to the conversation as feedback to help the agent underst
 
 When multiple actions are under review, provide a decision for each action in the same order as they appear in the interrupt:
 
-**Python:**
+:::python
 ```python
 {
     "decisions": [
@@ -484,8 +409,9 @@ When multiple actions are under review, provide a decision for each action in th
     ]
 }
 ```
+:::
 
-**JavaScript:**
+:::js
 ```typescript
 {
     decisions: [
@@ -504,6 +430,7 @@ When multiple actions are under review, provide a decision for each action in th
     ]
 }
 ```
+:::
 
 </Tab>
 </Tabs>
