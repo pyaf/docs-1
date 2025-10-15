@@ -37,7 +37,7 @@ Guardrails can be implemented using two complementary approaches:
 
 LangChain provides both built-in guardrails (PII detection, human-in-the-loop) and a flexible middleware system for building custom guardrails using either approach.
 
-## Built-in Guardrails
+## Built-in guardrails
 
 ### PII detection
 
@@ -149,25 +149,25 @@ const result = await agent.invoke({
 **Configuration options:**
 
 :::python
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `pii_type` | Type of PII to detect (built-in or custom) | Required |
-| `strategy` | How to handle detected PII (`"block"`, `"redact"`, `"mask"`, `"hash"`) | `"redact"` |
-| `detector` | Custom detector function or regex pattern | `None` (uses built-in) |
-| `apply_to_input` | Check user messages before model call | `True` |
-| `apply_to_output` | Check AI messages after model call | `False` |
-| `apply_to_tool_results` | Check tool result messages after execution | `False` |
+Parameter | Description | Default
+-----------|-------------|---------
+`pii_type` | Type of PII to detect (built-in or custom) | Required
+`strategy` | How to handle detected PII (`"block"`, `"redact"`, `"mask"`, `"hash"`) | `"redact"`
+`detector` | Custom detector function or regex pattern | `None` (uses built-in)
+`apply_to_input` | Check user messages before model call | `True`
+`apply_to_output` | Check AI messages after model call | `False`
+`apply_to_tool_results` | Check tool result messages after execution | `False`
 :::
 
 :::js
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `piiType` | Type of PII to detect (built-in or custom) | Required |
-| `strategy` | How to handle detected PII (`"block"`, `"redact"`, `"mask"`, `"hash"`) | `"redact"` |
-| `detector` | Custom detector regex pattern | `undefined` (uses built-in) |
-| `applyToInput` | Check user messages before model call | `true` |
-| `applyToOutput` | Check AI messages after model call | `false` |
-| `applyToToolResults` | Check tool result messages after execution | `false` |
+Parameter | Description | Default
+-----------|-------------|---------
+`piiType` | Type of PII to detect (built-in or custom) | Required
+`strategy` | How to handle detected PII (`"block"`, `"redact"`, `"mask"`, `"hash"`) | `"redact"`
+`detector` | Custom detector regex pattern | `undefined` (uses built-in)
+`applyToInput` | Check user messages before model call | `true`
+`applyToOutput` | Check AI messages after model call | `false`
+`applyToToolResults` | Check tool result messages after execution | `false`
 :::
 
 </Accordion>
