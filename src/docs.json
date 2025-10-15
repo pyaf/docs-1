@@ -129,9 +129,9 @@
         ]
       },
       {
-        "product": "OSS",
+        "product": "LangChain + LangGraph",
         "icon": "link",
-        "description": "LangChain and LangGraph",
+        "description": "Open source frameworks",
         "dropdowns": [
           {
             "dropdown": "Python",
@@ -1428,6 +1428,22 @@
   {
     "source": "/langgraph-platform/langgraph-studio",
     "destination": "/langsmith/studio"
+  },
+  {
+    "source": "/langgraph-platform/langgraph-cli",
+    "destination": "/langsmith/cli"
+  },
+  {
+    "source": "/langsmith/api-ref",
+    "destination": "/langsmith/smith-api-ref"
+  },
+  {
+    "source": "/langsmith/js-ts-sdk",
+    "destination": "/langsmith/smith-js-ts-sdk"
+  },
+  {
+    "source": "/langsmith/python-sdk",
+    "destination": "/langsmith/smith-python-sdk"
   },
   {
     "source": "/langgraph-platform/:path*",
