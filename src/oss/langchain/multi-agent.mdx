@@ -181,7 +181,7 @@ class CustomState(AgentState):
     name="subagent1_name",
     description="subagent1_description"
 )
-def call_subagent1(query: str, runtime: ToolRuntime[CustomState]):
+def call_subagent1(query: str, runtime: ToolRuntime[None, CustomState]):
     # Apply any logic needed to transform the messages into a suitable input
     subagent_input = some_logic(query, runtime.state["messages"])
     result = subagent1.invoke({
