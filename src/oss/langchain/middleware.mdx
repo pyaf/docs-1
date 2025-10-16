@@ -1243,12 +1243,11 @@ const toolMonitoringMiddleware = createMiddleware({
 
 ### Custom state schema
 
-You can extend the agent's state with custom properties using the `state_schema` parameter on `create_agent`. Middleware can then access these custom state fields:
+Middleware can extend the agent's state with custom properties. Define a custom state type and set it as the `state_schema`:
 
 :::python
 ```python
-from langchain.agents import AgentState, create_agent
-from langchain.agents.middleware import AgentMiddleware
+from langchain.agents.middleware import AgentState, AgentMiddleware
 from typing_extensions import NotRequired
 from typing import Any
 
@@ -1257,6 +1256,8 @@ class CustomState(AgentState):
     user_id: NotRequired[str]
 
 class CallCounterMiddleware(AgentMiddleware[CustomState]):
+    state_schema = CustomState
+
     def before_model(self, state: CustomState, runtime) -> dict[str, Any] | None:
         # Access custom state properties
         count = state.get("model_call_count", 0)
@@ -1269,20 +1270,6 @@ class CallCounterMiddleware(AgentMiddleware[CustomState]):
     def after_model(self, state: CustomState, runtime) -> dict[str, Any] | None:
         # Update custom state
         return {"model_call_count": state.get("model_call_count", 0) + 1}
-
-agent = create_agent(
-    model="openai:gpt-4o",
-    middleware=[CallCounterMiddleware()],
-    state_schema=CustomState,  # Define custom state here
-    tools=[...],
-)
-
-# Invoke with custom state
-result = agent.invoke({
-    "messages": [HumanMessage("Hello")],
-    "model_call_count": 0,
-    "user_id": "user-123",
-})
 ```
 :::
 
@@ -1310,7 +1297,28 @@ const callCounterMiddleware = createMiddleware({
     return { modelCallCount: state.modelCallCount + 1 };
   },
 });
+```
+:::
 
+:::python
+```python
+agent = create_agent(
+    model="openai:gpt-4o",
+    middleware=[CallCounterMiddleware()],
+    tools=[...],
+)
+
+# Invoke with custom state
+result = agent.invoke({
+    "messages": [HumanMessage("Hello")],
+    "model_call_count": 0,
+    "user_id": "user-123",
+})
+```
+:::
+
+:::js
+```typescript
 const agent = createAgent({
   model: "openai:gpt-4o",
   tools: [...],
