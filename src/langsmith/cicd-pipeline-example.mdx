@@ -137,8 +137,8 @@ See the [LangGraph testing documentation](/oss/python/langgraph/test) for specif
 
 LangSmith supports multiple deployment methods, depending on how your [LangSmith instance is hosted](/langsmith/hosting):
 
-- <Icon icon="cloud" /> **Cloud LangSmith**: Direct GitHub integration or Docker image deployment
-- <Icon icon="server" /> **Self-Hosted/Hybrid**: Container registry-based deployments
+- <Icon icon="cloud" /> **Cloud LangSmith**: Direct GitHub integration or Docker image deployment.
+- <Icon icon="server" /> **Self-Hosted/Hybrid**: Container registry-based deployments.
 
 The deployment flow starts by modifying your agent implementation. At minimum, you must have a `langgraph.json` and dependency file in your project (`requirements.txt` or `pyproject.toml`). We use the `langgraph dev` CLI tool to check for errors - if there are any, we fix the issues; otherwise, the deployment will likely succeed when deployed to LangSmith Deployments.
 
