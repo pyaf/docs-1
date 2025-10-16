@@ -325,8 +325,14 @@ agent = create_react_agent(
 
 Custom state extends the default agent state with additional fields. You can define custom state in two ways:
 
-1. **Via `state_schema` on @[`create_agent`]** - Best for state used across tools
+1. **Via `state_schema` on @[`create_agent`]** - Best for state used in tools
 2. **Via middleware** - Best for state managed by specific middleware hooks and tools attached to said middleware
+
+<Note>
+Defining custom state via middleware is preferred over defining it via `state_schema` on @[`create_agent`] because it allows you to keep state extensions conceptually scoped to the relevant middleware and tools.
+
+`state_schema` is still supported for backwards compatibility on `create_agent`.
+</Note>
 
 #### Defining state via `state_schema`
 
