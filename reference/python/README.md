@@ -30,7 +30,7 @@ mkdocstrings:
 handlers:
     python:
     import:
-        - http://reference.langchain.com/python/objects.inv
+        - https://reference.langchain.com/python/objects.inv
         - ... # any other inventories you want to include
 ```
 
