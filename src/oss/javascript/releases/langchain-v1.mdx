@@ -3,15 +3,9 @@ title: What's new in v1
 sidebarTitle: Release notes
 ---
 
-import AlphaCalloutPy from '/snippets/alpha-lc-callout-py.mdx';
 import AlphaCalloutJS from '/snippets/alpha-lc-callout-js.mdx';
 
-:::python
-<AlphaCalloutPy />
-:::
-:::js
 <AlphaCalloutJS />
-:::
 
 **LangChain v1 is a focused, production-ready foundation for building agents.** We've streamlined the framework around three core improvements:
 
@@ -48,7 +42,7 @@ For a complete list of changes, see the [migration guide](/oss/migrate/langchain
 
 ## `createAgent`
 
-`createAgent` is the standard way to build agents in LangChain 1.0. It provides a simpler interface than `createReactAgent` while offering greater customization potential by using middleware.
+`createAgent` is the standard way to build agents in LangChain 1.0. It provides a simpler interface than the prebuilt `createReactAgent` exported from LangGraph while offering greater customization potential by using middleware.
 
 ```ts
 import { createAgent } from "langchain";
@@ -324,7 +318,7 @@ Please report any issues discovered with 1.0 on [GitHub](https://github.com/lang
     <Card title="Migration guide" icon="arrow-right-arrow-left" href="/oss/migrate/langchain-v1" arrow>
         How to migrate to LangChain v1
     </Card>
-    <Card title="GitHub" icon="github" href="https://github.com/langchain-ai/langchain">
+    <Card title="GitHub" icon="github" href="https://github.com/langchain-ai/langchainjs">
         Report issues or contribute
     </Card>
 </CardGroup>
