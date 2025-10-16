@@ -9,7 +9,7 @@ import AlphaCalloutJS from '/snippets/alpha-lg-callout-js.mdx';
 
 **LangGraph v1 is a stability-focused release for the agent runtime.** It keeps the core graph APIs and execution model unchanged, while refining type safety, docs, and developer ergonomics.
 
-It's designed to work hand-in-hand with [LangChain v1](/oss/javascript/releases/langchain-v1) (whose `createAgent` is built on LangGraph) so you can start high-level and drop down to granular control when needed.
+It's designed to work hand-in-hand with [LangChain v1](/oss/releases/langchain-v1) (whose `createAgent` is built on LangGraph) so you can start high-level and drop down to granular control when needed.
 
 <CardGroup cols={1}>
     <Card title="Stable core APIs" icon="diagram-project">
@@ -46,8 +46,8 @@ For a complete list of changes, see the [migration guide](/oss/migrate/langgraph
 
 The LangGraph `createReactAgent` prebuilt has been deprecated in favor of LangChain's `createAgent`. It provides a simpler interface, and offers greater customization potential through the introduction of middleware.
 
-* For information on the new `createAgent` API, see the [LangChain v1 release notes](/oss/javascript/releases/langchain-v1#createagent).
-* For information on migrating from `createReactAgent` to `createAgent`, see the [LangChain v1 migration guide](/oss/javascript/migrate/langchain-v1#createagent).
+* For information on the new `createAgent` API, see the [LangChain v1 release notes](/oss/releases/langchain-v1#createagent).
+* For information on migrating from `createReactAgent` to `createAgent`, see the [LangChain v1 migration guide](/oss/migrate/langchain-v1#createagent).
 
 ## Typed interrupts
 
@@ -101,7 +101,7 @@ LangGraph v1 comes with a few enhancements when interacting with a LangGraph app
 
 The low-level `toLangGraphEventStream` helper has been removed. Streaming responses are now handled natively by the SDK, and you can select the wire format via passing in the `encoding` format to `graph.stream`. This makes switching between SSE and normal JSON responses straightforward without changing UI logic.
 
-See the [migration guide](/oss/javascript/migrate/langgraph-v1#stream-encoding) for more information.
+See the [migration guide](/oss/migrate/langgraph-v1#stream-encoding) for more information.
 
 ### Custom transports in `useStream`
 
