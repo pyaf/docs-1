@@ -21,7 +21,7 @@ As these docs are built from the source code, the best way to contribute is to m
 
 ## Cross-reference in your project
 
-If you maintain a project that depends on LangChain or LangGraph and would like to reference classes, methods, or functions, or more from these docs, you can do so! These pages include an `objects.inv` file that certain docs platforms, such as MkDocs, can use to automatically create links to these docs.
+If you maintain a project that depends on LangChain or LangGraph and would like to reference classes, methods, functions, and more from these docs, you can do so! These pages include an `objects.inv` file that certain docs platforms, such as MkDocs, can use to automatically create links to these docs.
 
 To reference these docs in your project, add the following to your `mkdocs.yml` file:
 
