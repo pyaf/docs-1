@@ -13,3 +13,11 @@
       members:
         - GenericFakeChatModel
         - ParrotFakeChatModel
+::: langchain_core.language_models.base
+    options:
+      members:
+        - BaseLanguageModel
+        - LanguageModelInput
+        - LanguageModelOutput
+        - LanguageModelLike
+        - LangSmithParams
