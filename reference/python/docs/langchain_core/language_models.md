@@ -8,6 +8,11 @@
     options:
       members:
         - BaseChatModel
+::: langchain_core.messages
+    options:
+      members:
+        - BaseMessage
+        - BaseMessageChunk
 ::: langchain_core.language_models.fake_chat_models
     options:
       members:
