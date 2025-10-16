@@ -669,26 +669,21 @@ Information stored in the state can be thought of as the [short-term memory](/os
 
 :::python
 
-Custom state schemas must extend @[`AgentState`] as a `TypedDict`. Define them in middleware using the `state_schema` attribute:
+Custom state schemas must extend @[`AgentState`] as a `TypedDict`. Pass them to @[`create_agent`] using the `state_schema` parameter:
 
 ```python wrap
 from typing import Annotated, TypedDict
 from langchain.agents import create_agent, AgentState
-from langchain.agents.middleware import AgentMiddleware
 
 # Define custom state extending AgentState
 class CustomAgentState(AgentState):
     """Extended state with user preferences."""
     user_preferences: dict
 
-# Create middleware with custom state
-class PreferencesMiddleware(AgentMiddleware[CustomAgentState]):
-    state_schema = CustomAgentState  # Set the state schema
-
 agent = create_agent(
     model,
     tools=tools,
-    middleware=[PreferencesMiddleware()]
+    state_schema=CustomAgentState  # Pass custom state schema here
 )
 
 # The agent can now track additional state beyond messages

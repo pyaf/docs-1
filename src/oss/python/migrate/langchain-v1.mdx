@@ -74,7 +74,7 @@ The table below outlines what functionality has changed from `create_react_agent
 | [Prompts](#prompts) | Parameter renamed to `system_prompt`, dynamic prompts use middleware |
 | [Pre-model hook](#pre-model-hook) | Replaced by middleware with `before_model` method |
 | [Post-model hook](#post-model-hook) | Replaced by middleware with `after_model` method |
-| [Custom state](#custom-state) | Defined in middleware, `TypedDict` only |
+| [Custom state](#custom-state) | Parameter name unchanged (`state_schema`), `TypedDict` only |
 | [Model](#model) | Dynamic selection via middleware, pre-bound models not supported |
 | [Tools](#tools) | Tool error handling moved to middleware with `wrap_tool_call` |
 | [Structured output](#structured-output) | prompted output removed, use `ToolStrategy`/`ProviderStrategy` |
@@ -323,21 +323,16 @@ agent = create_react_agent(
 
 ### Custom state
 
-Custom state is now defined in middleware using the @[`state_schema`] attribute:
+Custom state extends the default agent state with additional fields. The @[`state_schema`] parameter on @[`create_agent`] defines your custom state:
 
 <CodeGroup>
 ```python v1 (new)
 from langchain.tools import tool, ToolRuntime
-from langchain.agents import create_agent  # [!code highlight]
-from langchain.agents.middleware import AgentMiddleware, AgentState  # [!code highlight]
+from langchain.agents import create_agent, AgentState  # [!code highlight]
 
 # Define custom state extending AgentState
 class CustomState(AgentState):
     user_name: str
-
-# Create middleware that manages custom state
-class UserStateMiddleware(AgentMiddleware[CustomState]):  # [!code highlight]
-    state_schema = CustomState  # [!code highlight]
 
 @tool  # [!code highlight]
 def greet(
@@ -350,7 +345,7 @@ def greet(
 agent = create_agent(  # [!code highlight]
     model="anthropic:claude-sonnet-4-5-20250929",
     tools=[greet],
-    middleware=[UserStateMiddleware()]  # [!code highlight]
+    state_schema=CustomState  # [!code highlight]
 )
 ```
 ```python v0 (old)
@@ -377,29 +372,25 @@ agent = create_react_agent(
 </CodeGroup>
 
 <Note>
-    Custom state is defined by creating a class that extends @[`AgentState`] and assigning it to the middleware's @[`state_schema`] attribute.
+    Custom state is defined by creating a class that extends @[`AgentState`] and passing it to @[`create_agent`]'s @[`state_schema`] parameter.
 </Note>
 
 #### State type restrictions
 
-@[`create_agent`] now only supports `TypedDict` for state schemas. Pydantic models and dataclasses are no longer supported.
+@[`create_agent`] only supports `TypedDict` for state schemas. Pydantic models and dataclasses are no longer supported.
 
 <CodeGroup>
 ```python v1 (new)
-from langchain.agents import AgentState
-from langchain.agents.middleware import AgentMiddleware
+from langchain.agents import AgentState, create_agent
 
 # AgentState is a TypedDict
 class CustomAgentState(AgentState):  # [!code highlight]
     user_id: str
 
-class CustomAgentMiddleware(AgentMiddleware[CustomAgentState]):
-    state_schema = CustomAgentState
-
 agent = create_agent(
     model="anthropic:claude-sonnet-4-5-20250929",
     tools=tools,
-    middleware=[CustomAgentMiddleware()]
+    state_schema=CustomAgentState  # [!code highlight]
 )
 ```
 
