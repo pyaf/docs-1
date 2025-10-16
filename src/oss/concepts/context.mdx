@@ -103,10 +103,10 @@ graph.invoke(
     from langchain.tools import tool, ToolRuntime
 
     @tool
-    def get_user_email(tool_runtime: ToolRuntime[ContextSchema]) -> str:
+    def get_user_email(runtime: ToolRuntime[ContextSchema]) -> str:
         """Retrieve user information based on user ID."""
         # simulate fetching user info from a database
-        email = get_user_email_from_db(tool_runtime.context.user_name)  # [!code highlight]
+        email = get_user_email_from_db(runtime.context.user_name)  # [!code highlight]
         return email
 ```
 

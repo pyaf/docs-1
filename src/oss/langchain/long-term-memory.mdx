@@ -132,11 +132,11 @@ store.put( # [!code highlight]
 )
 
 @tool
-def get_user_info(tool_runtime: ToolRuntime[Context]) -> str:
+def get_user_info(runtime: ToolRuntime[Context]) -> str:
     """Look up user info."""
     # Access the store - same as that provided to `create_agent`
-    store = tool_runtime.store # [!code highlight]
-    user_id = tool_runtime.context.user_id
+    store = runtime.store # [!code highlight]
+    user_id = runtime.context.user_id
     # Retrieve data from store - returns StoreValue object with value and metadata
     user_info = store.get(("users",), user_id) # [!code highlight]
     return str(user_info.value) if user_info else "Unknown user"
@@ -249,11 +249,11 @@ class UserInfo(TypedDict):
 
 # Tool that allows agent to update user information (useful for chat applications)
 @tool
-def save_user_info(user_info: UserInfo, tool_runtime: ToolRuntime[Context]) -> str:
+def save_user_info(user_info: UserInfo, runtime: ToolRuntime[Context]) -> str:
     """Save user info."""
     # Access the store - same as that provided to `create_agent`
-    store = tool_runtime.store # [!code highlight]
-    user_id = tool_runtime.context.user_id # [!code highlight]
+    store = runtime.store # [!code highlight]
+    user_id = runtime.context.user_id # [!code highlight]
     # Store data in the store (namespace, key, data)
     store.put(("users",), user_id, user_info) # [!code highlight]
     return "Successfully saved user info."

@@ -729,12 +729,12 @@ from langchain.tools import tool, ToolRuntime
 @tool
 def schedule_event(
     request: str,
-    tool_runtime: ToolRuntime
+    runtime: ToolRuntime
 ) -> str:
     """Schedule calendar events using natural language."""
     # Customize context received by sub-agent
     original_user_message = next(
-        message for message in tool_runtime.state["messages"]
+        message for message in runtime.state["messages"]
         if message.type == "human"
     )
     prompt = (

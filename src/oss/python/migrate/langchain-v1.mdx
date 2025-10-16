@@ -341,10 +341,10 @@ class UserStateMiddleware(AgentMiddleware[CustomState]):  # [!code highlight]
 
 @tool  # [!code highlight]
 def greet(
-    tool_runtime: ToolRuntime[CustomState]
+    runtime: ToolRuntime[CustomState]
 ) -> str:
     """Use this to greet the user by name."""
-    user_name = tool_runtime.state.get("user_name", "Unknown")  # [!code highlight]
+    user_name = runtime.state.get("user_name", "Unknown")  # [!code highlight]
     return f"Hello {user_name}!"
 
 agent = create_agent(  # [!code highlight]

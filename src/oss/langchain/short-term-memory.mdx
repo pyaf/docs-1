@@ -588,10 +588,10 @@ class CustomState(AgentState):
 
 @tool
 def get_user_info(
-    tool_runtime: ToolRuntime
+    runtime: ToolRuntime
 ) -> str:
     """Look up user info."""
-    user_id = tool_runtime.state["user_id"]
+    user_id = runtime.state["user_id"]
     return "User is John Smith" if user_id == "user_123" else "Unknown user"
 
 agent = create_agent(
@@ -674,10 +674,10 @@ class CustomContext(BaseModel):
 
 @tool
 def update_user_info(
-    tool_runtime: ToolRuntime[CustomContext, CustomState],
+    runtime: ToolRuntime[CustomContext, CustomState],
 ) -> Command:
     """Look up and update user info."""
-    user_id = tool_runtime.context.user_id  # [!code highlight]
+    user_id = runtime.context.user_id  # [!code highlight]
     name = "John Smith" if user_id == "user_123" else "Unknown user"
     return Command(update={
         "user_name": name,
@@ -685,17 +685,17 @@ def update_user_info(
         "messages": [
             ToolMessage(
                 "Successfully looked up user information",
-                tool_call_id=tool_runtime.tool_call_id
+                tool_call_id=runtime.tool_call_id
             )
         ]
     })
 
 @tool
 def greet(
-    tool_runtime: ToolRuntime[CustomContext, CustomState]
+    runtime: ToolRuntime[CustomContext, CustomState]
 ) -> str:
     """Use this to greet the user once you found their info."""
-    user_name = tool_runtime.state["user_name"]
+    user_name = runtime.state["user_name"]
     return f"Hello {user_name}!"
   # [!code highlight]
 agent = create_agent(

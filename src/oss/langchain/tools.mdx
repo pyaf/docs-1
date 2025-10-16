@@ -164,7 +164,7 @@ Tools can access runtime information through the `ToolRuntime` parameter, which 
 
 ### ToolRuntime
 
-Use `ToolRuntime` to access all runtime information in a single parameter. Simply add `tool_runtime: ToolRuntime` to your tool signature, and it will be automatically injected without being exposed to the LLM.
+Use `ToolRuntime` to access all runtime information in a single parameter. Simply add `runtime: ToolRuntime` to your tool signature, and it will be automatically injected without being exposed to the LLM.
 
 <Info>
 **`ToolRuntime`**: A unified parameter that provides tools access to state, context, store, streaming, config, and tool call ID. This replaces the older pattern of using separate `InjectedState`, `InjectedStore`, `get_runtime()`, and `InjectedToolCallId` annotations.
@@ -181,10 +181,10 @@ from langchain.tools import tool, ToolRuntime
 # Access the current conversation state
 @tool
 def summarize_conversation(
-    tool_runtime: ToolRuntime
+    runtime: ToolRuntime
 ) -> str:
     """Summarize the conversation so far."""
-    messages = tool_runtime.state["messages"]
+    messages = runtime.state["messages"]
 
     human_msgs = sum(1 for m in messages if m.__class__.__name__ == "HumanMessage")
     ai_msgs = sum(1 for m in messages if m.__class__.__name__ == "AIMessage")
@@ -196,10 +196,10 @@ def summarize_conversation(
 @tool
 def get_user_preference(
     pref_name: str,
-    tool_runtime: ToolRuntime  # ToolRuntime parameter is not visible to the model
+    runtime: ToolRuntime  # ToolRuntime parameter is not visible to the model
 ) -> str:
     """Get a user preference value."""
-    preferences = tool_runtime.state.get("user_preferences", {})
+    preferences = runtime.state.get("user_preferences", {})
     return preferences.get(pref_name, "Not set")
 ```
 
@@ -232,7 +232,7 @@ def clear_conversation() -> Command:
 @tool
 def update_user_name(
     new_name: str,
-    tool_runtime: ToolRuntime
+    runtime: ToolRuntime
 ) -> Command:
     """Update the user's name."""
     return Command(update={"user_name": new_name})
@@ -241,7 +241,7 @@ def update_user_name(
 
 #### Context
 
-Access immutable configuration and contextual data like user IDs, session details, or application-specific configuration through `tool_runtime.context`.
+Access immutable configuration and contextual data like user IDs, session details, or application-specific configuration through `runtime.context`.
 
 :::python
 Tools can access runtime context through `ToolRuntime`:
@@ -272,9 +272,9 @@ class UserContext:
     user_id: str
 
 @tool
-def get_account_info(tool_runtime: ToolRuntime[UserContext]) -> str:
+def get_account_info(runtime: ToolRuntime[UserContext]) -> str:
     """Get the current user's account information."""
-    user_id = tool_runtime.context.user_id
+    user_id = runtime.context.user_id
 
     if user_id in USER_DATABASE:
         user = USER_DATABASE[user_id]
@@ -338,7 +338,7 @@ const result = await agent.invoke(
 
 #### Memory (Store)
 
-Access persistent data across conversations using the store. The store is accessed via `tool_runtime.store` and allows you to save and retrieve user-specific or application-specific data.
+Access persistent data across conversations using the store. The store is accessed via `runtime.store` and allows you to save and retrieve user-specific or application-specific data.
 
 :::python
 Tools can access and update the store through `ToolRuntime`:
@@ -351,17 +351,17 @@ from langchain.tools import tool, ToolRuntime
 
 # Access memory
 @tool
-def get_user_info(user_id: str, tool_runtime: ToolRuntime) -> str:
+def get_user_info(user_id: str, runtime: ToolRuntime) -> str:
     """Look up user info."""
-    store = tool_runtime.store
+    store = runtime.store
     user_info = store.get(("users",), user_id)
     return str(user_info.value) if user_info else "Unknown user"
 
 # Update memory
 @tool
-def save_user_info(user_id: str, user_info: dict[str, Any], tool_runtime: ToolRuntime) -> str:
+def save_user_info(user_id: str, user_info: dict[str, Any], runtime: ToolRuntime) -> str:
     """Save user info."""
-    store = tool_runtime.store
+    store = runtime.store
     store.put(("users",), user_id, user_info)
     return "Successfully saved user info."
 
@@ -465,16 +465,16 @@ console.log(result);
 
 #### Stream Writer
 
-Stream custom updates from tools as they execute using `tool_runtime.stream_writer`. This is useful for providing real-time feedback to users about what a tool is doing.
+Stream custom updates from tools as they execute using `runtime.stream_writer`. This is useful for providing real-time feedback to users about what a tool is doing.
 
 :::python
 ```python wrap
 from langchain.tools import tool, ToolRuntime
 
 @tool
-def get_weather(city: str, tool_runtime: ToolRuntime) -> str:
+def get_weather(city: str, runtime: ToolRuntime) -> str:
     """Get weather for a given city."""
-    writer = tool_runtime.stream_writer
+    writer = runtime.stream_writer
 
     # Stream custom updates as the tool executes
     writer(f"Looking up data for city: {city}")
@@ -484,7 +484,7 @@ def get_weather(city: str, tool_runtime: ToolRuntime) -> str:
 ```
 
 <Note>
-If you use `tool_runtime.stream_writer` inside your tool, the tool must be invoked within a LangGraph execution context. See [Streaming](/oss/langchain/streaming) for more details.
+If you use `runtime.stream_writer` inside your tool, the tool must be invoked within a LangGraph execution context. See [Streaming](/oss/langchain/streaming) for more details.
 </Note>
 :::
 

@@ -317,18 +317,18 @@ class Context:
 @tool
 def search_documents(
     query: str,
-    tool_runtime: ToolRuntime[Context]
+    runtime: ToolRuntime[Context]
 ) -> str:
     """Search through documents."""
     # Access runtime context for user-specific configuration
-    user_id = tool_runtime.context.user_id
+    user_id = runtime.context.user_id
 
     # Access long-term memory for user preferences
-    store = tool_runtime.store
+    store = runtime.store
     search_prefs = store.get(("preferences", user_id), "search")
 
     # Access session state
-    conversation_history = tool_runtime.state["messages"]
+    conversation_history = runtime.state["messages"]
 
     # Use all context to perform a better search
     results = perform_search(query, user_id, search_prefs, conversation_history)

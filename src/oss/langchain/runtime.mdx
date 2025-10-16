@@ -105,13 +105,13 @@ class Context:
     user_id: str
 
 @tool
-def fetch_user_email_preferences(tool_runtime: ToolRuntime[Context]) -> str:  # [!code highlight]
+def fetch_user_email_preferences(runtime: ToolRuntime[Context]) -> str:  # [!code highlight]
     """Fetch the user's email preferences from the store."""
-    user_id = tool_runtime.context.user_id  # [!code highlight]
+    user_id = runtime.context.user_id  # [!code highlight]
 
     preferences: str = "The user prefers you to write a brief and polite email."
-    if tool_runtime.store:  # [!code highlight]
-        if memory := tool_runtime.store.get(("users",), user_id):  # [!code highlight]
+    if runtime.store:  # [!code highlight]
+        if memory := runtime.store.get(("users",), user_id):  # [!code highlight]
             preferences = memory.value["preferences"]
 
     return preferences

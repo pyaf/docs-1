@@ -137,9 +137,9 @@ Let's walk through each step:
             user_id: str
 
         @tool
-        def get_user_location(tool_runtime: ToolRuntime[Context]) -> str:
+        def get_user_location(runtime: ToolRuntime[Context]) -> str:
             """Retrieve user information based on user ID."""
-            user_id = tool_runtime.context.user_id
+            user_id = runtime.context.user_id
             return "Florida" if user_id == "1" else "SF"
         ```
 
@@ -415,9 +415,9 @@ def get_weather_for_location(city: str) -> str:
     return f"It's always sunny in {city}!"
 
 @tool
-def get_user_location(tool_runtime: ToolRuntime[Context]) -> str:
+def get_user_location(runtime: ToolRuntime[Context]) -> str:
     """Retrieve user information based on user ID."""
-    user_id = tool_runtime.context.user_id
+    user_id = runtime.context.user_id
     return "Florida" if user_id == "1" else "SF"
 
 # Configure model
