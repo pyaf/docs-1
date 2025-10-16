@@ -75,11 +75,11 @@ There are multiple ways you can trigger this pipeline, either during development
 
 Compared to traditional software, testing AI agent applications also requires assessing response quality, so it is important to test each part of the workflow. The pipeline implements multiple testing layers:
 
-1. <Icon icon="puzzle-piece" /> **Unit Tests**: Individual node and utility function testing
-2. <Icon icon="link" /> **Integration Tests**: Component interaction testing
-3. <Icon icon="route" /> **End-to-End Tests**: Full graph execution testing
-4. <Icon icon="brain" /> **Offline Evaluations**: Performance assessment with real-world scenarios including end-to-end evaluations, single-step evaluations, agent trajectory analysis, and multi-turn simulations
-5. <Icon icon="server" /> **LangGraph Dev Server Tests**: We use our [langgraph-cli](/langsmith/cli) tool for spinning up (inside the GitHub Action) a local server to run the LangGraph agent. We poll the `/ok` server API endpoint until it is available and for 30 seconds, after that we throw an error
+1. <Icon icon="puzzle-piece" /> **Unit tests**: Individual node and utility function testing.
+2. <Icon icon="link" /> **Integration tests**: Component interaction testing.
+3. <Icon icon="route" /> **End-to-end tests**: Full graph execution testing.
+4. <Icon icon="brain" /> **Offline evaluations**: Performance assessment with real-world scenarios including end-to-end evaluations, single-step evaluations, agent trajectory analysis, and multi-turn simulations.
+5. <Icon icon="server" /> **LangGraph dev server tests**: Use the [langgraph-cli](/langsmith/cli) tool for spinning up (inside the GitHub Action) a local server to run the LangGraph agent. This polls the `/ok` server API endpoint until it is available and for 30 seconds, after that it throws an error.
 
 ## Prerequisites
 
