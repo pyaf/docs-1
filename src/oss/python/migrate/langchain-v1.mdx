@@ -74,7 +74,7 @@ The table below outlines what functionality has changed from `create_react_agent
 | [Prompts](#prompts) | Parameter renamed to `system_prompt`, dynamic prompts use middleware |
 | [Pre-model hook](#pre-model-hook) | Replaced by middleware with `before_model` method |
 | [Post-model hook](#post-model-hook) | Replaced by middleware with `after_model` method |
-| [Custom state](#custom-state) | Parameter name unchanged (`state_schema`), `TypedDict` only |
+| [Custom state](#custom-state) | `TypedDict` only, can be defined on middleware |
 | [Model](#model) | Dynamic selection via middleware, pre-bound models not supported |
 | [Tools](#tools) | Tool error handling moved to middleware with `wrap_tool_call` |
 | [Structured output](#structured-output) | prompted output removed, use `ToolStrategy`/`ProviderStrategy` |
