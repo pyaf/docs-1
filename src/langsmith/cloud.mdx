@@ -3,15 +3,35 @@ title: Cloud
 sidebarTitle: Overview
 ---
 
+The **Cloud** option is a fully managed hosting model where LangChain hosts and operates all LangSmith infrastructure and services. This is the fastest way to get started with LangSmith.
 
+## What you get
 
-The [Cloud](/langsmith/cloud) option is a fully managed model where the [_control plane_](/langsmith/control-plane) and [_data plane_](/langsmith/data-plane) run in LangChain’s cloud. This option provides a simple way to deploy and manage your application. To get started, follow the how-to guide for [Cloud](/langsmith/deploy-to-cloud).
+- **Fully managed infrastructure**: LangChain handles all infrastructure, updates, scaling, and maintenance
+- **Deploy from GitHub**: Connect your repositories and deploy with a few clicks
+- **Automated CI/CD**: Build process is handled automatically by the platform
+- **LangSmith UI**: Full access to observability, evaluation, deployment management, and Studio
 
-Connect your GitHub repositories to the platform and deploy your LangGraph Servers from the [control plane UI](/langsmith/control-plane#control-plane-ui). The build process (i.e. CI/CD) is managed automatically by the platform.
+|                   | **Who manages it** | **Where it runs** |
+|-------------------|-------------------|-------------------|
+| **LangSmith platform (UI, APIs, datastores)** | LangChain | LangChain's cloud |
+| **Your LangGraph Servers** | LangChain | LangChain's cloud |
+| **CI/CD for your apps** | LangChain | LangChain's cloud |
 
-|                   | [Control plane](/langsmith/control-plane) | [Data plane](/langsmith/data-plane) |
-|-------------------|---------------------------------------------------|-----------------------------------------------|
-| **Managed by**    | LangChain                                         | LangChain                                     |
-| **Infrastructure**| LangChain's cloud                                 | LangChain's cloud                             |
+![Cloud deployment: LangChain hosts and manages all components including the UI, APIs, and your LangGraph Servers.](/langsmith/images/langgraph-cloud-architecture.png)
 
-![Cloud deployment: LangChain hosts and manages both the control plane (UI/APIs) and data plane (LangGraph Servers, backing services).](/langsmith/images/langgraph-cloud-architecture.png)
+## Get started
+
+To deploy your first application to Cloud, follow the [Cloud deployment quickstart](/langsmith/deployment-quickstart) or see the [comprehensive setup guide](/langsmith/deploy-to-cloud).
+
+## When to choose Cloud
+
+**Choose Cloud if:**
+- You want the fastest setup with no infrastructure management
+- You're comfortable with your data and compute in LangChain's cloud
+- You want automatic updates and scaling
+- You prefer a fully managed solution
+
+**Consider alternatives if:**
+- You need data residency in your own cloud → See [Hybrid](/langsmith/hybrid)
+- You need full control or air-gapped deployment → See [Self-hosted](/langsmith/self-hosted)
