@@ -66,7 +66,7 @@ graph TD
 There are multiple ways you can trigger this pipeline, either during development or if your application is already live. The pipeline can be triggered by:
 
 - <Icon icon="code-branch" /> **Code changes**: Pushes to main/development branches where you can modify the LangGraph architecture, try different models, update agent logic, or make any code improvements.
-- <Icon icon="edit" /> **PromptHub updates**: Changes to prompt templates stored in LangSmith PromptHub—whenever there's a new prompt commit, we trigger a webhook to run the pipeline.
+- <Icon icon="edit" /> **PromptHub updates**: Changes to prompt templates stored in LangSmith PromptHub—whenever there's a new prompt commit, the system triggers a webhook to run the pipeline.
 - <Icon icon="exclamation-triangle" /> **Online evaluation alerts**: Performance degradation notifications from live deployments
 - <Icon icon="webhook" /> **LangSmith traces webhooks**: Automated triggers based on trace analysis and performance metrics.
 - <Icon icon="play" /> **Manual trigger**: Manual initiation of the pipeline for testing or emergency deployments.
@@ -81,57 +81,54 @@ Compared to traditional software, testing AI agent applications also requires as
 4. <Icon icon="brain" /> **Offline evaluations**: Performance assessment with real-world scenarios including end-to-end evaluations, single-step evaluations, agent trajectory analysis, and multi-turn simulations.
 5. <Icon icon="server" /> **LangGraph dev server tests**: Use the [langgraph-cli](/langsmith/cli) tool for spinning up (inside the GitHub Action) a local server to run the LangGraph agent. This polls the `/ok` server API endpoint until it is available and for 30 seconds, after that it throws an error.
 
-## Prerequisites
-
-Before setting up the CI/CD pipeline, ensure you have:
-
-- <Icon icon="robot" /> An AI agent application (in this case built using [LangGraph](/oss/langgraph/overview))
-- <Icon icon="key" /> [LangSmith account](/langsmith/create-account-api-key) and API key needed to deploy agents and retrieve experiment results
-- <Icon icon="cog" /> Additional environment variables configured in your repository secrets
-
-<Note>
-While this example uses GitHub, the CI/CD pipeline works with other Git hosting platforms including GitLab, Bitbucket, and others.
-</Note>
-
 ## GitHub Actions Workflow
 
 The CI/CD pipeline uses GitHub Actions with the [Control Plane API](/langsmith/api-ref-control-plane) and [LangSmith API](/langsmith/api-reference) to automate deployment. A helper script manages API interactions and deployments: https://github.com/langchain-ai/cicd-pipeline-example/blob/main/.github/scripts/langgraph_api.py.
 
-### New Agent Deployment
+The workflow includes:
 
-When we open a PR and tests pass, we create a new preview deployment in LangSmith Deployments using the [Control Plane API](/langsmith/api-ref-control-plane). This allows us to test the agent in a staging environment before promoting to production.
+- **New agent deployment**: When a new PR is opened and tests pass, a new preview deployment is created in LangSmith Deployments using the [Control Plane API](/langsmith/api-ref-control-plane). This allows you to test the agent in a staging environment before promoting to production.
 
-### Agent Deployment Revision
+- **Agent deployment revision**: A revision happens when an existing deployment with the same ID is found, or when the PR is merged into main. In the case of merging to main, the preview deployment is deleted and a production deployment is created. This ensures that any updates to the agent are properly deployed and integrated into the production infrastructure.
 
-![Agent Deployment Revision Workflow](./images/cicd-new-lgp-revision.png)
+    ![Agent Deployment Revision Workflow](./images/cicd-new-lgp-revision.png)
 
-A revision happens when we find an existing deployment with the same ID, or when we merge the PR into main. In the case of merging to main, we delete the preview deployment and create a production deployment. This ensures that any updates to the agent are properly deployed and integrated into the production infrastructure.
+- **Testing and evaluation workflow**: In addition to the more traditional testing phases (unit tests, integration tests, end-to-end tests, etc.), the pipeline includes [offline evaluations](/langsmith/evaluation-concepts#offline-evaluation) and [LangGraph dev server testing](/langsmith/local-server) because you want to test the quality of your agent. These evaluations provide comprehensive assessment of the agent's performance using real-world scenarios and data.
 
-### Testing and Evaluation Workflow
+    ![Test with Results Workflow](./images/cicd-test-with-results.png)
 
-![Test with Results Workflow](./images/cicd-test-with-results.png)
+    <AccordionGroup>
+    <Accordion title="Final Response Evaluation" icon="check-circle">
+        Evaluates the final output of your agent against expected results. This is the most common type of evaluation that checks if the agent's final response meets quality standards and answers the user's question correctly.
+    </Accordion>
 
-In addition to the more traditional testing phases (unit tests, integration tests, end-to-end tests, etc.), we have added offline evaluations and LangGraph dev server testing because we want to test the quality of our agent. These evaluations provide comprehensive assessment of the agent's performance using real-world scenarios and data.
+    <Accordion title="Single Step Evaluation" icon="step-forward">
+        Tests individual steps or nodes within your LangGraph workflow. This allows you to validate specific components of your agent's logic in isolation, ensuring each step functions correctly before testing the full pipeline.
+    </Accordion>
 
-<AccordionGroup>
-  <Accordion title="Final Response Evaluation" icon="check-circle">
-    Evaluates the final output of your agent against expected results. This is the most common type of evaluation that checks if the agent's final response meets quality standards and answers the user's question correctly.
-  </Accordion>
+    <Accordion title="Agent Trajectory Evaluation" icon="route">
+        Analyzes the complete path your agent takes through the graph, including all intermediate steps and decision points. This helps identify bottlenecks, unnecessary steps, or suboptimal routing in your agent's workflow. It also evaluates whether your agent invoked the right tools in the right order or at the right time.
+    </Accordion>
 
-  <Accordion title="Single Step Evaluation" icon="step-forward">
-    Tests individual steps or nodes within your LangGraph workflow. This allows you to validate specific components of your agent's logic in isolation, ensuring each step functions correctly before testing the full pipeline.
-  </Accordion>
+    <Accordion title="Multi-Turn Evaluation" icon="comments">
+        Tests conversational flows where the agent maintains context across multiple interactions. This is crucial for agents that handle follow-up questions, clarifications, or extended dialogues with users.
+    </Accordion>
+    </AccordionGroup>
 
-  <Accordion title="Agent Trajectory Evaluation" icon="route">
-    Analyzes the complete path your agent takes through the graph, including all intermediate steps and decision points. This helps identify bottlenecks, unnecessary steps, or suboptimal routing in your agent's workflow. It also evaluates whether your agent invoked the right tools in the right order or at the right time.
-  </Accordion>
+    See the [LangGraph testing documentation](/oss/python/langgraph/test) for specific testing approaches and the [evaluation approaches guide](/langsmith/evaluation-approaches) for a comprehensive overview of offline evaluations.
 
-  <Accordion title="Multi-Turn Evaluation" icon="comments">
-    Tests conversational flows where the agent maintains context across multiple interactions. This is crucial for agents that handle follow-up questions, clarifications, or extended dialogues with users.
-  </Accordion>
-</AccordionGroup>
+### Prerequisites
 
-See the [LangGraph testing documentation](/oss/python/langgraph/test) for specific testing approaches and the [evaluation approaches guide](/langsmith/evaluation-approaches) for a comprehensive overview of offline evaluations.
+Before setting up the CI/CD pipeline, ensure you have:
+
+- <Icon icon="robot" /> An AI agent application (in this case built using [LangGraph](/oss/langgraph/overview))
+- <Icon icon="user" /> A [LangSmith account](https://smith.langchain.com/)
+- <Icon icon="key" /> A [LangSmith API key](/langsmith/create-account-api-key) needed to deploy agents and retrieve experiment results
+- <Icon icon="cog" /> Project-specific environment variables configured in your repository secrets (e.g., LLM model API keys, vector store credentials, database connections)
+
+<Note>
+While this example uses GitHub, the CI/CD pipeline works with other Git hosting platforms including GitLab, Bitbucket, and others.
+</Note>
 
 ## Deployment options
 
@@ -140,7 +137,7 @@ LangSmith supports multiple deployment methods, depending on how your [LangSmith
 - <Icon icon="cloud" /> **Cloud LangSmith**: Direct GitHub integration or Docker image deployment.
 - <Icon icon="server" /> **Self-Hosted/Hybrid**: Container registry-based deployments.
 
-The deployment flow starts by modifying your agent implementation. At minimum, you must have a `langgraph.json` and dependency file in your project (`requirements.txt` or `pyproject.toml`). We use the `langgraph dev` CLI tool to check for errors - if there are any, we fix the issues; otherwise, the deployment will likely succeed when deployed to LangSmith Deployments.
+The deployment flow starts by modifying your agent implementation. At minimum, you must have a [`langgraph.json`](/langsmith/application-structure) and dependency file in your project (`requirements.txt` or `pyproject.toml`). Use the `langgraph dev` CLI tool to check for errors—fix any errors; otherwise, the deployment will succeed when deployed to LangSmith Deployments.
 
 ```mermaid
 graph TD
@@ -185,12 +182,12 @@ graph TD
     BB -->|LangGraph Studio UI| FF[Use LangGraph Studio UI]
 ```
 
-### Prerequisites for Manual Deployment
+### Prerequisites for manual deployment
 
 Before deploying your agent, ensure you have:
 
-1. <Icon icon="project-diagram" /> **LangGraph Graph**: Your agent implementation (e.g., `./agents/simple_text2sql.py:agent`)
-2. <Icon icon="box" /> **Dependencies**: Either `requirements.txt` or `pyproject.toml` with all required packages
+1. <Icon icon="project-diagram" /> **LangGraph graph**: Your agent implementation (e.g., `./agents/simple_text2sql.py:agent`).
+2. <Icon icon="box" /> **Dependencies**: Either `requirements.txt` or `pyproject.toml` with all required packages.
 3. <Icon icon="cog" /> **Configuration**: `langgraph.json` file specifying:
    - Path to your agent graph
    - Dependencies location
@@ -210,24 +207,51 @@ Example `langgraph.json`:
 }
 ```
 
-### Method 1: LangSmith Deployment UI (Cloud Only)
+### Local development and testing
 
-Deploy your agent using the LangSmith deployment interface for cloud deployments:
+![LangGraph Studio CLI Interface](./images/cicd-studio-cli.png)
 
-1. Go to your LangSmith dashboard
-2. Navigate to the Deployments section
-3. Connect your GitHub repository and specify the agent path
+First, test your agent locally using [Studio](/langsmith/studio):
+
+```bash
+# Start local development server with LangGraph Studio
+langgraph dev
+```
+
+This will:
+- Spin up a local server with Studio.
+- Allow you to visualize and interact with your graph.
+- Validate that your agent works correctly before deployment.
+
+<Note>
+If your agent runs locally without any errors, it means that deployment to LangSmith will likely succeed. This local testing helps catch configuration issues, dependency problems, and agent logic errors before attempting deployment.
+</Note>
+
+See the [LangGraph CLI documentation](/langsmith/cli#dev) for more details.
+
+### Method 1: LangSmith Deployment UI
+
+Deploy your agent using the LangSmith deployment interface:
+
+1. Go to your [LangSmith dashboard](https://smith.langchain.com).
+2. Navigate to the **Deployments** section.
+3. Click the **+ New Deployment** button in the top right.
+4. Select your GitHub repository containing your LangGraph agent from the dropdown menu.
+
+**Supported deployments:**
+- <Icon icon="cloud" /> **Cloud LangSmith**: Direct GitHub integration with dropdown menu
+- <Icon icon="server" /> **Self-Hosted/Hybrid LangSmith**: Specify your image URI in the Image Path field (e.g., `docker.io/username/my-agent:latest`)
 
 <Info>
 **Benefits:**
 - Simple UI-based deployment
-- Direct integration with your GitHub repository
-- No manual Docker image management required
+- Direct integration with your GitHub repository (cloud)
+- No manual Docker image management required (cloud)
 </Info>
 
-### Method 2: Build Docker Image with LangGraph CLI
+### Method 2: Control Plane API
 
-Build a Docker image directly using the LangGraph CLI:
+Build a Docker image and deploy using the Control Plane API:
 
 ```bash
 # Build Docker image
@@ -239,66 +263,13 @@ docker push my-agent:latest
 
 You can push to any container registry (Docker Hub, AWS ECR, Azure ACR, Google GCR, etc.) that your deployment environment has access to.
 
-**Deployment Options:**
-- **Cloud LangSmith**: Use the Control Plane API to create deployments from your container registry
-- **Self-Hosted/Hybrid LangSmith**: Choose between LangSmith UI or Control Plane API
+**Supported deployments:**
+- <Icon icon="cloud" /> **Cloud LangSmith**: Use the Control Plane API to create deployments from your container registry
+- <Icon icon="server" /> **Self-Hosted/Hybrid LangSmith**: Use the Control Plane API to create deployments from your container registry
 
 See the [LangGraph CLI build documentation](/langsmith/cli#build) for more details.
 
-### Local Development & Testing
-
-![LangGraph Studio CLI Interface](./images/cicd-studio-cli.png)
-
-First, test your agent locally using LangGraph Studio:
-
-```bash
-# Start local development server with LangGraph Studio
-langgraph dev
-```
-
-This will:
-- Spin up a local server with LangGraph Studio
-- Allow you to visualize and interact with your graph
-- Validate that your agent works correctly before deployment
-
-<Tip>
-If your graph works in LangGraph Studio, deployment to LangSmith will likely succeed.
-</Tip>
-
-See the [LangGraph CLI documentation](/langsmith/cli#dev) for more details.
-
-### Deploy to LangSmith
-
-#### Cloud Deployment
-
-![Cloud LangSmith Deployment UI](./images/cicd-cloud-lgp.png)
-
-Deploy using the LangSmith deployment UI or the [Control Plane API](/langsmith/api-ref-control-plane#langgraph-control-plane-api-reference):
-
-- **UI Method**: Connect your GitHub repository directly in the LangSmith UI
-- **API Method**: Use the Control Plane API to create deployments from your container registry (required for Docker images)
-
-#### Self-Hosted/Hybrid Deployment
-
-![Self-Hosted LangSmith Deployment UI](./images/cicd-selfhosted-lgp.png)
-
-For [self-hosted LangSmith instances](/langsmith/deploy-self-hosted-full-platform):
-
-1. Ensure your Kubernetes cluster has access to your container registry
-2. Build and push your Docker image to your container registry
-3. Choose your deployment method:
-   - **LangSmith UI**: Create a new deployment and specify your image URI (e.g., `docker.io/username/my-agent:latest`)
-   - **Control Plane API**: Use the API to create deployments from your container registry
-
-<Note>
-Self-hosted deployments don't distinguish between development/production types, but you can use tags to organize them.
-</Note>
-
-See the [self-hosted full platform deployment guide](/langsmith/deploy-self-hosted-full-platform) for detailed setup instructions.
-
 ### Connect to Your Deployed Agent
-
-Once your agent is deployed, you can connect to it using several methods:
 
 - <Icon icon="code" /> **[LangGraph SDK](https://langchain-ai.github.io/langgraph/cloud/reference/sdk/python_sdk_ref/#langgraph-sdk-python)**: Use the LangGraph SDK for programmatic integration.
 - <Icon icon="project-diagram" /> **[RemoteGraph](/langsmith/use-remote-graph)**: Connect using RemoteGraph for remote graph connections (to use your graph in other graphs).
@@ -318,10 +289,6 @@ export REDIS_URI_CUSTOM="redis://host:6379/0"
 ```
 
 See the [environment variables documentation](/langsmith/env-var#postgres-uri-custom) for more details.
-
-#### Required Environment Variables
-
-Remember to add all necessary environment variables to your deployment, including any API keys required by your specific agent implementation.
 
 ## Troubleshooting
 
