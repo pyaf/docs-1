@@ -804,10 +804,6 @@
               {
                 "group": "Additional resources",
                 "pages": [
-                  "langsmith/faq",
-                  "langsmith/regions-faq",
-                  "langsmith/pricing-faq",
-                  "langsmith/authentication-methods",
                   {
                     "group": "Releases & changelogs",
                     "pages": [
@@ -821,7 +817,11 @@
                        "langsmith/data-storage-and-privacy",
                       "langsmith/data-purging-compliance"
                     ]
-                  }
+                  },
+                  "langsmith/authentication-methods",
+                  "langsmith/faq",
+                  "langsmith/regions-faq",
+                  "langsmith/pricing-faq"
                 ]
               }
             ]
@@ -1107,6 +1107,7 @@
             "pages": [
               "langsmith/deployments",
               "langsmith/local-server",
+              "langsmith/app-development",
               {
                 "group": "Configure for deployment",
                 "pages": [
@@ -1138,7 +1139,6 @@
               {
                 "group": "App development",
                 "pages": [
-                  "langsmith/why-langgraph",
                   {
                     "group": "Data models",
                     "pages": [
@@ -1454,6 +1454,10 @@
   {
     "source": "/langsmith/python-sdk",
     "destination": "/langsmith/smith-python-sdk"
+  },
+  {
+    "source": "/langgraph-platform/why-langgraph",
+    "destination": "/langsmith/app-development"
   },
   {
     "source": "/langgraph-platform/:path*",
