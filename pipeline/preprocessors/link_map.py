@@ -156,9 +156,19 @@ LINK_MAPS: list[LinkMap] = [
             "ServerToolCallChunk": "langchain/messages/#langchain.messages.ServerToolCallChunk",
             "ServerToolResult": "langchain/messages/#langchain.messages.ServerToolResult",
             # Integrations
+            # langchain-openai
             "langchain-openai": "integrations/langchain_openai",
-            "ChatOpenAI": "integrations/langchain_openai/#langchain_openai.ChatOpenAI",
-            "AzureChatOpenAI": "integrations/langchain_openai/#langchain_openai.AzureChatOpenAI",
+            "BaseChatOpenAI": "integrations/langchain_openai/BaseChatOpenAI/",
+            "ChatOpenAI": "integrations/langchain_openai/ChatOpenAI/",
+            "AzureChatOpenAI": "integrations/langchain_openai/AzureChatOpenAI/",
+            "OpenAI": "integrations/langchain_openai/OpenAI/",
+            "AzureOpenAI": "integrations/langchain_openai/AzureOpenAI/",
+            "OpenAIEmbeddings": "integrations/langchain_openai/OpenAIEmbeddings/",
+            "AzureOpenAIEmbeddings": "integrations/langchain_openai/AzureOpenAIEmbeddings/",
+            # langchain-anthropic
+            "langchain-anthropic": "integrations/langchain_anthropic",
+            "ChatAnthropic": "integrations/langchain_anthropic/ChatAnthropic/",
+            "AnthropicLLM": "integrations/langchain_anthropic/AnthropicLLM/",
             # Models
             "init_chat_model": "langchain/models/#langchain.chat_models.init_chat_model",
             "init_chat_model(model_provider)": "langchain/models/#langchain.chat_models.init_chat_model(model_provider)",
