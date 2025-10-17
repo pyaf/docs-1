@@ -3,7 +3,7 @@ title: Discover errors and usage patterns with the Insights Agent
 sidebarTitle: Insights
 ---
 
-LangSmith Insights automatically analyzes your traces to detect usage patterns, common agent behaviors and failure modes — without requiring you to manually review thousands of traces.
+The Insights Agent automatically analyzes your traces to detect usage patterns, common agent behaviors and failure modes — without requiring you to manually review thousands of traces.
 Insights uses hierarchical categorization to make sense of your data and highlight actionable trends.
 
 <Note>Insights is in **Beta** and under active development. To provide feedback or use this feature, reach out to the [LangSmith team](https://forum.langchain.com/c/help/langsmith/8).</Note>
@@ -86,7 +86,7 @@ The two things to think about when editing the prompt are:
 - Summarization instructions: Any information that isn't in the trace summary won't affect the categories that get generated, so make sure to provide clear instructions on what information is important to extract from each trace.
 - Trace content: Use mustache formatting to specify which parts of each trace are passed to the summarizer. Large traces with lots of inputs and outputs can be expensive and noisy. Reducing the prompt to only include the most relevant parts of the trace can improve your results.
 
-LangSmith Insights analyzes [threads] (https://docs.langchain.com/langsmith/threads) - groups of related traces that represent multi-turn conversations. You must specify what parts of the thread to send to the summarizer using at least one of
+The Insights Agent analyzes [threads] (https://docs.langchain.com/langsmith/threads) - groups of related traces that represent multi-turn conversations. You must specify what parts of the thread to send to the summarizer using at least one of
 these template variables:
 
 | Variable | Best for | Example |
