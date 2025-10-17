@@ -2,6 +2,15 @@
 
 This repository encompasses the comprehensive documentation for LangChain's products and services, hosted on the Mintlify platform. The documentation is divided into sections for each product. This is a shared set of guidelines to ensure consistency and quality across all content.
 
+## Scope
+
+**These instructions apply to manually authored documentation only. They do NOT apply to:**
+
+- Files in `**/reference/**` directories (auto-generated API reference documentation)
+- Build artifacts and generated files
+
+For reference documentation, see `.github/instructions/reference-docs.instructions.md`.
+
 ## Working relationship
 
 - You can push back on ideas-this can lead to better documentation. Cite sources and explain your reasoning when you do so
