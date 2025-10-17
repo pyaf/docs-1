@@ -757,7 +757,7 @@
       {
         "product": "LangSmith",
         "icon": "rocket",
-        "description": "Platform for observability, evaluation, and deploying LLM applications",
+        "description": "LLM observability, evaluation, and deployment",
         "tabs": [
           {
             "tab": "Get started",
