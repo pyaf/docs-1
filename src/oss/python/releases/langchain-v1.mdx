@@ -48,7 +48,7 @@ For a complete list of changes, see the [migration guide](/oss/migrate/langchain
 from langchain.agents import create_agent
 
 agent = create_agent(
-    model="anthropic:claude-sonnet-4-5-20250929",
+    model="anthropic:claude-sonnet-4-5",
     tools=[search_web, analyze_data, send_email],
     system_prompt="You are a helpful research assistant."
 )
@@ -96,12 +96,12 @@ from langchain.agents.middleware import (
 )
 
 agent = create_agent(
-    model="anthropic:claude-sonnet-4-5-20250929",
+    model="anthropic:claude-sonnet-4-5",
     tools=[read_email, send_email],
     middleware=[
         PIIMiddleware(patterns=["email", "phone", "ssn"]),
         SummarizationMiddleware(
-            model="anthropic:claude-sonnet-4-5-20250929",
+            model="anthropic:claude-sonnet-4-5",
             max_tokens_before_summary=500
         ),
         HumanInTheLoopMiddleware(
@@ -178,7 +178,7 @@ class ExpertiseBasedToolMiddleware(Middleware):
         )
 
 agent = create_agent(
-    model="anthropic:claude-sonnet-4-5-20250929",
+    model="anthropic:claude-sonnet-4-5",
     tools=[
         simple_search,
         advanced_search,
@@ -273,7 +273,7 @@ The new @[`content_blocks`][BaseMessage(content_blocks)] property introduces a s
 ```python
 from langchain_anthropic import ChatAnthropic
 
-model = ChatAnthropic(model="claude-sonnet-4-5-20250929")
+model = ChatAnthropic(model="claude-sonnet-4-5")
 response = model.invoke("What's the capital of France?")
 
 # Unified access to content blocks

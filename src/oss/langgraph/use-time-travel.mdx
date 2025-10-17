@@ -107,7 +107,7 @@ class State(TypedDict):
 
 
 llm = init_chat_model(
-    "anthropic:claude-sonnet-4-5-20250929",
+    "anthropic:claude-sonnet-4-5",
     temperature=0,
 )
 
@@ -157,7 +157,7 @@ const State = z.object({
 });
 
 const llm = new ChatAnthropic({
-  model: "claude-sonnet-4-5-20250929",
+  model: "claude-sonnet-4-5",
   temperature: 0,
 });
 

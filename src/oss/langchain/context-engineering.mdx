@@ -431,7 +431,7 @@ def adaptive_model(
 
     if message_count > 20:
         # Long conversation - use model with larger context window
-        request.model = init_chat_model("anthropic:claude-sonnet-4-5-20250929")
+        request.model = init_chat_model("anthropic:claude-sonnet-4-5")
     elif message_count > 10:
         # Medium conversation - use mid-tier model
         request.model = init_chat_model("openai:gpt-4o")
@@ -461,7 +461,7 @@ const adaptiveModel = createMiddleware({
 
     if (messageCount > 20) {
       // Long conversation - use model with larger context window
-      model = initChatModel("anthropic:claude-sonnet-4-5-20250929");
+      model = initChatModel("anthropic:claude-sonnet-4-5");
     } else if (messageCount > 10) {
       // Medium conversation - use mid-tier model
       model = initChatModel("openai:gpt-4o");
