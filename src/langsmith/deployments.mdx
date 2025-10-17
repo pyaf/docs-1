@@ -5,26 +5,23 @@ mode: wide
 ---
 
 <Callout icon="rocket" color="#4F46E5" iconType="regular">
-**Start here if you're building or operating agent applications.** This section is about deploying **your LangGraph applications and agents**. Need to set up LangSmith infrastructure first? See the [Hosting section](/langsmith/hosting).
+**Start here if you're building or operating agent applications.** This section is about deploying **your application**. Need to set up LangSmith infrastructure first? Refer to the [Hosting section](/langsmith/hosting).
 </Callout>
 
 This section covers how to package, build, and deploy your _agents_ and applications as [LangGraph Servers](/langsmith/langgraph-server).
 
-## Your deployment journey
+A typical deployment workflow consists of the following steps:
 
-```
-1. Test locally          2. Choose hosting       3. Deploy your app      4. Monitor & manage
-   ↓                        ↓                       ↓                       ↓
-[local-server] ────────> [hosting] ─────────────> [deploy] ──────────────> [observability]
-                          Cloud, Hybrid,           Push code or            Traces, alerts,
-                          or Self-hosted           build images            dashboards
-```
+1. **[Test locally](/langsmith/local-server)**: Run your application on a local server.
+2. **[Choose hosting](/langsmith/hosting)**: Select Cloud, Hybrid, or Self-hosted.
+3. **Deploy your app**: Push code or build images to your chosen environment.
+4. **[Monitor & manage](/langsmith/observability)**: Track traces, alerts, and dashboards.
 
 <Info>
 **Prerequisites:** Before deploying applications, you need a LangSmith instance to deploy to. Choose a [hosting option](/langsmith/hosting) first:
-- [**Cloud**](/langsmith/cloud) - Fastest setup, fully managed (recommended for getting started)
-- [**Hybrid**](/langsmith/hybrid) - Enterprise option for data residency requirements
-- [**Self-hosted**](/langsmith/self-hosted) - Full control for air-gapped environments
+- [**Cloud**](/langsmith/cloud): Fully managed
+- [**Hybrid**](/langsmith/hybrid): Enterprise option for data residency requirements
+- [**Self-hosted**](/langsmith/self-hosted): Full control and data isolation
 </Info>
 
 ## What you'll learn

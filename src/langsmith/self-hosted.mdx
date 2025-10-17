@@ -10,31 +10,30 @@ Self-hosted LangSmith is an add-on to the Enterprise plan designed for our large
 
 LangSmith supports different self-hosted configurations depending on your scale, security, and infrastructure needs. This page provides an overview of the supported self-hosted models:
 
-- **[LangSmith](#langsmith)** - Install the LangSmith platform with UI for observability, tracing, and evaluation. Your applications are deployed separately using your own CI/CD.
-- **[LangSmith with Deployment](#langsmith-with-deployment)** - Full enterprise platform with both observability features and UI-based deployment management for your agents. Requires LangSmith to be installed first.
-- **[Standalone Server](#standalone-server)** - Lightweight option to deploy individual LangGraph Servers without the LangSmith UI. Ideal for microservice-style deployments.
+- **[LangSmith](#langsmith)**: Deploy an instance of the LangSmith application that includes observability, tracing, and evaluations in the UI and API. Best for teams who want self-hosted monitoring and evaluation without deploying agents.
+- **[LangSmith with deployment](#langsmith-with-deployment)**: Deploy a _graph_ to LangGraph Server via the control plane. The control plane and data plane form the full LangSmith platform, providing UI and API management for running and monitoring agents. This includes observability, evaluation, and deployment management.
+- **[Standalone server](#standalone-server)**: Deploy a LangGraph Server directly without the control plane UI. Ideal for lightweight setups running one or a few agents as independent services, with full control over scaling and integration.
 
-| Feature | **LangSmith** | **LangSmith + Deployment** | **Standalone Server** |
-|---------|---------------|---------------------------|---------------------|
-| **LangSmith UI** | ✅ Yes | ✅ Yes | ❌ No |
-| **Observability & Tracing** | ✅ Yes | ✅ Yes | Optional (integrate with LangSmith) |
-| **Deploy agents via UI** | ❌ No | ✅ Yes | ❌ No (manual deployment) |
-| **Control plane** | ❌ No | ✅ Yes | ❌ No |
-| **Data plane** | ❌ No | ✅ Yes | ✅ Yes (just servers) |
-| **Kubernetes required** | Recommended | Required | Optional |
-| **Setup complexity** | Medium | High | Low |
-| **Best for** | Monitoring existing apps | Enterprise agent platform | Microservice-style deployments |
+Model | Includes | Best for | Methods
+------------------|------------------|----------|--------------------
+**LangSmith** | <ul><li>LangSmith app (UI + API)</li><li>Backend services (queue, playground, ACE)</li><li>Datastores: PostgreSQL, Redis, ClickHouse, optional blob storage</li></ul> | <ul><li>Teams who need self-hosted observability, tracing, and evaluation</li><li>Running the LangSmith app without deploying agents/graphs</li></ul> | <ul><li>Docker Compose (dev/test)</li><li>Kubernetes + Helm (production)</li></ul>
+**LangSmith with deployment** | <ul><li>Everything from LangSmith</li><li>Control plane (deployments UI, revision management, Studio)</li><li>Data plane (LangGraph Server pods)</li><li>Kubernetes operator for orchestration</li></ul> | <ul><li>Enterprise teams needing a private LangChain Cloud</li><li>Centralized UI/API for managing multiple agents/graphs</li><li>Integrated observability and orchestration</li></ul> | <ul><li>Kubernetes with Helm (required)</li><li>Runs on EKS, GKE, AKS, or self-managed clusters</li></ul>
+**Standalone server** | <ul><li>LangGraph Server container(s)</li><li>Requires PostgreSQL + Redis (shared or dedicated)</li><li>Optional LangSmith integration for tracing</li></ul> | <ul><li>Lightweight deployments of one or a few agents</li><li>Integrating LangGraph Servers as microservices</li><li>Teams preferring to manage scaling & CI/CD themselves</li></ul> | <ul><li>Docker / Docker Compose (dev/test)</li><li>Kubernetes + Helm (production)</li><li>Any container runtime or VM (ECS, EC2, ACI, etc.)</li></ul>
+
+<Note>
+For a guide on deployment, refer to:
+
+* [How to deploy the Self-Hosted Full Platform](/langsmith/deploy-self-hosted-full-platform)
+* [How to deploy the Self-Hosted Standalone Server](/langsmith/deploy-standalone-server)
+
+Supported compute platforms: [Kubernetes](https://kubernetes.io/) (for Control Plane), any compute platform (for Standalone Server Only)
+</Note>
 
 ## LangSmith
 
 Deploy an instance of the LangSmith application that includes observability, tracing, and evaluations in the UI and API—but **without** the ability to deploy agents through the control plane.
 
-### Best for
-- Teams who need self-hosted monitoring and evaluation
-- Running the LangSmith app without deploying agents/graphs through a UI
-- Organizations that deploy agents separately using their own CI/CD
-
-### What you get
+This includes:
 
 **Services:**
 - LangSmith frontend UI
@@ -71,7 +70,7 @@ To access the LangSmith UI and send API requests, you will need to expose the [L
 | <a id="langsmith-frontend"></a> **LangSmith frontend** | The frontend uses Nginx to serve the LangSmith UI and route API requests to the other servers. This serves as the entrypoint for the application and is the only component that must be exposed to users. |
 | <a id="langsmith-backend"></a> **LangSmith backend** | The backend is the main entrypoint for CRUD API requests and handles the majority of the business logic for the application. This includes handling requests from the frontend and SDK, preparing traces for ingestion, and supporting the hub API. |
 | <a id="langsmith-queue"></a> **LangSmith queue** | The queue handles incoming traces and feedback to ensure that they are ingested and persisted into the traces and feedback datastore asynchronously, handling checks for data integrity and ensuring successful insert into the datastore, handling retries in situations such as database errors or the temporary inability to connect to the database. |
-| <a id="langsmith-platform-backend"></a> **LangSmith backend** | The platform backend is another critical service that primarily handles authentication, run ingestion, and other high-volume tasks. |
+| <a id="langsmith-platform-backend"></a> **LangSmith platform backend** | The platform backend is another critical service that primarily handles authentication, run ingestion, and other high-volume tasks. |
 | <a id="langsmith-playground"></a> **LangSmith playground** | The playground is a service that handles forwarding requests to various LLM APIs to support the LangSmith Playground feature. This can also be used to connect to your own custom model servers. |
 | <a id="langsmith-ace-arbitrary-code-execution-backend"></a> **LangSmith ACE (Arbitrary Code Execution) backend** | The ACE backend is a service that handles executing arbitrary code in a secure environment. This is used to support running custom code within LangSmith. |
 
@@ -102,15 +101,7 @@ LangSmith will bundle all storage services by default. You can configure it to u
 
 **LangSmith with deployment** builds on top of the [LangSmith](#langsmith) option. Enabling deployment is ideal for enterprise teams who want a centralized, UI-driven platform to deploy and manage multiple agents and graphs, with all infrastructure, data, and orchestration fully under their control.
 
-### Best for
-- Enterprise teams needing a private LangChain Cloud
-- Centralized UI/API for managing multiple agents/graphs
-- Integrated observability and orchestration
-- Organizations wanting deployment management alongside observability
-
-### What you get
-
-Everything from [LangSmith](#langsmith), plus:
+This includes everything from [LangSmith](#langsmith), plus:
 
 | Component | Responsibilities | Where it runs | Who manages it |
 |-----------|------------------|---------------|----------------|
@@ -158,13 +149,7 @@ If you would like to enable this on your LangSmith instance, please follow the [
 
 The **Standalone server** option is the most lightweight and flexible way to run LangSmith. Unlike the other models, you only manage a simplified <Tooltip tip="The runtime environment where your LangGraph Servers and agents execute.">data plane</Tooltip> made up of LangGraph Servers and their required backing services (PostgreSQL, Redis, etc.).
 
-### Best for
-- Teams who want to run one or a few agents as independent services
-- Integrating LangGraph Servers as microservices into existing systems
-- Full control over scaling, deployment, and CI/CD pipelines
-- Organizations that don't need the LangSmith UI
-
-### What you get
+This includes:
 
 | Component | Responsibilities | Where it runs | Who manages it |
 |-----------|------------------|---------------|----------------|
