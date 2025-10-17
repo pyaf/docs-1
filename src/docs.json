@@ -260,7 +260,6 @@
                   {
                     "group": "Get started",
                     "pages": [
-                      "oss/python/deepagents/install",
                       "oss/python/deepagents/quickstart",
                       "oss/python/deepagents/customization"
                     ]
@@ -513,7 +512,6 @@
                   {
                     "group": "Get started",
                     "pages": [
-                      "oss/javascript/deepagents/install",
                       "oss/javascript/deepagents/quickstart",
                       "oss/javascript/deepagents/customization"
                     ]
@@ -592,7 +590,6 @@
                   {
                     "group": "Get started",
                     "pages": [
-                      "oss/javascript/deepagents/install",
                       "oss/javascript/deepagents/quickstart",
                       "oss/javascript/deepagents/customization"
                     ]
